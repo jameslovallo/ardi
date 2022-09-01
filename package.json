@@ -21,11 +21,11 @@
 	"license": "ISC",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/jameslovallo/snappy.git"
+		"url": "git+https://github.com/jameslovallo/ardi"
 	},
-	"homepage": "https://github.com/jameslovallo/snappy/tree/main/packages/carousel#readme",
+	"homepage": "https://www.npmjs.com/package/ardi",
 	"bugs": {
-		"url": "https://github.com/jameslovallo/snappy/issues"
+		"url": "https://github.com/jameslovallo/ardi/issues"
 	},
 	"scripts": {
 		"update": "npm version patch && npm publish"
