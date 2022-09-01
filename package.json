@@ -3,8 +3,8 @@
 	"version": "0.0.1",
 	"description": "Ardi is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.",
 	"type": "module",
-	"main": "composer-min.js",
-	"module": "composer-min.js",
+	"main": "ardi-min.js",
+	"module": "ardi-min.js",
 	"keywords": [
 		"ardi",
 		"web component",
