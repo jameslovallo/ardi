@@ -1,5 +1,5 @@
 export default (c) => {
-	class enos extends HTMLElement {
+	class ardi extends HTMLElement {
 		connectedCallback() {
 			Object.assign(this, c)
 			this.DOM = this.shadow ? this.attachShadow({ mode: 'open' }) : this
@@ -38,5 +38,5 @@ export default (c) => {
 		}
 	}
 
-	!customElements.get(c.component) && customElements.define(c.component, enos)
+	!customElements.get(c.component) && customElements.define(c.component, ardi)
 }
