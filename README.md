@@ -1,6 +1,6 @@
 ![](https://raw.githubusercontent.com/jameslovallo/ardi/master/logo.png)
 # Ardi
-Ardi is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.
+Ardi is a cute and capable companion for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.
 
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
