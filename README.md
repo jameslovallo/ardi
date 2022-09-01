@@ -20,7 +20,7 @@ Option 2: In your markup.
 </script>
 ```
 ## Usage
-Import Ardi, then provide with an object with any or all of the following keys. You can also add any other functions or values to your object and access it by it's name using `this`. Ardi also provides several special keys, including `DOM`, `parts`, and a `render` function, which will be explained in greater detail below.
+Import Ardi, then pass it an object with any or all of the following keys. You can also add any other functions or values to your object and access it by it's name using `this`. Ardi also provides several special keys, including `DOM`, `parts`, and a `render` function, which will be explained in greater detail below.
 
 | Key       | Type     |
 | --------- | -------- |
