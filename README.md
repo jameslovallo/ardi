@@ -1,5 +1,7 @@
+![](https://raw.githubusercontent.com/jameslovallo/chimp/master/logo.png)
 # Chimp
 Chimp is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.
+
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
 ## Installation
@@ -150,3 +152,8 @@ chimp({
 `this.parts` is used to conveniently reference elements in the component's markup and assign event listeners or handle effects. As mentioned previously, `this.parts` is an object containing every element that has a part attribute. Each element is referenced by that attribute's value, i.e. `this.parts.image`, and has a special `on()` function that can be used to assign event listeners to that element. See the `template()` section above for examples.
 ### render()
 If you prefer declarative rendering, you can manually call `this.render()` to re-render the component's template with any updated prop values. However, in most cases effects can be handled by imperatively manipulating elements through `this.parts`, which is the most efficient way to reflect state changes in your component's markup.
+
+---
+
+## Credits
+Logo by [catalyststuff](https://www.freepik.com/free-vector/cute-monkey-astronaut-floating-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_17121208.htm#query=monkey&position=45&from_view=author) on Freepik
