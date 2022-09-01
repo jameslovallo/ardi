@@ -1,12 +1,12 @@
 {
-	"name": "chimpanzee",
+	"name": "ardi",
 	"version": "0.0.1",
-	"description": "Chimpanzee is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.",
+	"description": "Ardi is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.",
 	"type": "module",
 	"main": "composer-min.js",
 	"module": "composer-min.js",
 	"keywords": [
-		"chimpanzee",
+		"ardi",
 		"web component",
 		"web components",
 		"custom element",
