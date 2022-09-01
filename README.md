@@ -1,26 +1,26 @@
-![](https://raw.githubusercontent.com/jameslovallo/chimp/master/logo.png)
-# Chimp
-Chimp is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.
+![](https://raw.githubusercontent.com/jameslovallo/chimpanzee/master/logo.png)
+# Chimpanzee
+Chimpanzee is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.
 
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
 ## Installation
 Option 1: As a package.
 ```sh
-npm i @snappywc/chimp
+npm i @snappywc/chimpanzee
 ```
 ```js
-import chimp from '@snappywc/chimp'
+import chimpanzee from '@snappywc/chimpanzee'
 ```
 
 Option 2: In your markup.
 ```html
 <script type="module">
-  import chimp from '//unpkg.com/@snappywc/chimp'
+  import chimpanzee from '//unpkg.com/@snappywc/chimpanzee'
 </script>
 ```
 ## Usage
-Import Chimp, then provide with an object with any or all of the following keys. You can also add any other functions or values to your object and access it by it's name using `this`. Chimp also provides several special keys, including `DOM`, `parts`, and a `render` function, which will be explained in greater detail below.
+Import Chimpanzee, then provide with an object with any or all of the following keys. You can also add any other functions or values to your object and access it by it's name using `this`. Chimpanzee also provides several special keys, including `DOM`, `parts`, and a `render` function, which will be explained in greater detail below.
 
 | Key       | Type     |
 | --------- | -------- |
@@ -32,12 +32,12 @@ Import Chimp, then provide with an object with any or all of the following keys.
 | ready     | Function |
 
 ## Example
-Below is an example using each of the keys in a `chimp` object to create a "Staff Card" component. There are multiple demo components [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
+Below is an example using each of the keys in a `chimpanzee` object to create a "Staff Card" component. There are multiple demo components [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
 
 ### component
 Give your new component a name. It must follow custom element naming convention.
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
 })
 ```
@@ -45,7 +45,7 @@ chimp({
 ### shadow
 Enable or disable the Shadow DOM, which allows you to use slots in your template.
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
   shadow: true, // defaults to false
 })
@@ -54,7 +54,7 @@ chimp({
 ### props()
 Use this function to get prop data from component attributes and assign it to `this` using a handler function. Handler functions can be built in functions like `String`, `Number`, or `JSON.parse`, an arrow function, or another function in your object, i.e. `this.phoneLink` in the example below.
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
   // ...
   props() {
@@ -74,12 +74,12 @@ Use this function to return the markup for you component as a template literal. 
 #### slots
 If you enabled Shadow DOM, you can use slots inside your template. You can use default slots or multiple named slots.
 #### parts
-If you're new to custom elements, part attributes allow you to expose an element for custom styling by CSS rules outside of the component's Shadow DOM. Chimp also uses part attributes like refs, and any element with a `part` attribute will be added to `this.parts`, i.e. `this.parts.photo`.
+If you're new to custom elements, part attributes allow you to expose an element for custom styling by CSS rules outside of the component's Shadow DOM. Chimpanzee also uses part attributes like refs, and any element with a `part` attribute will be added to `this.parts`, i.e. `this.parts.photo`.
 #### handling events
 You can add event handlers to an element using the  `on` attribute in your template, using the format `on="event_name:event_handler"`, where `event_name` is any valid event type and `event_handler` is the key of any function added to your component's object. When you assign events this way, the `e` event object is forwarded for your function to use, i.e to `preventDefault()`. See the document for the `ready()` function below for more
 
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
   // ...
   template() {
@@ -103,7 +103,7 @@ chimp({
 ### styles()
 Return a template literal containing your component's styles. Like the `template()` function, you can handle any logic or data transformations before the return, in prop handlers, or using another method from your component's object. This gives you a lot of flexibility to use data in your component's css, i.e. by using a JS variable or function in `${}` to return a property value, a property/value pair, or even a whole rule or set of rules.
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
   // ...
   styles() {
@@ -136,7 +136,7 @@ chimp({
 Use this function to handle events, effects, etc after the template is created. You can easily assign events to any `part` in the template using that part's `on` method, as seen in the example below. The `e` event object is forwarded for your function to use, i.e to `preventDefault()`.
 
 ```js
-chimp({
+chimpanzee({
   component: 'staff-card',
   // ...
   ready() {
