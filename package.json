@@ -1,0 +1,33 @@
+{
+	"name": "chimp",
+	"version": "0.0.1",
+	"description": "Chimp is a cute, concise and clever chassis for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.",
+	"type": "module",
+	"main": "composer-min.js",
+	"module": "composer-min.js",
+	"keywords": [
+		"chimp",
+		"web component",
+		"web components",
+		"custom element",
+		"custom elements",
+		"options api",
+		"small",
+		"fast",
+		"flexible",
+		"shadow dom"
+	],
+	"author": "James Lovallo",
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jameslovallo/snappy.git"
+	},
+	"homepage": "https://github.com/jameslovallo/snappy/tree/main/packages/carousel#readme",
+	"bugs": {
+		"url": "https://github.com/jameslovallo/snappy/issues"
+	},
+	"scripts": {
+		"update": "npm version patch && npm publish"
+	}
+}
