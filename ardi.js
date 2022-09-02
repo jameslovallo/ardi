@@ -20,17 +20,27 @@ export default (c) => {
 				const css = this.styles ? `<style>${this.styles()}</style>` : ''
 				const html = this.template ? this.template() : ''
 				this.DOM.innerHTML = css + html
+				html.match(/ @.+=/g).forEach((eAttr) => {
+					eAttr = eAttr.trim().replace('=', '')
+					const eString = eAttr.replace('@', '')
+					this.DOM.querySelectorAll(`[\\${eAttr}]`).forEach((el) => {
+						let func = this[el.getAttribute(eAttr)]
+						if (typeof this[el.getAttribute(eAttr)] === 'function') {
+							el.removeAttribute(eAttr)
+							el.addEventListener(eString, (e) => {
+								func.apply(this, [e])
+							})
+						}
+					})
+				})
 				this.parts = {}
 				this.DOM.querySelectorAll('[part]').forEach((part) => {
-					part.on = (type, func) => {
-						func = func.bind(this)
-						part.addEventListener(type, (e) => func(e))
+					part.on = (type, func = func) => {
+						part.addEventListener(type, (e) => {
+							func.apply(this, [e])
+						})
 					}
 					this.parts[part.getAttribute('part')] = part
-				})
-				this.DOM.querySelectorAll('[on]').forEach((el) => {
-					const [type, func] = el.getAttribute('on').split(':')
-					el.addEventListener(type, (e) => this[func](e))
 				})
 				if (this?.ready) this.ready()
 			}

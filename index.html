@@ -1,0 +1,37 @@
+<script type="module">
+	import ardi from './ardi'
+
+	ardi({
+		component: 'counter-demo',
+		shadow: true,
+		props() {
+			return {
+				count: Number,
+				step: (v) => (v ? Number(v) : 1),
+			}
+		},
+		sub() {
+			this.count -= this.step
+			this.parts.count.innerHTML = this.count
+		},
+		add() {
+			this.count += this.step
+			this.parts.count.innerHTML = this.count
+		},
+		template() {
+			return `
+			<button @click="sub">-</button>
+			<span part="count">${this.count}</span>
+			<button @click="add">+</button>
+		`
+		},
+		styles() {
+			return `
+			:host {margin-right: 1rem}
+			button {cursor: pointer; user-select: none}
+		`
+		},
+	})
+</script>
+
+<counter-demo></counter-demo>
