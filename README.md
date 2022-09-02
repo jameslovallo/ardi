@@ -52,7 +52,7 @@ ardi({
 ```
 
 ### props()
-Use this function to get prop data from component attributes and assign it to `this` using a handler function. Handler functions can be built in functions like `String`, `Number`, or `JSON.parse`, an arrow function, or another function in your object, i.e. `this.phoneLink` in the example below.
+Use this function to get prop data from component attributes and assign it to `this` using a prop handler. Prop handlers can be built in functions like `String`, `Number`, or `JSON.parse`, an arrow function, or another function in your object, i.e. `this.phoneLink` in the example below.
 ```js
 ardi({
   component: 'staff-card',
