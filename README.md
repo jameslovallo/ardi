@@ -72,7 +72,7 @@ ardi({
 ### template()
 Use this function to return the markup for you component as a template literal. You can handle any logic or data transformations before the return, in prop handlers, or using another method from your component's object.
 #### slots
-If you enabled Shadow DOM, you can use slots inside your template. You can use default slots or multiple named slots.
+If you enabled Shadow DOM, you can use slots inside your template. You can use the default slot or multiple named slots.
 #### parts
 If you're new to custom elements, part attributes allow you to expose an element for custom styling by CSS rules outside of the component's Shadow DOM. Ardi also uses part attributes like refs, and any element with a `part` attribute will be added to `this.parts`, i.e. `this.parts.photo`.
 #### handling events
