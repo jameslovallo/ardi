@@ -20,7 +20,7 @@ export default (c) => {
 				const css = this.styles ? `<style>${this.styles()}</style>` : ''
 				const html = this.template ? this.template() : ''
 				this.DOM.innerHTML = css + html
-				html.match(/ @.+=/g).forEach((eAttr) => {
+				html.match(/ @.+=/g)?.forEach((eAttr) => {
 					eAttr = eAttr.trim().replace('=', '')
 					const eString = eAttr.replace('@', '')
 					this.DOM.querySelectorAll(`[\\${eAttr}]`).forEach((el) => {
