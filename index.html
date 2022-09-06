@@ -21,25 +21,22 @@
 			this.parts.count.innerHTML = this.count
 		},
 		template() {
-			return `
-			<button @click="sub">-</button>
-			<span part="count">${this.count}</span>
-			<button @click="add">+</button>
-		`
+			return /* html */ `
+				<button @click="sub">-</button>
+				<span part="count">${this.count}</span>
+				<button @click="add">+</button>
+			`
 		},
 		styles() {
-			return `
-			:host {margin-right: 1rem}
-			button {cursor: pointer; user-select: none}
-		`
+			return `button { cursor: pointer; user-select: none }`
 		},
 	})
 
 	// staff card demo
 
-	const phoneIcon = `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>`
+	const phoneIcon = /* svg */ `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>`
 
-	const emailIcon = `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`
+	const emailIcon = /* svg */ `<svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>`
 
 	ardi({
 		component: 'staff-card',
@@ -59,21 +56,21 @@
 		phoneLink(phone) {
 			if (phone) {
 				const url = 'tel:' + phone.match(/[0-9]+/g).join('')
-				return `
-				<a href="${url}" title="${phone}" @click="phoneClick">
-					${phoneIcon}
-				</a>
-			`
+				return /* html */ `
+					<a href="${url}" title="${phone}" @click="phoneClick">
+						${phoneIcon}
+					</a>
+				`
 			} else return ''
 		},
 
 		emailLink(email) {
 			if (email) {
-				return `
-				<a href="mailto:${email}" title="${email}">
-					${emailIcon}
-				</a>
-			`
+				return /* html */ `
+					<a href="mailto:${email}" title="${email}">
+						${emailIcon}
+					</a>
+				`
 			} else return ''
 		},
 
@@ -85,57 +82,57 @@
 		},
 
 		template() {
-			return `
-			<img part="photo" src="${this.photo}">
-			<div part="details">
-				<b>${this.name}</b>
-				${this.position}
-			</div>
-			<div part="contact">
-				<span part="phone">${this.phone}</span>
-				<span part="email">${this.email}</span>
-			</div>
-		`
+			return /* html */ `
+				<img part="photo" src="${this.photo}">
+				<div part="details">
+					<b>${this.name}</b>
+					${this.position}
+				</div>
+				<div part="contact">
+					<span part="phone">${this.phone}</span>
+					<span part="email">${this.email}</span>
+				</div>
+			`
 		},
 
 		styles() {
-			return `
-			:host {
-				display: grid;
-				align-items: center;
-				grid-template-columns: 64px 1fr auto;
-				max-width:400px;
-				box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
-				border-radius: .75rem;
-				overflow: hidden;
-			}
-			[part=photo] {
-				display: block;
-				height: 64px;
-				width: 64px;
-				aspect-ratio: 1/1;
-				object-fit: contain;
-				object-position: center bottom;
-			}
-			[part=details] {
-				display: flex;
-				flex-direction: column;
-				padding: .75rem;
-			}
-			[part=contact] {
-				display: flex;
-				gap: .75rem;
-				padding: .75rem;
-			}
-			[part="contact"] a {
-				display: block;
-				text-decoration: none;
-			}
-			[part=contact] svg {
-				display: block;
-				width: 24px;
-			}
-		`
+			return /* css */ `
+				:host {
+					display: grid;
+					align-items: center;
+					grid-template-columns: 64px 1fr auto;
+					max-width:400px;
+					box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
+					border-radius: .75rem;
+					overflow: hidden;
+				}
+				[part=photo] {
+					display: block;
+					height: 64px;
+					width: 64px;
+					aspect-ratio: 1/1;
+					object-fit: contain;
+					object-position: center bottom;
+				}
+				[part=details] {
+					display: flex;
+					flex-direction: column;
+					padding: .75rem;
+				}
+				[part=contact] {
+					display: flex;
+					gap: .75rem;
+					padding: .75rem;
+				}
+				[part="contact"] a {
+					display: block;
+					text-decoration: none;
+				}
+				[part=contact] svg {
+					display: block;
+					width: 24px;
+				}
+			`
 		},
 	})
 
@@ -161,91 +158,96 @@
 			for (let i = this.min; i <= this.max; i += this.step) {
 				const percentage = i / this.max
 				const deg = this.deg(percentage)
-				html += `
-				<div part="number" style="transform: rotate(${deg}deg)">
-					<i style="transform: rotate(${-deg}deg)">${i}</i>
-				</div>
-			`
+				html += /* html */ `
+					<div part="number" style="transform: rotate(${deg}deg)">
+						<i style="transform: rotate(${-deg}deg)">${i}</i>
+					</div>
+				`
 			}
 			return html
 		},
 		ready() {
 			const val = this.deg(this.value / this.max)
-			setTimeout(() => {
-				this.parts.dial.style.transform = `rotate(${val}deg)`
-			})
+			new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						this.parts.dial.style.transform = `rotate(${val}deg)`
+					})
+				},
+				{ root: null, rootMargin: '0px', threshold: 0.25 }
+			).observe(this)
 		},
 		template() {
-			return `
-			${this.numbers()}
-			<div part="dial"></div>
-			<slot name="label" part="label">${this.label}</slot>
-		`
+			return /* html */ `
+				${this.numbers()}
+				<div part="dial"></div>
+				<slot name="label" part="label">${this.label}</slot>
+			`
 		},
 		styles() {
-			return `
-			:host {
-				align-items: center;
-				background: var(--background, #000);
-				border: 1px solid black;
-				border-radius: 50%;
-				color: var(--color, #fff);
-				display: flex;
-				height: 300px;
-				justify-content: center;
-				overflow: hidden;
-				position: relative;
-				width: 300px;
-			}
-			[part=dial] {
-				background: var(--dial, #333);
-				border-radius: 50%;
-				height: 10%;
-				position: relative;
-				transform: rotate(-120deg);
-				transition: transform var(--dial-speed, 1s);
-				width: 10%;
-			}
-			[part=dial]:before {
-				background: var(--needle, #f00);
-				bottom: 99%;
-				content: '';
-				display: block;
-				height: 310%;
-				left: calc(50% - 1px);
-				position: absolute;
-				width: 2px;
-			}
-			[part=number] {
-				height: 100%;
-				left: calc(50% - 1.5em);
-				pointer-events: none;
-				position: absolute;
-				top: 0;
-				width: 3em;
-			}
-			[part=number] i {
-				align-items: center;
-				display: flex;
-				font-style: normal;
-				height: 3em;
-				justify-content: center;
-				width: 3em;
-			}
-			[part=label] {
-				align-items: center;
-				background: var(--title-background, #333);
-				border-radius: 50%;
-				bottom: 0;
-				color: var(--title-color, #fff);
-				display: flex;
-				height: 20%;
-				justify-content: center;
-				margin: 0;
-				position: absolute;
-				width: 100%;
-			}
-		`
+			return /* css */ `
+				:host {
+					align-items: center;
+					background: var(--background, #000);
+					border: 1px solid black;
+					border-radius: 50%;
+					color: var(--color, #fff);
+					display: flex;
+					height: 300px;
+					justify-content: center;
+					overflow: hidden;
+					position: relative;
+					width: 300px;
+				}
+				[part=dial] {
+					background: var(--dial, #333);
+					border-radius: 50%;
+					height: 10%;
+					position: relative;
+					transform: rotate(-120deg);
+					transition: transform var(--dial-speed, 1s);
+					width: 10%;
+				}
+				[part=dial]:before {
+					background: var(--needle, #f00);
+					bottom: 99%;
+					content: '';
+					display: block;
+					height: 310%;
+					left: calc(50% - 1px);
+					position: absolute;
+					width: 2px;
+				}
+				[part=number] {
+					height: 100%;
+					left: calc(50% - 1.5em);
+					pointer-events: none;
+					position: absolute;
+					top: 0;
+					width: 3em;
+				}
+				[part=number] i {
+					align-items: center;
+					display: flex;
+					font-style: normal;
+					height: 3em;
+					justify-content: center;
+					width: 3em;
+				}
+				[part=label] {
+					align-items: center;
+					background: var(--title-background, #333);
+					border-radius: 50%;
+					bottom: 0;
+					color: var(--title-color, #fff);
+					display: flex;
+					height: 20%;
+					justify-content: center;
+					margin: 0;
+					position: absolute;
+					width: 100%;
+				}
+			`
 		},
 	})
 
@@ -261,128 +263,167 @@
 		},
 		loadPlayer() {
 			this.parts.button.remove()
-			this.DOM.innerHTML += `
-			<iframe part="player"
-				src="https://www.youtube.com/embed/${this.vid}?autoplay=1"
-				title="YouTube video player"
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-				allowfullscreen
-			></iframe>
-		`
+			this.DOM.innerHTML += /* html */ `
+				<iframe part="player"
+					src="https://www.youtube.com/embed/${this.vid}?autoplay=1"
+					title="YouTube video player"
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen
+				></iframe>
+			`
 		},
 		template() {
 			const bgPath =
 				'M66.52 7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13 34 0 34 0S12.21.13 6.9 1.55c-2.93.78-4.63 3.26-5.42 6.19C.06 13.05 0 24 0 24s.06 10.95 1.48 16.26c.78 2.93 2.49 5.41 5.42 6.19C12.21 47.87 34 48 34 48s21.79-.13 27.1-1.55c2.93-.78 4.64-3.26 5.42-6.19C67.94 34.95 68 24 68 24s-.06-10.95-1.48-16.26z'
-			return `
-			<button part="button" @click="loadPlayer" aria-label="Play Video">
-				<svg part="icon" version="1.1" viewBox="0 0 68 48">
-					<path part="icon-bg" d="${bgPath}"></path>
-					<path part="icon-fg" d="M 45,24 27,14 27,34"></path>
-				</svg>
-			</button>
-		`
+			return /* html */ `
+				<button part="button" @click="loadPlayer" aria-label="Play Video">
+					<svg part="icon" version="1.1" viewBox="0 0 68 48">
+						<path part="icon-bg" d="${bgPath}"></path>
+						<path part="icon-fg" d="M 45,24 27,14 27,34"></path>
+					</svg>
+				</button>
+			`
 		},
 		styles() {
-			return `
-			:host {
-				aspect-ratio: 16/9;
-				background-image: url(https://img.youtube.com/vi/${this.vid}/hqdefault.jpg);
-				background-position: center center;
-				background-size: cover;
-				display: grid;
-				place-items: center;
-			}
-			[part=button] {
-				background: transparent;
-				border: none;
-				cursor: pointer;
-				padding: 0;
-				width: 68px;
-			}
-			[part=icon] { display: block }
-			[part=icon-bg] { fill: rgba(33,33,33,0.8) }
-			[part=icon-fg] { fill: #fff }
-			[part=button]:hover [part=icon-bg] { fill: red }
-			[part=player] { grid-area: 1/-1; height: 100%; width: 100%; }
-		`
+			return /* css */ `
+				:host {
+					aspect-ratio: 16/9;
+					background-image: url(https://img.youtube.com/vi/${this.vid}/hqdefault.jpg);
+					background-position: center center;
+					background-size: cover;
+					display: grid;
+					place-items: center;
+				}
+				[part=button] {
+					background: transparent;
+					border: none;
+					cursor: pointer;
+					padding: 0;
+					width: 68px;
+				}
+				[part=icon] { display: block }
+				[part=icon-bg] { fill: rgba(33,33,33,0.8) }
+				[part=icon-fg] { fill: #fff }
+				[part=button]:hover [part=icon-bg] { fill: red }
+				[part=player] { grid-area: 1/-1; height: 100%; width: 100%; }
+			`
 		},
 	})
 </script>
+
+<style>
+	:root {
+		font-family: sans-serif;
+	}
+
+	body {
+		margin: 1rem;
+	}
+
+	h2 {
+		margin-top: 1.5em;
+	}
+
+	.group {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.vert {
+		flex-direction: column;
+	}
+
+	youtube-demo {
+		max-width: 600px;
+	}
+</style>
 
 <div style="display: flex; gap: 1rem; align-items: center">
 	<img src="https://raw.githubusercontent.com/jameslovallo/ardi/master/logo.png" width="100" />
 	<div>
 		<h1 style="margin: 0">Ardi</h1>
 		<p>
-			Ardi is a quick and capable companion for crafting custom elements. It's all about casting off
-			clutter and going back to basics, without sacrificing DX.
+			Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go
+			back to the basics and #usetheplatform without any Virtual DOM, JSX, compilers, or any other
+			'magic' to provide the most performant option available, all without sacrificing DX. Ardi is
+			tiny but fierce, weighing in at just 1kb uncompressed.
 		</p>
-		<a href="https://www.npmjs.com/package/ardi" target="_blank">See the Docs on NPM</a>
+		<a href="https://www.npmjs.com/package/@snappywc/composer" target="_blank"
+			>See the Docs on NPM</a
+		>
 	</div>
 </div>
 
 <h2>Counter Demo</h2>
 
-<counter-demo count="-3"></counter-demo>
-<counter-demo step="2"></counter-demo>
-<counter-demo count="3"></counter-demo>
+<div class="group">
+	<counter-demo count="-3" step="3"></counter-demo>
+
+	<counter-demo></counter-demo>
+
+	<counter-demo count="3" step="3"></counter-demo>
+</div>
 
 <h2>Staff Card Demo</h2>
 
-<staff-card
-	name="James Lovallo"
-	position="Web Developer"
-	photo="https://scontent.fdet1-2.fna.fbcdn.net/v/t1.6435-9/94033374_10158077509324788_6580222482559533056_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=5cg-sETIJ74AX_X-g14&_nc_ht=scontent.fdet1-2.fna&oh=00_AT_EYjyZd0VNqGXJlVBN8qfoUjH5KMUvmyZUP3ImjV-zcw&oe=63167ED7"
-	phone="(810) 357-5901"
-	email="lovallo.james@gmail.com"
-></staff-card>
+<div class="group vert">
+	<staff-card
+		name="James Lovallo"
+		position="Web Developer"
+		photo="https://scontent.fdet1-2.fna.fbcdn.net/v/t1.6435-9/94033374_10158077509324788_6580222482559533056_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=5cg-sETIJ74AX_X-g14&_nc_ht=scontent.fdet1-2.fna&oh=00_AT_EYjyZd0VNqGXJlVBN8qfoUjH5KMUvmyZUP3ImjV-zcw&oe=63167ED7"
+		phone="(810) 357-5901"
+		email="lovallo.james@gmail.com"
+	></staff-card>
 
-<staff-card
-	name="Fatimah Maimunah"
-	position="Chief Executive Officer"
-	phone="1234567890"
-	email="#"
-	photo="https://bit.ly/3FIADMM"
-></staff-card>
+	<staff-card
+		name="Fatimah Maimunah"
+		position="Chief Executive Officer"
+		phone="1234567890"
+		email="#"
+		photo="https://bit.ly/3FIADMM"
+	></staff-card>
 
-<staff-card
-	name="Charlie Gardiner"
-	position="Chief Financial Officer"
-	email="#"
-	photo="https://bit.ly/3L4nYVe"
-></staff-card>
+	<staff-card
+		name="Charlie Gardiner"
+		position="Chief Financial Officer"
+		email="#"
+		photo="https://bit.ly/3L4nYVe"
+	></staff-card>
 
-<staff-card
-	name="Ashley Fox"
-	position="Chief Technical Officer"
-	phone="1234567890"
-	email="#"
-	photo="https://bit.ly/3FyBTSk"
-></staff-card>
+	<staff-card
+		name="Ashley Fox"
+		position="Chief Technical Officer"
+		phone="1234567890"
+		email="#"
+		photo="https://bit.ly/3FyBTSk"
+	></staff-card>
 
-<staff-card
-	name="Areeb Mcgowan"
-	position="Chief Operations Officer"
-	email="#"
-	photo="https://bit.ly/3sv2Kts"
-></staff-card>
+	<staff-card
+		name="Areeb Mcgowan"
+		position="Chief Operations Officer"
+		email="#"
+		photo="https://bit.ly/3sv2Kts"
+	></staff-card>
+</div>
 
 <h2>Gauge Demo</h2>
 
-<snappy-gauge label="MPH" max="120" min="0" step="10" value="90"></snappy-gauge>
+<div class="group vert">
+	<snappy-gauge label="MPH" max="120" min="0" step="10" value="90"></snappy-gauge>
 
-<br />
+	<snappy-gauge
+		label="RPM"
+		max="7000"
+		min="0"
+		step="1000"
+		value="2100"
+		style="--needle: limegreen"
+	></snappy-gauge>
+</div>
 
-<snappy-gauge
-	label="RPM"
-	max="7000"
-	min="0"
-	step="1000"
-	value="2100"
-	style="--needle: limegreen"
-></snappy-gauge>
+<h2>YouTube Lite Demo</h2>
 
-<h2>YouTube Demo</h2>
-
-<youtube-demo vid="ULCIHP5dc44"></youtube-demo>
+<div class="group vert">
+	<youtube-demo vid="JttXO2I9KSI"></youtube-demo>
+</div>

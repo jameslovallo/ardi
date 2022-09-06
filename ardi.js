@@ -20,7 +20,7 @@ export default (c) => {
 				const css = this.styles ? `<style>${this.styles()}</style>` : ''
 				const html = this.template ? this.template() : ''
 				this.DOM.innerHTML = css + html
-				html.match(/ @[a-z]+/gi)?.forEach((eAttr) => {
+				html.match(/@[a-z]+/gi)?.forEach((eAttr) => {
 					const eString = eAttr.replace('@', '')
 					this.DOM.querySelectorAll(`[\\${eAttr}]`).forEach((el) => {
 						let func = this[el.getAttribute(eAttr)]
@@ -41,7 +41,7 @@ export default (c) => {
 					}
 					this.parts[part.getAttribute('part')] = part
 				})
-				if (this?.ready) this.ready()
+				this.ready && this.ready()
 			}
 			this.render()
 		}
