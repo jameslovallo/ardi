@@ -1,6 +1,6 @@
 {
 	"name": "ardi",
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Ardi is a quick and capable companion for crafting custom elements. It's all about casting off clutter and going back to basics, without sacrificing DX.",
 	"type": "module",
 	"main": "ardi-min.js",
