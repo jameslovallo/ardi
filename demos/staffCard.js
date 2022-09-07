@@ -44,7 +44,7 @@ export default {
 				<img part="photo" src="${this.photo}">
 				<div part="details">
 					<b>${this.name}</b>
-					${this.position}
+					<small>${this.position}</small>
 				</div>
 				<div part="contact">
 					<span part="phone">${this.phone}</span>
@@ -78,7 +78,7 @@ export default {
 				}
 				[part=contact] {
 					display: flex;
-					gap: .5rem;
+					gap: .75rem;
 					padding-right: .75rem;
 				}
 				[part="contact"] a {
