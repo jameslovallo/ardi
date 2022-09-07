@@ -22,7 +22,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-  import ardi from '//unpkg.com/ardi'
+	import ardi from '//unpkg.com/ardi'
 </script>
 ```
 
@@ -50,7 +50,7 @@ Give your new component a name. It must follow the custom element [naming conven
 
 ```js
 ardi({
-  component: 'weather-widget',
+	component: 'weather-widget',
 })
 ```
 
@@ -60,29 +60,29 @@ Enable or disable the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/
 
 ```js
 ardi({
-  component: 'weather-widget',
-  shadow: true, // defaults to false
+	component: 'weather-widget',
+	shadow: true, // defaults to false
 })
 ```
 
 ### props()
 
-The `props` function gets data from component attributes and assigns it to `this`. Each key's value can either be a setter function or a default string value. Prop setters can be built-in functions like `String`, `Number`, or `JSON.parse`, arrow functions, or another function in your object.
+The `props` function gets data from component attributes and assigns it to `this`. Each key's value can either be a setter function or a default value. Prop setters can be built-in functions like `String`, `Number`, or `JSON.parse`, arrow functions, or another function in your object.
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  props() {
-    return {
-      breakpoint: (v) => (v ? Number(v) : 600),
-      label: 'Forecast',
-      lat: '42.375',
-      lon: '-83',
-      place: 'Detroit',
-      unit: 'fahrenheit',
-    }
-  },
+	component: 'weather-widget',
+	// ...
+	props() {
+		return {
+			breakpoint: (v) => (v ? Number(v) : 600),
+			label: 'Forecast',
+			lat: '42.375',
+			lon: '-83',
+			place: 'Detroit',
+			unit: 'fahrenheit',
+		}
+	},
 })
 ```
 
@@ -108,10 +108,10 @@ You can add Vue-style @ attributes to your templates to handle events using the 
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  template() {
-    return /* html */ `
+	component: 'weather-widget',
+	// ...
+	template() {
+		return /* html */ `
       <div part="current">
         <div part="label">
           <b>${this.place}</b><br/>
@@ -124,7 +124,7 @@ ardi({
         ${this.forecastPlaceholder()}
       </div>
     `
-  },
+	},
 })
 ```
 
@@ -134,10 +134,10 @@ Use the `styles` function to return a template literal containing your component
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  styles() {
-    const flexRow = `
+	component: 'weather-widget',
+	// ...
+	styles() {
+		const flexRow = `
       align-items: center;
       display: flex;
       flex-flow: row wrap;
@@ -145,7 +145,7 @@ ardi({
       gap: 1rem;
     `
 
-    return /* css */ `
+		return /* css */ `
       :host {
         --current-icon-size: 5rem;
         --icon-shadow: 0 0 0 rgba(0,0,0,0.5);
@@ -174,7 +174,7 @@ ardi({
 
       /* ... */
     `
-  },
+	},
 })
 ```
 
@@ -184,15 +184,15 @@ Use the `ready` function to handle events, effects, etc after the template is re
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  ready() {
-    new ResizeObserver(() =>
-      this.clientWidth <= this.breakpoint
-        ? this.refs.forecast.classList.add('small')
-        : this.refs.forecast.classList.remove('small')
-    ).observe(this)
-  },
+	component: 'weather-widget',
+	// ...
+	ready() {
+		new ResizeObserver(() =>
+			this.clientWidth <= this.breakpoint
+				? this.refs.forecast.classList.add('small')
+				: this.refs.forecast.classList.remove('small')
+		).observe(this)
+	},
 })
 ```
 
@@ -202,14 +202,14 @@ Use the `intersect` function to create effects when the component is scrolled in
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  intersect(ratio) {
-    if (!this.weatherAlreadyFetched && ratio > 0.3) {
-      this.getWeather()
-      this.weatherAlreadyFetched = true
-    }
-  },
+	component: 'weather-widget',
+	// ...
+	intersect(ratio) {
+		if (!this.weatherAlreadyFetched && ratio > 0.3) {
+			this.getWeather()
+			this.weatherAlreadyFetched = true
+		}
+	},
 })
 ```
 
