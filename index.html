@@ -58,12 +58,14 @@
 <h2>Counter Demo</h2>
 <div class="container">
 	<counter-demo count="-3" step="3"></counter-demo>
+
 	<counter-demo></counter-demo>
+
 	<counter-demo count="3" step="3"></counter-demo>
 </div>
 
+<h2>Staff Card Demo</h2>
 <div class="container vert">
-	<h2>Staff Card Demo</h2>
 	<staff-card
 		name="Fatimah Maimunah"
 		position="Chief Executive Officer"
@@ -71,12 +73,14 @@
 		email="#"
 		photo="https://bit.ly/3FIADMM"
 	></staff-card>
+
 	<staff-card
 		name="Charlie Gardiner"
 		position="Chief Financial Officer"
 		email="#"
 		photo="https://bit.ly/3L4nYVe"
 	></staff-card>
+
 	<staff-card
 		name="Ashley Fox"
 		position="Chief Technical Officer"
@@ -84,6 +88,7 @@
 		email="#"
 		photo="https://bit.ly/3FyBTSk"
 	></staff-card>
+
 	<staff-card
 		name="Areeb Mcgowan"
 		position="Chief Operations Officer"
@@ -93,8 +98,9 @@
 </div>
 
 <h2>Gauge Demo</h2>
-<div class="container vert">
+<div class="container" style="gap: 2rem">
 	<gauge-demo label="MPH" max="120" min="0" step="10" value="90"></gauge-demo>
+
 	<gauge-demo
 		label="RPM"
 		max="7000"
@@ -106,7 +112,11 @@
 </div>
 
 <h2>Weather Widget</h2>
-<weather-widget lat="42.375" lon="-83" unit="fahrenheit"></weather-widget>
+<div class="container" style="gap: 2rem">
+	<weather-widget lat="42.375" lon="-83" unit="fahrenheit"></weather-widget>
+
+	<weather-widget lat="52.52" lon="13.41" place="Berlin" unit="celsius"></weather-widget>
+</div>
 
 <h2>YouTube Lite Demo</h2>
 <div class="container vert">
