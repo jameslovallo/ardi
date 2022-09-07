@@ -6,6 +6,7 @@ export default {
 			breakpoint: (v) => (v ? Number(v) : 600),
 			label: 'Forecast',
 			lat: '42.375',
+			locale: navigator.language,
 			lon: '-83',
 			place: 'Detroit',
 			unit: 'fahrenheit',
@@ -67,7 +68,7 @@ export default {
 			const dateArr = date.split('-')
 			dateArr[2] = Number(dateArr[2])
 			date = dateArr.join('-')
-			return new Date(date).toLocaleDateString(navigator.language, { weekday: 'long' })
+			return new Date(date).toLocaleDateString(this.locale, { weekday: 'long' })
 		}
 
 		fetch(
@@ -134,7 +135,6 @@ export default {
 			img { display: block }
 			[part=current] {
 				${flexRow}
-				height: 100%;
 				justify-content: center;
 			}
 			[part=label] { text-align: center }
