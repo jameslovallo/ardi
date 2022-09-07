@@ -78,8 +78,8 @@ export default {
 				}
 				[part=contact] {
 					display: flex;
-					gap: .75rem;
-					padding: .75rem;
+					gap: .5rem;
+					padding-right: .75rem;
 				}
 				[part="contact"] a {
 					display: block;
@@ -87,7 +87,8 @@ export default {
 				}
 				[part=contact] svg {
 					display: block;
-					width: 24px;
+					width: 20px;
+					pointer-events: none;
 				}
 			`
 	},
