@@ -7,12 +7,10 @@ export default (c) => {
 			if (this.props) {
 				Object.keys(this.props()).forEach((prop) => {
 					const handler = this.props()[prop]
+					const value = this.getAttribute(prop)
 					if (typeof handler === 'function') {
-						this[prop] = handler(this.getAttribute(prop))
-					} else {
-						const warning = `Handler for prop ${prop} in component ${this.component} is not a function.`
-						console.warn(warning)
-					}
+						this[prop] = handler(value)
+					} else this[prop] = value ? value : handler
 				})
 			}
 
@@ -32,14 +30,14 @@ export default (c) => {
 						}
 					})
 				})
-				this.parts = {}
-				this.DOM.querySelectorAll('[part]').forEach((part) => {
-					part.on = (type, func = func) => {
-						part.addEventListener(type, (e) => {
+				this.refs = {}
+				this.DOM.querySelectorAll('[ref]').forEach((ref) => {
+					ref.on = (type, func = func) => {
+						ref.addEventListener(type, (e) => {
 							func.apply(this, [e])
 						})
 					}
-					this.parts[part.getAttribute('part')] = part
+					this.refs[ref.getAttribute('ref')] = ref
 				})
 				this.ready && this.ready()
 			}
