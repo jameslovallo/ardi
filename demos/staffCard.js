@@ -34,10 +34,10 @@ export default {
 		} else return ''
 	},
 	phoneClick(e) {
-		// console.log(e)
-		e.preventDefault()
-		const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
-		alert(message)
+		e.preventDefault();
+		const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`;
+		let confirmed = confirm(message);
+		if (confirmed) location = e.target.href;
 	},
 	template() {
 		return /* html */ `
