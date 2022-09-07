@@ -44,6 +44,20 @@ export default (c) => {
 				this.ready && this.ready()
 			}
 			this.render()
+
+			if (typeof this.intersect === 'function') {
+				new IntersectionObserver(
+					(entries) =>
+						entries.forEach((entry) => {
+							entry.isIntersecting && this.intersect(entry.intersectionRatio.toFixed(2))
+						}),
+					{
+						root: null,
+						rootMargin: '0px',
+						threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+					}
+				).observe(this)
+			}
 		}
 	}
 

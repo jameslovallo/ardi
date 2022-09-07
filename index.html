@@ -1,3 +1,7 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
 <script type="module">
 	import ardi from './ardi'
 
@@ -166,16 +170,11 @@
 			}
 			return html
 		},
-		ready() {
-			const val = this.deg(this.value / this.max)
-			new IntersectionObserver(
-				(entries) => {
-					entries.forEach((entry) => {
-						this.parts.dial.style.transform = `rotate(${val}deg)`
-					})
-				},
-				{ root: null, rootMargin: '0px', threshold: 0.25 }
-			).observe(this)
+		intersect(r) {
+			if (r > 0.3) {
+				const val = this.deg(this.value / this.max)
+				this.parts.dial.style.transform = `rotate(${val}deg)`
+			}
 		},
 		template() {
 			return /* html */ `

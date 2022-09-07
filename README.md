@@ -2,7 +2,9 @@
 
 # Ardi
 
-Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go back to the basics and #usetheplatform without any Virtual DOM, JSX, or any other 'magic' to provide the most performant option available, all without sacrificing DX. Ardi is tiny but fierce, weighing in at just 1kb uncompressed.
+The un-framework.
+
+Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go back to the basics and #usetheplatform without any Virtual DOM, JSX, or any other 'magic' to provide the most performant option available, all without sacrificing DX. Ardi is tiny but fierce, weighing in at just 1.2kb uncompressed.
 
 [Demo](https://codepen.io/jameslovallo/pen/xxWzjeb)
 
@@ -30,14 +32,15 @@ Option 2: In your markup.
 
 Import Ardi, then pass it an object with any or all of the following keys. You can also add any other functions or values to your object and access them by their key name using `this`. Just note that Ardi has a few reserved keys, including `DOM`, `parts`, and a `render()` function, which will be explained in greater detail below.
 
-| Key       | Type     |
-| --------- | -------- |
-| component | String   |
-| shadow    | Boolean  |
-| props     | Function |
-| template  | Function |
-| styles    | Function |
-| ready     | Function |
+| Key       | Type     | Parameters |
+| --------- | -------- | ---------- |
+| component | String   |            |
+| shadow    | Boolean  |            |
+| props     | Function |            |
+| template  | Function |            |
+| styles    | Function |            |
+| ready     | Function |            |
+| intersect | Function | ratio      |
 
 ## Example
 
@@ -55,7 +58,7 @@ ardi({
 
 ### shadow
 
-Enable or disable the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), which allows you to use [\<slot\> tags](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement) in your template.
+Enable or disable the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), which scopes your css allows you to use [\<slot\> tags](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement) in your template.
 
 ```js
 ardi({
