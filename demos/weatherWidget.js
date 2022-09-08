@@ -159,7 +159,7 @@ export default {
 				display: flex;
 				gap: .5rem;
 			}
-			[part=day_min], [part=day_max] {
+			[part=day_temp] * {
 				text-align: center;
 				width: 2em;
 			}
@@ -173,6 +173,8 @@ export default {
 			[part=forecast].small [part=day] {
 				border-top: 1px solid var(--divider-color);
 				display: grid;
+				font-size: 1rem;
+				font-weight: normal;
 				grid-template-columns: 1fr auto auto;
 				justify-content: space-between;
 				padding: .25rem 0;
