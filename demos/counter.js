@@ -18,7 +18,7 @@ export default {
 	template() {
 		return /* html */ `
 			<button @click="sub">-</button>
-			<span ref="count">${this.count}</span>
+			<span part="count" ref="count">${this.count}</span>
 			<button @click="add">+</button>
 		`
 	},
