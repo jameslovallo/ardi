@@ -61,7 +61,7 @@ export default {
 					align-items: center;
 					grid-template-columns: 64px 1fr auto;
 					max-width:400px;
-					border: 1px solid buttonborder;
+					border: 1px solid rgba(125,125,125,.5);
 					border-radius: .75rem;
 					overflow: hidden;
 				}

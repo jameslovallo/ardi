@@ -18,6 +18,19 @@
 		li {
 			line-height: 1.5;
 		}
+		a[href*='npm'] {
+			border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
+			border-style: solid;
+			border-width: 2px;
+			color: white;
+			display: inline-block;
+			margin-top: 0.5rem;
+			padding: 0.5rem 1rem;
+			text-decoration: none;
+		}
+		a[href*='npm']:hover {
+			background: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
+		}
 		.container {
 			display: flex;
 			flex-flow: row wrap;
@@ -72,7 +85,7 @@
 	<li>Vue-like '@' event assignment in the template</li>
 	<li>Using <code>ref</code> to update the template</li>
 </ol>
-<div class="container">
+<div class="container" style="gap: 1.5rem">
 	<counter-demo count="-3" step="3"></counter-demo>
 
 	<counter-demo></counter-demo>
@@ -130,7 +143,7 @@
 	</li>
 </ol>
 
-<div class="container" style="gap: 2rem">
+<div class="container" style="gap: 2 rem">
 	<gauge-demo label="MPH" max="120" min="0" step="10" value="90"></gauge-demo>
 
 	<gauge-demo
@@ -155,7 +168,7 @@
 	<li>Using JS and CSS variables within CSS</li>
 </ol>
 
-<div class="container" style="gap: 2rem">
+<div class="container" style="gap: 2 rem">
 	<weather-widget lat="42.375" lon="-83" place="Detroit" unit="f"></weather-widget>
 
 	<weather-widget

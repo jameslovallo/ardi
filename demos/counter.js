@@ -23,6 +23,26 @@ export default {
 		`
 	},
 	styles() {
-		return `button { cursor: pointer; user-select: none }`
+		return `
+			:host {
+				align-items: center;
+				display: flex;
+			}
+			[part=count] {
+				min-width: 2rem;
+				text-align: center;
+			}
+			button {
+				align-items: center;
+				cursor: pointer;
+				display: inline-flex;
+				font-family: arial;
+				height: 1.5rem;
+				justify-content: center;
+				padding: 0;
+				user-select: none;
+				width: 1.5rem;
+			}
+		`
 	},
 }

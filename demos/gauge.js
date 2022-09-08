@@ -44,7 +44,7 @@ export default {
 			:host {
 				align-items: center;
 				background: var(--background, #000);
-				border: 2px solid buttonborder;
+				border: 2px solid rgba(125,125,125,.5);
 				border-radius: 50%;
 				color: var(--color, #fff);
 				display: flex;

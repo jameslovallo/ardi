@@ -124,8 +124,9 @@ export default {
 		`
 		return /* css */ `
 			:host {
-				--divider-color: buttonborder;
+				--divider-color: rgba(125,125,125,.5);
 				--icon-shadow: 0 0 0 rgba(0,0,0,0.5);
+				--placeholder-color: rgba(125,125,125,.5);
 				${flexRow}
 			}
 			img { display: block }
@@ -184,17 +185,17 @@ export default {
 			}
 			/* empty */
 			[part=current_icon]:empty {
-				background: #bbb;
+				background: var(--placeholder-color);
 				border-radius: 50%;
 			}
 			[part=current_temp]:empty {
-				background: #bbb;
+				background: var(--placeholder-color);
 				border-radius: 1em;
 				height: 1em;
 				width: 2em;
 			}
 			[part^=day_]:empty {
-				background: #bbb;
+				background: var(--placeholder-color);
 				border-radius: 2em;
 				height: 1em;
 			}
