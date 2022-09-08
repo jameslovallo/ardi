@@ -53,14 +53,20 @@
 		<p>
 			Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go
 			back to the basics and #usetheplatform without any Virtual DOM, JSX, compilers, or any other
-			'magic' to provide the most performant option available, all without sacrificing DX. Ardi is
-			tiny but fierce, weighing in at just 1kb uncompressed.
+			'magic' to provide the most performant un-framework available, all without sacrificing DX.
+			Ardi is tiny but fierce, weighing in at just 1kb uncompressed.
 		</p>
 		<a href="https://www.npmjs.com/package/ardi" target="_blank">See the Docs on NPM</a>
 	</div>
 </div>
 
 <h2>Counter Demo</h2>
+<p>This component demonstrates:</p>
+<ol>
+	<li>Using prop loaders to transform and set attribute values</li>
+	<li>Vue-like '@' event assignment in the template</li>
+	<li>Using <code>ref</code> to update the template</li>
+</ol>
 <div class="container">
 	<counter-demo count="-3" step="3"></counter-demo>
 
@@ -70,6 +76,13 @@
 </div>
 
 <h2>Staff Card Demo</h2>
+<p>This component demonstrates:</p>
+<ol>
+	<li>Using prop loaders to transform and set attribute values</li>
+	<li>Vue-like '@' event assignment in the template</li>
+	<li>Forwarding an event's <code>e</code> object to <code>preventDefault</code></li>
+</ol>
+
 <div class="container vert">
 	<staff-card
 		name="Fatimah Maimunah"
@@ -82,6 +95,7 @@
 	<staff-card
 		name="Charlie Gardiner"
 		position="Chief Financial Officer"
+		phone="1234567890"
 		email="#"
 		photo="https://bit.ly/3L4nYVe"
 	></staff-card>
@@ -103,6 +117,14 @@
 </div>
 
 <h2>Gauge Demo</h2>
+<p>This component demonstrates:</p>
+<ol>
+	<li>Using prop loaders to transform and set attribute values</li>
+	<li>
+		Using <code>intersect(ratio)</code> to apply an effect after the component is scrolled into view
+	</li>
+</ol>
+
 <div class="container" style="gap: 2rem">
 	<gauge-demo label="MPH" max="120" min="0" step="10" value="90"></gauge-demo>
 
@@ -117,19 +139,35 @@
 </div>
 
 <h2>Weather Widget</h2>
-<div class="container vert" style="gap: 2rem">
+<p>This component demonstrates:</p>
+<ol>
+	<li>Using prop loaders to transform and set attribute values</li>
+	<li>
+		Using <code>intersect(ratio)</code> to fetch data and apply an effect after the component is
+		scrolled into view
+	</li>
+	<li>Using <code>ref</code> to update the template</li>
+	<li>Using JS and CSS variables within CSS</li>
+</ol>
+
+<div class="container" style="gap: 2rem">
 	<weather-widget lat="42.375" lon="-83" place="Detroit" unit="f"></weather-widget>
 
 	<weather-widget
+		label="Voraussage"
 		lat="52.52"
 		locale="de"
 		lon="13.41"
 		place="Berlin"
-		unit="celsius"
 	></weather-widget>
 </div>
 
 <h2>YouTube Lite Demo</h2>
+<p>This component demonstrates:</p>
+<ol>
+	<li>Using <code>ref</code> to update the template</li>
+</ol>
+
 <div class="container vert">
 	<youtube-demo vid="O30_s0DKlDk"></youtube-demo>
 </div>
