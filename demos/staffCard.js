@@ -34,10 +34,10 @@ export default {
 		} else return ''
 	},
 	phoneClick(e) {
-		e.preventDefault();
-		const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`;
-		let confirmed = confirm(message);
-		if (confirmed) location = e.target.href;
+		e.preventDefault()
+		const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
+		let confirmed = confirm(message)
+		if (confirmed) location = e.target.href
 	},
 	template() {
 		return /* html */ `
@@ -59,7 +59,7 @@ export default {
 					align-items: center;
 					grid-template-columns: 64px 1fr auto;
 					max-width:400px;
-					box-shadow: inset 0 0 0 1px rgba(123, 123, 123, 0.5);
+					border: 1px solid #ccc;
 					border-radius: .75rem;
 					overflow: hidden;
 				}

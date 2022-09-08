@@ -64,26 +64,20 @@ export default {
 		return Array(7).fill('').map((d) => this.day(d)).join('')
 	},
 	getWeather() {
-		const dayName = (date) => {
-			const dateArr = date.split('-')
-			dateArr[2] = Number(dateArr[2])
-			date = dateArr.join('-')
-			return new Date(date).toLocaleDateString(this.locale, { weekday: 'long' })
-		}
-
 		fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=America%2FNew_York`
+			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
 		)
 			.then((res) => res.json())
 			.then((data) => {
 				const { current_weather, daily } = data
 				this.refs.current_icon.innerHTML = this.icon(current_weather.weathercode)
-				this.refs.current_temp.innerHTML =
-					Math.round(Number(current_weather.temperature)) + '°' + this.unit.charAt(0).toUpperCase()
+				const temp = Math.round(Number(current_weather.temperature))
+				const unit = this.unit.charAt(0).toUpperCase()
+				this.refs.current_temp.innerHTML = temp + '°' + unit
 				this.refs.forecast.innerHTML = daily.time
 					.map((date, i) =>
 						this.day({
-							name: dayName(date),
+							name: new Date(date + 'T00:00').toLocaleDateString(this.locale, { weekday: 'long' }),
 							icon: this.icon(daily.weathercode[i]),
 							min: Math.round(daily.temperature_2m_min[i]),
 							max: Math.round(daily.temperature_2m_max[i]),
@@ -99,8 +93,11 @@ export default {
 				: this.refs.forecast.classList.remove('small')
 		).observe(this)
 	},
-	intersect() {
-		this.getWeather()
+	intersect(r) {
+		if (!this.gotWeather && r > 0.2) {
+			this.getWeather()
+			this.gotWeather = true
+		}
 	},
 	template() {
 		return /* html */ `
@@ -127,7 +124,7 @@ export default {
 		`
 		return /* css */ `
 			:host {
-				--current-icon-size: 5rem;
+				--divider-color: #ccc;
 				--icon-shadow: 0 0 0 rgba(0,0,0,0.5);
 				${flexRow}
 			}
@@ -139,8 +136,8 @@ export default {
 			[part=label] { text-align: center }
 			[part=current_icon] {
 				filter: drop-shadow(var(--icon-shadow));
-				height: var(--current-icon-size);
-				width: var(--current-icon-size);
+				height: 5rem;
+				width: 5rem;
 			}
 			[part=current_temp] { font-size: 2rem }
 			[part=forecast] { ${flexRow} }
@@ -174,14 +171,14 @@ export default {
 				flex-basis: 100%;
 			}
 			[part=forecast].small [part=day] {
-				border-top: 1px solid #ddd;
+				border-top: 1px solid var(--divider-color);
 				display: grid;
 				grid-template-columns: 1fr auto auto;
 				justify-content: space-between;
 				padding: .25rem 0;
 			}
 			[part=forecast].small [part=day]:last-of-type {
-				border-bottom: 1px solid #ddd;
+				border-bottom: 1px solid var(--divider-color);
 			}
 			/* empty */
 			[part=current_icon]:empty {
