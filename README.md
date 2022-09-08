@@ -226,7 +226,7 @@ ardi({
 
 ### render()
 
-If you prefer declarative rendering, you can manually call `this.render()` to re-render the component's template with any updated prop values. However, in most cases effects can be handled by imperatively manipulating elements through `this.parts`, which is the most efficient way to reflect state changes in your component's markup.
+If you prefer declarative rendering, you can manually call `this.render()` to re-render the component's template with any updated prop values. However, in most cases effects can be handled by imperatively manipulating elements through `this.refs`, which is the most efficient way to reflect state changes in your component's markup.
 
 ---
 

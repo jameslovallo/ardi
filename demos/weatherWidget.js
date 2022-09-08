@@ -3,7 +3,7 @@ export default {
 	shadow: true,
 	props() {
 		return {
-			breakpoint: (v) => (v ? Number(v) : 600),
+			breakpoint: (v) => (v ? Number(v) : 500),
 			label: 'Forecast',
 			lat: '42.375',
 			locale: navigator.language,
@@ -125,7 +125,6 @@ export default {
 			flex-grow: 1;
 			gap: 1rem;
 		`
-
 		return /* css */ `
 			:host {
 				--current-icon-size: 5rem;
@@ -145,16 +144,6 @@ export default {
 			}
 			[part=current_temp] { font-size: 2rem }
 			[part=forecast] { ${flexRow} }
-			[part=forecast].small {
-				display: block;
-				flex-basis: 100%;
-			}
-			[part=forecast].small [part=day] {
-				display: grid;
-				grid-template-columns: 1fr 1fr auto;
-				justify-content: space-between;
-				flex-grow: 1;
-			}
 			[part=day] {
 				align-items: center;
 				display: flex;
@@ -171,16 +160,46 @@ export default {
 			}
 			[part=day_temp] {
 				display: flex;
-				gap: .75rem;
+				gap: .5rem;
+			}
+			[part=day_min], [part=day_max] {
+				text-align: center;
+				width: 2em;
 			}
 			[part=day_min] { color: var(--min, #1279c2) }
 			[part=day_max] { color: var(--max, #dc2b2b) }
-			[part^=day_]:empty {
-				background: #aaa;
+			/* small */
+			[part=forecast].small {
+				display: block;
+				flex-basis: 100%;
+			}
+			[part=forecast].small [part=day] {
+				border-top: 1px solid #ddd;
+				display: grid;
+				grid-template-columns: 1fr auto auto;
+				justify-content: space-between;
+				padding: .25rem 0;
+			}
+			[part=forecast].small [part=day]:last-of-type {
+				border-bottom: 1px solid #ddd;
+			}
+			/* empty */
+			[part=current_icon]:empty {
+				background: #bbb;
+				border-radius: 50%;
+			}
+			[part=current_temp]:empty {
+				background: #bbb;
 				border-radius: 1em;
 				height: 1em;
+				width: 2em;
 			}
-			[part=day_icon]:empty { border-radius: 2em; height: 2em; width: 2em; }
+			[part^=day_]:empty {
+				background: #bbb;
+				border-radius: 2em;
+				height: 1em;
+			}
+			[part=day_icon]:empty { height: 2em; width: 2em; }
 			[part=day_name]:empty { width: 4em }
 			[part=day_temp] *:empty { display: inline-block; width: 2em; }
 		`

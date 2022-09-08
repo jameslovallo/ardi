@@ -12,12 +12,14 @@
 		}
 		.container {
 			display: flex;
+			flex-flow: row wrap;
 			gap: 1rem;
-			margin: auto;
-			max-width: 1200px;
 		}
 		.container.vert {
-			flex-direction: column;
+			flex-flow: column;
+		}
+		gauge-demo {
+			min-width: 300px;
 		}
 		youtube-demo {
 			max-width: 600px;
@@ -112,7 +114,7 @@
 </div>
 
 <h2>Weather Widget</h2>
-<div class="container" style="gap: 2rem">
+<div class="container vert" style="gap: 2rem">
 	<weather-widget lat="42.375" lon="-83" place="Detroit" unit="fahrenheit"></weather-widget>
 
 	<weather-widget
