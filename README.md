@@ -22,13 +22,13 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-  import ardi from '//unpkg.com/ardi'
+	import ardi from '//unpkg.com/ardi'
 </script>
 ```
 
 ## Usage
 
-Import Ardi, then pass it an object with any or all of the following keys. You can also add any other functions or values to your object and access them by their key name using `this`. Just note that Ardi has a few reserved keys, including `DOM`, `refs`, and `render()`, which will be explained in greater detail below.
+Import Ardi, then pass it an object with any or all of the following keys. You can also add any other functions or values to your object and access them by their key name using `this`.
 
 | Key              | Type     |
 | ---------------- | -------- |
@@ -40,6 +40,8 @@ Import Ardi, then pass it an object with any or all of the following keys. You c
 | ready            | Function |
 | intersect(ratio) | Function |
 
+Ardi has three other reserved keys, `DOM`, `refs`, and `render()`, which will be explained in greater detail below.
+
 ## Example
 
 Below is an example demonstrating how each of the above keys is used to create a `<weather-widget>` component. Other functions are used and referenced in the code snippets below. You can see the full code and several other demo components in action [here](https://codepen.io/jameslovallo/pen/xxWzjeb).
@@ -50,7 +52,7 @@ Give your new component a name. It must follow the custom element [naming conven
 
 ```js
 ardi({
-  component: 'weather-widget',
+	component: 'weather-widget',
 })
 ```
 
@@ -60,8 +62,8 @@ Enable or disable the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/
 
 ```js
 ardi({
-  component: 'weather-widget',
-  shadow: true, // defaults to false
+	component: 'weather-widget',
+	shadow: true, // defaults to false
 })
 ```
 
@@ -71,19 +73,19 @@ The `props` function gets data from component attributes and assigns it to `this
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  props() {
-    return {
-      breakpoint: (v) => (v ? Number(v) : 600),
-      label: 'Forecast',
-      lat: '42.375',
-      locale: navigator.language,
-      lon: '-83',
-      place: 'Detroit',
-      unit: 'fahrenheit',
-    }
-  },
+	component: 'weather-widget',
+	// ...
+	props() {
+		return {
+			breakpoint: (v) => (v ? Number(v) : 600),
+			label: 'Forecast',
+			lat: '42.375',
+			locale: navigator.language,
+			lon: '-83',
+			place: 'Detroit',
+			unit: 'fahrenheit',
+		}
+	},
 })
 ```
 
@@ -109,10 +111,10 @@ You can add Vue-style @ attributes to your templates to handle events using the 
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  template() {
-    return /* html */ `
+	component: 'weather-widget',
+	// ...
+	template() {
+		return /* html */ `
       <div part="current">
         <div part="label">
           <b>${this.place}</b><br/>
@@ -125,7 +127,7 @@ ardi({
         ${this.forecastPlaceholder()}
       </div>
     `
-  },
+	},
 })
 ```
 
@@ -135,10 +137,10 @@ Use the `styles` function to return a template literal containing your component
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  styles() {
-    const flexRow = `
+	component: 'weather-widget',
+	// ...
+	styles() {
+		const flexRow = `
       align-items: center;
       display: flex;
       flex-flow: row wrap;
@@ -146,7 +148,7 @@ ardi({
       gap: 1rem;
     `
 
-    return /* css */ `
+		return /* css */ `
       :host {
         --current-icon-size: 5rem;
         --icon-shadow: 0 0 0 rgba(0,0,0,0.5);
@@ -175,7 +177,7 @@ ardi({
 
       /* ... */
     `
-  },
+	},
 })
 ```
 
@@ -185,15 +187,15 @@ Use the `ready` function to handle events, effects, etc after the template is re
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  ready() {
-    new ResizeObserver(() =>
-      this.clientWidth <= this.breakpoint
-        ? this.refs.forecast.classList.add('small')
-        : this.refs.forecast.classList.remove('small')
-    ).observe(this)
-  },
+	component: 'weather-widget',
+	// ...
+	ready() {
+		new ResizeObserver(() =>
+			this.clientWidth <= this.breakpoint
+				? this.refs.forecast.classList.add('small')
+				: this.refs.forecast.classList.remove('small')
+		).observe(this)
+	},
 })
 ```
 
@@ -203,14 +205,14 @@ Use the `intersect` function to create effects when the component is scrolled in
 
 ```js
 ardi({
-  component: 'weather-widget',
-  // ...
-  intersect(ratio) {
-    if (!this.weatherAlreadyFetched && ratio > 0.3) {
-      this.getWeather()
-      this.weatherAlreadyFetched = true
-    }
-  },
+	component: 'weather-widget',
+	// ...
+	intersect(ratio) {
+		if (!this.weatherAlreadyFetched && ratio > 0.3) {
+			this.getWeather()
+			this.weatherAlreadyFetched = true
+		}
+	},
 })
 ```
 
