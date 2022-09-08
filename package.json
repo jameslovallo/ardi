@@ -1,6 +1,6 @@
 {
 	"name": "ardi",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go back to the basics and #usetheplatform without any Virtual DOM, JSX, or any other 'magic' to provide the most performant un-framework available, all without sacrificing DX. Ardi is tiny but fierce, weighing in at just 1kb uncompressed.",
 	"type": "module",
 	"main": "ardi-min.js",
