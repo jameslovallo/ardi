@@ -77,13 +77,13 @@ ardi({
   // ...
   props() {
     return {
-      breakpoint: (v) => (v ? Number(v) : 600),
-      label: 'Forecast',
-      lat: '42.375',
-      locale: navigator.language,
-      lon: '-83',
-      place: 'Detroit',
-      unit: 'fahrenheit',
+			breakpoint: (v) => (v ? Number(v) : 500),
+			label: 'Forecast',
+			lat: '51.5002',
+			locale: navigator.language,
+			lon: '-0.1262',
+			place: 'London',
+			unit: v => ['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius',
     }
   },
 })
