@@ -35,7 +35,9 @@ export default {
 	},
 	phoneClick(e) {
 		e.preventDefault()
-		const message = `Are you sure you want to call ${this.name}? Did you already try text, chat or email?`
+		const message = `Are you sure you want to call ${
+			this.name.split(' ')[0]
+		}? Did you already try text, chat or email?`
 		let confirmed = confirm(message)
 		if (confirmed) location = e.target.href
 	},
@@ -59,7 +61,7 @@ export default {
 					align-items: center;
 					grid-template-columns: 64px 1fr auto;
 					max-width:400px;
-					border: 1px solid #ccc;
+					border: 1px solid buttonborder;
 					border-radius: .75rem;
 					overflow: hidden;
 				}
@@ -82,7 +84,7 @@ export default {
 					padding-right: .75rem;
 				}
 				[part="contact"] a {
-					color: royalblue;
+					color: dodgerblue;
 					display: block;
 					text-decoration: none;
 				}

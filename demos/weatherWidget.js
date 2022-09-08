@@ -124,7 +124,7 @@ export default {
 		`
 		return /* css */ `
 			:host {
-				--divider-color: #ccc;
+				--divider-color: buttonborder;
 				--icon-shadow: 0 0 0 rgba(0,0,0,0.5);
 				${flexRow}
 			}
