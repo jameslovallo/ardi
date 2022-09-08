@@ -82,6 +82,7 @@ export default {
 					padding-right: .75rem;
 				}
 				[part="contact"] a {
+					color: royalblue;
 					display: block;
 					text-decoration: none;
 				}

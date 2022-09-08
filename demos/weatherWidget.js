@@ -9,7 +9,7 @@ export default {
 			locale: navigator.language,
 			lon: '-0.1262',
 			place: 'London',
-			unit: v => ['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius',
+			unit: (v) => (['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius'),
 		}
 	},
 	icon(code) {
@@ -163,8 +163,8 @@ export default {
 				text-align: center;
 				width: 2em;
 			}
-			[part=day_min] { color: var(--min, #1279c2) }
-			[part=day_max] { color: var(--max, #dc2b2b) }
+			[part=day_min] { color: var(--min, dodgerblue) }
+			[part=day_max] { color: var(--max, red) }
 			/* small */
 			[part=forecast].small {
 				display: block;
