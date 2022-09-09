@@ -27,7 +27,7 @@ const coreConfig = {
 	theme: 'dracula',
 }
 
-fetch(`/components/${component}.js`)
+fetch(`/ardi/components/${component}.js`)
 	.then((res) => res.text())
 	.then((file) => {
 		const htmlEditor = CodeMirror(htmlEl, {
@@ -45,7 +45,7 @@ fetch(`/components/${component}.js`)
 		const setPreview = () => {
 			preview.srcdoc = /* html */ `
 				<script type="module">
-					import ardi from '/assets/ardi-min.js';
+					import ardi from '/ardi/assets/ardi-min.js';
 					ardi(${jsEditor.getValue()})
 				</script>
 				<style>body{font-family: sans-serif}</style>
