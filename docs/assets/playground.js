@@ -17,7 +17,7 @@ const markup = () => {
 				return line
 			})
 			.join('\n')
-	} else return `<hello-world name="there"></hello-world>`
+	} else return `<hello-world name="kind human"></hello-world>`
 }
 
 const coreConfig = {
