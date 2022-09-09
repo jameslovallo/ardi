@@ -3,14 +3,14 @@ export default {
 	shadow: true,
 	props() {
 		return {
-			color: 'red',
+			color: 'dodgerblue',
 			name: 'there',
 		}
 	},
 	// ready() {},
 	// intersect(r) {},
 	template() {
-		return `<p>Hello, <span part="name">${this.name}</span>!</p>`
+		return `<p>Hello, <b part="name">${this.name}</b>!</p>`
 	},
 	styles() {
 		return `[part=name] { color: ${this.color}; }`
