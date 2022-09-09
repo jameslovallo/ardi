@@ -1,5 +1,5 @@
 export default {
-	component: 'staff-card',
+	component: 'contact-card',
 	shadow: true,
 	props() {
 		return {
