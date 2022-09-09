@@ -76,7 +76,7 @@ li {
 
 code {
 	color: var(--primary);
-	font-family: JetBrains Mono;
+	font-family: 'JetBrains Mono';
 	font-size: 0.8em;
 }
 
