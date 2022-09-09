@@ -13,6 +13,6 @@ export default {
 		return `<p>Hello, <span part="name">${this.name}</span>!</p>`
 	},
 	styles() {
-		return `:host { display: block; }`
+		return `[part=name] { color: ${this.color}; }`
 	},
 }
