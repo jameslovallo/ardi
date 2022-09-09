@@ -119,6 +119,7 @@ li {
 	border-radius: 8px;
 	display: grid;
 	gap: 1.5rem;
+	grid-template-rows: auto auto 1fr auto;
 	justify-content: center;
 	padding: 1.5rem;
 	text-align: center;
