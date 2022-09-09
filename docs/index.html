@@ -1,14 +1,13 @@
 <head>
 	<title>Ardi: Welcome to the Weightless Web</title>
 	<meta name="description" content="Ardi is a tiny (but fierce) web component framework, weighing
-	just 1kb uncompressed.">
+	just 1kb uncompressed." />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/ardi/assets/styles.css">
+	<link rel="stylesheet" href="/ardi/assets/styles.css" />
 	<script type="module" src="/ardi/main.js"></script>
 </head>
 
 <body>
-
 	<nav>
 		<a href="/ardi/">Ardi</a>
 		<div>
@@ -18,7 +17,7 @@
 	</nav>
 
 	<main>
-		<div style="display: flex; gap: var(--gap); align-items: center;">
+		<div style="display: flex; gap: var(--gap); align-items: center">
 			<img src="/ardi/assets/logo.png" width="100"
 				style="animation: float 10s linear infinite" />
 			<div style="max-width: 70ch">
@@ -32,40 +31,38 @@
 				<ol>
 					<li>
 						Make it easy to create powerful web components that work everywhere,
-						including React, Vue, Svelte,
-						Astro, Angular, etc.
+						including React,
+						Vue, Svelte, Astro, Angular, etc.
 					</li>
 					<li>
 						Provide great DX and performance without virtual dom, JSX,
-						compilers, or any other magic.
+						compilers, or any other
+						magic.
 						<span style="color: var(--primary)">#usetheplatform</span>
 					</li>
 				</ol>
-				<a class="npm" href="/ardi/docs" target="_blank">
-					Read the Docs
-				</a>
+				<a class="npm" href="/ardi/docs" target="_blank"> Read the Docs </a>
 			</div>
 		</div>
 
-		<br><br>
+		<br /><br />
 
 		<h2>Features</h2>
 
 		<div class="feature-grid">
-
 			<div class="feature-card">
 				<h3>It's fast, yo</h3>
-				<img src="/ardi/assets/fast.svg" alt="">
+				<img src="/ardi/assets/fast.svg" alt="" />
 				<p>Like, really, really fast</p>
-				<a
-					href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile">
+				<a href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile"
+					target="_blank">
 					Test on PageSpeed Insights
 				</a>
 			</div>
 
 			<div class="feature-card">
 				<h3>It's easy</h3>
-				<img src="/ardi/assets/easy.svg" alt="">
+				<img src="/ardi/assets/easy.svg" alt="" />
 				<p>Ardi provides a familiar Vue-like API</p>
 				<a
 					href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile">
@@ -75,23 +72,19 @@
 
 			<div class="feature-card">
 				<h3>It works anywhere</h3>
-				<img src="/ardi/assets/anywhere.svg" alt="">
+				<img src="/ardi/assets/anywhere.svg" alt="" />
 				<p>Custom elements work with any framework</p>
-				<a href="#">
-					Check out the demos
-				</a>
+				<a href="#"> Check out the demos </a>
 			</div>
-
 		</div>
 
-		<br><br>
+		<br /><br />
 
 		<h2>Demos</h2>
 
-		<hr>
+		<hr />
 
 		<div class="demos">
-
 			<h3>Counter Demo</h3>
 			<p>This component demonstrates:</p>
 			<ol>
@@ -100,8 +93,7 @@
 				<li>Using <code>ref</code> to update the template</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=counter">
-				Open in the playground
+			<a href="/ardi/playground.html?component=counter"> Open in the playground
 			</a>
 
 			<div class="container" style="gap: 1.5rem">
@@ -110,21 +102,21 @@
 				<counter-demo count="3" step="3"></counter-demo>
 			</div>
 
-			<hr>
+			<hr />
 
 			<h3>Contact Card Demo</h3>
 			<p>This component demonstrates:</p>
 			<ol>
 				<li>Using prop loaders to transform and set attribute values</li>
 				<li>Vue-like '@' event assignment in the template</li>
-				<li>Forwarding an event's <code>e</code> object to
+				<li>
+					Forwarding an event's <code>e</code> object to
 					<code>preventDefault</code>
 				</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=contactCard">
-				Open in the playground
-			</a>
+			<a href="/ardi/playground.html?component=contactCard"> Open in the
+				playground </a>
 
 			<div class="container vert">
 				<contact-card name="Fatimah Maimunah" position="Chief Executive Officer"
@@ -135,44 +127,47 @@
 				</contact-card>
 			</div>
 
-			<hr>
+			<hr />
 
 			<h3>Gauge Demo</h3>
 			<p>This component demonstrates:</p>
 			<ol>
 				<li>Using prop loaders to transform and set attribute values</li>
-				<li>Using <code>intersect(ratio)</code> to apply an effect after the
-					component is 50% scrolled into view</li>
+				<li>
+					Using <code>intersect(ratio)</code> to apply an effect after the
+					component is 50% scrolled
+					into view
+				</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=gauge">
-				Open in the playground
+			<a href="/ardi/playground.html?component=gauge"> Open in the playground
 			</a>
 
 			<gauge-demo label="MPH" max="120" min="0" step="10" value="90">
 			</gauge-demo>
 
-			<hr>
+			<hr />
 
 			<h3>Weather Demo</h3>
 			<p>This component demonstrates:</p>
 			<ol>
 				<li>Using prop loaders to transform and set attribute values</li>
-				<li>Using <code>intersect(ratio)</code> to fetch data and apply an
-					effect
-					after the component is 20% scrolled into view</li>
+				<li>
+					Using <code>intersect(ratio)</code> to fetch data and apply an effect
+					after the component
+					is 20% scrolled into view
+				</li>
 				<li>Using <code>ref</code> to update the template</li>
 				<li>Using JS and CSS variables within CSS</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=weather">
-				Open in the playground
+			<a href="/ardi/playground.html?component=weather"> Open in the playground
 			</a>
 
 			<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f">
 			</weather-demo>
 
-			<hr>
+			<hr />
 
 			<h3>YouTube Lite Demo</h3>
 			<p>This component demonstrates:</p>
@@ -181,14 +176,10 @@
 				<li>Using <code>ref</code> to update the template</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=youtubeLite">
-				Open in the playground
-			</a>
+			<a href="/ardi/playground.html?component=youtubeLite"> Open in the
+				playground </a>
 
 			<youtube-demo vid="O30_s0DKlDk"></youtube-demo>
-
 		</div>
-
 	</main>
-
 </body>
