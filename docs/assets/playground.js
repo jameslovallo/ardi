@@ -6,16 +6,18 @@ const preview = document.getElementById('preview')
 const component = new URLSearchParams(location.search).get('component')
 
 const markup = () => {
-	let markup = document.getElementById(component).innerHTML.split('\n')
-	markup.shift()
-	markup.pop()
-	const whitespace = markup[0].match(/\t/g)
-	return markup
-		.map((line) => {
-			whitespace.forEach(() => (line = line.replace('\t', '')))
-			return line
-		})
-		.join('\n')
+	if (component) {
+		let markup = document.getElementById(component).innerHTML.split('\n')
+		markup.shift()
+		markup.pop()
+		const whitespace = markup[0].match(/\t/g)
+		return markup
+			.map((line) => {
+				whitespace.forEach(() => (line = line.replace('\t', '')))
+				return line
+			})
+			.join('\n')
+	} else return `<hello-world name="there"></hello-world>`
 }
 
 const coreConfig = {
@@ -27,7 +29,7 @@ const coreConfig = {
 	theme: 'dracula',
 }
 
-fetch(`/ardi/components/${component}.js`)
+fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 	.then((res) => res.text())
 	.then((file) => {
 		const htmlEditor = CodeMirror(htmlEl, {
