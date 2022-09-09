@@ -1,7 +1,10 @@
 <head>
 	<title>Ardi: Welcome to the Weightless Web</title>
-	<meta name="description" content="Ardi is a tiny (but fierce) web component framework, weighing
-	just 1kb uncompressed." />
+	<meta
+		name="description"
+		content="Ardi is a tiny (but fierce) web component framework, weighing
+	just 1kb uncompressed."
+	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<link rel="stylesheet" href="/ardi/assets/styles.css" />
 	<script type="module" src="/ardi/main.js"></script>
@@ -18,25 +21,21 @@
 
 	<main>
 		<div style="display: flex; gap: var(--gap); align-items: center">
-			<img src="/ardi/assets/logo.png" width="100"
-				style="animation: float 10s linear infinite" />
+			<img src="/ardi/assets/logo.png" width="100" style="animation: float 10s linear infinite" />
 			<div style="max-width: 70ch">
 				<h1 style="margin: 0">Ardi</h1>
 				<p>
 					<b style="color: var(--primary)">Welcome to the Weightless Web.</b>
-					Ardi is a tiny (but fierce) web component framework, weighing just 1kb
-					uncompressed.
+					Ardi is a tiny (but fierce) web component framework, weighing just 1kb uncompressed.
 				</p>
 				<h2>Our Mission</h2>
 				<ol>
 					<li>
-						Make it easy to create powerful web components that work everywhere,
-						including React,
+						Make it easy to create powerful web components that work everywhere, including React,
 						Vue, Svelte, Astro, Angular, etc.
 					</li>
 					<li>
-						Provide great DX and performance without virtual dom, JSX,
-						compilers, or any other
+						Provide great DX and performance without virtual dom, JSX, compilers, or any other
 						magic.
 						<span style="color: var(--primary)">#usetheplatform</span>
 					</li>
@@ -54,8 +53,10 @@
 				<h3>It's fast, yo</h3>
 				<img src="/ardi/assets/fast.svg" alt="" />
 				<p>Like, really, really fast</p>
-				<a href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile"
-					target="_blank">
+				<a
+					href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile"
+					target="_blank"
+				>
 					Test on PageSpeed Insights
 				</a>
 			</div>
@@ -65,7 +66,8 @@
 				<img src="/ardi/assets/easy.svg" alt="" />
 				<p>Ardi provides a familiar Vue-like API</p>
 				<a
-					href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile">
+					href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile"
+				>
 					Learn more in the docs
 				</a>
 			</div>
@@ -86,19 +88,18 @@
 
 		<div class="demos">
 			<h3>Counter Demo</h3>
+
+			<a href="/ardi/playground.html?component=counter"> Open in the playground </a>
+
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>Using <code>props()</code> to get, transform, and set values from
-					attributes</li>
-				<li>Vue-like <code>@</code> event assignment in the
+				<li>Using <code>props()</code> to get, transform, and set values from attributes</li>
+				<li>
+					Vue-like <code>@</code> event assignment in the
 					<code>template()</code>
 				</li>
-				<li>Using <code>this.refs</code> to update the <code>template()</code>
-				</li>
+				<li>Using <code>this.refs</code> to update the <code>template()</code></li>
 			</ol>
-
-			<a href="/ardi/playground.html?component=counter"> Open in the playground
-			</a>
 
 			<div class="container" style="gap: 1.5rem">
 				<counter-demo count="-3" step="3"></counter-demo>
@@ -109,11 +110,14 @@
 			<hr />
 
 			<h3>Contact Card Demo</h3>
+
+			<a href="/ardi/playground.html?component=contactCard"> Open in the playground </a>
+
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>Using <code>props()</code> to get, transform, and set values from
-					attributes</li>
-				<li>Vue-like <code>@</code> event assignment in the
+				<li>Using <code>props()</code> to get, transform, and set values from attributes</li>
+				<li>
+					Vue-like <code>@</code> event assignment in the
 					<code>template()</code>
 				</li>
 				<li>
@@ -122,75 +126,74 @@
 				</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=contactCard"> Open in the
-				playground </a>
-
 			<div class="container vert">
-				<contact-card name="Fatimah Maimunah" position="Chief Executive Officer"
-					phone="1234567890" email="#" photo="https://bit.ly/3FIADMM">
+				<contact-card
+					name="Fatimah Maimunah"
+					position="Chief Executive Officer"
+					phone="1234567890"
+					email="#"
+					photo="https://bit.ly/3FIADMM"
+				>
 				</contact-card>
-				<contact-card name="Areeb Mcgowan" position="Chief Operations Officer"
-					email="#" photo="https://bit.ly/3sv2Kts">
+				<contact-card
+					name="Areeb Mcgowan"
+					position="Chief Operations Officer"
+					email="#"
+					photo="https://bit.ly/3sv2Kts"
+				>
 				</contact-card>
 			</div>
 
 			<hr />
 
 			<h3>Gauge Demo</h3>
+
+			<a href="/ardi/playground.html?component=gauge"> Open in the playground </a>
+
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>Using <code>props()</code> to get, transform, and set values from
-					attributes</li>
+				<li>Using <code>props()</code> to get, transform, and set values from attributes</li>
 				<li>
-					Using <code>intersect(ratio)</code> to apply an effect after the
-					component is 50% scrolled
+					Using <code>intersect(ratio)</code> to apply an effect after the component is 50% scrolled
 					into view
 				</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=gauge"> Open in the playground
-			</a>
-
-			<gauge-demo label="MPH" max="120" min="0" step="10" value="90">
-			</gauge-demo>
+			<gauge-demo label="MPH" max="120" min="0" step="10" value="90"> </gauge-demo>
 
 			<hr />
 
 			<h3>Weather Demo</h3>
+
+			<a href="/ardi/playground.html?component=weather"> Open in the playground </a>
+
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>Using <code>props()</code> to get, transform, and set values from
-					attributes</li>
+				<li>Using <code>props()</code> to get, transform, and set values from attributes</li>
 				<li>
-					Using <code>intersect(ratio)</code> to fetch data and apply an effect
-					after the component
+					Using <code>intersect(ratio)</code> to fetch data and apply an effect after the component
 					is 20% scrolled into view
 				</li>
-				<li>Using <code>this.refs</code> to update the <code>template()</code>
-				</li>
+				<li>Using <code>this.refs</code> to update the <code>template()</code></li>
 				<li>Using JS and CSS variables within CSS</li>
 			</ol>
 
-			<a href="/ardi/playground.html?component=weather"> Open in the playground
-			</a>
-
-			<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f">
-			</weather-demo>
+			<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f"> </weather-demo>
 
 			<hr />
 
 			<h3>YouTube Lite Demo</h3>
+
+			<a href="/ardi/playground.html?component=youtubeLite"> Open in the playground </a>
+
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>Vue-like <code>@</code> event assignment in the
+				<li>
+					Vue-like <code>@</code> event assignment in the
 					<code>template()</code>
 				</li>
-				<li>Using <code>this.refs</code> to update the <code>template()</code>
-				</li>
+				<li>Using <code>this.refs</code> to update the <code>template()</code></li>
 			</ol>
-
-			<a href="/ardi/playground.html?component=youtubeLite"> Open in the
-				playground </a>
 
 			<youtube-demo vid="O30_s0DKlDk"></youtube-demo>
 		</div>

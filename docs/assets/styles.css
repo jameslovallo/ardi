@@ -161,22 +161,21 @@ main a {
 	text-decoration: none;
 }
 
-main a[href*='playground'] {
+.demos a[href*='playground'] {
 	align-items: center;
 	display: inline-flex;
 	font-size: 14px;
 	gap: 0.25rem;
 	letter-spacing: 1px;
-	margin-bottom: 2rem;
 	text-transform: uppercase;
 	transition: 0.5s;
 }
 
-main a[href*='playground']:hover {
+.demos a[href*='playground']:hover {
 	gap: 0.75rem;
 }
 
-main a[href*='playground']:after {
+.demos a[href*='playground']:after {
 	content: '';
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11V13H16L10.5 18.5L11.92 19.92L19.84 12L11.92 4.08L10.5 5.5L16 11H4Z' fill='%23ffab00' /%3E%3C/svg%3E");
 	display: inline-block;
@@ -184,18 +183,18 @@ main a[href*='playground']:after {
 	width: 1.5em;
 }
 
-.container {
+.demos ol {
+	margin-bottom: 2rem;
+}
+
+.demos .container {
 	display: flex;
 	flex-flow: row wrap;
 	gap: 1rem;
 }
 
-.container.vert {
+.demos .container.vert {
 	flex-flow: column;
-}
-
-gauge-demo {
-	min-width: 300px;
 }
 
 youtube-demo {
