@@ -4,7 +4,7 @@ export default {
 	props() {
 		return {
 			color: 'red',
-			name: String,
+			name: 'there',
 		}
 	},
 	// ready() {},
