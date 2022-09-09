@@ -74,6 +74,12 @@ li {
 	line-height: 1.5;
 }
 
+code {
+	color: var(--primary);
+	font-family: JetBrains Mono;
+	font-size: 0.8em;
+}
+
 .npm {
 	border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
 	border-style: solid;
