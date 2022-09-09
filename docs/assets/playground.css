@@ -1,0 +1,58 @@
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+}
+
+.playground {
+	display: flex;
+	position: fixed;
+	top: 4rem;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+@media (orientation: portrait) {
+	.playground {
+		flex-direction: column;
+	}
+}
+
+.editors {
+	background: #282a36;
+	font-family: 'JetBrains Mono';
+	max-height: 100%;
+	overflow-y: auto;
+	position: relative;
+}
+
+.editor-label {
+	background: #1b1c25;
+	color: white;
+	font-size: 14px;
+	padding: 0.5rem 1rem;
+}
+
+#html,
+#js {
+	height: auto;
+}
+
+.CodeMirror {
+	font-family: inherit;
+	font-size: 13px;
+	height: auto;
+	line-height: 2;
+	margin: 0.5rem 0;
+}
+
+.CodeMirror-scroll {
+	height: auto;
+}
+
+.editors,
+iframe {
+	border: 0;
+	flex-basis: 50%;
+}

@@ -1,180 +1,181 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<style>
-		:root {
-			color-scheme: light dark;
-			font-family: sans-serif;
-		}
-
-		body {
-			margin: 3rem auto;
-			max-width: 1200px;
-			padding: 1rem;
-		}
-		h2 {
-			margin-top: 3em;
-		}
-		p,
-		li {
-			line-height: 1.5;
-		}
-		a[href*='npm'] {
-			border-image: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff) 3;
-			border-style: solid;
-			border-width: 2px;
-			color: white;
-			display: inline-block;
-			margin-top: 0.5rem;
-			padding: 0.5rem 1rem;
-			text-decoration: none;
-		}
-		a[href*='npm']:hover {
-			background: linear-gradient(139deg, #fb8817, #ff4b01, #c12127, #e02aff);
-		}
-		.container {
-			display: flex;
-			flex-flow: row wrap;
-			gap: 1rem;
-		}
-		.container.vert {
-			flex-flow: column;
-		}
-		gauge-demo {
-			min-width: 300px;
-		}
-		youtube-demo {
-			max-width: 600px;
-		}
-	</style>
-  <script type="module" crossorigin src="/assets/index.f3f201fe.js"></script>
+	<link rel="stylesheet" href="/assets/styles.css">
+	<script type="module" src="/main.js"></script>
 </head>
 
-
-
-<div style="display: flex; gap: 1rem; align-items: center">
-	<img src="https://raw.githubusercontent.com/jameslovallo/ardi/master/logo.png" width="100" />
+<nav>
+	<a href="/">Ardi</a>
 	<div>
-		<h1 style="margin: 0">Ardi</h1>
-		<p>
-			Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go
-			back to the basics and #usetheplatform without any Virtual DOM, JSX, compilers, or any other
-			'magic' to provide the most performant un-framework available, all without sacrificing DX.
-			Ardi is tiny but fierce, weighing in at just 1kb uncompressed.
-		</p>
-		<a href="https://www.npmjs.com/package/ardi" target="_blank">See the Docs on NPM</a>
+		<a href="/docs.html">Docs</a>
+		<a href="/playground.html">Playground</a>
 	</div>
-</div>
+</nav>
 
-<h2>Counter Demo</h2>
-<p>This component demonstrates:</p>
-<ol>
-	<li>Using prop loaders to transform and set attribute values</li>
-	<li>Vue-like '@' event assignment in the template</li>
-	<li>Using <code>ref</code> to update the template</li>
-</ol>
-<div class="container" style="gap: 1.5rem">
-	<counter-demo count="-3" step="3"></counter-demo>
+<main>
+	<div style="display: flex; gap: var(--gap); align-items: center;">
+		<img
+			src="https://raw.githubusercontent.com/jameslovallo/ardi/master/logo.png"
+			width="100" style="animation: float 10s linear infinite" />
+		<div style="max-width: 70ch">
+			<h1 style="margin: 0">Ardi</h1>
+			<p><b>Welcome to the Weightless Web.</b> Ardi is a tiny (but fierce) web
+				component framework, weighing just 2kb uncompressed.</p>
+			<h2>Our Mission</h2>
+			<ol>
+				<li>Make it easy to create powerful web components that work everywhere,
+					including React, Vue, Svelte,
+					Astro, Angular, etc.</li>
+				<li>Provide great DX and performance without virtual dom, JSX,
+					compilers,
+					or any other magic. #usetheplatform
+				</li>
+			</ol>
+			<a class="npm" href="/docs" target="_blank">
+				Read the Docs
+			</a>
+		</div>
+	</div>
 
-	<counter-demo></counter-demo>
+	<br><br>
 
-	<counter-demo count="3" step="3"></counter-demo>
-</div>
+	<h2>Features</h2>
 
-<h2>Staff Card Demo</h2>
-<p>This component demonstrates:</p>
-<ol>
-	<li>Using prop loaders to transform and set attribute values</li>
-	<li>Vue-like '@' event assignment in the template</li>
-	<li>Forwarding an event's <code>e</code> object to <code>preventDefault</code></li>
-</ol>
+	<div class="feature-grid">
 
-<div class="container vert">
-	<staff-card
-		name="Fatimah Maimunah"
-		position="Chief Executive Officer"
-		phone="1234567890"
-		email="#"
-		photo="https://bit.ly/3FIADMM"
-	></staff-card>
+		<div class="feature-card">
+			<h3>It's fast, yo</h3>
+			<img src="/assets/rocket.svg" alt="">
+			<p>Like, really, really fast</p>
+			<a
+				href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile">
+				Test on PageSpeed Insights
+			</a>
+		</div>
 
-	<staff-card
-		name="Charlie Gardiner"
-		position="Chief Financial Officer"
-		phone="1234567890"
-		email="#"
-		photo="https://bit.ly/3L4nYVe"
-	></staff-card>
+		<div class="feature-card">
+			<h3>It's easy</h3>
+			<img src="/assets/chill.svg" alt="">
+			<p>Ardi provides a familiar Vue-like API</p>
+			<a
+				href="https://developers.google.com/speed/pagespeed/insights/?url=https://jameslovallo.github.io/ardi/&tab=mobile">
+				Learn more in the docs
+			</a>
+		</div>
 
-	<staff-card
-		name="Ashley Fox"
-		position="Chief Technical Officer"
-		phone="1234567890"
-		email="#"
-		photo="https://bit.ly/3FyBTSk"
-	></staff-card>
+		<div class="feature-card">
+			<h3>It works anywhere</h3>
+			<img src="/assets/camping.svg" alt="">
+			<p>Custom elements work with any framework</p>
+			<a href="#">
+				Check out the demos
+			</a>
+		</div>
 
-	<staff-card
-		name="Areeb Mcgowan"
-		position="Chief Operations Officer"
-		email="#"
-		photo="https://bit.ly/3sv2Kts"
-	></staff-card>
-</div>
+	</div>
 
-<h2>Gauge Demo</h2>
-<p>This component demonstrates:</p>
-<ol>
-	<li>Using prop loaders to transform and set attribute values</li>
-	<li>
-		Using <code>intersect(ratio)</code> to apply an effect after the component is 50% scrolled into
-		view
-	</li>
-</ol>
+	<br><br>
 
-<div class="container" style="gap: 2rem">
-	<gauge-demo label="MPH" max="120" min="0" step="10" value="90"></gauge-demo>
+	<h2>Demos</h2>
 
-	<gauge-demo
-		label="RPM"
-		max="7000"
-		min="0"
-		step="1000"
-		value="2500"
-		style="--needle: limegreen"
-	></gauge-demo>
-</div>
+	<hr>
 
-<h2>Weather Widget</h2>
-<p>This component demonstrates:</p>
-<ol>
-	<li>Using prop loaders to transform and set attribute values</li>
-	<li>
-		Using <code>intersect(ratio)</code> to fetch data and apply an effect after the component is 20%
-		scrolled into view
-	</li>
-	<li>Using <code>ref</code> to update the template</li>
-	<li>Using JS and CSS variables within CSS</li>
-</ol>
+	<div class="demos">
 
-<div class="container" style="gap: 2rem">
-	<weather-widget lat="42.375" lon="-83" place="Detroit" unit="f"></weather-widget>
+		<h3>Counter Demo</h3>
+		<p>This component demonstrates:</p>
+		<ol>
+			<li>Using prop loaders to transform and set attribute values</li>
+			<li>Vue-like '@' event assignment in the template</li>
+			<li>Using <code>ref</code> to update the template</li>
+		</ol>
 
-	<weather-widget
-		label="Voraussage"
-		lat="52.52"
-		locale="de"
-		lon="13.41"
-		place="Berlin"
-	></weather-widget>
-</div>
+		<a href="/playground.html?component=counter">
+			Open in the playground
+		</a>
 
-<h2>YouTube Lite Demo</h2>
-<p>This component demonstrates:</p>
-<ol>
-	<li>Vue-like '@' event assignment in the template</li>
-	<li>Using <code>ref</code> to update the template</li>
-</ol>
+		<div class="container" style="gap: 1.5rem">
+			<counter-demo count="-3" step="3"></counter-demo>
+			<counter-demo></counter-demo>
+			<counter-demo count="3" step="3"></counter-demo>
+		</div>
 
-<div class="container vert">
-	<youtube-demo vid="O30_s0DKlDk"></youtube-demo>
-</div>
+		<hr>
+
+		<h3>Staff Card Demo</h3>
+		<p>This component demonstrates:</p>
+		<ol>
+			<li>Using prop loaders to transform and set attribute values</li>
+			<li>Vue-like '@' event assignment in the template</li>
+			<li>Forwarding an event's <code>e</code> object to
+				<code>preventDefault</code>
+			</li>
+		</ol>
+
+		<a href="/playground.html?component=staffCard">
+			Open in the playground
+		</a>
+
+		<div class="container vert">
+			<staff-card name="Fatimah Maimunah" position="Chief Executive Officer"
+				phone="1234567890" email="#" photo="https://bit.ly/3FIADMM">
+			</staff-card>
+			<staff-card name="Areeb Mcgowan" position="Chief Operations Officer"
+				email="#" photo="https://bit.ly/3sv2Kts">
+			</staff-card>
+		</div>
+
+		<hr>
+
+		<h3>Gauge Demo</h3>
+		<p>This component demonstrates:</p>
+		<ol>
+			<li>Using prop loaders to transform and set attribute values</li>
+			<li>Using <code>intersect(ratio)</code> to apply an effect after the
+				component is 50% scrolled into view</li>
+		</ol>
+
+		<a href="/playground.html?component=gauge">
+			Open in the playground
+		</a>
+
+		<gauge-demo label="MPH" max="120" min="0" step="10" value="90">
+		</gauge-demo>
+
+		<hr>
+
+		<h3>Weather Demo</h3>
+		<p>This component demonstrates:</p>
+		<ol>
+			<li>Using prop loaders to transform and set attribute values</li>
+			<li>Using <code>intersect(ratio)</code> to fetch data and apply an effect
+				after the component is 20% scrolled into view</li>
+			<li>Using <code>ref</code> to update the template</li>
+			<li>Using JS and CSS variables within CSS</li>
+		</ol>
+
+		<a href="/playground.html?component=weather">
+			Open in the playground
+		</a>
+
+		<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f">
+		</weather-demo>
+
+		<hr>
+
+		<h3>YouTube Lite Demo</h3>
+		<p>This component demonstrates:</p>
+		<ol>
+			<li>Vue-like '@' event assignment in the template</li>
+			<li>Using <code>ref</code> to update the template</li>
+		</ol>
+
+		<a href="/playground.html?component=youtubeLite">
+			Open in the playground
+		</a>
+
+		<youtube-demo vid="O30_s0DKlDk"></youtube-demo>
+
+	</div>
+
+</main>

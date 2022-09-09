@@ -1,5 +1,5 @@
 export default {
-	component: 'weather-widget',
+	component: 'weather-demo',
 	shadow: true,
 	props() {
 		return {

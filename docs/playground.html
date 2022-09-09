@@ -1,0 +1,83 @@
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/assets/styles.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css" />
+	<link rel="stylesheet"
+		href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/theme/dracula.min.css" />
+	<link rel="stylesheet" href="/assets/playground.css" />
+</head>
+
+<body>
+	<nav>
+		<a href="/">Ardi</a>
+		<div>
+			<a href="/docs.html">Docs</a>
+			<a href="/playground.html" class="active">Playground</a>
+		</div>
+	</nav>
+
+	<template id="counter">
+		<h2>Demo 1</h2>
+		<counter-demo></counter-demo>
+		<h2>Demo 2</h2>
+		<counter-demo count="-2" step="2"></counter-demo>
+		<h2>Demo 3</h2>
+		<counter-demo count="3" step="3"></counter-demo>
+	</template>
+
+	<template id="staffCard">
+		<h2>Demo 1</h2>
+		<staff-card name="Fatimah Maimunah" position="Chief Executive Officer"
+			phone="1234567890" email="#" photo="https://bit.ly/3FIADMM">
+		</staff-card>
+		<h2>Demo 2</h2>
+		<staff-card name="Ashley Fox" position="Chief Technical Officer" email="#"
+			photo="https://bit.ly/3FyBTSk">
+		</staff-card>
+	</template>
+
+	<template id="gauge">
+		<h2>Demo 1</h2>
+		<gauge-demo label="MPH" max="120" min="0" step="10" value="90">
+		</gauge-demo>
+		<h2>Demo 2</h2>
+		<gauge-demo label="RPM" max="7000" min="0" step="1000" value="2500"
+			style="--needle: limegreen">
+		</gauge-demo>
+	</template>
+
+	<template id="weather">
+		<h2>Demo 1</h2>
+		<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f">
+		</weather-demo>
+		<h2>Demo 2</h2>
+		<weather-demo label="Voraussage" lat="52.52" locale="de" lon="13.41"
+			place="Berlin">
+		</weather-demo>
+	</template>
+
+	<template id="youtubeLite">
+		<h2>Demo 1</h2>
+		<youtube-demo vid="O30_s0DKlDk" style="max-width: 500px"></youtube-demo>
+	</template>
+
+	<div class="playground">
+		<div class="editors">
+			<div class="editor-label">HTML</div>
+			<div id="html"></div>
+			<div class="editor-label">Ardi Object</div>
+			<div id="js"></div>
+		</div>
+
+		<iframe id="preview"></iframe>
+	</div>
+
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/javascript/javascript.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/mode/xml/xml.min.js"></script>
+	<script type="module" src="/assets/playground.js"></script>
+</body>
