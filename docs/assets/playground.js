@@ -41,7 +41,7 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 			})
 
 			const setPreview = () => {
-				preview.srcdoc = editor.getValue()
+				preview.srcdoc = '<style>:host{font-family: sans-serif}</style>' + editor.getValue()
 			}
 
 			setPreview()
