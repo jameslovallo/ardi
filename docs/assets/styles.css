@@ -1,14 +1,10 @@
 :root {
 	--gap: max(1rem, 3vw);
-	--primary: #ff6f00;
-	color-scheme: light dark;
+	--primary: #ffab00;
+	--primary-dark: #312100;
+	background: #222;
+	color: #fff;
 	font-family: sans-serif;
-}
-
-@media (prefers-color-scheme: dark) {
-	:root {
-		--primary: #ffab00;
-	}
 }
 
 body {
@@ -77,6 +73,15 @@ main {
 	padding: 1rem var(--gap);
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'JetBrains Mono';
+}
+
 p,
 li {
 	line-height: 1.5;
@@ -124,7 +129,7 @@ code {
 .feature-grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-	grid-gap: var(--gap);
+	grid-gap: 1.5rem;
 }
 
 .feature-card {
@@ -132,15 +137,10 @@ code {
 	border: 1px solid rgba(125, 125, 125, 0.5);
 	border-radius: 8px;
 	display: grid;
-	gap: 1.5rem;
 	grid-template-rows: auto auto 1fr auto;
 	justify-content: center;
-	padding: 1.5rem;
+	padding: 0 1rem;
 	text-align: center;
-}
-
-.feature-card * {
-	margin: 0;
 }
 
 .feature-card img {
