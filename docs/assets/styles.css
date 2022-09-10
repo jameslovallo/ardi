@@ -200,29 +200,3 @@ main a {
 youtube-demo {
 	max-width: 600px;
 }
-
-/* codemirror */
-
-.cm-s-onedark {
-	background: #282c34;
-	color: #abb2bf;
-}
-.cm-s-onedark .cm-atom,
-.cm-s-onedark .cm-def,
-.cm-s-onedark .cm-number,
-.cm-s-onedark .cm-attribute {
-	color: #d8985f;
-}
-.cm-s-onedark .cm-string,
-.cm-s-onedark .cm-string-2 {
-	color: #89ca78;
-}
-.cm-s-onedark .cm-variable,
-.cm-s-onedark .cm-property,
-.cm-s-onedark .cm-variable-2,
-.cm-s-onedark .cm-tag:not(.cm-bracket) {
-	color: #ef596f;
-}
-.cm-s-onedark .cm-keyword {
-	color: #d55fde;
-}
