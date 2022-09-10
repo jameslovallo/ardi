@@ -25,7 +25,7 @@ img {
 
 nav {
 	align-items: center;
-	background: black;
+	background: #000;
 	display: flex;
 	justify-content: space-between;
 	padding: 0 1rem;
@@ -41,7 +41,7 @@ nav div {
 
 nav a {
 	align-items: center;
-	color: white;
+	color: #fff;
 	display: flex;
 	height: 4rem;
 	text-decoration: none;
@@ -56,7 +56,7 @@ nav a:hover {
 }
 
 nav a:hover ~ a {
-	color: white;
+	color: #fff;
 }
 
 nav a[href='\/']:before {
@@ -133,13 +133,13 @@ code {
 }
 
 .feature-card {
-	background: rgba(125, 125, 125, 0.1);
+	background: #000;
 	border: 1px solid rgba(125, 125, 125, 0.5);
 	border-radius: 8px;
 	display: grid;
 	grid-template-rows: auto auto 1fr auto;
 	justify-content: center;
-	padding: 0 1rem;
+	padding: 1.5rem;
 	text-align: center;
 }
 
