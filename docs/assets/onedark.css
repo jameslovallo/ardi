@@ -35,20 +35,23 @@ iframe {
 	background: #282c34;
 	border-color: #282c34;
 }
+.cm-s-onedark .cm-comment {
+	color: #7d8799;
+}
 .cm-s-onedark .cm-atom,
+.cm-s-onedark .cm-attribute,
 .cm-s-onedark .cm-def,
-.cm-s-onedark .cm-number,
-.cm-s-onedark .cm-attribute {
+.cm-s-onedark .cm-number {
 	color: #d8985f;
 }
 .cm-s-onedark .cm-string,
 .cm-s-onedark .cm-string-2 {
 	color: #89ca78;
 }
-.cm-s-onedark .cm-variable,
 .cm-s-onedark .cm-property,
-.cm-s-onedark .cm-variable-2,
-.cm-s-onedark .cm-tag:not(.cm-bracket) {
+.cm-s-onedark .cm-tag:not(.cm-bracket),
+.cm-s-onedark .cm-variable,
+.cm-s-onedark .cm-variable-2 {
 	color: #ef596f;
 }
 .cm-s-onedark .cm-keyword {
