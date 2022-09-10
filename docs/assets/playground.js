@@ -26,7 +26,7 @@ const coreConfig = {
 	lineNumbers: true,
 	scrollbarStyle: 'native',
 	tabSize: 2,
-	theme: 'dracula',
+	theme: 'onedark',
 }
 
 fetch(`/ardi/components/${component || 'helloWorld'}.js`)
