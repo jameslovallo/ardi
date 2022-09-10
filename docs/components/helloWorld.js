@@ -7,12 +7,16 @@ export default {
 			name: 'there',
 		}
 	},
-	// ready() {},
-	// intersect(r) {},
 	template() {
-		return `<p>Hello, <b part="name">${this.name}</b>!</p>`
+		return `
+			<p>Hello, <b part="name">${this.name}</b>!</p>
+		`
 	},
 	styles() {
-		return `[part=name] { color: ${this.color}; }`
+		return `
+			[part=name] { color: ${this.color}; }
+		`
 	},
+	// ready() {},
+	// intersect(r) {},
 }
