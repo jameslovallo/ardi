@@ -161,12 +161,20 @@ main a {
 	text-decoration: none;
 }
 
+.demo-header {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 1rem;
+	flex-flow: row wrap;
+}
+
 .demos a[href*='playground'] {
 	align-items: center;
 	display: inline-flex;
+	font-family: 'JetBrains Mono';
 	font-size: 14px;
 	gap: 0.25rem;
-	letter-spacing: 1px;
 	text-transform: uppercase;
 	transition: 0.5s;
 }
@@ -180,6 +188,8 @@ main a {
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 11V13H16L10.5 18.5L11.92 19.92L19.84 12L11.92 4.08L10.5 5.5L16 11H4Z' fill='%23ffab00' /%3E%3C/svg%3E");
 	display: inline-block;
 	height: 1.5em;
+	position: relative;
+	top: -1px;
 	width: 1.5em;
 }
 
