@@ -1,10 +1,14 @@
+:root {
+	background: initial;
+}
+
 body {
 	display: flex;
 	flex-direction: column;
 	min-height: 100%;
 }
 
-.playground {
+.playground-container {
 	display: flex;
 	position: fixed;
 	top: 4rem;
@@ -14,34 +18,23 @@ body {
 }
 
 @media (orientation: portrait) {
-	.playground {
+	.playground-container {
 		flex-direction: column;
 	}
 }
 
 #html,
 #js {
-	height: auto;
+	height: 100%;
 }
 
-.CodeMirror {
-	font-family: inherit;
-	font-size: 13px;
-	height: auto;
-	line-height: 2;
-	margin: 0.5rem 0;
+.editors {
+	display: flex;
+	flex-direction: column;
 }
 
-.CodeMirror-scroll {
-	height: auto;
-}
-
-.editors,
+#playground,
 iframe {
 	border: 0;
 	flex-basis: 50%;
-}
-
-iframe {
-	background: white;
 }
