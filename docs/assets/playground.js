@@ -45,6 +45,6 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 			}
 
 			setPreview()
-			editor.onKeyDown(debounce(setPreview, 1000))
+			editor.onDidChangeModelContent(debounce(setPreview, 1000))
 		})
 	})
