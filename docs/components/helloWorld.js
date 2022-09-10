@@ -14,7 +14,9 @@ export default {
 	},
 	styles() {
 		return `
-			[part=name] { color: ${this.color}; }
+			[part=name] {
+				color: ${this.color};
+			}
 		`
 	},
 	// ready() {},
