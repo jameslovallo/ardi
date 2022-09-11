@@ -128,8 +128,13 @@ code {
 
 .feature-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-	grid-gap: 1.5rem;
+	gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+	.feature-grid {
+		display: flex;
+	}
 }
 
 .feature-card {
@@ -156,7 +161,7 @@ hr {
 	margin: 2rem 0;
 }
 
-main a {
+a {
 	color: var(--primary);
 	text-decoration: none;
 }
@@ -166,7 +171,12 @@ main a {
 	align-items: baseline;
 	justify-content: space-between;
 	gap: 1rem;
-	flex-flow: row wrap;
+}
+
+@media (min-width: 768px) {
+	.demo-header {
+		display: grid;
+	}
 }
 
 .demos a[href*='playground'] {
@@ -209,4 +219,28 @@ main a {
 
 youtube-demo {
 	max-width: 600px;
+}
+
+main.docs {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+}
+
+.code-label {
+	color: #aaa;
+	font-family: 'JetBrains Mono';
+	font-size: 14px;
+	margin-bottom: 0.5rem;
+	text-transform: uppercase;
+}
+
+.monaco {
+	background: #1e1e1e;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border-top: 1px solid var(--primary);
+	overflow: hidden;
+	margin-bottom: 1rem;
+	min-height: 100px;
+	max-height: 200px;
 }

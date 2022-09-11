@@ -1,0 +1,151 @@
+<head>
+	<title>Ardi: Welcome to the Weightless Web</title>
+	<meta
+		name="description"
+		content="Ardi is a tiny (but fierce) web component framework, weighing
+	just 1kb uncompressed."
+	/>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="/assets/styles.css" />
+	<!-- <script type="module" src="/main.js"></script> -->
+</head>
+
+<body>
+	<nav>
+		<a href="/ardi/">Ardi</a>
+		<div>
+			<a href="/ardi/docs.html">Docs</a>
+			<a href="/ardi/playground.html">Playground</a>
+		</div>
+	</nav>
+
+	<main class="docs">
+		<aside>
+			<div style="position: sticky; top: 80px">
+				<h2>Table of Contents</h2>
+				<ul>
+					<li><a href="#installation">installation</a></li>
+					<li>
+						<a href="#api">api</a>
+						<ul>
+							<li><a href="#component">component</a></li>
+							<li><a href="#shadow">shadow</a></li>
+							<li><a href="#props">props()</a></li>
+							<li>
+								<a href="#template">template()</a>
+								<ul>
+									<li><a href="#slots">slots</a></li>
+									<li><a href="#parts">parts</a></li>
+									<li><a href="#refs">refs</a></li>
+									<li><a href="#events">events</a></li>
+								</ul>
+							</li>
+							<li><a href="#styles">styles()</a></li>
+							<li><a href="#ready">ready()</a></li>
+							<li><a href="#intersect">intersect(ratio)</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="#this">this</a>
+						<ul>
+							<li><a href="#this-dom">this.DOM</a></li>
+							<li><a href="#this-refs">this.refs</a></li>
+							<li><a href="#this-render">this.render</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</aside>
+		<div class="docs-container">
+			<h1>Docs</h1>
+
+			<br id="installation" />
+
+			<h2>Installation</h2>
+
+			<h3>Option 1: As a package</h3>
+
+			<p class="code-label">shell</p>
+			<div class="monaco">
+				<pre><code>
+npm i ardi
+				</code></pre>
+			</div>
+
+			<p class="code-label">javascript</p>
+			<div class="monaco" data-lang="javascript">
+				<pre><code>
+import ardi from 'ardi';
+ardi({ })
+				</code></pre>
+			</div>
+
+			<h3>Option 2: In your markup</h3>
+
+			<p class="code-label">html</p>
+			<div class="monaco" data-lang="javascript" data-read-only="true">
+				<pre><code>
+&lt;script type="module"&gt;
+	import ardi from '//unpkg.com/ardi';
+	ardi({ })
+&lt;/script&gt;
+				</code></pre>
+			</div>
+
+			<br id="api" />
+
+			<h2>API</h2>
+			<p>
+				Import Ardi, then pass it an object with any or all of the following keys. You can also add
+				any other functions or values to your object and access them by their key name using this.
+			</p>
+			<h3>component</h3>
+			<h3>shadow</h3>
+			<h3>props()</h3>
+			<h3>template()</h3>
+			<h4>slots</h4>
+			<h4>parts</h4>
+			<h4>refs</h4>
+			<h4>events</h4>
+			<h3>styles()</h3>
+			<h3>ready()</h3>
+			<h3>intersect(ratio)</h3>
+			<h2>this</h2>
+			<h3>this.DOM</h3>
+			<h3>this.refs</h3>
+			<h3>this.render</h3>
+		</div>
+	</main>
+
+	<script type="module">
+		import loader from 'https://cdn.skypack.dev/@monaco-editor/loader@1.3.2'
+		loader.init().then((monaco) => {
+			document.querySelectorAll('.monaco').forEach((el) => {
+				const codeEl = el.querySelector('pre')
+				let code = codeEl
+					.querySelector('code')
+					.innerHTML.trim()
+					.replaceAll('&lt;', '<')
+					.replaceAll('&gt;', '>')
+
+				const editor = monaco.editor.create(el, {
+					language: el.dataset.lang,
+					minimap: {
+						enabled: false,
+					},
+					theme: 'vs-dark',
+					value: code,
+				})
+
+				codeEl.remove()
+			})
+
+			// const setPreview = () => {
+			// 	preview.srcdoc = '<style>:root{font-family: sans-serif}</style>' + editor.getValue()
+			// }
+
+			// setPreview()
+			// editor.onDidChangeModelContent(debounce(setPreview, 1000))
+		})
+	</script>
+</body>
