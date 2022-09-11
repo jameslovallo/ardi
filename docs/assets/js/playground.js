@@ -6,18 +6,9 @@ const preview = document.getElementById('preview')
 const component = new URLSearchParams(location.search).get('component')
 
 const markup = () => {
-	if (component) {
-		let markup = document.getElementById(component).innerHTML.split('\n')
-		markup.shift()
-		markup.pop()
-		const whitespace = markup[0].match(/\t/g)
-		return markup
-			.map((line) => {
-				whitespace.forEach(() => (line = line.replace('\t', '')))
-				return line
-			})
-			.join('\n')
-	} else return `<hello-world name="there" bg="#def" color="black"></hello-world>`
+	return component
+		? document.getElementById(component).innerHTML
+		: `<hello-world name="there" bg="#def" color="black"></hello-world>`
 }
 
 fetch(`/ardi/components/${component || 'helloWorld'}.js`)
