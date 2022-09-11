@@ -25,8 +25,7 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 	.then((file) => {
 		loader.init().then((monaco) => {
 			const editor = monaco.editor.create(playground, {
-				automaticLayout: true,
-				fontSize: '12px',
+				fontSize: '13px',
 				language: 'html',
 				lineNumbers: 'off',
 				minimap: {
