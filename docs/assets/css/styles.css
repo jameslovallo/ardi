@@ -244,14 +244,15 @@ main.docs .toc ul li a:not(:hover) {
 	}
 
 	main.docs aside {
-		position: sticky;
-		top: 7rem;
 		left: var(--gap);
+		position: sticky;
+		top: 10rem;
 	}
 
 	main.docs .toc {
-		position: absolute;
 		left: -300px;
+		position: absolute;
+		top: -5rem;
 	}
 }
 
