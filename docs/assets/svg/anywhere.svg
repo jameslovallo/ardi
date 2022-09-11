@@ -8,7 +8,7 @@
 			}
 		
 			25% {
-				transform: translateY(-10%);
+				transform: translateY(-5%);
 			}
 		
 			50% {
@@ -16,7 +16,7 @@
 			}
 		
 			75% {
-				transform: translateY(10%);
+				transform: translateY(5%);
 			}
 		
 			100% {
