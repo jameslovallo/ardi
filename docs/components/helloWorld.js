@@ -5,12 +5,13 @@ export default {
 		return {
 			bg: '#def',
 			color: 'black',
+			image: '/ardi/assets/svg/kenobi.svg',
 			name: 'there',
 		}
 	},
 	template() {
 		return `
-			<img part="image" src="/ardi/assets/svg/kenobi.svg">
+			<img part="image" src="${this.image}">
 			<h2 part="message">Hello ${this.name}!</h2>
 		`
 	},
