@@ -1,4 +1,4 @@
-![](https://raw.githubusercontent.com/jameslovallo/ardi/master/docs/assets/ardi.svg)
+![](https://raw.githubusercontent.com/jameslovallo/ardi/master/docs/assets/svg/ardi.svg)
 
 # Ardi
 
@@ -27,7 +27,7 @@ Option 2: In your markup.
 
 ```html
 <script type="module">
-  import ardi from '//unpkg.com/ardi'
+	import ardi from '//unpkg.com/ardi'
 </script>
 ```
 
