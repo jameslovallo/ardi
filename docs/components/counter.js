@@ -26,7 +26,8 @@ export default {
 		return `
 			:host {
 				align-items: center;
-				display: flex;
+				display: inline-flex;
+				border: 1px solid rgba(125,125,125,0.5);
 			}
 			[part=count] {
 				min-width: 2rem;
@@ -34,6 +35,8 @@ export default {
 			}
 			button {
 				align-items: center;
+				background: none;
+				border: none;
 				cursor: pointer;
 				display: inline-flex;
 				font-family: arial;
