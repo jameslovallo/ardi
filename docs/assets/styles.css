@@ -59,13 +59,13 @@ nav a:hover ~ a {
 	color: #fff;
 }
 
-nav a[href='\/']:before {
+/* nav a[href='\/']:before {
 	background: url('/ardi/assets/logo.png') no-repeat center center / contain;
 	content: '';
 	height: 3rem;
 	margin-right: 0.5rem;
 	width: 3rem;
-}
+} */
 
 main {
 	margin: 2rem auto;
