@@ -79,7 +79,8 @@ li {
 	line-height: 1.5;
 }
 
-code {
+code,
+.code {
 	color: var(--primary);
 	font-family: 'JetBrains Mono';
 	font-size: 0.9em;
@@ -253,25 +254,8 @@ hr.large {
 	margin: 3rem 0;
 }
 
-.code-label {
-	color: #aaa;
-	font-family: 'JetBrains Mono';
-	font-size: 12px;
-	font-weight: bold;
-	margin-bottom: 0;
-}
-
-.code-label + pre {
-	display: grid;
-	margin-top: 0.5rem;
-	tab-size: 2;
-}
-
-pre + .code-label {
-	margin-top: -1.25rem;
-}
-
-.hljs {
+main.docs pre {
+	background: #21252b;
 	clip-path: polygon(
 		1rem 0,
 		100% 0,
@@ -280,6 +264,29 @@ pre + .code-label {
 		0 100%,
 		0 1rem
 	);
-	line-height: 1.5;
+	display: grid;
+	margin: 0;
+	tab-size: 2;
 	margin-bottom: 1rem;
+}
+
+main.docs pre .code-label {
+	color: #5c6370;
+	font-family: 'JetBrains Mono';
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 0;
+	margin-top: 1.25em;
+	padding: 0 14.4px;
+}
+
+main.docs .code-caption {
+	color: #aaa;
+	font-family: 'JetBrains Mono';
+	font-size: 13px;
+	font-weight: bold;
+}
+
+.hljs {
+	line-height: 1.5;
 }

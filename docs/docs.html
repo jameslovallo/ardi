@@ -6,8 +6,8 @@
 	just 1kb uncompressed."
 	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<link rel="stylesheet" href="/ardi/assets/css/onedark.css" />
-	<link rel="stylesheet" href="/ardi/assets/css/styles.css" />
+	<link rel="stylesheet" href="/assets/css/onedark.css" />
+	<link rel="stylesheet" href="/assets/css/styles.css" />
 </head>
 
 <body>
@@ -67,15 +67,15 @@
 
 			<h3>Option 1: As a package</h3>
 
-			<p class="code-label">shell</p>
 			<pre class="language-shell">
+				<p class="code-label">shell</p>
 				<code class="language-shell">
 npm i ardi
 				</code>
 			</pre>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 import ardi from 'ardi';
 
@@ -87,9 +87,9 @@ ardi({
 
 			<h3>Option 2: In your markup</h3>
 
-			<p class="code-label">html</p>
 			<pre>
-					<code class="language-html">
+				<p class="code-label">html</p>
+				<code class="language-html">
 &lt;script type="module"&gt;
 	import ardi from '//unpkg.com/ardi';
 
@@ -130,8 +130,8 @@ ardi({
 				this pattern.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 import ardi from 'ardi';
 import gauge from 'gauge'
@@ -150,8 +150,8 @@ ardi(gauge)
 				>.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 	component: 'gauge-demo',
@@ -174,8 +174,8 @@ export default {
 				in your template.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 	shadow: true,
@@ -193,8 +193,8 @@ export default {
 				another function in your object.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 
@@ -270,8 +270,8 @@ export default {
 				default event behavior, i.e. to <code>preventDefault()</code>.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 
@@ -314,7 +314,7 @@ export default {
 }
 				</code>
 			</pre>
-			<p class="code-label">
+			<p class="code-caption">
 				See that <code>/* html */</code> comment after the return? With the excellent
 				<a href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html">
 					es6-string-html</a
@@ -345,8 +345,8 @@ export default {
 				</li>
 			</ul>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 
@@ -385,7 +385,7 @@ export default {
 }
 				</code>
 			</pre>
-			<p class="code-label">
+			<p class="code-caption">
 				See that <code>/* css */</code> comment after the return? With the excellent
 				<a href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html">
 					es6-string-html</a
@@ -403,12 +403,12 @@ export default {
 				default event behavior, i.e. <code>e.preventDefault()</code>.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 
-	handlClick()
+	handleClick()
 
 	ready() {
 		alert(`${this.component} is loaded`)
@@ -431,8 +431,8 @@ export default {
 				intersection observer elsewhere in your component.
 			</p>
 
-			<p class="code-label">javascript</p>
 			<pre>
+				<p class="code-label">javascript</p>
 				<code class="language-javascript">
 export default {
 
