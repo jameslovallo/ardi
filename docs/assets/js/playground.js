@@ -24,6 +24,7 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 				},
 				roundedSelection: true,
 				scrollBeyondLastLine: false,
+tabSize: 2,
 				theme: 'vs-dark',
 				value: [
 					markup(),
