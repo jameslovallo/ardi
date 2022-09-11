@@ -8,7 +8,7 @@ const component = new URLSearchParams(location.search).get('component')
 const markup = () => {
 	return component
 		? document.getElementById(component).innerHTML
-		: `\n<hello-world name="there" bg="#def" color="black"></hello-world>`
+		: '\n<hello-world name="there" bg="#def" color="black"></hello-world>'
 }
 
 fetch(`/ardi/components/${component || 'helloWorld'}.js`)
