@@ -239,13 +239,19 @@ main.docs .toc ul li a:not(:hover) {
 
 @media (min-width: 1024px) {
 	main.docs {
-		display: grid;
-		grid-template-columns: 300px 1fr;
+		position: relative;
+		padding-left: calc(300px + var(--gap));
+	}
+
+	main.docs aside {
+		position: sticky;
+		top: 7rem;
+		left: var(--gap);
 	}
 
 	main.docs .toc {
-		position: sticky;
-		top: 80px;
+		position: absolute;
+		left: -300px;
 	}
 }
 
