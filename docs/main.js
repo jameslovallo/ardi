@@ -1,4 +1,4 @@
-import ardi from '/ardi/assets/ardi-min.js'
+import ardi from '/ardi/assets/js/ardi-min.js'
 
 import contactCard from '/ardi/components/contactCard.js'
 import counter from '/ardi/components/counter.js'

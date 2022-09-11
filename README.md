@@ -2,7 +2,12 @@
 
 # Ardi
 
-Ardi is a quick and capable companion for crafting custom elements. Ardi's philosophy is to go back to the basics and #usetheplatform without any Virtual DOM, JSX, or any other 'magic' to provide the most performant un-framework available, all without sacrificing DX. Ardi is tiny but fierce, weighing in at just 1kb uncompressed.
+**Welcome to the Weightless Web.** Ardi is a tiny (but fierce) web component framework, weighing just 1kb uncompressed.
+
+## Our Mission
+
+1. Make it easy to create powerful web components that work everywhere, including React, Vue, Svelte, Astro, Angular, etc.
+2. Provide great DX and performance without virtual dom, JSX, compilers, or any other magic. #usetheplatform
 
 [Demo & Docs](https://jameslovallo.github.io/ardi/)
 
@@ -28,7 +33,7 @@ Option 2: In your markup.
 
 ## Usage
 
-Import Ardi, then pass it an object with any or all of the following keys. You can also add any other functions or values to your object and access them by their key name using `this`.
+After you've imported Ardi, pass it an object with any or all of the following keys. You can assign custom functions or data to any other key in your object and access it using this.key_name. Ardi has three reserved keys, this.DOM, this.refs, and this.render(), which will be explained in greater detail in the this section below.
 
 | Key              | Type     |
 | ---------------- | -------- |
