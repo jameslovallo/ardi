@@ -17,7 +17,7 @@ const markup = () => {
 				return line
 			})
 			.join('\n')
-	} else return `<hello-world name="kind human"></hello-world>`
+	} else return `<hello-world name="there" bg="#def" color="black"></hello-world>`
 }
 
 fetch(`/ardi/components/${component || 'helloWorld'}.js`)
