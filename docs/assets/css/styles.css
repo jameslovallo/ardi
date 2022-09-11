@@ -117,6 +117,10 @@ code,
 	75% {
 		transform: translateY(10%);
 	}
+
+	100% {
+		transform: translateY(0);
+	}
 }
 
 .feature-grid {
