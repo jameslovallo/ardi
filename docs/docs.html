@@ -108,7 +108,7 @@ ardi({
 				assign custom functions or data to any other key in your object and access it using
 				<code>this.key_name</code>. Ardi has three reserved keys, <a href="#this-dom">this.DOM</a>,
 				<a href="#this-refs">this.refs</a>, and <a href="#this-render">this.render()</a>, which will
-				be explained in greater detail in the <a href="#this">this</a> section below.
+				be explained in greater detail <a href="#reserved">below</a>.
 			</p>
 
 			<br />
@@ -448,10 +448,9 @@ export default {
 			</pre>
 
 			<hr id="reserved" class="large" />
-			<h2>Reserved Keys</h2>
 
-			<hr id="this-refs" />
-			<h3>this.refs</h3>
+			<h2>Reserved Keys</h2>
+			<h3 id="this-refs">this.refs</h3>
 			<p>
 				<code>this.refs</code> is used to conveniently reference elements in the component's markup
 				and assign event listeners or handle effects. As mentioned previously,
