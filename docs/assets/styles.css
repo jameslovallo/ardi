@@ -142,6 +142,7 @@ code {
 	border: 1px solid rgba(125, 125, 125, 0.5);
 	border-radius: 8px;
 	display: grid;
+	flex-basis: 33%;
 	grid-template-rows: auto auto 1fr auto;
 	justify-content: center;
 	padding: 1.5rem;
@@ -167,15 +168,19 @@ a {
 }
 
 .demo-header {
-	display: flex;
+	display: grid;
 	align-items: baseline;
 	justify-content: space-between;
 	gap: 1rem;
 }
 
+.demo-header h3 {
+	margin: 0;
+}
+
 @media (min-width: 768px) {
 	.demo-header {
-		display: grid;
+		display: flex;
 	}
 }
 
