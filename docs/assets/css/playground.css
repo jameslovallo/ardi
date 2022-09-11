@@ -19,7 +19,7 @@ body {
 
 @media (orientation: portrait) {
 	.playground-container {
-		flex-direction: column;
+		flex-flow: column reverse;
 	}
 }
 
