@@ -167,7 +167,7 @@ export default {
 					href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM"
 					rel="nofollow"
 					>Shadow DOM</a
-				>, which scopes your css allows you to use
+				>, which scopes your css and allows you to use
 				<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement" rel="nofollow"
 					>&lt;slot&gt; tags</a
 				>
@@ -208,7 +208,7 @@ export default {
 			// 2. convert the value to a Number type
 			value: Number,
 
-			// 1. get value of "value" attribute
+			// 1. get value of attribute
 			// 2. convert the value to a Number type
 			// 3. provide a fallback value
 			max: (v) => (v ? Number(v) : 120),
@@ -223,7 +223,7 @@ export default {
 
 			<hr id="template" />
 			<h3>template()</h3>
-			<p>Use the template function to return the markup for you component in a template literal.</p>
+			<p>Use the template function to return the markup for your component in a template literal.</p>
 
 			<h4 id="slots">slots</h4>
 			<p>
@@ -248,8 +248,7 @@ export default {
 					>part attributes</a
 				>
 				allow you to expose an element for styling by CSS rules outside of the component's Shadow
-				DOM using the <code>::part()</code> pseudo-selector. We also find that using parts instead
-				of classes makes the markup more readable.
+				DOM using the <code>::part()</code> pseudo-selector.
 			</p>
 
 			<h4 id="refs">refs</h4>
