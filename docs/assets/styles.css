@@ -1,7 +1,7 @@
 :root {
 	--gap: max(1rem, 3vw);
 	--primary: #ffab00;
-	--primary-dark: #312100;
+	--primary-dark: #7e5400;
 	background: #131314;
 	color: #fff;
 	font-family: sans-serif;
@@ -155,6 +155,10 @@ code {
 	width: 100%;
 }
 
+.feature-card a {
+	text-decoration: none;
+}
+
 hr {
 	background: rgba(125, 125, 125, 0.5);
 	border: none;
@@ -164,7 +168,7 @@ hr {
 
 a {
 	color: var(--primary);
-	text-decoration: none;
+	text-decoration-color: var(--primary-dark);
 }
 
 .demo-header {
@@ -190,6 +194,7 @@ a {
 	font-family: 'JetBrains Mono';
 	font-size: 14px;
 	gap: 0.25rem;
+	text-decoration: none;
 	text-transform: uppercase;
 	transition: 0.5s;
 }
@@ -226,26 +231,63 @@ youtube-demo {
 	max-width: 600px;
 }
 
-main.docs {
-	display: grid;
-	grid-template-columns: 300px 1fr;
+main.docs .toc ul {
+	list-style: none;
+	padding-left: 1.5rem;
+}
+
+main.docs .toc ul li a:not(:hover) {
+	text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+	main.docs {
+		display: grid;
+		grid-template-columns: 300px 1fr;
+	}
+
+	main.docs .toc {
+		position: sticky;
+		top: 80px;
+	}
+}
+
+br[id],
+hr[id] {
+	scroll-margin-top: 5rem;
+}
+
+hr.large {
+	margin: 3rem 0;
 }
 
 .code-label {
 	color: #aaa;
 	font-family: 'JetBrains Mono';
-	font-size: 14px;
-	margin-bottom: 0.5rem;
-	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: bold;
+	margin-bottom: 0;
 }
 
-.monaco {
-	background: #1e1e1e;
-	border-bottom-left-radius: 8px;
-	border-bottom-right-radius: 8px;
-	border-top: 1px solid var(--primary);
-	overflow: hidden;
+.code-label + pre {
+	display: grid;
+	margin-top: 0.5rem;
+	tab-size: 2;
+}
+
+pre + .code-label {
+	margin-top: -1.25rem;
+}
+
+.hljs {
+	clip-path: polygon(
+		1rem 0,
+		100% 0,
+		100% calc(100% - 1rem),
+		calc(100% - 1rem) 100%,
+		0 100%,
+		0 1rem
+	);
+	line-height: 1.5;
 	margin-bottom: 1rem;
-	min-height: 100px;
-	max-height: 200px;
 }

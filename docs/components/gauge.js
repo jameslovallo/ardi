@@ -3,11 +3,11 @@ export default {
 	shadow: true,
 	props() {
 		return {
-			label: String,
-			max: Number,
-			min: Number,
-			step: Number,
-			value: Number,
+			label: 'MPH',
+			max: (v) => (v ? Number(v) : 120),
+			min: (v) => (v ? Number(v) : 0),
+			step: (v) => (v ? Number(v) : 10),
+			value: (v) => (v ? Number(v) : 90),
 		}
 	},
 	deg(percentage) {
@@ -26,8 +26,8 @@ export default {
 		}
 		return html
 	},
-	intersect(r) {
-		if (r > 0.3) {
+	intersect(ratio) {
+		if (ratio > 0.3) {
 			const val = this.deg(this.value / this.max)
 			this.refs.dial.style.transform = `rotate(${val}deg)`
 		}
