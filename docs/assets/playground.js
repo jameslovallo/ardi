@@ -26,6 +26,10 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 		loader.init().then((monaco) => {
 			const editor = monaco.editor.create(playground, {
 				automaticLayout: true,
+				fontSize: "12px",
+				lineNumbers: "off",
+				roundedSelection: true,
+				scrollBeyondLastLine: false,
 				language: 'html',
 				minimap: {
 					enabled: false,
