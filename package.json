@@ -31,5 +31,8 @@
 		"build": "vite build",
 		"dev": "vite",
 		"update": "npm version patch && npm publish"
+	},
+	"devDependencies": {
+		"vite": "^3.1.0"
 	}
 }
