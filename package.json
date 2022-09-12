@@ -28,13 +28,6 @@
 		"url": "https://github.com/jameslovallo/ardi/issues"
 	},
 	"scripts": {
-		"build": "cd docs && vite build",
-		"dev": " vite serve docs/",
 		"update": "npm version patch && npm publish"
-	},
-	"devDependencies": {
-		"parcel": "^2.7.0",
-		"vite": "^3.1.0",
-		"vite-plugin-pages": "^0.26.0"
 	}
 }
