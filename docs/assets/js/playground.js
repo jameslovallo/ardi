@@ -8,7 +8,7 @@ const component = new URLSearchParams(location.search).get('component')
 const markup = () => {
 	return component
 		? document.getElementById(component).innerHTML
-		: `<hello-world name="there" bg="#def" color="black"></hello-world>`
+		: '\n<hello-world name="there" bg="#def" color="black"></hello-world>'
 }
 
 fetch(`/ardi/components/${component || 'helloWorld'}.js`)
@@ -30,7 +30,7 @@ tabSize: 2,
 					markup(),
 					`\n<script type=module>`,
 					"import ardi from '//unpkg.com/ardi'",
-					file.trim().replace('export default ', '\nardi(') + ')',
+					file.trim().replace('export default ', '\nardi(') + '\n)',
 					`</script>`,
 				].join('\n'),
 			})
