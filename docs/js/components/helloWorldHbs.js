@@ -1,12 +1,25 @@
-import ardi from '//unpkg.com/ardi'
+import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
+import ardi from '//unpkg.com/ardi@latest'
 
 class helloWorld extends ardi {
 	setup() {
 		this.shadow = true
 
-		this.template = () => /* html */ `
-			<img part="image" src="/img/kenobi.svg">
-			<h2 part="message">Hello ${this.name}</h2>`
+		this.template = () => {
+			const data = {
+				image: this.image,
+				name: this.name,
+			}
+			const hbs = handlebars.compile(`
+				{{#if image}}
+					<img src="{{image}}" />
+				{{/if}}
+				{{#if name}}
+					<h2>Hello {{name}}!</h2>
+				{{/if}}
+			`)
+			return hbs(data)
+		}
 
 		this.styles = () => /* css */ `
 			:host {
@@ -14,11 +27,11 @@ class helloWorld extends ardi {
 				display: flex;
 				gap: 1rem;
 			}
-			[part=image] {
+			img {
 				height: 128px;
 				width: 128px;
 			}
-			[part=message] {
+			h2 {
 				background: ${this.bg};
 				border-radius: 1rem;
 				color: ${this.color};
@@ -26,7 +39,7 @@ class helloWorld extends ardi {
 				padding: 1rem;
 				position: relative;
 			}
-			[part=message]:before {
+			h2:before {
 				background: ${this.bg};
 				bottom: 1.33rem;
 				content: '';

@@ -5,13 +5,89 @@ const playground = document.getElementById('playground')
 const preview = document.getElementById('preview')
 const component = new URLSearchParams(location.search).get('component')
 
-const markup = () => {
-	return component
-		? document.getElementById(component).innerHTML
-		: '\n<hello-world name="there" bg="#def" color="black"></hello-world>'
+let markup
+
+switch (component) {
+	case 'counter':
+		markup = `
+<h2>Demo 1</h2>
+<counter-demo></counter-demo>
+
+<h2>Demo 2</h2>
+<counter-demo count="-2" step="2"></counter-demo>
+`
+		break
+
+	case 'contactCard':
+		markup = `
+<h2>Demo 1</h2>
+<contact-card
+name="Fatimah Maimunah"
+position="Chief Executive Officer"
+phone="1234567890"
+email="#"
+photo="https://bit.ly/3FIADMM"
+>
+</contact-card>
+<h2>Demo 2</h2>
+<contact-card
+name="Ashley Fox"
+position="Chief Technical Officer"
+email="#"
+photo="https://bit.ly/3FyBTSk"
+>
+</contact-card>
+`
+		break
+
+	case 'gauge':
+		markup = `
+<h2>Demo 1</h2>
+<contact-card
+name="Fatimah Maimunah"
+position="Chief Executive Officer"
+phone="1234567890"
+email="#"
+photo="https://bit.ly/3FIADMM"
+>
+</contact-card>
+<h2>Demo 2</h2>
+<contact-card
+name="Ashley Fox"
+position="Chief Technical Officer"
+email="#"
+photo="https://bit.ly/3FyBTSk"
+>
+</contact-card>
+`
+		break
+
+	case 'weather':
+		markup = `
+<h2>Demo 1</h2>
+<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f"> </weather-demo>
+<h2>Demo 2</h2>
+<weather-demo label="Voraussage" lat="52.52" locale="de" lon="13.41" place="Berlin">
+</weather-demo>
+`
+		break
+
+	case 'youtubeLite':
+		markup = `
+<h2>Demo 1</h2>
+<youtube-demo vid="O30_s0DKlDk" style="max-width: 500px"></youtube-demo>
+}`
+		break
+
+	default:
+		markup = `
+<hello-world name="there" color="#000" bg="#def" ></hello-world>
+`
 }
 
-fetch(`/js/components/${component || 'helloWorld'}.js`)
+const ext = component.includes('Jsx') ? 'jsx' : 'js'
+
+fetch(`/js/components/${component || 'helloWorld'}.${ext}`)
 	.then((res) => res.text())
 	.then((file) => {
 		loader.init().then((monaco) => {
@@ -26,13 +102,14 @@ fetch(`/js/components/${component || 'helloWorld'}.js`)
 				scrollBeyondLastLine: false,
 				tabSize: 2,
 				theme: 'vs-dark',
-				value: [
-					markup(),
-					`\n<script type=module>`,
-					"import ardi from '//unpkg.com/ardi'",
-					file.trim().replace('export default ', '\nardi(') + '\n)',
-					`</script>`,
-				].join('\n'),
+				value: `${markup}
+<script type=module>
+
+${file.trim()}
+
+</script>
+
+`,
 			})
 
 			const setPreview = () => {
