@@ -62,10 +62,6 @@ export default class extends HTMLElement {
 		this.render()
 	}
 
-	static get observedAttributes() {
-		this.reactive
-	}
-
 	attributeChangedCallback() {
 		this.render()
 	}
