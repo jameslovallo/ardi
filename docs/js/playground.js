@@ -85,9 +85,9 @@ photo="https://bit.ly/3FyBTSk"
 `
 }
 
-const ext = component.includes('Jsx') ? 'jsx' : 'js'
+// const ext = component.includes('Jsx') ? 'jsx' : 'js'
 
-fetch(`/js/components/${component || 'helloWorld'}.${ext}`)
+fetch(`/js/components/${component || 'helloWorld'}.js`)
 	.then((res) => res.text())
 	.then((file) => {
 		loader.init().then((monaco) => {
