@@ -47,6 +47,10 @@ nav a {
 	text-decoration: none;
 }
 
+nav > a {
+	font-family: 'JetBrains Mono';
+}
+
 nav a.active {
 	color: var(--primary);
 }

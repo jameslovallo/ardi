@@ -11,7 +11,7 @@ const markup = () => {
 		: '\n<hello-world name="there" bg="#def" color="black"></hello-world>'
 }
 
-fetch(`/ardi/components/${component || 'helloWorld'}.js`)
+fetch(`/js/components/${component || 'helloWorld'}.js`)
 	.then((res) => res.text())
 	.then((file) => {
 		loader.init().then((monaco) => {
@@ -24,7 +24,7 @@ fetch(`/ardi/components/${component || 'helloWorld'}.js`)
 				},
 				roundedSelection: true,
 				scrollBeyondLastLine: false,
-tabSize: 2,
+				tabSize: 2,
 				theme: 'vs-dark',
 				value: [
 					markup(),

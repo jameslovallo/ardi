@@ -5,7 +5,7 @@ export default {
 		return {
 			bg: '#def',
 			color: 'black',
-			image: '/ardi/assets/svg/kenobi.svg',
+			image: '/img/kenobi.svg',
 			name: 'there',
 		}
 	},
