@@ -1,12 +1,14 @@
 export default (c) => {
-	const props = Object.keys(c.props)
+	const props = Object.keys(c.props())
 	class ardi extends HTMLElement {
 		constructor() {
 			super() && Object.assign(this, c)
+			// shadow & DOM
 			this.DOM = c.shadow ? this.attachShadow({ mode: 'open' }) : this
 		}
 
 		render() {
+			// props()
 			props.forEach((prop) => {
 				const handler = this.props()[prop]
 				const value = this.getAttribute(prop)
@@ -15,11 +17,13 @@ export default (c) => {
 				} else this[prop] = value ? value : handler
 			})
 
+			// template() & styles()
 			const css = this.styles ? `<style>${this.styles()}</style>` : ''
 			let html = this.template ? this.template() : ''
 			if (html?.nodeType === 1) html = html.outerHTML
 			this.DOM.innerHTML = css + html
 
+			// @ events in template()
 			html.match(/@[a-z]+/gi)?.forEach((eAttr) => {
 				const eString = eAttr.replace('@', '')
 				this.DOM.querySelectorAll(`[\\${eAttr}]`).forEach((el) => {
@@ -33,6 +37,7 @@ export default (c) => {
 				})
 			})
 
+			// refs
 			this.refs = {}
 			this.DOM.querySelectorAll('[ref]').forEach((ref) => {
 				ref.on = (type, func) => {
@@ -43,8 +48,10 @@ export default (c) => {
 				this.refs[ref.getAttribute('ref')] = ref
 			})
 
+			// ready()
 			this.ready && this.ready()
 
+			// intersect()
 			if (typeof this.intersect === 'function') {
 				new IntersectionObserver(
 					(entries) =>
@@ -60,12 +67,14 @@ export default (c) => {
 			}
 		}
 
+		// first render
 		connectedCallback() {
 			this.render()
 		}
 
+		// reactive
 		static get observedAttributes() {
-			if (c.reactive) return Object.keys(c.props())
+			if (c.reactive) return props
 		}
 
 		attributeChangedCallback() {
@@ -73,5 +82,6 @@ export default (c) => {
 		}
 	}
 
+	// component
 	!customElements.get(c.component) && customElements.define(c.component, ardi)
 }
