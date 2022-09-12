@@ -28,6 +28,8 @@
 		"url": "https://github.com/jameslovallo/ardi/issues"
 	},
 	"scripts": {
+		"build": "vite build",
+		"dev": "vite",
 		"update": "npm version patch && npm publish"
 	}
 }
