@@ -93,7 +93,8 @@ fetch(`/js/components/${component || 'helloWorld'}.js`)
 				value: `
 ${markup}\n
 <script type=module>\n
-${file.trim()}\n
+${file.trim().replace('export default ', '')}\n
+customElements.define('${markup.match(/[a-z]+-[a-z]+/)[0]}', ${component})\n
 </script>\n
 `,
 			})
