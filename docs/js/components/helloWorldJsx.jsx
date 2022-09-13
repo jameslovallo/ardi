@@ -1,12 +1,11 @@
 import ardi from '../ardi-min'
-import dom from "https://cdn.skypack.dev/jsx-render@1.1.1";
 
 // define JSX renderer in Babel 👉🏻 @jsx dom
 
-class helloWorld extends ardi {
+export default class helloWorld extends ardi {
 	setup() {
 		this.shadow = true
-		
+
 		this.props = {
 			bg: '#def',
 			color: '#000',

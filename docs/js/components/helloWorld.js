@@ -1,6 +1,6 @@
 import ardi from '/js/ardi-min.js'
 
-class helloWorld extends ardi {
+export default class helloWorld extends ardi {
 	setup() {
 		this.shadow = true
 
