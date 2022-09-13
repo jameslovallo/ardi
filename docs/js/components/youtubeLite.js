@@ -3,6 +3,7 @@ import ardi from '/js/ardi-min.js'
 export default class ytLite extends ardi {
 	setup() {
 		this.shadow = true
+		this.props = { vid: String }
 	}
 
 	loadPlayer() {
@@ -51,12 +52,5 @@ export default class ytLite extends ardi {
 		[part=icon-fg] { fill: #fff }
 		[part=button]:hover [part=icon-bg] { fill: red }
 		[ref=player] { grid-area: 1/-1; height: 100%; width: 100%; }`
-	}
-
-	get vid() {
-		return this.getAttribute('vid')
-	}
-	set vid(v) {
-		return this.setAttribute('vid', v)
 	}
 }

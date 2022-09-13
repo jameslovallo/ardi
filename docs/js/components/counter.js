@@ -4,6 +4,11 @@ export default class counter extends ardi {
 	setup() {
 		this.shadow = true
 
+		this.props = {
+			count: (v) => (v ? Number(v) : 0),
+			step: (v) => (v ? Number(v) : 1),
+		}
+
 		this.template = () => /* html */ `
 		<button @click="sub">-</button>
 		<span part="count" ref="count">${this.count}</span>
@@ -43,21 +48,5 @@ export default class counter extends ardi {
 	add() {
 		this.count += this.step
 		this.refs.count.innerHTML = this.count
-	}
-
-	// count
-	get count() {
-		return Number(this.getAttribute('count') || 0)
-	}
-	set count(v) {
-		this.setAttribute('count', v)
-	}
-
-	// step
-	get step() {
-		return Number(this.getAttribute('step') || 1)
-	}
-	set step(v) {
-		this.setAttribute('step', v)
 	}
 }
