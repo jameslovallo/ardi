@@ -47,9 +47,20 @@ switch (component) {
 
 	case 'weather':
 		markup = `<h2>Demo 1</h2>
-<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f"> </weather-demo>
+<weather-demo
+	lat="42.375"
+	lon="-83"
+	place="Detroit"
+	unit="f">
+</weather-demo>
+
 <h2>Demo 2</h2>
-<weather-demo label="Voraussage" lat="52.52" locale="de" lon="13.41" place="Berlin">
+<weather-demo
+ label="Voraussage"
+ lat="52.52"
+ locale="de"
+ lon="13.41"
+ place="Berlin">
 </weather-demo>`
 		break
 
