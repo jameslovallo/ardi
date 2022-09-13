@@ -233,12 +233,17 @@ youtube-demo {
 }
 
 main.docs .toc ul {
+	font-family: JetBrains Mono;
 	list-style: none;
 	padding-left: 1.5rem;
 }
 
 main.docs .toc ul li a:not(:hover) {
 	text-decoration: none;
+}
+
+main.docs .toc a {
+	line-height: 2rem;
 }
 
 @media (min-width: 1024px) {
