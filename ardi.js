@@ -77,7 +77,7 @@ export default class extends HTMLElement {
 		this.render()
 	}
 
-	attributeChangedCallback(prop, ov, nv) {
-		this?.react(prop, ov, nv)
+	attributeChangedCallback() {
+		this.render()
 	}
 }
