@@ -68,7 +68,6 @@ export default class weather extends ardi {
 	}
 
 	fetchForecast() {
-		console.log(this.unit)
 		fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
 		)
