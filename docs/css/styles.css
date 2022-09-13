@@ -13,7 +13,7 @@ body {
 
 @font-face {
 	font-family: 'JetBrains Mono';
-	src: url('/ardi/assets/JetBrainsMono-Regular.woff2') format('woff2');
+	src: url('/ardi/font/JetBrainsMono-Regular.woff2') format('woff2');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
