@@ -14,7 +14,7 @@ switch (component) {
 <counter-demo></counter-demo>
 
 <h2>Demo 2</h2>
-<counter-demo count="-2" step="2"></counter-demo>
+<counter-demo count="-3" step="3"></counter-demo>
 `
 		break
 
@@ -22,21 +22,20 @@ switch (component) {
 		markup = `
 <h2>Demo 1</h2>
 <contact-card
-name="Fatimah Maimunah"
-position="Chief Executive Officer"
-phone="1234567890"
-email="#"
-photo="https://bit.ly/3FIADMM"
->
-</contact-card>
+	name="Fatimah Maimunah"
+	position="Chief Executive Officer"
+	phone="1234567890"
+	email="#"
+	photo="https://bit.ly/3FIADMM"
+></contact-card>
+
 <h2>Demo 2</h2>
 <contact-card
-name="Ashley Fox"
-position="Chief Technical Officer"
-email="#"
-photo="https://bit.ly/3FyBTSk"
->
-</contact-card>
+	name="Ashley Fox"
+	position="Chief Technical Officer"
+	email="#"
+	photo="https://bit.ly/3FyBTSk"
+></contact-card>
 `
 		break
 

@@ -19,7 +19,12 @@ body {
 
 @media (orientation: portrait) {
 	.playground-container {
-		flex-flow: column-reverse;
+		flex-direction: column;
+	}
+}
+@media (orientation: portrait) and (max-width: 768px) {
+	.playground-container {
+		flex-direction: column-reverse;
 	}
 }
 

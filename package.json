@@ -28,6 +28,7 @@
 		"url": "https://github.com/jameslovallo/ardi/issues"
 	},
 	"scripts": {
+		"dev": "cd docs && ntl dev",
 		"update": "npm version patch && npm publish"
 	}
 }
