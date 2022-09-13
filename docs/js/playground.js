@@ -23,7 +23,7 @@ switch (component) {
 	position="Chief Executive Officer"
 	phone="1234567890"
 	email="#"
-	photo="https://bit.ly/3FIADMM"
+	photo="/img/fatimah.png"
 ></contact-card>
 
 <h2>Demo 2</h2>
@@ -31,7 +31,7 @@ switch (component) {
 	name="Ashley Fox"
 	position="Chief Technical Officer"
 	email="#"
-	photo="https://bit.ly/3FyBTSk"
+	photo="/img/ashley.png"
 ></contact-card>`
 		break
 
