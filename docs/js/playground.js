@@ -9,18 +9,15 @@ let markup
 
 switch (component) {
 	case 'counter':
-		markup = `
-<h2>Demo 1</h2>
+		markup = `<h2>Demo 1</h2>
 <counter-demo></counter-demo>
 
 <h2>Demo 2</h2>
-<counter-demo count="-3" step="3"></counter-demo>
-`
+<counter-demo count="-3" step="3"></counter-demo>`
 		break
 
 	case 'contactCard':
-		markup = `
-<h2>Demo 1</h2>
+		markup = `<h2>Demo 1</h2>
 <contact-card
 	name="Fatimah Maimunah"
 	position="Chief Executive Officer"
@@ -35,53 +32,34 @@ switch (component) {
 	position="Chief Technical Officer"
 	email="#"
 	photo="https://bit.ly/3FyBTSk"
-></contact-card>
-`
+></contact-card>`
 		break
 
 	case 'gauge':
-		markup = `
-<h2>Demo 1</h2>
-<contact-card
-name="Fatimah Maimunah"
-position="Chief Executive Officer"
-phone="1234567890"
-email="#"
-photo="https://bit.ly/3FIADMM"
->
-</contact-card>
-<h2>Demo 2</h2>
-<contact-card
-name="Ashley Fox"
-position="Chief Technical Officer"
-email="#"
-photo="https://bit.ly/3FyBTSk"
->
-</contact-card>
-`
+		markup = `<gauge-demo
+	label="MPH"
+	max="120"
+	min="0"
+	step="10"
+	value="90">
+</gauge-demo>`
 		break
 
 	case 'weather':
-		markup = `
-<h2>Demo 1</h2>
+		markup = `<h2>Demo 1</h2>
 <weather-demo lat="42.375" lon="-83" place="Detroit" unit="f"> </weather-demo>
 <h2>Demo 2</h2>
 <weather-demo label="Voraussage" lat="52.52" locale="de" lon="13.41" place="Berlin">
-</weather-demo>
-`
+</weather-demo>`
 		break
 
 	case 'youtubeLite':
-		markup = `
-<h2>Demo 1</h2>
-<youtube-demo vid="O30_s0DKlDk" style="max-width: 500px"></youtube-demo>
-}`
+		markup = `<h2>Demo 1</h2>
+<youtube-demo vid="O30_s0DKlDk" style="max-width: 500px"></youtube-demo>`
 		break
 
 	default:
-		markup = `
-<hello-world name="there" color="#000" bg="#def" ></hello-world>
-`
+		markup = `<hello-world name="there" color="#000" bg="#def" ></hello-world>`
 }
 
 // const ext = component.includes('Jsx') ? 'jsx' : 'js'
@@ -101,13 +79,11 @@ fetch(`/js/components/${component || 'helloWorld'}.js`)
 				scrollBeyondLastLine: false,
 				tabSize: 2,
 				theme: 'vs-dark',
-				value: `${markup}
-<script type=module>
-
-${file.trim()}
-
-</script>
-
+				value: `
+${markup}\n
+<script type=module>\n
+${file.trim()}\n
+</script>\n
 `,
 			})
 
