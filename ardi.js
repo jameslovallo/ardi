@@ -11,7 +11,7 @@ export default class extends HTMLElement {
 					get: () => {
 						const handler = this.props[prop]
 						const value = this.getAttribute(prop)
-						if (typeof handler === 'function' && value) {
+						if (typeof handler === 'function') {
 							return handler(value)
 						} else return value ? value : undefined
 					},

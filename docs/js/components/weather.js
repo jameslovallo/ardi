@@ -4,6 +4,16 @@ export default class weather extends ardi {
 	setup() {
 		this.shadow = true
 		this.forecastData = Array(7).fill('')
+
+		this.props = {
+			breakpoint: (v) => (v ? Number(v) : 500),
+			label: 'forecast',
+			lat: '51.5002',
+			locale: navigator.language,
+			lon: '-0.1262',
+			place: 'London',
+			unit: (v) => (['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius'),
+		}
 	}
 
 	icon(code) {
@@ -58,6 +68,7 @@ export default class weather extends ardi {
 	}
 
 	fetchForecast() {
+		console.log(this.unit)
 		fetch(
 			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
 		)
@@ -199,62 +210,5 @@ export default class weather extends ardi {
 		[part=day_icon]:empty { height: 2em; width: 2em; }
 		[part=day_name]:empty { width: 4em }
 		[part=day_temp] *:empty { display: inline-block; width: 2em; }`
-	}
-
-	// breakpoint
-	get breakpoint() {
-		return Number(this.getAttribute('breakpoint') || 500)
-	}
-	set breakpoint(v) {
-		this.setAttribute('breakpoint', v)
-	}
-
-	// label
-	get label() {
-		return this.getAttribute('label') || 'forecast'
-	}
-	set label(v) {
-		this.setAttribute('label', v)
-	}
-
-	// lat
-	get lat() {
-		return this.getAttribute('lat') || '51.5002'
-	}
-	set lat(v) {
-		this.setAttribute('lat', v)
-	}
-
-	// locale
-	get locale() {
-		return this.getAttribute('locale') || navigator.language
-	}
-	set locale(v) {
-		this.setAttribute('locale', v)
-	}
-
-	// lon
-	get lon() {
-		return this.getAttribute('lon') || '-0.1262'
-	}
-	set lon(v) {
-		this.setAttribute('lon', v)
-	}
-
-	// place
-	get place() {
-		return this.getAttribute('place') || 'London'
-	}
-	set place(v) {
-		this.setAttribute('place', v)
-	}
-
-	// unit
-	get unit() {
-		const unit = this.getAttribute('unit')
-		return ['fahrenheit', 'f'].includes(unit) ? 'fahrenheit' : 'celsius'
-	}
-	set unit(v) {
-		this.setAttribute('unit', v)
 	}
 }

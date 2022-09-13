@@ -4,6 +4,13 @@ class helloWorld extends ardi {
 	setup() {
 		this.shadow = true
 
+		this.props = {
+			bg: '#def',
+			color: '#000',
+			image: '/img/kenobi.svg',
+			name: 'there',
+		}
+
 		this.template = () => /* html */ `
 		<img part="image" src="/img/kenobi.svg">
 		<h2 part="message">Hello ${this.name}</h2>`
@@ -37,38 +44,6 @@ class helloWorld extends ardi {
 			transform: rotate(45deg);
 			width: 1rem;
 		}`
-	}
-
-	// image
-	get image() {
-		return this.getAttribute('image') || '/img/kenobi.svg'
-	}
-	set image(v) {
-		this.setAttribute('image', v)
-	}
-
-	// name
-	get name() {
-		return this.getAttribute('name') || 'there'
-	}
-	set name(v) {
-		this.setAttribute('name', v)
-	}
-
-	// bg
-	get bg() {
-		return this.getAttribute('bg') || '#def'
-	}
-	set bg(v) {
-		this.setAttribute('bg', v)
-	}
-
-	// color
-	get color() {
-		return this.getAttribute('color') || '#000'
-	}
-	set color(v) {
-		this.setAttribute('color', v)
 	}
 
 	// reactive

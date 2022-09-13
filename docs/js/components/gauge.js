@@ -3,6 +3,14 @@ import ardi from '/js/ardi-min.js'
 export default class gauge extends ardi {
 	setup() {
 		this.shadow = true
+
+		this.props = {
+			label: String,
+			max: (v) => (v ? Number(v) : 120),
+			min: (v) => (v ? Number(v) : 0),
+			step: (v) => (v ? Number(v) : 10),
+			value: (v) => (v ? Number(v) : 90),
+		}
 	}
 
 	deg(percentage) {
@@ -99,45 +107,5 @@ export default class gauge extends ardi {
 			position: absolute;
 			width: 100%;
 		}`
-	}
-
-	// label
-	get label() {
-		return this.getAttribute('label')
-	}
-	set label(v) {
-		this.setAttribute('label', v)
-	}
-
-	// max
-	get max() {
-		return Number(this.getAttribute('max') || 120)
-	}
-	set max(v) {
-		this.setAttribute('max', v)
-	}
-
-	// min
-	get min() {
-		return Number(this.getAttribute('min') || 0)
-	}
-	set min(v) {
-		this.setAttribute('min', v)
-	}
-
-	// step
-	get step() {
-		return Number(this.getAttribute('step') || 10)
-	}
-	set step(v) {
-		this.setAttribute('step', v)
-	}
-
-	// value
-	get value() {
-		return Number(this.getAttribute('value') || 90)
-	}
-	set value(v) {
-		this.setAttribute('value', v)
 	}
 }
