@@ -1,7 +1,7 @@
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
-import ardi from '//unpkg.com/ardi@latest'
+import ardi from '/js/ardi-min.js'
 
-class helloWorld extends ardi {
+export class helloWorld extends ardi {
 	setup() {
 		this.shadow = true
 

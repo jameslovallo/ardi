@@ -1,6 +1,6 @@
-import ardi from '//unpkg.com/ardi'
+import ardi from '/js/ardi-min.js'
 
-export class contactCard extends ardi {
+export default class contactCard extends ardi {
 	setup() {
 		this.shadow = true
 

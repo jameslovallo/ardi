@@ -1,4 +1,4 @@
-import ardi from '//unpkg.com/ardi'
+import ardi from '/js/ardi-min.js'
 
 class helloWorld extends ardi {
 	setup() {

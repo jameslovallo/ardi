@@ -1,6 +1,6 @@
-import ardi from '//unpkg.com/ardi'
+import ardi from '/js/ardi-min.js'
 
-class counter extends ardi {
+export default class counter extends ardi {
 	setup() {
 		this.shadow = true
 

@@ -1,4 +1,4 @@
-import ardi from '//unpkg.com/ardi@latest'
+import ardi from '../ardi-min'
 import dom from "https://cdn.skypack.dev/jsx-render@1.1.1";
 
 // define JSX renderer in Babel 👉🏻 @jsx dom
