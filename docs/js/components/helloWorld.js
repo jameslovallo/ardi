@@ -76,5 +76,3 @@ class helloWorld extends ardi {
 		return ['image', 'name', 'color', 'bg']
 	}
 }
-
-customElements.define('hello-world', helloWorld)

@@ -258,5 +258,3 @@ export default class weather extends ardi {
 		this.setAttribute('unit', v)
 	}
 }
-
-customElements.define('weather-demo', weather)

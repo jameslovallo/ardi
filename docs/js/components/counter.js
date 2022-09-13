@@ -61,5 +61,3 @@ export default class counter extends ardi {
 		this.setAttribute('step', v)
 	}
 }
-
-customElements.define('counter-demo', counter)

@@ -1,9 +1,24 @@
 export default class extends HTMLElement {
 	constructor() {
 		super()
-		// shadow & DOM
 		this.setup()
+		// shadow & DOM
 		this.DOM = this.shadow ? this.attachShadow({ mode: 'open' }) : this
+
+		if (this.props) {
+			Object.keys(this.props).forEach((prop) => {
+				Object.defineProperty(this, prop, {
+					get: () => {
+						const handler = this.props[prop]
+						const value = this.getAttribute(prop)
+						if (typeof handler === 'function' && value) {
+							return handler(value)
+						} else return value ? value : undefined
+					},
+					set: (v) => this.setAttribute(prop, v),
+				})
+			})
+		}
 	}
 
 	render() {
@@ -62,7 +77,7 @@ export default class extends HTMLElement {
 		this.render()
 	}
 
-	attributeChangedCallback() {
-		this.render()
+	attributeChangedCallback(prop, ov, nv) {
+		this?.react(prop, ov, nv)
 	}
 }

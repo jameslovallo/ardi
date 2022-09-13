@@ -60,5 +60,3 @@ export default class ytLite extends ardi {
 		return this.setAttribute('vid', v)
 	}
 }
-
-customElements.define('youtube-demo', ytLite)

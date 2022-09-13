@@ -4,6 +4,14 @@ export default class contactCard extends ardi {
 	setup() {
 		this.shadow = true
 
+		this.props = {
+			email: String,
+			name: String,
+			phone: String,
+			photo: String,
+			position: String,
+		}
+
 		this.icons = {
 			email: /* svg */ `
 			<img
@@ -20,14 +28,13 @@ export default class contactCard extends ardi {
 		}
 	}
 
-	phoneUrl(num) {
-		return 'tel:' + num.match(/[0-9]+/g).join('')
-	}
-
 	phoneEl() {
 		return this.phone
 			? /* html */ `
-			<a @click="phoneClick" href="${this.phoneUrl(this.phone)}">
+			<a
+				@click="phoneClick"
+				href="'tel:' + ${this.phone}.match(/[0-9]+/g).join('')}"
+			>
 				${this.icons.phone}
 			</a>`
 			: ''
@@ -55,8 +62,8 @@ export default class contactCard extends ardi {
 		return /* html */ `
 		<img part="photo" src="${this.photo}">
 		<div part="details">
-			<b>${this.name}</b>
-			<small>${this.position}</small>
+			${this.name ? `<b>${this.name}</b>` : ''}
+			${this.position ? `<small>${this.position}</small>` : ''}
 		</div>
 		<div part="contact">
 			${this.phoneEl()}
@@ -103,46 +110,4 @@ export default class contactCard extends ardi {
 			pointer-events: none;
 		}`
 	}
-
-	// name
-	get name() {
-		return this.getAttribute('name')
-	}
-	set name(v) {
-		this.setAttribute('name', v)
-	}
-
-	// position
-	get position() {
-		return this.getAttribute('position')
-	}
-	set position(v) {
-		this.setAttribute('position', v)
-	}
-
-	// photo
-	get photo() {
-		return this.getAttribute('photo')
-	}
-	set photo(v) {
-		this.setAttribute('photo', v)
-	}
-
-	// phone
-	get phone() {
-		return this.getAttribute('phone')
-	}
-	set phone(v) {
-		this.setAttribute('phone', v)
-	}
-
-	// email
-	get email() {
-		return this.getAttribute('email')
-	}
-	set email(v) {
-		this.setAttribute('email', v)
-	}
 }
-
-customElements.define('contact-card', contactCard)

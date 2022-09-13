@@ -141,5 +141,3 @@ export default class gauge extends ardi {
 		this.setAttribute('value', v)
 	}
 }
-
-customElements.define('gauge-demo', gauge)
