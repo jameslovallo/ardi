@@ -32,19 +32,22 @@
 						<li>
 							<a href="#api">API</a>
 							<ul>
-								<!-- <li><a href="#component">component</a></li> -->
-								<li><a href="#shadow">shadow?</a></li>
+								<li><a href="#shadow">setup</a></li>
+								<ul>
+									<li><a href="#shadow">shadow</a></li>
+									<li><a href="#props">props</a></li>
+								</ul>
 								<li>
 									<a href="#template">template()</a>
 									<ul>
-										<li><a href="#refs">[ref]</a></li>
-										<li><a href="#slots">&lt;slot&gt;</a></li>
+										<li><a href="#refs">refs</a></li>
+										<li><a href="#slots">slots</a></li>
 										<li><a href="#events">@events</a></li>
 									</ul>
 								</li>
 								<li><a href="#styles">styles()</a></li>
 								<ul>
-									<li><a href="#parts">[parts]</a></li>
+									<li><a href="#parts">parts</a></li>
 								</ul>
 								<li><a href="#ready">ready()</a></li>
 								<li><a href="#intersect">intersect(ratio)</a></li>
@@ -54,8 +57,8 @@
 						<li>
 							<a href="#reserved">Reserved Keys</a>
 							<ul>
-								<li><a href="#this-dom">&lt;this.DOM&gt;</a></li>
-								<li><a href="#this-refs">this.refs[&lt;ref&gt;]</a></li>
+								<li><a href="#this-dom">this.DOM</a></li>
+								<li><a href="#this-refs">this.refs</a></li>
 								<li><a href="#this-render">this.render()</a></li>
 							</ul>
 						</li>
@@ -141,24 +144,9 @@ ardi(gauge)
 				</code>
 			</pre>
 
-			<hr id="component" />
-			<h3>component</h3>
-			<p>
-				Give your new component a name. It must follow the
-				<a
-					href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#high-level_view"
-					>custom element naming convention</a
-				>.
-			</p>
-
-			<pre>
-				<p class="code-label">javascript</p>
-				<code class="language-javascript">
-export default {
-	component: 'gauge-demo',
-}
-				</code>
-			</pre>
+			<hr id="setup" />
+			<h2>setup</h2>
+			<p>The setup function is called inside of the custom element's constructor.</p>
 
 			<hr id="shadow" />
 			<h3>shadow</h3>
