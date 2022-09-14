@@ -95,7 +95,7 @@ export default class contactCard extends ardi {
 			text-decoration: none;
 		}
 		[part=contact] svg {
-			color: #00B8D4;
+			color: #00E5FF;
 			display: block;
 			width: 20px;
 			pointer-events: none;

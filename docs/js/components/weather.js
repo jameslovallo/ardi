@@ -171,8 +171,8 @@ export default class weather extends ardi {
 			text-align: center;
 			width: 2em;
 		}
-		[part=day_min] { color: var(--min, dodgerblue) }
-		[part=day_max] { color: var(--max, red) }
+		[part=day_min] { color: var(--min, #00B0FF) }
+		[part=day_max] { color: var(--max, #FF1744) }
 		/* small */
 		[part=forecast].small {
 			display: block;

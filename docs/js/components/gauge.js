@@ -69,7 +69,7 @@ export default class gauge extends ardi {
 			width: 10%;
 		}
 		[part=dial]:before {
-			background: var(--needle, #f00);
+			background: var(--needle, #FF1744);
 			bottom: 99%;
 			content: '';
 			display: block;
