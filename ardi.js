@@ -9,11 +9,11 @@ export default class extends HTMLElement {
 			Object.keys(this.props).forEach((prop) => {
 				Object.defineProperty(this, prop, {
 					get: () => {
-						const handler = this.props[prop]
-						const value = this.getAttribute(prop)
-						if (typeof handler === 'function') {
-							return handler(value)
-						} else return value ? value : undefined
+						const def = this.props[prop]
+						const val = this.getAttribute(prop)
+						if (typeof def === 'function') {
+							return def(val)
+						} else return val ? val : def
 					},
 					set: (v) => this.setAttribute(prop, v),
 				})
