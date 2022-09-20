@@ -21,22 +21,27 @@
 
 	<main>
 		<div style="display: flex; gap: var(--gap); align-items: center">
-			<img src="/img/ardi.svg" width="100" style="animation: float 10s linear infinite" />
+			<img
+				src="/img/ardi.svg"
+				width="100"
+				style="animation: float 10s linear infinite"
+			/>
 			<div style="max-width: 70ch">
 				<h1 style="margin: 0">Ardi</h1>
 				<p>
 					<b style="color: var(--primary)">Welcome to the Weightless Web.</b>
-					Ardi is a tiny (but fierce) web component framework, weighing just 1kb uncompressed.
+					Ardi is a tiny (but fierce) web component framework, weighing just 1kb
+					uncompressed.
 				</p>
 				<h2>Our Mission</h2>
 				<ol>
 					<li>
-						Make it easy to create powerful web components that work everywhere, including React,
-						Vue, Svelte, Astro, Angular, etc.
+						Make it easy to create powerful web components that work everywhere,
+						including React, Vue, Svelte, Astro, Angular, etc.
 					</li>
 					<li>
-						Provide great DX and performance without virtual dom, JSX, compilers, or any other
-						magic.
+						Provide great DX and performance without virtual dom, JSX,
+						compilers, or any other magic.
 						<span style="color: var(--primary)">#usetheplatform</span>
 					</li>
 				</ol>
@@ -52,7 +57,10 @@
 			<div class="feature-card">
 				<h3>It's fast, yo</h3>
 				<img src="/img/fast.svg" alt="" />
-				<p>Like, really, really, really fast. Click the link below to see if Google's impressed.</p>
+				<p>
+					Like, really, really, really fast. Click the link below to see if
+					Google's impressed.
+				</p>
 				<a
 					href="https://developers.google.com/speed/pagespeed/insights/?url=https://ardi.netlify.app/"
 					target="_blank"
@@ -64,14 +72,20 @@
 			<div class="feature-card">
 				<h3>It's familiar</h3>
 				<img src="/img/familiar.svg" alt="" />
-				<p>The API is seriously simple, and you can even bring your own templating library</p>
+				<p>
+					The API is seriously simple, and you can even bring your own
+					templating library
+				</p>
 				<a href="/docs/template/"> Learn more in the docs </a>
 			</div>
 
 			<div class="feature-card">
 				<h3>It's portable</h3>
 				<img src="/img/portable.svg" alt="" />
-				<p>Use your Ardi components with React, Vue, Svelte, Angular: you name it.</p>
+				<p>
+					Use your Ardi components with React, Vue, Svelte, Angular: you name
+					it.
+				</p>
 				<a href="/">See our framework demos</a>
 			</div>
 		</div>
@@ -85,17 +99,24 @@
 		<div class="demos">
 			<div class="demo-header">
 				<h3>Counter Demo</h3>
-				<a href="/playground.html?component=counter"> Open in the playground </a>
+				<a href="/playground.html?component=counter">
+					Open in the playground
+				</a>
 			</div>
 
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>How to read and modify <code>props</code> with getters and setters.</li>
+				<li>
+					How to read and modify <code>props</code> with getters and setters.
+				</li>
 				<li>
 					Vue-like <code>@event</code> assignment in the
 					<code>template()</code>
 				</li>
-				<li>How to use <code>this.refs</code> to efficiently update the <code>template()</code></li>
+				<li>
+					How to use <code>this.refs</code> to efficiently update the
+					<code>template()</code>
+				</li>
 			</ol>
 
 			<div class="container" style="gap: 1.5rem">
@@ -108,12 +129,14 @@
 
 			<div class="demo-header">
 				<h3>Contact Card Demo</h3>
-				<a href="/playground.html?component=contactCard"> Open in the playground </a>
+				<a href="/playground.html?component=contactCard">
+					Open in the playground
+				</a>
 			</div>
 
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>How to read and modify <code>props</code> with getters and setters</li>
+				<li>How to define reactive <code>props</code></li>
 				<li>
 					Vue-like <code>@event</code> assignment in the
 					<code>template()</code>
@@ -151,41 +174,53 @@
 
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>How to read and modify <code>props</code> with getters and setters</li>
+				<li>How to define reactive <code>props</code></li>
 				<li>
-					How to use <code>intersect(ratio)</code> to apply an effect after the component is 50%
-					scrolled into view
+					How to use <code>intersect(ratio)</code> to apply an effect after the
+					component is scrolled into view
 				</li>
-				<li>How to use <code>this.refs</code> to efficiently update the <code>template()</code></li>
+				<li>
+					How to use <code>this.refs</code> to efficiently update the
+					<code>template()</code>
+				</li>
 			</ol>
 
-			<gauge-demo label="MPH" max="120" min="0" step="10" value="90"> </gauge-demo>
+			<gauge-demo label="MPH" max="120" min="0" step="10" value="90">
+			</gauge-demo>
 
 			<hr />
 
 			<div class="demo-header">
 				<h3>Weather Demo</h3>
-				<a href="/playground.html?component=weather"> Open in the playground </a>
+				<a href="/playground.html?component=weather">
+					Open in the playground
+				</a>
 			</div>
 
 			<p>This component demonstrates:</p>
 			<ol>
-				<li>How to read and modify <code>props</code> with getters and setters</li>
+				<li>How to define reactive <code>props</code></li>
 				<li>
-					How to use <code>intersect(ratio)</code> to fetch data and apply an effect after the
-					component is 20% scrolled into view
+					How to use <code>intersect(ratio)</code> to fetch data and apply an
+					effect after the component is scrolled into view
 				</li>
-				<li>How to use <code>this.refs</code> to efficiently update the <code>template()</code></li>
-				<li>How to use JS and CSS variables within CSS</li>
+				<li>
+					How to use <code>this.refs</code> to efficiently update the
+					<code>template()</code>
+				</li>
+				<li>How to use JS and CSS variables within <code>styles()</code></li>
 			</ol>
 
-			<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f"> </weather-demo>
+			<weather-demo lat="42.375" lon="-83" place="Detroit" unit="f">
+			</weather-demo>
 
 			<hr />
 
 			<div class="demo-header">
 				<h3>YouTube Lite Demo</h3>
-				<a href="/playground.html?component=youtubeLite"> Open in the playground </a>
+				<a href="/playground.html?component=youtubeLite">
+					Open in the playground
+				</a>
 			</div>
 
 			<p>This component demonstrates:</p>
@@ -194,7 +229,10 @@
 					Vue-like <code>@event</code> assignment in the
 					<code>template()</code>
 				</li>
-				<li>How to use <code>this.refs</code> to efficiently update the <code>template()</code></li>
+				<li>
+					How to use <code>this.refs</code> to efficiently update the
+					<code>template()</code>
+				</li>
 			</ol>
 
 			<youtube-demo vid="O30_s0DKlDk"></youtube-demo>

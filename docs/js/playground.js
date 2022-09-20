@@ -3,7 +3,8 @@ import { debounce } from 'https://cdn.skypack.dev/debounce@1.2.1'
 
 const playground = document.getElementById('playground')
 const preview = document.getElementById('preview')
-const component = new URLSearchParams(location.search).get('component')
+const component =
+	new URLSearchParams(location.search).get('component') || 'helloWorld'
 
 let markup
 
@@ -75,7 +76,7 @@ switch (component) {
 
 // const ext = component.includes('Jsx') ? 'jsx' : 'js'
 
-fetch(`/js/components/${component || 'helloWorld'}.js`)
+fetch(`/js/components/${component}.js`)
 	.then((res) => res.text())
 	.then((file) => {
 		loader.init().then((monaco) => {
@@ -100,7 +101,8 @@ customElements.define('${markup.match(/[a-z]+-[a-z]+/)[0]}', ${component})\n
 			})
 
 			const setPreview = () => {
-				preview.srcdoc = '<style>:root{font-family: sans-serif}</style>' + editor.getValue()
+				preview.srcdoc =
+					'<style>:root{font-family: sans-serif}</style>' + editor.getValue()
 			}
 
 			setPreview()

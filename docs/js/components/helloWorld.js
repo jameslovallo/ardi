@@ -46,7 +46,7 @@ export default class helloWorld extends ardi {
 		}`
 	}
 
-	// reactive
+	// make it reactive
 	static get observedAttributes() {
 		return ['image', 'name', 'color', 'bg']
 	}

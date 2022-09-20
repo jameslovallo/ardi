@@ -1,6 +1,6 @@
 import ardi from '/js/ardi-min.js'
 
-export default class ytLite extends ardi {
+export default class youtubeLite extends ardi {
 	setup() {
 		this.shadow = true
 		this.props = { vid: String }
