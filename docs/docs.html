@@ -66,8 +66,8 @@
 				</div>
 			</aside>
 
-			<br id="installation" />
-			<h2>Installation</h2>
+			<br />
+			<h2 id="installation">Installation</h2>
 
 			<h3>Option 1: As a package</h3>
 
@@ -83,9 +83,7 @@ npm i ardi
 				<code class="language-javascript">
 import ardi from 'ardi';
 
-ardi({
-	// your component here
-})
+class YourComponent extends ardi { ... }
 				</code>
 			</pre>
 
@@ -97,59 +95,37 @@ ardi({
 &lt;script type="module"&gt;
 	import ardi from '//unpkg.com';
 
-	ardi({
-		// your component here
-	})
+	class YourComponent extends ardi { ... }
 &lt;/script&gt;
 				</code>
 			</pre>
 
-			<hr id="api" class="large" />
-			<h2>API</h2>
+			<hr class="large" />
+			<h2 id="api">API</h2>
 
 			<p>
-				After you've imported Ardi, pass it an object with any or all of the following keys. You can
-				assign custom functions or data to any other key in your object and access it using
-				<code>this.key_name</code>. Ardi has three reserved keys, <a href="#this-dom">this.DOM</a>,
-				<a href="#this-refs">this.refs</a>, and <a href="#this-render">this.render()</a>, which will
-				be explained in greater detail <a href="#reserved">below</a>.
-			</p>
-
-			<br />
-
-			<h3>Example: <code>&lt;gauge-demo&gt;</code></h3>
-
-			<p>
-				Below is an example demonstrating how each of the above keys was used to create the demo
-				<code>&lt;gauge-demo&gt;</code> component. Other functions are used and referenced in the
-				code snippets below. You can review the full code
-				<a href="https://jameslovallo.github.io/playground.html?component=gauge">
+				Below is an example demonstrating how each of the above keys was used to
+				create the demo
+				<code>&lt;gauge-demo&gt;</code> component. Other functions are used and
+				referenced in the code snippets below. You can review the full code
+				<a
+					href="https://jameslovallo.github.io/playground.html?component=gauge"
+				>
 					in the playground</a
-				>.
+				>. Ardi has three reserved keys, <a href="#this-dom">this.DOM</a>,
+				<a href="#this-refs">this.refs</a>, and
+				<a href="#this-render">this.render()</a>, which will be explained in
+				greater detail <a href="#reserved">below</a>.
 			</p>
 
+			<hr />
+			<h3 id="setup">setup()</h3>
 			<p>
-				In this example, the <code>&lt;gauge-demo&gt;</code> component is exported from a separate
-				file called <code>gauge.js</code>. To load components from a separate file, you can follow
-				this pattern.
+				The setup function is called inside of the custom element's constructor.
+				This is where you should configure your component's props and define any
+				static data used by your component.
 			</p>
-
-			<pre>
-				<p class="code-label">javascript</p>
-				<code class="language-javascript">
-import ardi from 'ardi';
-import gauge from 'gauge'
-
-ardi(gauge)
-				</code>
-			</pre>
-
-			<hr id="setup" />
-			<h2>setup</h2>
-			<p>The setup function is called inside of the custom element's constructor.</p>
-
-			<hr id="shadow" />
-			<h3>shadow</h3>
+			<h4 id="shadow">shadow</h4>
 			<p>
 				Enable or disable the
 				<a
@@ -157,62 +133,47 @@ ardi(gauge)
 					rel="nofollow"
 					>Shadow DOM</a
 				>, which scopes your css and allows you to use
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement" rel="nofollow"
+				<a
+					href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement"
+					rel="nofollow"
 					>&lt;slot&gt; tags</a
 				>
 				in your template.
 			</p>
 
-			<pre>
-				<p class="code-label">javascript</p>
-				<code class="language-javascript">
-export default {
-	shadow: true,
-}
-				</code>
-			</pre>
-
-			<hr id="props" />
-			<h3>props()</h3>
+			<h4 id="props">props</h4>
 			<p>
-				The props function gets data from component attributes and assigns it to
-				<code>this</code> so you can use it elsewhere in your component. For each prop, you can
-				assign a setter function or a default value. Prop setters can be built-in functions (like
-				<code>String</code>, <code>Number</code>, or <code>JSON.parse</code>), arrow functions, or
-				another function in your object.
+				For each prop, you can assign a setter function or a default value. Prop
+				setters can be built-in functions (like <code>String</code>,
+				<code>Number</code>, or <code>JSON.parse</code>), arrow functions, or
+				another function in your component's class.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-export default {
+setup() {
+	this.shadow = true
 
-	props() {
-		return {
-			// 1. get value of "label" attribute
-			// 2. provide a fallback value
-			label: 'MPH',
-
-			// 1. get value of "value" attribute
-			// 2. convert the value to a Number type
-			value: Number,
-
-			// 1. get value of attribute
-			// 2. convert the value to a Number type
-			// 3. provide a fallback value
-			max: (v) => (v ? Number(v) : 120),
-			min: (v) => (v ? Number(v) : 0),
-			step: (v) => (v ? Number(v) : 10),
-		}
-	},
-
+	this.props = {
+		// provide default value
+		label: 'MPH',
+		// transform attribute value to number, fall back to default value
+		max: (v) => (v ? Number(v) : 120),
+		min: (v) => (v ? Number(v) : 0),
+		step: (v) => (v ? Number(v) : 10),
+		value: (v) => (v ? Number(v) : 90),
+	}
 }
 				</code>
 			</pre>
 
-			<hr id="template" />
-			<h3>template()</h3>
-			<p>Use the template function to return a template literal or an HTML element.</p>
+			<hr />
+			<h3 id="template">template()</h3>
+			<p>
+				Use the template function to return a template literal or an HTML
+				element.
+			</p>
 
 			<h4 id="slots">slots</h4>
 			<p>
@@ -222,10 +183,13 @@ export default {
 					rel="nofollow"
 					>Shadow DOM</a
 				>, you can use
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement" rel="nofollow"
+				<a
+					href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement"
+					rel="nofollow"
 					>&lt;slot&gt; tags</a
 				>
-				inside your template. You can use the default slot or multiple named slots.
+				inside your template. You can use the default slot or multiple named
+				slots.
 			</p>
 
 			<h4 id="parts">parts</h4>
@@ -236,233 +200,204 @@ export default {
 					rel="nofollow"
 					>part attributes</a
 				>
-				allow you to expose an element for styling by CSS rules outside of the component's Shadow
-				DOM using the <code>::part()</code> pseudo-selector.
+				allow you to expose an element for styling by CSS rules outside of the
+				component's Shadow DOM using the <code>::part()</code> pseudo-selector.
 			</p>
 
 			<h4 id="refs">refs</h4>
 			<p>
 				Any element with a <code>ref</code> attribute will be added to
-				<a href="#this-refs">this.refs</a>, i.e. <code>this.refs.dial</code> in the example below.
+				<a href="#this-refs">this.refs</a>, i.e. <code>this.refs.dial</code> in
+				the example below.
 			</p>
 
 			<h4 id="events">events</h4>
 			<p>
-				You can add Vue-style <code>@event</code> attributes to any markup to handle events using
-				the format <code>@event_name="event_handler"</code>, where <code>event_name</code> is
-				<a href="https://developer.mozilla.org/en-US/docs/Web/API/Element#events" rel="nofollow">
+				You can add Vue-style <code>@event</code> attributes to any markup to
+				handle events using the format <code>@event_name="event_handler"</code>,
+				where <code>event_name</code> is
+				<a
+					href="https://developer.mozilla.org/en-US/docs/Web/API/Element#events"
+					rel="nofollow"
+				>
 					any valid event name</a
 				>
-				and <code>event_handler</code> is the key of any top-level function in the object. The
-				<code>e</code> event object is automatically applied to the function so you can modify the
-				default event behavior, i.e. to <code>preventDefault()</code>.
+				and <code>event_handler</code> is the key of any top-level function in
+				the object. The <code>e</code> event object is automatically applied to
+				the function so you can modify the default event behavior, i.e. to
+				<code>preventDefault()</code>.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-export default {
-
 	template() {
 		return /* html */ `
-
-			&lt;!-- markup from render function --&gt;
-			${this.numbers()}
-
-			&lt;!-- element with part and ref attributes  --&gt;
-			&lt;div part="dial" ref="dial"&gt;&lt;/div&gt;
-
-			&lt;!-- named slot with default content  --&gt;
-			&lt;slot name="label" part="label"&gt;${this.label}&lt;/slot&gt;
-
-		`
-	},
-	
-	numbers() {
-		let html = ''
-		for (let i = this.min; i &lt;= this.max; i += this.step) {
-			const percentage = i / this.max
-			const deg = this.deg(percentage)
-			html += /* html */ `
-
-				&lt;!-- element with event handler and part attribute  --&gt;
-				&lt;div
-					@click="handleNumberClick"
-					part="number"
-					style="transform: rotate(${deg}deg)"
-				&gt;
-					&lt;i style="transform: rotate(${-deg}deg)"&gt;${i}&lt;/i&gt;
-				&lt;/div&gt;
-				
-			`
-		}
-		return html
-	},
-
-}
+		${this.numbers()}
+		&lt;div part="dial" ref="dial"&gt;&lt;/div&gt;
+		&lt;slot name="label" part="label"&gt;${this.label}&lt;/slot&gt;`
+	}
 				</code>
 			</pre>
 			<p class="code-caption">
-				See that <code>/* html */</code> comment after the return? With the excellent
-				<a href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html">
+				See that <code>/* html */</code> comment after the return? With the
+				excellent
+				<a
+					href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html"
+				>
 					es6-string-html</a
 				>
-				extension you can enable HTML and CSS syntax highlighting inside of template literals.
+				extension you can enable HTML and CSS syntax highlighting inside of
+				template literals.
 			</p>
 
-			<hr id="styles" />
-			<h3>styles()</h3>
+			<hr />
+			<h3 id="styles">styles()</h3>
 			<p>
-				Use the styles function to return a template literal containing your component's styles.
-				This only works with vanilla CSS, but you are free to use JS variables and functions
-				anywhere inside your CSS.
+				Use the styles function to return a template literal containing your
+				component's styles. This only works with vanilla CSS, but you are free
+				to use JS variables and functions anywhere inside your CSS.
 			</p>
 			<p>Notice the following best-practices in the example below:</p>
 			<ul>
 				<li>
-					Props, functions and data can be used inside of CSS. In this example, CSS values are being
-					set from a prop value if it exists.
+					Props, functions and data can be used inside of CSS. In this example,
+					CSS values are being set from a prop value if it exists.
 				</li>
 				<li>
-					CSS variables (with fallback values) are used to make it easier to use external CSS to
+					CSS variables (with fallback values) are used to make it easier to use
+					external CSS to style elements inside the Shadow DOM.
+				</li>
+				<li>
+					Part attributes are used to make it easier to use external CSS to
 					style elements inside the Shadow DOM.
-				</li>
-				<li>
-					Part attributes are used to make it easier to use external CSS to style elements inside
-					the Shadow DOM.
 				</li>
 			</ul>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-export default {
+styles() {
+	return /* css */ `
+	:host {
+		align-items: center;
+		background: ${this.bg || 'var(--background, #000)'};
+		border: 2px solid rgba(125,125,125,.5);
+		border-radius: 50%;
+		color: ${this.color || 'var(--color, #fff)'};
+		display: flex;
+		height: 300px;
+		justify-content: center;
+		overflow: hidden;
+		position: relative;
+		width: 300px;
+	}
 
-	styles() {
-		return /* css */ `
+	[part=dial] {
+		background: ${this['dial-color'] || 'var(--dial-color, #333)'};
+		border-radius: 50%;
+		height: 10%;
+		position: relative;
+		transform: rotate(-120deg);
+		transition: transform ${this['dial-speed'] || 'var(--dial-speed, 1s)'};
+		width: 10%;
+	}
 
-			:host {
-				align-items: center;
-				background: ${this.bg || 'var(--background, #000)'};
-				border: 2px solid rgba(125,125,125,.5);
-				border-radius: 50%;
-				color: ${this.color || 'var(--color, #fff)'};
-				display: flex;
-				height: 300px;
-				justify-content: center;
-				overflow: hidden;
-				position: relative;
-				width: 300px;
-			}
-
-			[part=dial] {
-				background: ${this['dial-color'] || 'var(--dial-color, #333)'};
-				border-radius: 50%;
-				height: 10%;
-				position: relative;
-				transform: rotate(-120deg);
-				transition: transform ${this['dial-speed'] || 'var(--dial-speed, 1s)'};
-				width: 10%;
-			}
-
-			/* truncated for readability */
-
-		`
-	},
-
+	/* truncated for readability */`
 }
 				</code>
 			</pre>
 			<p class="code-caption">
-				See that <code>/* css */</code> comment after the return? With the excellent
-				<a href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html">
+				See that <code>/* css */</code> comment after the return? With the
+				excellent
+				<a
+					href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html"
+				>
 					es6-string-html</a
 				>
-				extension you can enable HTML and CSS syntax highlighting inside of template literals.
+				extension you can enable HTML and CSS syntax highlighting inside of
+				template literals.
 			</p>
 
-			<hr id="ready" />
-			<h3>ready()</h3>
+			<hr />
+			<h3 id="ready">ready()</h3>
 			<p>
-				Use the <code>ready</code> function to handle events, effects, etc after the template is
-				rendered. You can also assign events to any <code>ref</code> in the template using that
-				ref's <code>on</code> method, which can be very useful for handling complex events. The
-				<code>e</code> event object is automatically applied to the function so you can modify the
-				default event behavior, i.e. <code>e.preventDefault()</code>.
+				Use the <code>ready</code> function to handle events, effects, etc after
+				the template is rendered. You can also assign events to any
+				<code>ref</code> in the template using that ref's
+				<code>on</code> method, which can be very useful for handling complex
+				events. The <code>e</code> event object is automatically applied to the
+				function so you can modify the default event behavior, i.e.
+				<code>e.preventDefault()</code>.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-export default {
-
-	handleClick()
-
-	ready() {
-		alert(`${this.component} is loaded`)
-		this.refs.dial.on('click', e => this.handleClick(e))
-	},
-
+ready() {
+	alert(`${this.component} is loaded`)
 }
 				</code>
 			</pre>
 
-			<hr id="intersect" />
-			<h3>intersect(ratio)</h3>
+			<hr />
+			<h3 id="intersect">intersect(ratio)</h3>
 			<p>
-				Use the <code>intersect</code> function to create effects when the component is scrolled
-				into view. You may use the <code>ratio</code> parameter to determine how much of the
-				component should be visible before you run your effects. Ardi is optimized so that the
-				intersection observer is only created if you use this key, so exclude it if you do not
-				intend to use it. Also note that the default intersection observer is rootless and therefore
-				is not appropriate for every scenario. If you need to, you can always create your own
+				Use the <code>intersect</code> function to create effects when the
+				component is scrolled into view. You may use the
+				<code>ratio</code> parameter to determine how much of the component
+				should be visible before you run your effects. Ardi is optimized so that
+				the intersection observer is only created if you use this key, so
+				exclude it if you do not intend to use it. Also note that the default
+				intersection observer is rootless and therefore is not appropriate for
+				every scenario. If you need to, you can always create your own
 				intersection observer elsewhere in your component.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-export default {
-
-	intersect(ratio) {
-		if (ratio > 0.3) {
-			const val = this.deg(this.value / this.max)
-			this.refs.dial.style.transform = `rotate(${val}deg)`
-		}
-	},
-
+intersect(ratio) {
+	if (ratio > 0.3) {
+		const val = this.deg(this.value / this.max)
+		this.refs.dial.style.transform = `rotate(${val}deg)`
+	}
 }
 				</code>
 			</pre>
 
-			<hr id="reserved" class="large" />
+			<hr class="large" />
 
-			<h2>Reserved Keys</h2>
+			<h2 id="reserved">Reserved Keys</h2>
 			<h3 id="this-refs">this.refs</h3>
 			<p>
-				<code>this.refs</code> is used to conveniently reference elements in the component's markup
-				and assign event listeners or handle effects. As mentioned previously,
-				<code>this.refs</code> is an object containing every element that has a ref attribute. Each
-				element is referenced by that attribute's value, i.e. <code>this.refs.dial</code>, and has a
-				special <code>on()</code> function that can be used to assign event listeners to that
-				element.
+				<code>this.refs</code> is used to conveniently reference elements in the
+				component's markup and assign event listeners or handle effects. As
+				mentioned previously, <code>this.refs</code> is an object containing
+				every element that has a ref attribute. Each element is referenced by
+				that attribute's value, i.e. <code>this.refs.dial</code>, and has a
+				special <code>on()</code> function that can be used to assign event
+				listeners to that element.
 			</p>
 
-			<hr id="this-dom" />
-			<h3>this.DOM</h3>
+			<hr />
+			<h3 id="this-dom">this.DOM</h3>
 			<p>
-				<code>this.DOM</code> will always reference the component's render target, whether that is
-				the Shadow Root or the component's <code>innerHTML</code>.
+				<code>this.DOM</code> will always reference the component's render
+				target, whether that is the Shadow Root or the component's
+				<code>innerHTML</code>.
 			</p>
 
-			<hr id="this-render" />
-			<h3>this.render()</h3>
+			<hr />
+			<h3 id="this-render">this.render()</h3>
 			<p>
-				If you prefer declarative rendering, you can manually call <code>this.render()</code> to
-				re-render the component's template with any updated prop values. Note that in any framework,
-				DOM rendering is an expensive operation, and in most cases effects can be handled by
-				imperatively manipulating elements through <code>this.refs</code>, which is the most
-				efficient way to reflect state changes in your component's markup.
+				If you prefer declarative rendering, you can manually call
+				<code>this.render()</code> to re-render the component's template with
+				any updated prop values. Note that in any framework, DOM rendering is an
+				expensive operation, and in most cases effects can be handled by
+				imperatively manipulating elements through <code>this.refs</code>, which
+				is the most efficient way to reflect state changes in your component's
+				markup.
 			</p>
 		</div>
 	</main>
