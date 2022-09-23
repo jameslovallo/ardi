@@ -1,5 +1,5 @@
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
-import ardi from '/js/ardi-min.js'
+import ardi from '/js/ardi.js'
 
 export default class helloWorld extends ardi {
 	setup() {

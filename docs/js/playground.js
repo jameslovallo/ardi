@@ -19,31 +19,41 @@ switch (component) {
 
 	case 'contactCard':
 		markup = `<h2>Demo 1</h2>
-<contact-card
+<contact-demo
 	name="Fatimah Maimunah"
 	position="Chief Executive Officer"
 	phone="1234567890"
 	email="#"
 	photo="/img/fatimah.png"
-></contact-card>
+></contact-demo>
 
 <h2>Demo 2</h2>
-<contact-card
+<contact-demo
 	name="Ashley Fox"
 	position="Chief Technical Officer"
 	email="#"
 	photo="/img/ashley.png"
-></contact-card>`
+></contact-demo>`
 		break
 
 	case 'gauge':
-		markup = `<gauge-demo
+		markup = `<h2>Demo 1</h2>
+<gauge-demo
 	label="MPH"
 	max="120"
 	min="0"
 	step="10"
-	value="90">
-</gauge-demo>`
+	value="90"
+></gauge-demo>
+<h2>Demo 2</h2>
+<gauge-demo
+	label="RPM"
+	max="7000"
+	min="0"
+	step="1000"
+	value="3000"
+	style="--needle: limegreen"
+></gauge-demo>`
 		break
 
 	case 'weather':
@@ -81,6 +91,7 @@ fetch(`/js/components/${component}.js`)
 	.then((file) => {
 		loader.init().then((monaco) => {
 			const editor = monaco.editor.create(playground, {
+				automaticLayout: true,
 				fontSize: '13px',
 				language: 'html',
 				lineNumbers: 'off',
@@ -93,9 +104,8 @@ fetch(`/js/components/${component}.js`)
 				theme: 'vs-dark',
 				value: `
 ${markup}\n
-<script type=module>\n
-${file.trim().replace('export default ', '')}\n
-customElements.define('${markup.match(/[a-z]+-[a-z]+/)[0]}', ${component})\n
+<script type=module>
+${file.trim().replace('export default ', '')}
 </script>\n
 `,
 			})

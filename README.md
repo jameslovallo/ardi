@@ -9,7 +9,7 @@
 1. Make it easy to create powerful web components that work everywhere, including React, Vue, Svelte, Astro, Angular, etc.
 2. Provide great DX and performance without virtual dom, JSX, compilers, or any other magic. #usetheplatform
 
-[Demo & Docs](https://jameslovallo.github.io/ardi/)
+[Demo & Docs](https://ardi.netlify.app)
 
 ## Installation
 

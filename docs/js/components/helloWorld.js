@@ -1,4 +1,4 @@
-import ardi from '/js/ardi-min.js'
+import ardi from '/js/ardi.js'
 
 export default class helloWorld extends ardi {
 	setup() {
