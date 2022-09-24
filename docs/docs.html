@@ -30,43 +30,40 @@
 						<li><a href="#installation">Installation</a></li>
 						<br />
 						<li>
-							<a href="#api">API</a>
+							<a href="#use">Usage</a>
 							<ul>
-								<li><a href="#shadow">setup</a></li>
-								<ul>
-									<li><a href="#shadow">shadow</a></li>
-									<li><a href="#props">props</a></li>
-								</ul>
+								<li><a href="#component">component</a></li>
+								<li><a href="#props">props</a></li>
 								<li>
 									<a href="#template">template()</a>
 									<ul>
-										<li><a href="#refs">refs</a></li>
 										<li><a href="#slots">slots</a></li>
+										<li><a href="#parts">parts</a></li>
+										<li><a href="#refs">refs</a></li>
 										<li><a href="#events">@events</a></li>
 									</ul>
 								</li>
-								<li><a href="#styles">styles()</a></li>
-								<ul>
-									<li><a href="#parts">parts</a></li>
-								</ul>
 								<li><a href="#ready">ready()</a></li>
 								<li><a href="#intersect">intersect(ratio)</a></li>
 							</ul>
 						</li>
 						<br />
 						<li>
-							<a href="#reserved">Reserved Keys</a>
+							<a href="#advanced">Advanced</a>
 							<ul>
-								<li><a href="#this-dom">this.DOM</a></li>
-								<li><a href="#this-refs">this.refs</a></li>
-								<li><a href="#this-render">this.render()</a></li>
+								<li><a href="#render">render()</a></li>
 							</ul>
+						</li>
+						<br />
+						<li>
+							<a href="#frameworks">With Frameworks</a>
 						</li>
 					</ul>
 				</div>
 			</aside>
 
 			<br />
+
 			<h2 id="installation">Installation</h2>
 
 			<h3>Option 1: As a package</h3>
@@ -81,9 +78,9 @@ npm i ardi
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-import ardi from 'ardi';
+import ardi, {html} from 'ardi';
 
-class YourComponent extends ardi { ... }
+ardi({ component: 'my-component', })
 				</code>
 			</pre>
 
@@ -93,86 +90,101 @@ class YourComponent extends ardi { ... }
 				<p class="code-label">html</p>
 				<code class="language-html">
 &lt;script type="module"&gt;
-	import ardi from '//unpkg.com';
+	import ardi, {html} from '//unpkg.com';
 
-	class YourComponent extends ardi { ... }
+	ardi({ component: 'my-component', })
 &lt;/script&gt;
 				</code>
 			</pre>
 
 			<hr class="large" />
-			<h2 id="api">API</h2>
+
+			<h2 id="use">Usage</h2>
 
 			<p>
-				Below is an example demonstrating how each of the above keys was used to
-				create the demo
-				<code>&lt;gauge-demo&gt;</code> component. Other functions are used and
-				referenced in the code snippets below. You can review the full code
+				Ardi components are composed in objects, following the conventions
+				outlined below. The example code is from the
+				<code>&lt;gauge-demo&gt;</code> component. You can review the full code
 				<a
 					href="https://jameslovallo.github.io/playground.html?component=gauge"
 				>
 					in the playground</a
-				>. Ardi has three reserved keys, <a href="#this-dom">this.DOM</a>,
-				<a href="#this-refs">this.refs</a>, and
-				<a href="#this-render">this.render()</a>, which will be explained in
-				greater detail <a href="#reserved">below</a>.
+				>.
 			</p>
 
 			<hr />
-			<h3 id="setup">setup()</h3>
-			<p>
-				The setup function is called inside of the custom element's constructor.
-				This is where you should configure your component's props and define any
-				static data used by your component.
-			</p>
-			<h4 id="shadow">shadow</h4>
-			<p>
-				Enable or disable the
-				<a
-					href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM"
-					rel="nofollow"
-					>Shadow DOM</a
-				>, which scopes your css and allows you to use
-				<a
-					href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement"
-					rel="nofollow"
-					>&lt;slot&gt; tags</a
-				>
-				in your template.
-			</p>
 
-			<h4 id="props">props</h4>
+			<h3 id="component">component</h3>
+
 			<p>
-				For each prop, you can assign a setter function or a default value. Prop
-				setters can be built-in functions (like <code>String</code>,
-				<code>Number</code>, or <code>JSON.parse</code>), arrow functions, or
-				another function in your component's class.
+				Define the component's name. The name must follow the
+				<a
+					href="https://html.spec.whatwg.org/#valid-custom-element-name"
+					target="_blank"
+					>custom element naming convention</a
+				>.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-setup() {
-	this.shadow = true
+ardi({
+	component: 'gauge-demo',
+})
+				</code>
+			</pre>
 
-	this.props = {
-		// provide default value
-		label: 'MPH',
-		// transform attribute value to number, fall back to default value
-		max: (v) => (v ? Number(v) : 120),
-		min: (v) => (v ? Number(v) : 0),
-		step: (v) => (v ? Number(v) : 10),
-		value: (v) => (v ? Number(v) : 90),
-	}
-}
+			<hr />
+
+			<h3 id="props">props</h3>
+
+			<p>
+				Props are defined in an object where each key represents a prop, and its
+				value is an array containing setter function and an optional default
+				value. Setter functions can be built-in functions (like
+				<code>String</code>, <code>Number</code>, or <code>JSON.parse</code>),
+				arrow functions, or another function in your component (referenced using
+				<code>this</code>).
+			</p>
+
+			<p>
+				Every prop is assigned to <code>this</code> and is reactive by default,
+				meaning that changes to a prop's value (from inside the component) or to
+				the prop's attribute (from outside the component) will cause the
+				template to update.
+			</p>
+
+			<pre>
+				<p class="code-label">javascript</p>
+				<code class="language-javascript">
+ardi({
+	component: 'gauge-demo',
+
+	props: {
+		// setter function
+		label: [String],
+		// setter function with default values
+		max: [Number, 120],
+		min: [Number, 0],
+		step: [Number, 10],
+		value: [Number, 90],
+	},
+})
 				</code>
 			</pre>
 
 			<hr />
 			<h3 id="template">template()</h3>
 			<p>
-				Use the template function to return a template literal or an HTML
-				element.
+				Use the template function to return a tagged template literal. For
+				ultra-fast template updates, Ardi uses the
+				<a href="https://www.npmjs.com/package/uhtml" target="_blank">uhtml</a>
+				library, which is a subset of
+				<a
+					href="https://github.com/WebReflection/lighterhtml#readmeackage/uhtml"
+					target="_blank"
+					>lighterhtml</a
+				>.
 			</p>
 
 			<h4 id="slots">slots</h4>
@@ -207,136 +219,73 @@ setup() {
 			<h4 id="refs">refs</h4>
 			<p>
 				Any element with a <code>ref</code> attribute will be added to
-				<a href="#this-refs">this.refs</a>, i.e. <code>this.refs.dial</code> in
-				the example below.
+				<code>this.refs</code>, i.e. <code>this.refs.dial</code> in the example
+				below.
 			</p>
 
 			<h4 id="events">events</h4>
 			<p>
-				You can add Vue-style <code>@event</code> attributes to any markup to
-				handle events using the format <code>@event_name="event_handler"</code>,
-				where <code>event_name</code> is
-				<a
-					href="https://developer.mozilla.org/en-US/docs/Web/API/Element#events"
-					rel="nofollow"
-				>
-					any valid event name</a
-				>
-				and <code>event_handler</code> is the key of any top-level function in
-				the object. The <code>e</code> event object is automatically applied to
-				the function so you can modify the default event behavior, i.e. to
-				<code>preventDefault()</code>.
+				You can add Vue-style <code>@event</code> attributes anywhere in your
+				markup. Note that raw expressions will cause a rendering loop, similar
+				to React, so it is best to either use arrow functions or call a function
+				from your template, i.e.:
+				<br />
+				<code>@click=${() => this.count += this.step}</code>
+				<br />
+				or
+				<br />
+				<code>@click=${this.add()}</code>.
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code class="language-javascript fix-attr">
+ardi({
 	template() {
-		return /* html */ `
-		${this.numbers()}
-		&lt;div part="dial" ref="dial"&gt;&lt;/div&gt;
-		&lt;slot name="label" part="label"&gt;${this.label}&lt;/slot&gt;`
-	}
+		return html`${this.numbers().map(
+				(num) => html`
+					&lt;div
+						part="number"
+						style=${`transform: rotate(${num.deg}deg)`}
+					&gt;
+						&lt;i style=${`transform: rotate(${-num.deg}deg)`}&gt;${num.label}&lt;/i&gt;
+					&lt;/div&gt;
+				`
+			)}
+			&lt;div part="dial" ref="dial"&gt;&lt;/div&gt;
+			&lt;slot name="label" part="label"&gt;${this.label}&lt;/slot&gt;
+
+			&lt;style&gt;
+				:host {
+					align-items: center;
+					background: var(--background, #000);
+					border: 2px solid rgba(125, 125, 125, 0.5);
+				/* etc etc etc */
+			&lt;/style&gt;`
+	},
+})
 				</code>
 			</pre>
-			<p class="code-caption">
-				See that <code>/* html */</code> comment after the return? With the
-				excellent
-				<a
-					href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html"
-				>
-					es6-string-html</a
-				>
-				extension you can enable HTML and CSS syntax highlighting inside of
-				template literals.
-			</p>
 
 			<hr />
-			<h3 id="styles">styles()</h3>
-			<p>
-				Use the styles function to return a template literal containing your
-				component's styles. This only works with vanilla CSS, but you are free
-				to use JS variables and functions anywhere inside your CSS.
-			</p>
-			<p>Notice the following best-practices in the example below:</p>
-			<ul>
-				<li>
-					Props, functions and data can be used inside of CSS. In this example,
-					CSS values are being set from a prop value if it exists.
-				</li>
-				<li>
-					CSS variables (with fallback values) are used to make it easier to use
-					external CSS to style elements inside the Shadow DOM.
-				</li>
-				<li>
-					Part attributes are used to make it easier to use external CSS to
-					style elements inside the Shadow DOM.
-				</li>
-			</ul>
 
-			<pre>
-				<p class="code-label">javascript</p>
-				<code class="language-javascript">
-styles() {
-	return /* css */ `
-	:host {
-		align-items: center;
-		background: ${this.bg || 'var(--background, #000)'};
-		border: 2px solid rgba(125,125,125,.5);
-		border-radius: 50%;
-		color: ${this.color || 'var(--color, #fff)'};
-		display: flex;
-		height: 300px;
-		justify-content: center;
-		overflow: hidden;
-		position: relative;
-		width: 300px;
-	}
-
-	[part=dial] {
-		background: ${this['dial-color'] || 'var(--dial-color, #333)'};
-		border-radius: 50%;
-		height: 10%;
-		position: relative;
-		transform: rotate(-120deg);
-		transition: transform ${this['dial-speed'] || 'var(--dial-speed, 1s)'};
-		width: 10%;
-	}
-
-	/* truncated for readability */`
-}
-				</code>
-			</pre>
-			<p class="code-caption">
-				See that <code>/* css */</code> comment after the return? With the
-				excellent
-				<a
-					href="https://marketplace.visualstudio.com/items?itemName=Tobermory.es6-string-html"
-				>
-					es6-string-html</a
-				>
-				extension you can enable HTML and CSS syntax highlighting inside of
-				template literals.
-			</p>
-
-			<hr />
 			<h3 id="ready">ready()</h3>
 			<p>
-				Use the <code>ready</code> function to handle events, effects, etc after
-				the template is rendered. You can also assign events to any
-				<code>ref</code> in the template using that ref's
-				<code>on</code> method, which can be very useful for handling complex
-				events. The <code>e</code> event object is automatically applied to the
-				function so you can modify the default event behavior, i.e.
-				<code>e.preventDefault()</code>.
+				The <code>ready</code> function runs once after the first render. This
+				is a good place to apply effects, setup observers, etc. If you want to
+				apply effects to your template, you can trigger an update by modifying
+				prop values, by imperatively targeting an element using
+				<code>this.refs</code>, or by manually calling this.render().
 			</p>
 
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-ready() {
-	alert(`${this.component} is loaded`)
-}
+ardi({
+	ready() {
+		console.log(`${this.component} rendered`)
+	},
+})
 				</code>
 			</pre>
 
@@ -357,47 +306,56 @@ ready() {
 			<pre>
 				<p class="code-label">javascript</p>
 				<code class="language-javascript">
-intersect(ratio) {
-	if (ratio > 0.3) {
-		const val = this.deg(this.value / this.max)
-		this.refs.dial.style.transform = `rotate(${val}deg)`
-	}
-}
+ardi({
+	intersect(ratio) {
+		if (ratio > 0.3) {
+			const val = this.deg(this.value / this.max)
+			this.refs.dial.style.transform = `rotate(${val}deg)`
+		}
+	},
+})
 				</code>
 			</pre>
 
 			<hr class="large" />
 
-			<h2 id="reserved">Reserved Keys</h2>
-			<h3 id="this-refs">this.refs</h3>
+			<h2 id="advanced">Advanced</h2>
+
 			<p>
-				<code>this.refs</code> is used to conveniently reference elements in the
-				component's markup and assign event listeners or handle effects. As
-				mentioned previously, <code>this.refs</code> is an object containing
-				every element that has a ref attribute. Each element is referenced by
-				that attribute's value, i.e. <code>this.refs.dial</code>, and has a
-				special <code>on()</code> function that can be used to assign event
-				listeners to that element.
+				Ardi allows you to customize the DX based on your needs and prefences.
 			</p>
 
 			<hr />
-			<h3 id="this-dom">this.DOM</h3>
+
+			<h3 id="render">render()</h3>
+
 			<p>
-				<code>this.DOM</code> will always reference the component's render
-				target, whether that is the Shadow Root or the component's
-				<code>innerHTML</code>.
+				The <code>render</code> function runs on the initial render and every
+				time a prop's state changes. The default templating libray,
+				<a href="https://www.npmjs.com/package/uhtml" target="_blank">uhtml</a>,
+				is <i>extremely</i> efficient, updating just the parts of the template
+				that have changed (much like
+				<a href="https://lit.dev/" target="_blank">lit</a>). This allows Ardi
+				components to work very smoothly with other frameworks like React and
+				Vue.
+			</p>
+			<p>
+				If you prefer to use a different templating system, you can do so by
+				overriding the default render function with your own. Below is an
+				example using
+				<a href="https://handlebarsjs.com/" target="_blank">handlebars</a>. You
+				can play with the full code
+				<a href="/playground.html?component=helloWorldHbs">in the playground</a
+				>.
 			</p>
 
-			<hr />
-			<h3 id="this-render">this.render()</h3>
+			<hr class="large" />
+
+			<h2 id="frameworks">Using Ardi with Other Frameworks</h2>
+
 			<p>
-				If you prefer declarative rendering, you can manually call
-				<code>this.render()</code> to re-render the component's template with
-				any updated prop values. Note that in any framework, DOM rendering is an
-				expensive operation, and in most cases effects can be handled by
-				imperatively manipulating elements through <code>this.refs</code>, which
-				is the most efficient way to reflect state changes in your component's
-				markup.
+				Ardi is well-trained to play nice with others! Ardi loves making new
+				friends.
 			</p>
 		</div>
 	</main>

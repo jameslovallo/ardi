@@ -1,53 +1,48 @@
-import ardi from '/js/ardi.js'
+import ardi, { html } from '/js/ardi.js'
 
-export default class helloWorld extends ardi {
-	setup() {
-		this.shadow = true
+ardi({
+	component: 'hello-world',
+	props: {
+		bg: [String, '#def'],
+		color: [String, '#000'],
+		image: [String, '/img/kenobi.svg'],
+		name: [String, 'there'],
+	},
+	template() {
+		return html`<img part="image" src="/img/kenobi.svg" />
+			<h2 part="message" style=${`--bg: ${this.bg}; --color: ${this.color};`}>
+				Hello ${this.name}
+			</h2>
 
-		this.props = {
-			bg: '#def',
-			color: '#000',
-			image: '/img/kenobi.svg',
-			name: 'there',
-		}
-
-		this.template = () => /* html */ `
-		<img part="image" src="/img/kenobi.svg">
-		<h2 part="message">Hello ${this.name}</h2>`
-
-		this.styles = () => /* css */ `
-		:host {
-			align-items: flex-end;
-			display: flex;
-			gap: 1rem;
-		}
-		[part=image] {
-			height: 128px;
-			width: 128px;
-		}
-		[part=message] {
-			background: ${this.bg};
-			border-radius: 1rem;
-			color: ${this.color};
-			margin: .15em 0;
-			padding: 1rem;
-			position: relative;
-		}
-		[part=message]:before {
-			background: ${this.bg};
-			bottom: 1.33rem;
-			content: '';
-			display: block;
-			height: 1rem;
-			left: -.5rem;
-			position: absolute;
-			transform: rotate(45deg);
-			width: 1rem;
-		}`
-	}
-
-	// make it reactive
-	static get observedAttributes() {
-		return ['image', 'name', 'color', 'bg']
-	}
-}
+			<style>
+				:host {
+					align-items: flex-end;
+					display: flex;
+					gap: 1rem;
+				}
+				[part='image'] {
+					height: 128px;
+					width: 128px;
+				}
+				[part='message'] {
+					background: var(--bg);
+					border-radius: 1rem;
+					color: var(--color);
+					margin: 0.15em 0;
+					padding: 1rem;
+					position: relative;
+				}
+				[part='message']:before {
+					background: var(--bg);
+					bottom: 1.33rem;
+					content: '';
+					display: block;
+					height: 1rem;
+					left: -0.5rem;
+					position: absolute;
+					transform: rotate(45deg);
+					width: 1rem;
+				}
+			</style>`
+	},
+})

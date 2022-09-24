@@ -235,15 +235,16 @@ youtube-demo {
 main.docs .toc ul {
 	font-family: JetBrains Mono;
 	list-style: none;
-	padding-left: 1.5rem;
+	padding-left: 1.5em;
 }
 
-main.docs .toc ul li a:not(:hover) {
+main.docs .toc a:not(:hover) {
 	text-decoration: none;
 }
 
 main.docs .toc a {
-	line-height: 2rem;
+	font-size: 14px;
+	line-height: 2;
 }
 
 @media (min-width: 1024px) {
@@ -308,5 +309,5 @@ main.docs .code-caption {
 }
 
 .hljs {
-	line-height: 1.5;
+	line-height: 2;
 }
