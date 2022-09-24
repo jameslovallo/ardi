@@ -33,19 +33,15 @@ Option 2: In your markup.
 
 ## Usage
 
-After you've imported Ardi, pass it an object with any or all of the following keys. You can assign custom functions or data to any other key in your object and access it using this.key_name. Ardi has three reserved keys, this.DOM, this.refs, and this.render(), which will be explained in greater detail in the this section below.
+After you've imported Ardi, pass it an object with any or all of the following keys.
 
 | Key              | Type     |
 | ---------------- | -------- |
 | component        | String   |
-| shadow           | Boolean  |
 | props            | Function |
 | template         | Function |
-| styles           | Function |
 | ready            | Function |
 | intersect(ratio) | Function |
-
-Ardi has three other reserved keys, `DOM`, `refs`, and `render()`, which will be explained in greater detail below.
 
 ## Credits
 
