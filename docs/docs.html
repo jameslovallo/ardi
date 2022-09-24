@@ -6,6 +6,7 @@
 	just 1kb uncompressed."
 	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="UTF-8" />
 	<link rel="stylesheet" href="/css/onedark.css" />
 	<link rel="stylesheet" href="/css/styles.css" />
 </head>
@@ -84,7 +85,7 @@ ardi({ component: 'my-component', })
 				</code>
 			</pre>
 
-			<h3>Option 2: In your markup</h3>
+			<h3 style="margin-top: 1.5em">Option 2: In your markup</h3>
 
 			<pre>
 				<p class="code-label">html</p>
@@ -97,7 +98,7 @@ ardi({ component: 'my-component', })
 				</code>
 			</pre>
 
-			<hr class="large" />
+			<br /><br /><br />
 
 			<h2 id="use">Usage</h2>
 
@@ -105,11 +106,7 @@ ardi({ component: 'my-component', })
 				Ardi components are composed in objects, following the conventions
 				outlined below. The example code is from the
 				<code>&lt;gauge-demo&gt;</code> component. You can review the full code
-				<a
-					href="https://jameslovallo.github.io/playground.html?component=gauge"
-				>
-					in the playground</a
-				>.
+				<a href="/playground.html?component=gauge"> in the playground</a>.
 			</p>
 
 			<hr />
@@ -317,7 +314,7 @@ ardi({
 				</code>
 			</pre>
 
-			<hr class="large" />
+			<br /><br /><br />
 
 			<h2 id="advanced">Advanced</h2>
 
@@ -345,18 +342,51 @@ ardi({
 				example using
 				<a href="https://handlebarsjs.com/" target="_blank">handlebars</a>. You
 				can play with the full code
-				<a href="/playground.html?component=helloWorldHbs">in the playground</a
-				>.
+				<a href="/playground.html?component=helloHbs">in the playground</a>.
 			</p>
 
-			<hr class="large" />
+			<br /><br /><br />
 
 			<h2 id="frameworks">Using Ardi with Other Frameworks</h2>
 
 			<p>
-				Ardi is well-trained to play nice with others! Ardi loves making new
-				friends.
+				Ardi is well-optimized and plays well with others! Like lit, uhtml only
+				updates the parts of the template that have changed, allowing Ardi
+				components to react
+				<i>extremely</i> quickly to interactions with other components. In the
+				embedded pens below, React and Vue components provide a set of controls
+				to customize the Ardi <code>&lt;hello-world&gt;</code> component. Watch
+				in the DevTools as you change the name or the color to see how
+				efficently the template is updated.
 			</p>
+
+			<h3>Ardi❤️React</h3>
+			<iframe
+				height="500"
+				style="width: 100%"
+				scrolling="no"
+				title="Ardi ❤️ React"
+				src="https://codepen.io/jameslovallo/embed/preview/XWqNNNo?default-tab=js%2Cresult&editable=true&theme-id=dark"
+				frameborder="no"
+				loading="lazy"
+				allowtransparency="true"
+				allowfullscreen="true"
+			></iframe>
+
+			<br /><br />
+
+			<h3>Ardi❤️Vue</h3>
+			<iframe
+				height="500"
+				style="width: 100%"
+				scrolling="no"
+				title="Ardi ❤️ Vue"
+				src="https://codepen.io/jameslovallo/embed/preview/KKRgrrd?default-tab=js%2Cresult&editable=true&theme-id=dark"
+				frameborder="no"
+				loading="lazy"
+				allowtransparency="true"
+				allowfullscreen="true"
+			></iframe>
 		</div>
 	</main>
 

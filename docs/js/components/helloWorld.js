@@ -9,7 +9,7 @@ ardi({
 		name: [String, 'there'],
 	},
 	template() {
-		return html`<img part="image" src="/img/kenobi.svg" />
+		return html`<img part="image" src=${this.image} />
 			<h2 part="message" style=${`--bg: ${this.bg}; --color: ${this.color};`}>
 				Hello ${this.name}
 			</h2>

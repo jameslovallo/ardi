@@ -45,6 +45,7 @@ switch (component) {
 	step="10"
 	value="90"
 ></gauge-demo>
+
 <h2>Demo 2</h2>
 <gauge-demo
 	label="RPM"
@@ -112,7 +113,8 @@ ${file.trim().replace('export default ', '')}
 
 			const setPreview = () => {
 				preview.srcdoc =
-					'<style>:root{font-family: sans-serif}</style>' + editor.getValue()
+					'<style>:root{font-family: sans-serif; padding: 8px;}</style>' +
+					editor.getValue()
 			}
 
 			setPreview()
