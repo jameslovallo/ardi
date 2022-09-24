@@ -81,15 +81,90 @@ switch (component) {
 <youtube-demo vid="O30_s0DKlDk" style="max-width: 500px"></youtube-demo>`
 		break
 
+	case 'helloJsx':
+		markup = `<hello-world></hello-world>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type=text/babel data-type=module>
+	import ardi, {html} from '//cdn.skypack.dev/ardi'
+	import React from "//cdn.skypack.dev/jsx-dom"
+	
+	ardi({
+		component: 'hello-world',
+
+		props: {
+			bg: [String, '#def'],
+			color: [String, '#000'],
+			image: [String, '/img/kenobi.svg'],
+			name: [String, 'there'],
+		},
+
+		render() {
+			this.shadowRoot.appendChild(this.template())
+		},
+
+		template() {
+			const { wrapper, image, message } = this.styles()
+			return (
+				<div style={wrapper}>
+					{this.image && <img src={this.image} style={image} />}
+					{this.name && (
+						<h2 style={message}>
+							<i style={message.arrow}></i>
+							Hello {this.name}!
+						</h2>
+					)}
+				</div>
+			)
+		},
+		
+		styles() {
+			return {
+				wrapper: {
+					'align-items': 'flex-end',
+					display: 'flex',
+					gap: '1rem',
+				},
+				image: {
+					height: '128px',
+					width: '128px',
+				},
+				message: {
+					background: this.bg,
+					'border-radius': '1rem',
+					color: this.color,
+					margin: '.15em 0',
+					padding: '1rem',
+					position: 'relative',
+					arrow: {
+						background: this.bg,
+						bottom: '1.33rem',
+						display: 'block',
+						height: '1rem',
+						left: '-.33rem',
+						position: 'absolute',
+						transform: 'rotate(45deg)',
+						width: '1rem',
+					},
+				},
+			}
+		}
+	})
+</script>`
+		break
+
 	default:
 		markup = `<hello-world name="there" color="#000" bg="#def" ></hello-world>`
 }
 
-// const ext = component.includes('Jsx') ? 'jsx' : 'js'
-
 fetch(`/js/components/${component}.js`)
 	.then((res) => res.text())
 	.then((file) => {
+		const scriptTag = `<script type=module>
+${file.trim().replace('export default ', '')}
+</script>\n`
+
 		loader.init().then((monaco) => {
 			const editor = monaco.editor.create(playground, {
 				automaticLayout: true,
@@ -105,9 +180,7 @@ fetch(`/js/components/${component}.js`)
 				theme: 'vs-dark',
 				value: `
 ${markup}\n
-<script type=module>
-${file.trim().replace('export default ', '')}
-</script>\n
+${component === 'helloJsx' ? '' : scriptTag}
 `,
 			})
 

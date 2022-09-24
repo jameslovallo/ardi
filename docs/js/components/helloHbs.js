@@ -10,10 +10,10 @@ ardi({
 		name: [String, 'there'],
 	},
 	render() {
-		const hbs = handlebars.compile(this.template)
+		const hbs = handlebars.compile(this.hbs)
 		this.shadowRoot.innerHTML = hbs(this) + this.css
 	},
-	template: `
+	hbs: `
 		{{#if image}}
 			<img part="image" src="{{image}}" />
 		{{/if}}
