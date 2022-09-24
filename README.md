@@ -2,7 +2,7 @@
 
 # Ardi
 
-**Welcome to the Weightless Web.** Ardi is a tiny (but fierce) web component framework, weighing just 1kb uncompressed.
+**Welcome to the Weightless Web.** Ardi is a tiny (but fierce) web component framework, weighing just 3kb compressed.
 
 ## Our Mission
 

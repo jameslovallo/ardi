@@ -1,7 +1,7 @@
 {
 	"name": "ardi",
 	"version": "0.0.8",
-	"description": "Welcome to the Weightless Web. Ardi is a tiny (but fierce) web component framework, weighing just 1kb uncompressed.",
+	"description": "Welcome to the Weightless Web. Ardi is a tiny (but fierce) web component framework, weighing just 3kb compressed.",
 	"type": "module",
 	"main": "ardi-min.js",
 	"module": "ardi-min.js",
