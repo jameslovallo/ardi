@@ -332,10 +332,11 @@ ardi({
 				}
 				[part='tracks'] {
 					color: white;
+					column-gap: 2rem;
 					display: flex;
 					flex-flow: row-wrap;
 					font-size: 14px;
-					gap: 2rem;
+					row-gap: 8px;
 				}
 				[part='track'] {
 					align-items: center;
