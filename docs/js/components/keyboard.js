@@ -194,7 +194,7 @@ ardi({
 				)}
 			</div>
 
-			${this.tracks.length > 0
+			${this.tracks?.length > 0
 				? html`
 						<div part="tracks">
 							${this.tracks.map(
