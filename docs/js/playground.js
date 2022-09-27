@@ -57,6 +57,21 @@ switch (component) {
 ></gauge-demo>`
 		break
 
+	case 'keyboard':
+		markup = `<h2>Demo 1</h2>
+<keyboard-demo
+	octaves="2"
+	start="3"
+></keyboard-demo>
+
+<h2>Demo 2</h2>
+<keyboard-demo
+	instrument="sitar"
+	octaves="6"
+	start="2"
+></keyboard-demo>`
+		break
+
 	case 'weather':
 		markup = `<h2>Demo 1</h2>
 <weather-demo

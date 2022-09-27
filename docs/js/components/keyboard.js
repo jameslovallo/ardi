@@ -4,15 +4,17 @@ ardi({
 	component: 'keyboard-demo',
 
 	props: {
-		instrument: [String, 'piano'],
-		octaves: [Number, 4],
-		start: [Number, 2],
-		sustain: [Number, 3],
+		instrument: [(v) => (v === 'sitar' ? 'acoustic' : v), 'piano'],
+		octaves: [Number, 2],
+		start: [Number, 3],
+		sustain: [Number, 2],
 	},
 
 	ready() {
 		this.recording = false
 		this.tracks = []
+		document.body.addEventListener('mousedown', () => (this.mousedown = true))
+		document.body.addEventListener('mouseup', () => (this.mousedown = false))
 	},
 
 	intersect(r) {
@@ -65,43 +67,70 @@ ardi({
 		return html`
 			<div part="controls">
 				<select @change=${(e) => (this.instrument = e.target.value)}>
-					<option value="piano">Piano</option>
-					<option value="organ">Organ</option>
-					<option value="acoustic">Guitar</option>
+					<option
+						selected=${this.instrument === 'piano' ? true : null}
+						value="piano"
+					>
+						Piano
+					</option>
+					<option
+						selected=${this.instrument === 'organ' ? true : null}
+						value="organ"
+					>
+						Organ
+					</option>
+					<option
+						selected=${this.instrument === 'acoustic' ? true : null}
+						value="acoustic"
+					>
+						Sitar
+					</option>
 				</select>
 				<div>
-					<label>
-						Octaves:
-						<input
-							max=${8 - this.start}
-							min=${0}
-							type="number"
-							value=${this.octaves}
-							@change=${(e) => (this.octaves = e.target.value)}
-						/>
-					</label>
-					<label>
-						Start At:
-						<input
-							max=${8 - this.octaves}
-							min=${0}
-							type="number"
-							value=${this.start}
-							@change=${(e) => (this.start = e.target.value)}
-						/>
-					</label>
-					<label>
-						Sustain:
-						<input
-							max=${10}
-							min=${1}
-							type="number"
-							value=${this.sustain}
-							@change=${(e) => (this.sustain = e.target.value)}
-						/>
-					</label>
+					<select @change=${(e) => (this.octaves = e.target.value)}>
+						<optgroup label="Octaves">
+							${Array.from({ length: 8 - this.start }).map(
+								(a, i) => html`
+									<option
+										selected=${i === this.octaves - 1 ? true : null}
+										value=${i + 1}
+									>
+										${i + 1}
+									</option>
+								`
+							)}
+						</optgroup>
+					</select>
+					<select @change=${(e) => (this.start = e.target.value)}>
+						<optgroup label="Starting Octave">
+							${Array.from({ length: 8 - this.octaves }).map(
+								(a, i) => html`
+									<option
+										selected=${i === this.start - 1 ? true : null}
+										value=${i + 1}
+									>
+										${i + 1}
+									</option>
+								`
+							)}
+						</optgroup>
+					</select>
+					<select @change=${(e) => (this.sustain = e.target.value)}>
+						<optgroup label="Sustain">
+							${Array.from({ length: 8 }).map(
+								(a, i) => html`
+									<option
+										selected=${i === this.sustain - 1 ? true : null}
+										value=${i + 1}
+									>
+										${i + 1}
+									</option>
+								`
+							)}
+						</optgroup>
+					</select>
 					<button
-						onclick=${() => (this.recording ? this.stop() : this.record())}
+						@click=${() => (this.recording ? this.stop() : this.record())}
 					>
 						${this.recording ? 'Stop' : 'Record'}
 					</button>
@@ -117,7 +146,15 @@ ardi({
 									<div part="note">
 										<button
 											part="white-key"
-											onclick=${() =>
+											@mousedown=${() =>
+												this.playNote(
+													this.instrument,
+													note,
+													octave + this.start,
+													this.sustain
+												)}
+											@mouseover=${() =>
+												this.mousedown &&
 												this.playNote(
 													this.instrument,
 													note,
@@ -131,10 +168,18 @@ ardi({
 											? html`
 													<button
 														part="black-key"
-														onclick=${() =>
+														@mousedown=${() =>
 															this.playNote(
 																this.instrument,
 																note + '#',
+																octave + this.start,
+																this.sustain
+															)}
+														@mouseover=${() =>
+															this.mousedown &&
+															this.playNote(
+																this.instrument,
+																note,
 																octave + this.start,
 																this.sustain
 															)}
@@ -145,7 +190,7 @@ ardi({
 								`
 							)}
 						</div>
-					</div>`
+					`
 				)}
 			</div>
 
@@ -157,13 +202,13 @@ ardi({
 									<div part="track">
 										${this.icons.wave} Track ${i + 1}
 										<button
-											onclick=${() => this.playTrack(this.tracks[i])}
+											@click=${() => this.playTrack(this.tracks[i])}
 											title=${`Play Track ${i + 1}`}
 										>
 											${this.icons.play}
 										</button>
 										<button
-											onclick=${() => this.tracks.splice(i, 1) && this.render()}
+											@click=${() => this.tracks.splice(i, 1) && this.render()}
 											title=${`Delete Track ${i + 1}`}
 										>
 											${this.icons.trash}
@@ -193,6 +238,13 @@ ardi({
 					justify-content: space-between;
 					padding: 4px 0;
 				}
+				[part='controls'] > select {
+					margin-left: -4px;
+				}
+				[part='controls'] > div {
+					display: flex;
+					gap: 1rem;
+				}
 				[part='controls'] label,
 				[part='controls'] input,
 				[part='controls'] select {
@@ -200,6 +252,11 @@ ardi({
 					border: none;
 					color: #ddd;
 					font-size: 12px;
+				}
+				[part='controls'] optgroup {
+					color: initial;
+					display: block;
+					padding: 1em;
 				}
 				[part='controls'] option {
 					color: initial;
