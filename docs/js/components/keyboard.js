@@ -334,13 +334,14 @@ ardi({
 					color: white;
 					column-gap: 2rem;
 					display: flex;
-					flex-flow: row-wrap;
+					flex-flow: row wrap;
 					font-size: 14px;
 					row-gap: 8px;
 				}
 				[part='track'] {
 					align-items: center;
 					display: flex;
+					flex-basis: 150px;
 					gap: 8px;
 				}
 				[part='track'] button {
