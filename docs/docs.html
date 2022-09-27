@@ -103,8 +103,8 @@ ardi({ component: 'my-component', })
 			<h2 id="use">Usage</h2>
 
 			<p>
-				Ardi components are composed in objects, following the conventions
-				outlined below. The example code is from the
+				Ardi components are composed as objects, using the keys outlined below
+				and any of your own. The example code is from the
 				<code>&lt;gauge-demo&gt;</code> component. You can review the full code
 				<a href="/playground.html?component=gauge"> in the playground</a>.
 			</p>
@@ -136,9 +136,9 @@ ardi({
 			<h3 id="props">props</h3>
 
 			<p>
-				Props are defined in an object where each key represents a prop, and its
-				value is an array containing setter function and an optional default
-				value. Setter functions can be built-in functions (like
+				Props are defined in an object. Each key represents a prop, and its
+				value is an array containing a setter function and (optionally) a
+				default value. Setter functions can be built-in functions (like
 				<code>String</code>, <code>Number</code>, or <code>JSON.parse</code>),
 				arrow functions, or another function in your component (referenced using
 				<code>this</code>).
@@ -146,9 +146,7 @@ ardi({
 
 			<p>
 				Every prop is assigned to <code>this</code> and is reactive by default,
-				meaning that changes to a prop's value (from inside the component) or to
-				the prop's attribute (from outside the component) will cause the
-				template to update.
+				meaning that any changes to a prop's value will trigger a render.
 			</p>
 
 			<pre>
@@ -175,7 +173,7 @@ ardi({
 			<p>
 				Use the template function to return a tagged template literal. For
 				ultra-fast template updates, Ardi uses the
-				<a href="https://www.npmjs.com/package/uhtml" target="_blank">uhtml</a>
+				<a href="https://www.npmjs.com/package/uhtml" target="_blank">μhtml</a>
 				library, which is a subset of
 				<a
 					href="https://github.com/WebReflection/lighterhtml#readmeackage/uhtml"
@@ -203,14 +201,13 @@ ardi({
 
 			<h4 id="parts">parts</h4>
 			<p>
-				If you're new to custom elements,
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part"
 					rel="nofollow"
-					>part attributes</a
+					>Part attributes</a
 				>
-				allow you to expose an element for styling by CSS rules outside of the
-				component's Shadow DOM using the <code>::part()</code> pseudo-selector.
+				allow you to expose an element from the Shadow DOM to be styled by
+				external CSS rules using the <code>::part()</code> pseudo-selector.
 			</p>
 
 			<h4 id="refs">refs</h4>
@@ -224,14 +221,9 @@ ardi({
 			<p>
 				You can add Vue-style <code>@event</code> attributes anywhere in your
 				markup. Note that raw expressions will cause a rendering loop, similar
-				to React, so it is best to either use arrow functions or call a function
-				from your template, i.e.:
+				to React, so it is best to use an inline arrow function, i.e.:
 				<br />
 				<code>@click=${() => this.count += this.step}</code>
-				<br />
-				or
-				<br />
-				<code>@click=${this.add()}</code>.
 			</p>
 
 			<pre>
@@ -268,11 +260,9 @@ ardi({
 
 			<h3 id="ready">ready()</h3>
 			<p>
-				The <code>ready</code> function runs once after the first render. This
-				is a good place to apply effects, setup observers, etc. If you want to
-				apply effects to your template, you can trigger an update by modifying
-				prop values, by imperatively targeting an element using
-				<code>this.refs</code>, or by manually calling this.render().
+				The <code>ready</code> function runs once when the component is loaded.
+				This is a good place to set up default data, apply effects, setup
+				observers, etc.
 			</p>
 
 			<pre>
@@ -280,7 +270,7 @@ ardi({
 				<code class="language-javascript">
 ardi({
 	ready() {
-		console.log(`${this.component} rendered`)
+		console.log(`${this.component} is loaded`)
 	},
 })
 				</code>
@@ -289,15 +279,13 @@ ardi({
 			<hr />
 			<h3 id="intersect">intersect(ratio)</h3>
 			<p>
-				Use the <code>intersect</code> function to create effects when the
-				component is scrolled into view. You may use the
+				Use the <code>intersect</code> function to apply effects when the
+				component is scrolled into view. This is a very useful way to trigger
+				scroll-based animations or lazy-load content. You may use the
 				<code>ratio</code> parameter to determine how much of the component
 				should be visible before you run your effects. Ardi is optimized so that
 				the intersection observer is only created if you use this key, so
-				exclude it if you do not intend to use it. Also note that the default
-				intersection observer is rootless and therefore is not appropriate for
-				every scenario. If you need to, you can always create your own
-				intersection observer elsewhere in your component.
+				exclude it if you do not intend to use it.
 			</p>
 
 			<pre>
@@ -327,25 +315,24 @@ ardi({
 			<h3 id="render">render()</h3>
 
 			<p>
-				The <code>render</code> function runs on the initial render and every
-				time a prop's state changes. The default templating libray,
-				<a href="https://www.npmjs.com/package/uhtml" target="_blank">uhtml</a>,
+				The <code>render</code> runs once when a component is loaded and again
+				every time a prop's state changes. The default templating libray,
+				<a href="https://www.npmjs.com/package/uhtml" target="_blank">μhtml</a>,
 				is <i>extremely</i> efficient, updating just the parts of the template
-				that have changed (much like
-				<a href="https://lit.dev/" target="_blank">lit</a>). This allows Ardi
-				components to work very smoothly with other frameworks like React and
-				Vue.
+				that have changed (much like lit). This allows Ardi components to work
+				very smoothly with other frameworks like React and Vue.
 			</p>
+			<h4>Bring Your Own Templating Library</h4>
 			<p>
 				If you prefer to use a different templating system, you can do so by
-				overriding the default render function with your own. There are examples
-				for
+				overriding the default render function with your own. Here are two
+				examples using
 				<a href="https://handlebarsjs.com/" target="_blank">handlebars</a> and
-				<a href="https://www.npmjs.com/package/jsx-dom" target="_blank">jsx</a>
-				in the playground.
+				<a href="https://www.npmjs.com/package/jsx-dom" target="_blank"
+					>jsx-dom</a
+				>.
 			</p>
 
-			<h4>Playground Links</h4>
 			<p>
 				<a href="/playground.html?component=helloHbs">
 					&lt;hello-world&gt; written in Handlebars
@@ -362,19 +349,20 @@ ardi({
 			<h2 id="frameworks">Using Ardi with Other Frameworks</h2>
 
 			<p>
-				Ardi is well-optimized and plays well with others! Like lit, uhtml only
-				updates the parts of the template that have changed, allowing Ardi
-				components to react
-				<i>extremely</i> quickly to interactions with other components. In the
-				embedded pens below, React and Vue components provide a set of controls
-				to customize the Ardi <code>&lt;hello-world&gt;</code> component. Watch
-				in the DevTools as you change the name or the color to see how
-				efficently the template is updated.
+				Ardi plays well with others! Like lit, μhtml only updates the parts of
+				the template that have changed, allowing Ardi components to react
+				<i>extremely</i> quickly to interactions with components from other
+				frameworks. The pens embedded below show how Ardi's reactivity interacts
+				with React and Vue. If you pay careful attention to the
+				<code>&lt;hello-world&gt;</code> component in the DevTools as you
+				interact with the React and Vue components, you can see how efficent
+				Ardi's rendering system is, whic is the secret sauce that allows it to
+				work so well with other frameworks.
 			</p>
 
 			<hr />
 
-			<h3>Ardi❤️React</h3>
+			<h3>Ardi ❤️ React</h3>
 			<iframe
 				height="500"
 				style="width: 100%"
@@ -389,7 +377,7 @@ ardi({
 
 			<hr />
 
-			<h3>Ardi❤️Vue</h3>
+			<h3>Ardi ❤️ Vue</h3>
 			<iframe
 				height="500"
 				style="width: 100%"
