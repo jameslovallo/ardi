@@ -251,7 +251,7 @@ ardi({
 					background: transparent;
 					border: none;
 					color: #ddd;
-					font-size: 12px;
+					font-size: 14px;
 				}
 				[part='controls'] optgroup {
 					color: initial;
