@@ -253,6 +253,9 @@ ardi({
 					color: #ddd;
 					font-size: 14px;
 				}
+				[part='controls'] > div select {
+					width: 2em;
+				}
 				[part='controls'] optgroup {
 					color: initial;
 					display: block;
