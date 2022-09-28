@@ -174,7 +174,6 @@ ardi({
 					min: Math.round(daily.temperature_2m_min[i]),
 					max: Math.round(daily.temperature_2m_max[i]),
 				}))
-				this.render()
 			})
 	},
 
