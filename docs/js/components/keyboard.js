@@ -10,9 +10,12 @@ ardi({
 		sustain: [Number, 2],
 	},
 
+	data: {
+		recording: false,
+		tracks: [],
+	},
+
 	ready() {
-		this.recording = false
-		this.tracks = []
 		document.body.addEventListener('mousedown', () => (this.mousedown = true))
 		document.body.addEventListener('mouseup', () => (this.mousedown = false))
 	},
@@ -28,20 +31,18 @@ ardi({
 	},
 
 	record() {
-		this.recording = true
-		this.render()
+		this.data.recording = true
 		this.currentTrack = { startTime: new Date().getTime(), track: [] }
 	},
 
 	stop() {
-		this.recording = false
-		this.tracks.push(this.currentTrack.track)
-		setTimeout(this.render())
+		this.data.recording = false
+		this.data.tracks.push(this.currentTrack.track)
 	},
 
 	playNote(instrument, note, octave, sustain) {
 		Synth.play(instrument, note, octave, sustain)
-		this.recording &&
+		this.data.recording &&
 			this.currentTrack.track.push({
 				timestamp: new Date().getTime() - this.currentTrack.startTime,
 				note: {
@@ -130,9 +131,9 @@ ardi({
 						</optgroup>
 					</select>
 					<button
-						@click=${() => (this.recording ? this.stop() : this.record())}
+						@click=${() => (this.data.recording ? this.stop() : this.record())}
 					>
-						${this.recording ? 'Stop' : 'Record'}
+						${this.data.recording ? 'Stop' : 'Record'}
 					</button>
 				</div>
 			</div>
@@ -141,26 +142,21 @@ ardi({
 				${Array.from({ length: this.octaves }).map(
 					(octaves, octave) => html`
 						<div part="octave" style=${`z-index: ${this.octaves - octave}`}>
-							${['C', 'D', 'E', 'F', 'G', 'A', 'B'].map(
-								(note) => html`
+							${['C', 'D', 'E', 'F', 'G', 'A', 'B'].map((note) => {
+								const press = (sharp) => {
+									this.playNote(
+										this.instrument,
+										note + (sharp ? '#' : ''),
+										octave + this.start,
+										this.sustain
+									)
+								}
+								return html`
 									<div part="note">
 										<button
 											part="white-key"
-											@mousedown=${() =>
-												this.playNote(
-													this.instrument,
-													note,
-													octave + this.start,
-													this.sustain
-												)}
-											@mouseover=${() =>
-												this.mousedown &&
-												this.playNote(
-													this.instrument,
-													note,
-													octave + this.start,
-													this.sustain
-												)}
+											@mousedown=${() => press()}
+											@mouseover=${() => this.mousedown && press()}
 										>
 											${note + (octave + this.start)}
 										</button>
@@ -168,47 +164,34 @@ ardi({
 											? html`
 													<button
 														part="black-key"
-														@mousedown=${() =>
-															this.playNote(
-																this.instrument,
-																note + '#',
-																octave + this.start,
-																this.sustain
-															)}
-														@mouseover=${() =>
-															this.mousedown &&
-															this.playNote(
-																this.instrument,
-																note,
-																octave + this.start,
-																this.sustain
-															)}
+														@mousedown=${() => press(true)}
+														@mouseover=${() => this.mousedown && press(true)}
 													></button>
 											  `
 											: ''}
 									</div>
 								`
-							)}
+							})}
 						</div>
 					`
 				)}
 			</div>
 
-			${this.tracks?.length > 0
+			${Object.keys(this.data.tracks).length > 0
 				? html`
 						<div part="tracks">
-							${this.tracks.map(
+							${Object.keys(this.data.tracks).map(
 								(track, i) => html`
 									<div part="track">
 										${this.icons.wave} Track ${i + 1}
 										<button
-											@click=${() => this.playTrack(this.tracks[i])}
+											@click=${() => this.playTrack(this.data.tracks[track])}
 											title=${`Play Track ${i + 1}`}
 										>
 											${this.icons.play}
 										</button>
 										<button
-											@click=${() => this.tracks.splice(i, 1) && this.render()}
+											@click=${() => delete this.data.tracks[track]}
 											title=${`Delete Track ${i + 1}`}
 										>
 											${this.icons.trash}

@@ -1,4 +1,4 @@
-import { render } from 'uhtml'
+import { render as uhtml } from 'uhtml'
 export { html, svg } from 'uhtml'
 
 export default function ardi(x) {
@@ -7,7 +7,9 @@ export default function ardi(x) {
 		constructor() {
 			super().attachShadow({ mode: 'open' })
 			Object.assign(this, x)
-			// props
+			this.refs = {}
+
+			// register props
 			props.forEach((prop) => {
 				const [propSetter, propDefault] = this.props[prop]
 				Object.defineProperty(this, prop, {
@@ -18,7 +20,34 @@ export default function ardi(x) {
 					set: (v) => this.setAttribute(prop, v),
 				})
 			})
-			// intersect
+
+			// reactive data
+			const reactive = (object) => {
+				if (object === null || typeof object !== 'object') {
+					return object
+				}
+				for (const property in object) {
+					object[property] = reactive(object[property])
+				}
+				return new Proxy(object, {
+					get: (target, property) => {
+						return target[property]
+					},
+					set: (target, property, value) => {
+						target[property] = reactive(value)
+						this.update()
+						return true
+					},
+					deleteProperty: (target, prop) => {
+						delete target[prop]
+						this.update()
+						return true
+					},
+				})
+			}
+			this.data = reactive(x.data)
+
+			// intersect helper
 			if (typeof this.intersect === 'function') {
 				new IntersectionObserver(
 					(entries) =>
@@ -36,8 +65,11 @@ export default function ardi(x) {
 		}
 
 		render() {
-			render(this.shadowRoot, this.template())
-			this.refs = {}
+			uhtml(this.shadowRoot, this.template())
+		}
+
+		update() {
+			this.render()
 			this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
 				this.refs[ref.getAttribute('ref')] = ref
 			})
@@ -45,15 +77,15 @@ export default function ardi(x) {
 
 		connectedCallback() {
 			this?.ready && this.ready()
-			this.render()
+			this.update()
 		}
 
-		// reactive
+		// reactive props
 		static get observedAttributes() {
 			return props
 		}
 		attributeChangedCallback() {
-			this.render()
+			this.update()
 		}
 	}
 
