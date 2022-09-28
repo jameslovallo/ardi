@@ -76,6 +76,7 @@ h4,
 h5,
 h6 {
 	font-family: 'JetBrains Mono';
+	scroll-margin-top: 90px;
 }
 
 p,
