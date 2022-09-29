@@ -11,6 +11,10 @@ ardi({
 		value: [Number, 90],
 	},
 
+	state: {
+		dialRotation: 0,
+	},
+
 	deg(percentage) {
 		return Math.round(240 * percentage) - 120
 	},
@@ -25,8 +29,7 @@ ardi({
 
 	intersect(ratio) {
 		if (ratio > 0.3) {
-			const val = this.deg(this.value / this.max)
-			this.refs.dial.style.transform = `rotate(${val}deg)`
+			this.state.dialRotation = this.deg(this.value / this.max)
 		}
 	},
 
@@ -39,7 +42,10 @@ ardi({
 					<i style=${`transform: rotate(${-num.deg}deg)`}>${num.label}</i>
 				</div>`
 			)}
-			<div part="dial" ref="dial"></div>
+			<div
+				part="dial"
+				style=${`transform: rotate(${this.state.dialRotation}deg)`}
+			></div>
 			<slot name="label" part="label">${this.label}</slot>
 
 			<style>

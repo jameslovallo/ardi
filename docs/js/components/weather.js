@@ -16,6 +16,44 @@ ardi({
 	state: {
 		current: {},
 		forecast: Array(7).fill(''),
+		small: undefined,
+	},
+
+	ready() {
+		new ResizeObserver(
+			() => (this.state.small = this.clientWidth <= this.breakpoint)
+		).observe(this)
+	},
+
+	intersect(r) {
+		if (!this.gotWeather && r > 0.2) {
+			this.fetchForecast()
+			this.gotWeather = true
+		}
+	},
+
+	fetchForecast() {
+		fetch(
+			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
+		)
+			.then((res) => res.json())
+			.then((state) => {
+				// current
+				const { current_weather, daily } = state
+				this.state.current.icon = this.icon(current_weather.weathercode)
+				const temp = Math.round(Number(current_weather.temperature))
+				const unit = this.unit.charAt(0).toUpperCase()
+				this.state.current.temp = temp + '°' + unit
+				// render forecast
+				this.state.forecast = daily.time.map((date, i) => ({
+					name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
+						weekday: 'long',
+					}),
+					icon: this.icon(daily.weathercode[i]),
+					min: Math.round(daily.temperature_2m_min[i]),
+					max: Math.round(daily.temperature_2m_max[i]),
+				}))
+			})
 	},
 
 	template() {
@@ -31,7 +69,7 @@ ardi({
 				</div>
 				<div part="current_temp">${this.state.current.temp}</div>
 			</div>
-			<div part="forecast" ref="forecast">
+			<div part="forecast" class=${this.state.small ? 'small' : null}>
 				${this.state.forecast.map(
 					(day) => html`<div part="day">
 						<div part="day_name">${day.name || ''}</div>
@@ -151,45 +189,6 @@ ardi({
 					width: 2em;
 				}
 			</style>`
-	},
-
-	fetchForecast() {
-		fetch(
-			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
-		)
-			.then((res) => res.json())
-			.then((state) => {
-				// current
-				const { current_weather, daily } = state
-				this.state.current.icon = this.icon(current_weather.weathercode)
-				const temp = Math.round(Number(current_weather.temperature))
-				const unit = this.unit.charAt(0).toUpperCase()
-				this.state.current.temp = temp + '°' + unit
-				// render forecast
-				this.state.forecast = daily.time.map((date, i) => ({
-					name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
-						weekday: 'long',
-					}),
-					icon: this.icon(daily.weathercode[i]),
-					min: Math.round(daily.temperature_2m_min[i]),
-					max: Math.round(daily.temperature_2m_max[i]),
-				}))
-			})
-	},
-
-	ready() {
-		new ResizeObserver(() =>
-			this.clientWidth <= this.breakpoint
-				? this.refs.forecast.classList.add('small')
-				: this.refs.forecast.classList.remove('small')
-		).observe(this)
-	},
-
-	intersect(r) {
-		if (!this.gotWeather && r > 0.2) {
-			this.fetchForecast()
-			this.gotWeather = true
-		}
 	},
 
 	icon(code) {
