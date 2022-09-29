@@ -65,6 +65,7 @@ export default function ardi(x) {
 			}
 		}
 
+		// rendering
 		debounce(fn) {
 			var timeout
 			return function () {
@@ -78,11 +79,9 @@ export default function ardi(x) {
 				})
 			}
 		}
-
 		render() {
 			uhtml(this.shadowRoot, this.template())
 		}
-
 		connectedCallback() {
 			const render = () => {
 				this.render()
