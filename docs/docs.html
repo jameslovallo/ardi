@@ -183,8 +183,8 @@ ardi({
 			<h3 id="state">state</h3>
 
 			<p>
-				State is defined in an object. Every prop is reactive and accessible
-				from
+				State can be declared as an object or as a function that returns an
+				object. Each state value is reactive and accessible from
 				<code>this.state</code>.
 			</p>
 
@@ -194,8 +194,8 @@ ardi({
 ardi({
 	component: 'gauge-demo',
 
-	state: {
-		dialRotation: 0,
+	state() {
+		return { dialRotation: this.min }
 	},
 
 	intersect(ratio) {

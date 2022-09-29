@@ -3,6 +3,7 @@ export { html, svg } from 'uhtml'
 
 export default function ardi(x) {
 	const props = Object.keys(x.props)
+	const update = new Event('update')
 	class c extends HTMLElement {
 		constructor() {
 			super().attachShadow({ mode: 'open' })
@@ -35,17 +36,17 @@ export default function ardi(x) {
 					},
 					set: (target, property, value) => {
 						target[property] = reactive(value)
-						this.update()
+						this.dispatchEvent(update)
 						return true
 					},
 					deleteProperty: (target, prop) => {
 						delete target[prop]
-						this.update()
+						this.dispatchEvent(update)
 						return true
 					},
 				})
 			}
-			this.state = reactive(x.state)
+			this.state = reactive(typeof x.state === 'function' ? x.state() : x.state)
 
 			// intersect helper
 			if (typeof this.intersect === 'function') {
@@ -64,20 +65,34 @@ export default function ardi(x) {
 			}
 		}
 
+		debounce(fn) {
+			var timeout
+			return function () {
+				var context = this
+				var args = arguments
+				if (timeout) {
+					window.cancelAnimationFrame(timeout)
+				}
+				timeout = window.requestAnimationFrame(function () {
+					fn.apply(context, args)
+				})
+			}
+		}
+
 		render() {
 			uhtml(this.shadowRoot, this.template())
 		}
 
-		update() {
-			this.render()
-			this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
-				this.refs[ref.getAttribute('ref')] = ref
-			})
-		}
-
 		connectedCallback() {
+			const render = () => {
+				this.render()
+				this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
+					this.refs[ref.getAttribute('ref')] = ref
+				})
+			}
+			this.addEventListener('update', this.debounce(render))
 			this?.ready && this.ready()
-			this.update()
+			this.dispatchEvent(update)
 		}
 
 		// reactive props
@@ -85,7 +100,7 @@ export default function ardi(x) {
 			return props
 		}
 		attributeChangedCallback() {
-			this.update()
+			this.dispatchEvent(update)
 		}
 	}
 

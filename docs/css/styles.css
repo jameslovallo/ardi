@@ -190,6 +190,13 @@ a {
 	}
 }
 
+contact-demo,
+keyboard-demo,
+todo-demo,
+youtube-demo {
+	max-width: 400px;
+}
+
 .demos a[href*='playground'] {
 	align-items: center;
 	display: inline-flex;
@@ -227,10 +234,6 @@ a {
 
 .demos .container.vert {
 	flex-flow: column;
-}
-
-youtube-demo {
-	max-width: 600px;
 }
 
 main.docs .toc ul {

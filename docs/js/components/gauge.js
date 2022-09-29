@@ -11,8 +11,8 @@ ardi({
 		value: [Number, 90],
 	},
 
-	state: {
-		dialRotation: 0,
+	state() {
+		return { dialRotation: this.min }
 	},
 
 	deg(percentage) {
