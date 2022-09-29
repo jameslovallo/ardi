@@ -10,7 +10,7 @@ ardi({
 		sustain: [Number, 2],
 	},
 
-	data: {
+	state: {
 		recording: false,
 		tracks: [],
 	},
@@ -31,18 +31,18 @@ ardi({
 	},
 
 	record() {
-		this.data.recording = true
+		this.state.recording = true
 		this.currentTrack = { startTime: new Date().getTime(), track: [] }
 	},
 
 	stop() {
-		this.data.recording = false
-		this.data.tracks.push(this.currentTrack.track)
+		this.state.recording = false
+		this.state.tracks.push(this.currentTrack.track)
 	},
 
 	playNote(instrument, note, octave, sustain) {
 		Synth.play(instrument, note, octave, sustain)
-		this.data.recording &&
+		this.state.recording &&
 			this.currentTrack.track.push({
 				timestamp: new Date().getTime() - this.currentTrack.startTime,
 				note: {
@@ -131,9 +131,9 @@ ardi({
 						</optgroup>
 					</select>
 					<button
-						@click=${() => (this.data.recording ? this.stop() : this.record())}
+						@click=${() => (this.state.recording ? this.stop() : this.record())}
 					>
-						${this.data.recording ? 'Stop' : 'Record'}
+						${this.state.recording ? 'Stop' : 'Record'}
 					</button>
 				</div>
 			</div>
@@ -177,21 +177,21 @@ ardi({
 				)}
 			</div>
 
-			${Object.keys(this.data.tracks).length > 0
+			${Object.keys(this.state.tracks).length > 0
 				? html`
 						<div part="tracks">
-							${Object.keys(this.data.tracks).map(
+							${Object.keys(this.state.tracks).map(
 								(track, i) => html`
 									<div part="track">
 										${this.icons.wave} Track ${i + 1}
 										<button
-											@click=${() => this.playTrack(this.data.tracks[track])}
+											@click=${() => this.playTrack(this.state.tracks[track])}
 											title=${`Play Track ${i + 1}`}
 										>
 											${this.icons.play}
 										</button>
 										<button
-											@click=${() => delete this.data.tracks[track]}
+											@click=${() => delete this.state.tracks[track]}
 											title=${`Delete Track ${i + 1}`}
 										>
 											${this.icons.trash}

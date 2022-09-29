@@ -21,7 +21,7 @@ export default function ardi(x) {
 				})
 			})
 
-			// reactive data
+			// reactive state
 			const reactive = (object) => {
 				if (object === null || typeof object !== 'object') {
 					return object
@@ -45,7 +45,7 @@ export default function ardi(x) {
 					},
 				})
 			}
-			this.data = reactive(x.data)
+			this.state = reactive(x.state)
 
 			// intersect helper
 			if (typeof this.intersect === 'function') {

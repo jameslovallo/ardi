@@ -13,7 +13,7 @@ ardi({
 		unit: [(v) => (['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius')],
 	},
 
-	data: {
+	state: {
 		current: {},
 		forecast: Array(7).fill(''),
 	},
@@ -25,14 +25,14 @@ ardi({
 					<small>${this.label}</small>
 				</div>
 				<div part="current_icon">
-					${this.data.current.icon
-						? html`<img src=${this.data.current.icon} />`
+					${this.state.current.icon
+						? html`<img src=${this.state.current.icon} />`
 						: ''}
 				</div>
-				<div part="current_temp">${this.data.current.temp}</div>
+				<div part="current_temp">${this.state.current.temp}</div>
 			</div>
 			<div part="forecast" ref="forecast">
-				${this.data.forecast.map(
+				${this.state.forecast.map(
 					(day) => html`<div part="day">
 						<div part="day_name">${day.name || ''}</div>
 						<div part="day_icon">
@@ -158,15 +158,15 @@ ardi({
 			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
 		)
 			.then((res) => res.json())
-			.then((data) => {
+			.then((state) => {
 				// current
-				const { current_weather, daily } = data
-				this.data.current.icon = this.icon(current_weather.weathercode)
+				const { current_weather, daily } = state
+				this.state.current.icon = this.icon(current_weather.weathercode)
 				const temp = Math.round(Number(current_weather.temperature))
 				const unit = this.unit.charAt(0).toUpperCase()
-				this.data.current.temp = temp + '°' + unit
+				this.state.current.temp = temp + '°' + unit
 				// render forecast
-				this.data.forecast = daily.time.map((date, i) => ({
+				this.state.forecast = daily.time.map((date, i) => ({
 					name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
 						weekday: 'long',
 					}),
