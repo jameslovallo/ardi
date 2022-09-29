@@ -11,16 +11,15 @@ ardi({
 	},
 
 	data: {
-		todo: [
+		tasks: [
 			{ task: 'Do the laundry', starred: false, completed: false },
 			{ task: 'Vacuum', starred: false, completed: false },
 			{ task: 'Wash the dog', starred: true, completed: false },
 		],
-		done: {},
 	},
 
 	addTask() {
-		this.data.todo.push({
+		this.data.tasks.push({
 			task: this.refs.task.value,
 			starred: this.refs.starred.checked,
 		})
@@ -29,6 +28,12 @@ ardi({
 	},
 
 	template() {
+		const todo = this.data.tasks
+			.filter((t) => !t.completed)
+			.sort((a, b) => Number(b.starred) - Number(a.starred))
+		const done = this.data.tasks
+			.filter((t) => t.completed)
+			.sort((a, b) => Number(b.starred) - Number(a.starred))
 		return html`
 			<h2>${this.name}</h2>
 
@@ -42,68 +47,77 @@ ardi({
 				<input ref="starred" part="star" type="checkbox" />
 			</div>
 
-			<h3>${this.todolabel}</h3>
-			<ul part="task-list">
-				${this.data.todo
-					.filter((t) => !t.completed)
-					.map(
-						(task) => html.for(task)`
-							<li part="task">
-								<label>
-									<input
-										type="checkbox"
-										part="task-completed"
-										@input=${() => {
-											task.completed = !task.completed
-										}}
-									/>
-									${task.task}
-								</label>
-								<div part="task-actions">
-									<input
-										type="checkbox"
-										part="star"
-										checked=${task.starred || null}
-										@input=${() => (task.starred = !task.starred)}
-									/>
-									<button part="delete">${this.icons.delete}</button>
-								</div>
-							</li>
-						`
-					)}
-			</ul>
-
-			<h3>${this.donelabel}</h3>
-			<ul part="task-list">
-				${this.data.todo
-					.filter((t) => t.completed)
-					.map(
-						(task) => html.for(task)`
-							<li part="task">
-								<label>
-									<input
-										type="checkbox"
-										part="task-completed"
-										checked
-										@input=${() => {
-											task.completed = !task.completed
-										}}
-									/>
-									${task.task}
-								</label>
-								<div part="task-actions">
-									<input
-										type="checkbox"
-										part="star"
-										checked=${task.starred || null}
-										@input=${() => (task.starred = !task.starred)}
-									/>
-									<button part="delete">${this.icons.delete}</button>
-								</div>
-							</li>
-						`
-					)}
-			</ul>
+			${Object.keys(todo).length
+				? html`<h3>${this.todolabel}</h3>
+						<ul part="task-list">
+							${todo.map(
+								(task) => html.for(task)`
+									<li part="task">
+										<label>
+											<input
+												type="checkbox"
+												part="task-completed"
+												@input=${() => {
+													task.completed = !task.completed
+												}}
+											/>
+											${task.task}
+										</label>
+										<div part="task-actions">
+											<input
+												type="checkbox"
+												part="star"
+												checked=${task.starred || null}
+												@input=${() => (task.starred = !task.starred)}
+											/>
+											<button part="delete" @click=${() => {
+												const index = this.data.tasks.indexOf(task)
+												delete this.data.tasks[index]
+											}}>
+												${this.icons.delete}
+											</button>
+										</div>
+									</li>
+								`
+							)}
+						</ul>`
+				: ''}
+			${Object.keys(done).length
+				? html`<h3>${this.donelabel}</h3>
+						<ul part="task-list">
+							${done.map(
+								(task) => html.for(task)`
+									<li part="task">
+										<label>
+											<input
+												type="checkbox"
+												part="task-completed"
+												checked
+												@input=${() => {
+													task.completed = !task.completed
+												}}
+											/>
+											${task.task}
+										</label>
+										<div part="task-actions">
+											<input
+												type="checkbox"
+												part="star"
+												checked=${task.starred || null}
+												@input=${() => (task.starred = !task.starred)}
+											/>
+											<button part="delete" @click=${() => {
+												const index = this.data.tasks.indexOf(task)
+												delete this.data.tasks[index]
+											}}>
+												${this.icons.delete}
+											</button>
+										</div>
+									</li>
+								`
+							)}
+						</ul>`
+				: ''}
 
 			<style>
 				:host {
