@@ -1,7 +1,7 @@
 import ardi, { html, svg } from '/js/ardi.js'
 
 ardi({
-	component: 'to-do',
+	component: 'todo-demo',
 
 	props: {
 		name: [String, 'To Do'],
@@ -44,7 +44,7 @@ ardi({
 		]
 
 		return html`
-			<h2>${this.name}</h2>
+			<h3>${this.name}</h3>
 
 			<div part="add">
 				<input
@@ -61,7 +61,7 @@ ardi({
 				lists.map((list) => html.for(list)`
 					${list.tasks.length
 						? html`
-							<h3>${list.label}</h3>
+							<h4>${list.label}</h4>
 								<ul part="task-list">
 									${list.tasks.map((task) => html.for(task)`
 										<li part="task">
@@ -94,7 +94,7 @@ ardi({
 								</ul>`
 						: ''
 					}`
-			)
+				)
 			}
 
 			<style>

@@ -72,6 +72,10 @@ switch (component) {
 ></keyboard-demo>`
 		break
 
+	case 'todo':
+		markup = `<todo-demo></todo-demo>`
+		break
+
 	case 'weather':
 		markup = `<h2>Demo 1</h2>
 <weather-demo
