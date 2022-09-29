@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '/js/ardi.js'
+import ardi, { html } from '/js/ardi.js'
 
 ardi({
 	component: 'todo-demo',
@@ -86,7 +86,7 @@ ardi({
 													const index = this.state.tasks.indexOf(task)
 													delete this.state.tasks[index]
 												}}>
-													${this.icons.delete}
+													⨉
 												</button>
 											</div>
 										</li>`
@@ -101,7 +101,6 @@ ardi({
 				:host {
 					display: grid;
 					gap: 1rem;
-					width: 300px;
 				}
 				:host > * {
 					margin: 0;
@@ -110,12 +109,6 @@ ardi({
 					height: 1rem;
 					margin: 0;
 					width: 1rem;
-				}
-				button {
-					background: none;
-					border: none;
-					display: block;
-					padding: 0;
 				}
 				svg {
 					display: block;
@@ -152,10 +145,10 @@ ardi({
 				[part='task-actions'] {
 					align-items: center;
 					display: flex;
-					gap: 8px;
+					gap: 12px;
 				}
 				[part='task'] {
-					padding: 8px;
+					padding: 12px;
 				}
 				[part='task']:not(:last-child) {
 					border-bottom: 1px solid rgba(155, 155, 155, 0.5);
@@ -164,13 +157,15 @@ ardi({
 					flex-grow: 1;
 				}
 				[part='delete'] {
+					background: none;
+					border: none;
 					color: #c62828;
+					display: block;
+					font-size: 1.25rem;
+					line-height: 1rem;
+					padding: 0;
 				}
 			</style>
 		`
-	},
-
-	icons: {
-		delete: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6,19A2,2 0 0,0 8,21H16A2,2 0 0,0 18,19V7H6V19M8,9H16V19H8V9M15.5,4L14.5,3H9.5L8.5,4H5V6H19V4H15.5Z" /></svg>`,
 	},
 })

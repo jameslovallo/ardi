@@ -35,6 +35,7 @@
 							<ul>
 								<li><a href="#component">component</a></li>
 								<li><a href="#props">props</a></li>
+								<li><a href="#state">state</a></li>
 								<li>
 									<a href="#template">template()</a>
 									<ul>
@@ -63,11 +64,26 @@
 				</div>
 			</aside>
 
+			<p>
+				Ardi's goal is to create a highly-optimized, kid-friendly DX for custom
+				elements that you can load from NPM or a CDN and that won't blow up your
+				bundle size. You can use Ardi to build full-scale applications or just
+				to add a little sprinke of reactivity to your
+				<a href="https://astro.build/" target="_blank">Astro</a> site.
+			</p>
+
+			<p>
+				Ardi is a fantastic solution to build components that can be used in any
+				popular Javascript framework. Ardi is only 3kb, and Ardi components have
+				been tested with React/Next/Gatsby, Vue/Nuxt, Svelte, Astro, Remix,
+				11ty, Wordpress, and fully-static sites.
+			</p>
+
 			<br />
 
 			<h2 id="installation">Installation</h2>
 
-			<h3>Option 1: As a package</h3>
+			<h3>Option 1: NPM</h3>
 
 			<pre class="language-shell">
 				<p class="code-label">shell</p>
@@ -85,7 +101,7 @@ ardi({ component: 'my-component', })
 				</code>
 			</pre>
 
-			<h3 style="margin-top: 1.5em">Option 2: In your markup</h3>
+			<h3 style="margin-top: 1.5em">Option 2: CDN</h3>
 
 			<pre>
 				<p class="code-label">html</p>
@@ -136,17 +152,12 @@ ardi({
 			<h3 id="props">props</h3>
 
 			<p>
-				Props are defined in an object. Each key represents a prop, and its
-				value is an array containing a setter function and (optionally) a
-				default value. Setter functions can be built-in functions (like
+				Props are defined in array syntax in an object. Each prop's array
+				contains a setter function and (optionally) a default value. Setter
+				functions can be built-in functions (like
 				<code>String</code>, <code>Number</code>, or <code>JSON.parse</code>),
-				arrow functions, or another function in your component (referenced using
-				<code>this</code>).
-			</p>
-
-			<p>
-				Every prop is assigned to <code>this</code> and is reactive by default,
-				meaning that any changes to a prop's value will trigger a render.
+				arrow functions, or another function in your component. Every prop is
+				reactive and accessible from <code>this</code>.
 			</p>
 
 			<pre>
@@ -167,9 +178,39 @@ ardi({
 })
 				</code>
 			</pre>
+			<hr />
+
+			<h3 id="state">state</h3>
+
+			<p>
+				State is defined in an object. Every prop is reactive and accessible
+				from
+				<code>this.state</code>.
+			</p>
+
+			<pre>
+				<p class="code-label">javascript</p>
+				<code class="language-javascript">
+ardi({
+	component: 'gauge-demo',
+
+	state: {
+		dialRotation: 0,
+	},
+
+	intersect(ratio) {
+		if (ratio > 0.3) {
+			this.state.dialRotation = this.deg(this.value / this.max)
+		}
+	},
+})
+				</code>
+			</pre>
 
 			<hr />
+
 			<h3 id="template">template()</h3>
+
 			<p>
 				Use the template function to return a tagged template literal. For
 				ultra-fast template updates, Ardi uses the

@@ -37,7 +37,6 @@ ardi({
 					display: grid;
 					align-items: center;
 					grid-template-columns: 64px 1fr auto;
-					max-width: 400px;
 					border: 1px solid rgba(125, 125, 125, 0.5);
 					border-radius: 0.75rem;
 					overflow: hidden;
