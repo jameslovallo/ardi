@@ -28,12 +28,21 @@ ardi({
 	},
 
 	template() {
-		const todo = this.data.tasks
-			.filter((t) => !t.completed)
-			.sort((a, b) => Number(b.starred) - Number(a.starred))
-		const done = this.data.tasks
-			.filter((t) => t.completed)
-			.sort((a, b) => Number(b.starred) - Number(a.starred))
+		const lists = [
+			{
+				label: this.todolabel,
+				tasks: this.data.tasks
+					.filter((t) => !t.completed)
+					.sort((a, b) => Number(b.starred) - Number(a.starred)),
+			},
+			{
+				label: this.donelabel,
+				tasks: this.data.tasks
+					.filter((t) => t.completed)
+					.sort((a, b) => Number(b.starred) - Number(a.starred)),
+			},
+		]
+
 		return html`
 			<h2>${this.name}</h2>
 
@@ -47,77 +56,46 @@ ardi({
 				<input ref="starred" part="star" type="checkbox" />
 			</div>
 
-			${Object.keys(todo).length
-				? html`<h3>${this.todolabel}</h3>
-						<ul part="task-list">
-							${todo.map(
-								(task) => html.for(task)`
-									<li part="task">
-										<label>
-											<input
-												type="checkbox"
-												part="task-completed"
-												@input=${() => {
-													task.completed = !task.completed
-												}}
-											/>
-											${task.task}
-										</label>
-										<div part="task-actions">
-											<input
-												type="checkbox"
-												part="star"
-												checked=${task.starred || null}
-												@input=${() => (task.starred = !task.starred)}
-											/>
-											<button part="delete" @click=${() => {
-												const index = this.data.tasks.indexOf(task)
-												delete this.data.tasks[index]
-											}}>
-												${this.icons.delete}
-											</button>
-										</div>
-									</li>
-								`
-							)}
-						</ul>`
-				: ''}
-			${Object.keys(done).length
-				? html`<h3>${this.donelabel}</h3>
-						<ul part="task-list">
-							${done.map(
-								(task) => html.for(task)`
-									<li part="task">
-										<label>
-											<input
-												type="checkbox"
-												part="task-completed"
-												checked
-												@input=${() => {
-													task.completed = !task.completed
-												}}
-											/>
-											${task.task}
-										</label>
-										<div part="task-actions">
-											<input
-												type="checkbox"
-												part="star"
-												checked=${task.starred || null}
-												@input=${() => (task.starred = !task.starred)}
-											/>
-											<button part="delete" @click=${() => {
-												const index = this.data.tasks.indexOf(task)
-												delete this.data.tasks[index]
-											}}>
-												${this.icons.delete}
-											</button>
-										</div>
-									</li>
-								`
-							)}
-						</ul>`
-				: ''}
+			${
+				//prettier-ignore
+				lists.map((list) => html.for(list)`
+					${list.tasks.length
+						? html`
+							<h3>${list.label}</h3>
+								<ul part="task-list">
+									${list.tasks.map((task) => html.for(task)`
+										<li part="task">
+											<label>
+												<input
+													type="checkbox"
+													part="task-completed"
+													@input=${() => {
+														task.completed = !task.completed
+													}}
+												/>
+												${task.task}
+											</label>
+											<div part="task-actions">
+												<input
+													type="checkbox"
+													part="star"
+													checked=${task.starred || null}
+													@input=${() => (task.starred = !task.starred)}
+												/>
+												<button part="delete" @click=${() => {
+													const index = this.data.tasks.indexOf(task)
+													delete this.data.tasks[index]
+												}}>
+													${this.icons.delete}
+												</button>
+											</div>
+										</li>`
+									)}
+								</ul>`
+						: ''
+					}`
+			)
+			}
 
 			<style>
 				:host {
