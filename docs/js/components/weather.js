@@ -139,10 +139,10 @@ ardi({
 					width: 2em;
 				}
 				[part='day_min'] {
-					color: var(--min, #00b0ff);
+					color: var(--min, #039be5);
 				}
 				[part='day_max'] {
-					color: var(--max, #ff1744);
+					color: var(--max, #e53935);
 				}
 				/* small */
 				[part='forecast'].small {

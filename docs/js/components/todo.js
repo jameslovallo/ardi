@@ -123,7 +123,7 @@ ardi({
 				}
 				[part='star'] {
 					appearance: none;
-					color: #f9a825;
+					color: #ffb300;
 					font-size: 1.5rem;
 					line-height: 1rem;
 				}
@@ -159,7 +159,7 @@ ardi({
 				[part='delete'] {
 					background: none;
 					border: none;
-					color: #c62828;
+					color: #e53935;
 					display: block;
 					font-size: 1.25rem;
 					line-height: 1rem;

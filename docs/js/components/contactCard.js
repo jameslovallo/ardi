@@ -64,7 +64,7 @@ ardi({
 					text-decoration: none;
 				}
 				[part='contact'] svg {
-					color: #00b8d4;
+					color: #00acc1;
 					display: block;
 					width: 20px;
 					pointer-events: none;

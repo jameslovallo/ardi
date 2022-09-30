@@ -72,7 +72,7 @@ ardi({
 					width: 10%;
 				}
 				[part='dial']:before {
-					background: var(--needle, #ff1744);
+					background: var(--needle, #e53935);
 					bottom: 99%;
 					content: '';
 					display: block;
