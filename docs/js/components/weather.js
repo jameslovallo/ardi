@@ -146,19 +146,20 @@ ardi({
 				}
 				/* small */
 				[part='forecast'].small {
+					border: 1px solid var(--divider-color);
+					border-radius: 8px;
 					display: block;
 					flex-basis: 100%;
 				}
 				[part='forecast'].small [part='day'] {
-					border-top: 1px solid var(--divider-color);
 					display: grid;
 					font-size: 1rem;
 					font-weight: normal;
 					grid-template-columns: 1fr auto auto;
 					justify-content: space-between;
-					padding: 0.25rem 0;
+					padding: 2px 8px;
 				}
-				[part='forecast'].small [part='day']:last-of-type {
+				[part='forecast'].small [part='day']:not(:last-of-type) {
 					border-bottom: 1px solid var(--divider-color);
 				}
 				/* empty */
