@@ -1,0 +1,115 @@
+/*
+ Name  : VSCode Default Dark Plus
+ Author: Fuyuno Mikazuki <https://mochizuki.moe>
+
+ Original Color by Microsoft Visual Studio Code <https://github.com/microsoft/vscode> and dark-plus-syntax <https://github.com/dunstontc/dark-plus-syntax> 
+*/
+code[class*='language-'] {
+	font-family: Consolas, 'Courier New', Courier, monospace;
+	font-size: 90%;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	line-height: 1.5;
+	color: #d4d4d4;
+	text-align: left;
+	word-break: normal;
+	word-wrap: normal;
+	-moz-tab-size: 2;
+	-o-tab-size: 2;
+	tab-size: 2;
+	white-space: pre;
+	background-color: #1e1e1e;
+	word-spacing: normal;
+	padding-left: 1rem;
+}
+
+code[class*='language-']::-moz-selection,
+code[class*='language-']::selection,
+code[class*='language-'] ::-moz-selection,
+code[class*='language-'] ::selection,
+pre[class*='language-']::-moz-selection,
+pre[class*='language-']::selection,
+pre[class*='language-'] ::-moz-selection,
+pre[class*='language-'] ::selection {
+	background-color: #add6ff26;
+}
+
+/* common tokens */
+.token.annotation,
+.token.builtin {
+	color: #4ec9b0;
+}
+.token.boolean {
+	color: #569cd6;
+}
+.token.comment,
+.token.doctype {
+	color: #6a9955;
+}
+.token.constant,
+.token.class-name {
+	color: #4ec9b0;
+}
+.token.deleted {
+	color: #f44747;
+}
+.token.function {
+	color: #dcdcaa;
+}
+.token.keyword {
+	color: #569cd6;
+}
+.token.macro.property {
+	color: #569cd6;
+}
+.token.number {
+	color: #b5cea8;
+}
+.token.operator {
+	color: #d4d4d4;
+}
+.token.tag .token.attr-name {
+	color: #9cdcfe;
+}
+.token.tag .token.attr-value {
+	color: #ce9178;
+}
+.token.tag .token.attr-value.punctuation {
+	color: #ce9178;
+}
+.token.tag .token.class-name {
+	color: #4ec9b0;
+}
+.token.tag .token.punctuation {
+	color: #d4d4d4;
+	opacity: 0.7;
+}
+.token.tag .token.tag {
+	color: #569cd6;
+}
+.token.url {
+	/* text-decoration: underline */
+}
+.token.parent.important {
+	color: #569cd6;
+}
+.token.property {
+	color: #9cdcfe;
+}
+.token.regex {
+	color: #646695;
+}
+.token.rule {
+	color: #569cd6;
+}
+.token.selector {
+	color: #d7ba7d;
+}
+.token.string {
+	color: #ce9178;
+}
+.token.variable {
+	color: #9cdcfe;
+}
