@@ -6,9 +6,7 @@
 	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta charset="UTF-8" />
-	<!-- <link rel="stylesheet" href="/css/onedark.css" /> -->
 	<link rel="stylesheet" href="/css/styles.css" />
-	<link rel="stylesheet" href="/css/dark.css" />
 </head>
 
 <body>
@@ -88,7 +86,7 @@ npm i ardi
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 import ardi, {html} from 'ardi';
 
 ardi({ component: 'my-component', })
@@ -99,8 +97,8 @@ ardi({ component: 'my-component', })
 
 			<pre>
 				<p class="code-label">html</p>
-				<code class="language-html">
-&lt;script type="module"&gt;
+				<code data-lang="text/html">
+&lt;script type=module&gt;
 	import ardi, {html} from '//unpkg.com';
 
 	ardi({ component: 'my-component', })
@@ -134,7 +132,7 @@ ardi({ component: 'my-component', })
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 ardi({
 	component: 'gauge-demo',
 })
@@ -156,7 +154,7 @@ ardi({
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 ardi({
 	props: {
 		// setter function
@@ -182,7 +180,7 @@ ardi({
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 ardi({
 	state() {
 		return { dialRotation: this.min }
@@ -259,7 +257,7 @@ ardi({
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript fix-attr">
+				<code data-lang="text/javascript">
 ardi({
 	template() {
 		return html`${this.numbers().map(
@@ -297,7 +295,7 @@ ardi({
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 ardi({
 	ready() {
 		console.log(`${this.component} is loaded`)
@@ -320,7 +318,7 @@ ardi({
 
 			<pre>
 				<p class="code-label">javascript</p>
-				<code class="language-javascript">
+				<code data-lang="text/javascript">
 ardi({
 	intersect(ratio) {
 		if (ratio > 0.3) {
@@ -422,6 +420,16 @@ ardi({
 		</div>
 	</main>
 
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+	<script type="module">
+		import loader from 'https://cdn.skypack.dev/@monaco-editor/loader@1.3.2'
+		loader.init().then((monaco) => {
+			document.querySelectorAll('code').forEach((c) => {
+				monaco.editor.colorizeElement(c, {
+					fontSize: '13px',
+					tabSize: 2,
+					theme: 'vs-dark',
+				})
+			})
+		})
+	</script>
 </body>
