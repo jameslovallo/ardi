@@ -292,13 +292,13 @@ main.docs pre {
 	display: grid;
 	margin: 0;
 	margin-bottom: 1rem;
-	padding: 0 1rem;
 	tab-size: 2;
 }
 
 main.docs pre code {
 	color: #d4d4d4;
 	overflow-x: auto;
+	padding: 0 1rem;
 }
 
 main.docs pre .code-label {
@@ -308,6 +308,7 @@ main.docs pre .code-label {
 	font-weight: bold;
 	margin-bottom: 0;
 	margin-top: 1.25em;
+	padding: 0 1rem;
 }
 
 main.docs .code-caption {
