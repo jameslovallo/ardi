@@ -4,6 +4,7 @@ export { html, svg } from 'uhtml'
 export default function ardi(x) {
 	const props = Object.keys(x.props)
 	const update = new Event('update')
+
 	class c extends HTMLElement {
 		constructor() {
 			super().attachShadow({ mode: 'open' })
@@ -83,15 +84,12 @@ export default function ardi(x) {
 			uhtml(this.shadowRoot, this.template())
 		}
 		connectedCallback() {
-			const render = () => {
-				this.render()
-				this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
-					this.refs[ref.getAttribute('ref')] = ref
-				})
-			}
-			this.addEventListener('update', this.debounce(render))
+			this.render()
+			this.addEventListener('update', this.debounce(this.render))
+			this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
+				this.refs[ref.getAttribute('ref')] = ref
+			})
 			this?.ready && this.ready()
-			this.dispatchEvent(update)
 		}
 
 		// reactive props
