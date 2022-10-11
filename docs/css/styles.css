@@ -302,7 +302,7 @@ main.docs pre code {
 }
 
 main.docs pre .code-label {
-	color: #5c6370;
+	color: #757575;
 	font-family: 'JetBrains Mono';
 	font-size: 13px;
 	font-weight: bold;
@@ -316,4 +316,30 @@ main.docs .code-caption {
 	font-family: 'JetBrains Mono';
 	font-size: 13px;
 	font-weight: bold;
+}
+
+/* Monaco */
+
+.mtk1,
+.mtk8,
+.mtk22 {
+	color: #e57373 !important;
+}
+
+.mtk4,
+.mtk6 {
+	color: #ffb74d !important;
+}
+
+.mtk5 {
+	color: #81c784 !important;
+}
+
+.mtk7 {
+	color: #757575 !important;
+}
+
+.mtk9,
+.mtk10 {
+	color: #4fc3f7 !important;
 }
