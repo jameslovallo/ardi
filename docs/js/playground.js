@@ -174,7 +174,7 @@ switch (component) {
 		break
 
 	default:
-		markup = `<hello-world name="there" color="#000" bg="#def" ></hello-world>`
+		markup = `<hello-world name="there" color="#000" bg="#def"></hello-world>`
 }
 
 fetch(`/js/components/${component}.js`)
