@@ -26,7 +26,10 @@
 				<div class="toc">
 					<h2>Contents</h2>
 					<ul>
-						<li><a href="#installation">Installation</a></li>
+						<li><a href="#introduction">Introduction</a></li>
+						<ul>
+							<li><a href="#installation">Installation</a></li>
+						</ul>
 						<br />
 						<li>
 							<a href="#use">Usage</a>
@@ -64,18 +67,23 @@
 				</div>
 			</aside>
 
+			<br />
+
+			<h2 id="introduction">Introduction</h2>
+
 			<p>
-				Ardi is a highly-performance web component framework with kid-friendly
-				DX. Ardi is only 3kb and you can install it from NPM or a CDN. You can
-				use Ardi to build full-scale applications or just to add a little
-				sprinkle of reactivity to your site. Ardi components are universal and
-				have been tested with React/Next/Gatsby, Vue/Nuxt, Svelte, Astro, Remix,
+				Ardi is a high-performance web component framework with kid-friendly DX.
+				It's declarative like React, well-structured like Vue, and fast like
+				Lit. Ardi is only 3kb and you can install it from NPM or a CDN. You can
+				use Ardi to build full-scale applications or just to add a few
+				components to your current site. Ardi components are universal and have
+				been tested with React/Next/Gatsby, Vue/Nuxt, Svelte, Astro, Remix,
 				11ty, Wordpress, and fully-static sites.
 			</p>
 
-			<br />
+			<hr />
 
-			<h2 id="installation">Installation</h2>
+			<h3 id="installation">Installation</h3>
 
 			<h3>Option 1: NPM</h3>
 
@@ -210,7 +218,7 @@ ardi({
 					href="https://github.com/WebReflection/lighterhtml#readmeackage/uhtml"
 					target="_blank"
 					>lighterhtml</a
-				>. μhtml uses tagged template literals, much like lit-html, and offers
+				>. μhtml uses tagged template literals, much like Lit, and offers
 				comparable performance.
 			</p>
 
@@ -381,7 +389,7 @@ ardi({
 				every time a prop's state changes. The default templating library,
 				<a href="https://www.npmjs.com/package/uhtml" target="_blank">μhtml</a>,
 				is <i>extremely</i> efficient, updating just the parts of the template
-				that have changed (much like lit). This allows Ardi components to work
+				that have changed (much like Lit). This allows Ardi components to work
 				very smoothly with other frameworks like React and Vue.
 			</p>
 			<h4>Bring Your Own Templating Library</h4>
@@ -411,7 +419,7 @@ ardi({
 			<h2 id="frameworks">Ardi + Other Frameworks</h2>
 
 			<p>
-				Ardi plays well with others! Like lit, μhtml only updates the parts of
+				Ardi plays well with others! Like Lit, μhtml only updates the parts of
 				the template that have changed, allowing Ardi components to react
 				<i>extremely</i> quickly to interactions with components from other
 				frameworks. The pens embedded below show how Ardi's reactivity interacts
