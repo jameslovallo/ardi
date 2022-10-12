@@ -37,10 +37,12 @@
 								<li>
 									<a href="#template">template()</a>
 									<ul>
+										<li><a href="#events">events</a></li>
+										<li><a href="#loops">loops</a></li>
+										<li><a href="#if-else">if/else</a></li>
 										<li><a href="#slots">slots</a></li>
 										<li><a href="#parts">parts</a></li>
 										<li><a href="#refs">refs</a></li>
-										<li><a href="#events">@events</a></li>
 									</ul>
 								</li>
 								<li><a href="#ready">ready()</a></li>
@@ -112,7 +114,7 @@ ardi({ component: 'my-component' })
 
 			<p>
 				Ardi components are composed as objects, using the keys outlined below
-				and any of your own. The example code is from the
+				and any of your own. Most of the example code is from the
 				<code>&lt;gauge-demo&gt;</code> component. You can review the full code
 				<a href="/playground.html?component=gauge"> in the playground</a>.
 			</p>
@@ -208,16 +210,67 @@ ardi({
 					href="https://github.com/WebReflection/lighterhtml#readmeackage/uhtml"
 					target="_blank"
 					>lighterhtml</a
-				>.
+				>. μhtml uses tagged template literals, much like lit-html, and offers
+				comparable performance.
 			</p>
 
 			<h4 id="events">events</h4>
 			<p>
 				You can add Vue-style <code>@event</code> attributes anywhere in your
 				markup. Note that raw expressions will cause a rendering loop, similar
-				to React, so it is best to use an inline arrow function, i.e.:
+				to React, so it is best to use an inline arrow function.
 				<br />
-				<code>@click=${() => this.count += this.step}</code>
+				<pre>
+					<code data-lang="text/javascript">
+template() {
+	return html`
+		&lt;button @click=${() => (this.count += this.step)}&gt;
+			Count: ${this.count}
+		&lt;/button&gt;
+	`
+},
+					</code>
+				</pre>
+			</p>
+
+			<h4 id="loops">loops</h4>
+			<p>
+				You can loop over an array using the native Javascript
+				<code>Array.map()</code> method. Sometimes, such as when events are used inside of a loop,
+				it may be necessary to give each element a key. In μhtml, this is done
+				using the <code>html.for()</code> helper.
+				<br />
+				<pre>
+					<code data-lang="text/javascript">
+template() {
+	return html`
+		${this.numbers().map((num) => html.for(num)`
+			&lt;div part="number" style=${`--rotation: ${num.deg}deg`}&gt;
+				&lt;i&gt;${num.label}&lt;/i&gt;
+			&lt;/div&gt;`
+		)}
+	`
+},
+					</code>
+				</pre>
+			</p>
+
+			<h4 id="if-else">if/else</h4>
+			<p>
+				In template literals, ternary operators are used to handle conditional rendering.
+				<br />
+				<pre>
+					<code data-lang="text/javascript">
+template() {
+	return html`
+		&lt;div part="details"&gt;
+			${this.name ? html`&lt;b&gt;${this.name}&lt;/b&gt;` : ''}
+			${this.position ? html`&lt;small&gt;${this.position}&lt;/small&gt;` : ''}
+		&lt;/div&gt;
+	`
+},
+					</code>
+				</pre>
 			</p>
 
 			<h4 id="slots">slots</h4>
@@ -226,8 +279,10 @@ ardi({
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM"
 					rel="nofollow"
-					>Shadow DOM</a
-				>, you can use
+				>
+					Shadow DOM
+				</a>
+				, you can use
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement"
 					rel="nofollow"
@@ -242,8 +297,9 @@ ardi({
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part"
 					rel="nofollow"
-					>Part attributes</a
 				>
+					Part attributes
+				</a>
 				allow you to expose an element from the Shadow DOM to be styled by
 				external CSS rules using the <code>::part()</code> pseudo-selector.
 			</p>
@@ -253,36 +309,6 @@ ardi({
 				Any element with a <code>ref</code> attribute will be added to
 				<code>this.refs</code>.
 			</p>
-
-			<pre>
-				<p class="code-label">javascript</p>
-				<code data-lang="text/javascript">
-ardi({
-	template() {
-		return html`${this.numbers().map(
-				(num) => html`
-					&lt;div
-						part="number"
-						style=${`transform: rotate(${num.deg}deg)`}
-					&gt;
-						&lt;i style=${`transform: rotate(${-num.deg}deg)`}&gt;${num.label}&lt;/i&gt;
-					&lt;/div&gt;
-				`
-			)}
-			&lt;div part="dial"&gt;&lt;/div&gt;
-			&lt;slot name="label" part="label"&gt;${this.label}&lt;/slot&gt;
-
-			&lt;style&gt;
-				:host {
-					align-items: center;
-					background: var(--background, #000);
-					border: 2px solid rgba(125, 125, 125, 0.5);
-				/* etc etc etc */
-			&lt;/style&gt;`
-	},
-})
-				</code>
-			</pre>
 
 			<hr />
 
