@@ -35,11 +35,8 @@ ardi({
 
 	template() {
 		return html`${this.numbers().map(
-				(num) => html`<div
-					part="number"
-					style=${`transform: rotate(${num.deg}deg)`}
-				>
-					<i style=${`transform: rotate(${-num.deg}deg)`}>${num.label}</i>
+				(num) => html`<div part="number" style=${`--rotation: ${num.deg}deg`}>
+					<i>${num.label}</i>
 				</div>`
 			)}
 			<div
@@ -87,6 +84,7 @@ ardi({
 					pointer-events: none;
 					position: absolute;
 					top: 0;
+					transform: rotate(var(--rotation));
 					width: 3em;
 				}
 				[part='number'] i {
@@ -95,6 +93,7 @@ ardi({
 					font-style: normal;
 					height: 3em;
 					justify-content: center;
+					transform: rotate(calc(-1 * var(--rotation)));
 					width: 3em;
 				}
 				[part='label'] {

@@ -63,12 +63,12 @@
 			</aside>
 
 			<p>
-				Ardi is a highly-optimized, kid-friendly web component framework. Ardi
-				is only 3kb and you can install it from NPM or a CDN. You can use Ardi
-				to build full-scale applications or just to add a little sprinkle of
-				reactivity to your site. Ardi components are universal and have been
-				tested with React/Next/Gatsby, Vue/Nuxt, Svelte, Astro, Remix, 11ty,
-				Wordpress, and fully-static sites.
+				Ardi is a highly-performance web component framework with kid-friendly
+				DX. Ardi is only 3kb and you can install it from NPM or a CDN. You can
+				use Ardi to build full-scale applications or just to add a little
+				sprinkle of reactivity to your site. Ardi components are universal and
+				have been tested with React/Next/Gatsby, Vue/Nuxt, Svelte, Astro, Remix,
+				11ty, Wordpress, and fully-static sites.
 			</p>
 
 			<br />
@@ -201,7 +201,7 @@ ardi({
 
 			<p>
 				Use the template function to return a tagged template literal. For
-				ultra-fast template updates, Ardi uses the
+				ultra-fast rendering, Ardi uses the
 				<a href="https://www.npmjs.com/package/uhtml" target="_blank">μhtml</a>
 				library, which is a subset of
 				<a
@@ -209,6 +209,15 @@ ardi({
 					target="_blank"
 					>lighterhtml</a
 				>.
+			</p>
+
+			<h4 id="events">events</h4>
+			<p>
+				You can add Vue-style <code>@event</code> attributes anywhere in your
+				markup. Note that raw expressions will cause a rendering loop, similar
+				to React, so it is best to use an inline arrow function, i.e.:
+				<br />
+				<code>@click=${() => this.count += this.step}</code>
 			</p>
 
 			<h4 id="slots">slots</h4>
@@ -242,17 +251,7 @@ ardi({
 			<h4 id="refs">refs</h4>
 			<p>
 				Any element with a <code>ref</code> attribute will be added to
-				<code>this.refs</code>, i.e. <code>this.refs.dial</code> in the example
-				below.
-			</p>
-
-			<h4 id="events">events</h4>
-			<p>
-				You can add Vue-style <code>@event</code> attributes anywhere in your
-				markup. Note that raw expressions will cause a rendering loop, similar
-				to React, so it is best to use an inline arrow function, i.e.:
-				<br />
-				<code>@click=${() => this.count += this.step}</code>
+				<code>this.refs</code>.
 			</p>
 
 			<pre>
