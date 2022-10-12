@@ -140,14 +140,14 @@ ardi({
 
 			<div part="keys">
 				${Array.from({ length: this.octaves }).map(
-					(octaves, octave) => html`
-						<div part="octave" style=${`z-index: ${this.octaves - octave}`}>
+					(a, i) => html`
+						<div part="octave" style=${`z-index: ${this.octaves - i}`}>
 							${['C', 'D', 'E', 'F', 'G', 'A', 'B'].map((note) => {
 								const press = (sharp) => {
 									this.playNote(
 										this.instrument,
 										note + (sharp ? '#' : ''),
-										octave + this.start,
+										i + this.start,
 										this.sustain
 									)
 								}
@@ -158,7 +158,7 @@ ardi({
 											@mousedown=${() => press()}
 											@mouseover=${() => this.mousedown && press()}
 										>
-											${note + (octave + this.start)}
+											${note + (i + this.start)}
 										</button>
 										${['C', 'D', 'F', 'G', 'A'].includes(note)
 											? html`
