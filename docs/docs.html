@@ -35,7 +35,7 @@
 								<li><a href="#props">props</a></li>
 								<li><a href="#state">state</a></li>
 								<li>
-									<a href="#template">template()</a>
+									<a href="#template">template</a>
 									<ul>
 										<li><a href="#events">events</a></li>
 										<li><a href="#loops">loops</a></li>
@@ -45,15 +45,15 @@
 										<li><a href="#refs">refs</a></li>
 									</ul>
 								</li>
-								<li><a href="#ready">ready()</a></li>
-								<li><a href="#intersect">intersect(ratio)</a></li>
+								<li><a href="#ready">ready</a></li>
+								<li><a href="#intersect">intersect</a></li>
 							</ul>
 						</li>
 						<br />
 						<li>
 							<a href="#advanced">Advanced</a>
 							<ul>
-								<li><a href="#render">render()</a></li>
+								<li><a href="#render">render</a></li>
 							</ul>
 						</li>
 						<br />
@@ -202,7 +202,7 @@ ardi({
 			<h3 id="template">template()</h3>
 
 			<p>
-				Use the template function to return a tagged template literal. For
+				The template function should return a tagged template literal. For
 				ultra-fast rendering, Ardi uses the
 				<a href="https://www.npmjs.com/package/uhtml" target="_blank">μhtml</a>
 				library, which is a subset of
@@ -219,9 +219,9 @@ ardi({
 				You can add Vue-style <code>@event</code> attributes anywhere in your
 				markup. Note that raw expressions will cause a rendering loop, similar
 				to React, so it is best to use an inline arrow function.
-				<br />
-				<pre>
-					<code data-lang="text/javascript">
+			</p>
+			<pre>
+				<code data-lang="text/javascript">
 template() {
 	return html`
 		&lt;button @click=${() => (this.count += this.step)}&gt;
@@ -229,19 +229,18 @@ template() {
 		&lt;/button&gt;
 	`
 },
-					</code>
-				</pre>
-			</p>
+				</code>
+			</pre>
 
 			<h4 id="loops">loops</h4>
 			<p>
 				You can loop over an array using the native Javascript
-				<code>Array.map()</code> method. Sometimes, such as when events are used inside of a loop,
-				it may be necessary to give each element a key. In μhtml, this is done
-				using the <code>html.for()</code> helper.
-				<br />
-				<pre>
-					<code data-lang="text/javascript">
+				<code>Array.map()</code> method. Sometimes, such as when events are used
+				inside of a loop, it may be necessary to give each element a key. In
+				μhtml, this is done using the <code>html.for()</code> helper.
+			</p>
+			<pre>
+				<code data-lang="text/javascript">
 template() {
 	return html`
 		${this.numbers().map((num) => html.for(num)`
@@ -251,16 +250,16 @@ template() {
 		)}
 	`
 },
-					</code>
-				</pre>
-			</p>
+				</code>
+			</pre>
 
 			<h4 id="if-else">if/else</h4>
 			<p>
-				In template literals, ternary operators are used to handle conditional rendering.
-				<br />
-				<pre>
-					<code data-lang="text/javascript">
+				In template literals, ternary operators are used to handle conditional
+				rendering.
+			</p>
+			<pre>
+				<code data-lang="text/javascript">
 template() {
 	return html`
 		&lt;div part="details"&gt;
@@ -269,28 +268,38 @@ template() {
 		&lt;/div&gt;
 	`
 },
-					</code>
-				</pre>
-			</p>
+				</code>
+			</pre>
 
 			<h4 id="slots">slots</h4>
 			<p>
-				If you enabled
+				Ardi components use the
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM"
 					rel="nofollow"
-				>
-					Shadow DOM
-				</a>
-				, you can use
+					>Shadow DOM</a
+				>, which means you can use
 				<a
 					href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement"
 					rel="nofollow"
 					>&lt;slot&gt; tags</a
 				>
-				inside your template. You can use the default slot or multiple named
-				slots.
+				inside your template. You can use a single default slot or multiple
+				named slots.
 			</p>
+			<pre>
+				<code data-lang="text/javascript">
+template() {
+	return html`
+		&lt;div part="card"&gt;
+			&lt;slot&gt;&lt;/slot&gt;
+			&lt;slot name="text"&gt;&lt;/slot&gt;
+			&lt;slot name="actions"&gt;&lt;/slot&gt;
+		&lt;/div&gt;
+	`
+},
+				</code>
+			</pre>
 
 			<h4 id="parts">parts</h4>
 			<p>
