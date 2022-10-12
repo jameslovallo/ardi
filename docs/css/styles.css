@@ -321,8 +321,7 @@ main.docs .code-caption {
 /* Monaco */
 
 .mtk1,
-.mtk8,
-.mtk22 {
+.mtk8 {
 	color: #ef5350 !important;
 }
 
@@ -342,4 +341,8 @@ main.docs .code-caption {
 .mtk9,
 .mtk10 {
 	color: #29b6f6 !important;
+}
+
+.mtk22 {
+	color: #ffca28 !important;
 }
