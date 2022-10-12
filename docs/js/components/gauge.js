@@ -60,7 +60,7 @@ ardi({
 					width: 300px;
 				}
 				[part='dial'] {
-					background: var(--dial, #333);
+					background: var(--dial, #222);
 					border-radius: 50%;
 					height: 10%;
 					position: relative;
@@ -98,7 +98,7 @@ ardi({
 				}
 				[part='label'] {
 					align-items: center;
-					background: var(--title-background, #333);
+					background: var(--title-background, #222);
 					border-radius: 50%;
 					bottom: 0;
 					color: var(--title-color, #fff);
