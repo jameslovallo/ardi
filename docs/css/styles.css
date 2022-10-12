@@ -280,7 +280,7 @@ hr.large {
 }
 
 main.docs pre {
-	background: #1e1e1e;
+	background: #21252b;
 	clip-path: polygon(
 		1rem 0,
 		100% 0,
@@ -302,7 +302,7 @@ main.docs pre code {
 }
 
 main.docs pre .code-label {
-	color: #757575;
+	color: #5c6370;
 	font-family: 'JetBrains Mono';
 	font-size: 13px;
 	font-weight: bold;
@@ -322,27 +322,27 @@ main.docs .code-caption {
 
 .mtk1,
 .mtk8 {
-	color: #ef5350 !important;
+	color: #ef596f !important;
 }
 
 .mtk4,
 .mtk6 {
-	color: #ffa726 !important;
+	color: #d8985f !important;
 }
 
 .mtk5 {
-	color: #66bb6a !important;
+	color: #89ca78 !important;
 }
 
 .mtk7 {
-	color: #757575 !important;
+	color: #5c6370 !important;
 }
 
 .mtk9,
 .mtk10 {
-	color: #29b6f6 !important;
+	color: #52adf2 !important;
 }
 
 .mtk22 {
-	color: #ffca28 !important;
+	color: #e5c07b !important;
 }
