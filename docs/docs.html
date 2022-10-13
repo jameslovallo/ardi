@@ -364,8 +364,7 @@ ardi({
 ardi({
 	intersect(ratio) {
 		if (ratio > 0.3) {
-			const val = this.deg(this.value / this.max)
-			this.refs.dial.style.transform = `rotate(${val}deg)`
+			this.state.dialRotation = this.deg(this.value / this.max)
 		}
 	},
 })
