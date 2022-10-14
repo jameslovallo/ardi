@@ -59,6 +59,13 @@ switch (component) {
 </decoration-demo>
 
 <style>
+	.styled-badge::part(badge) {
+		border-radius: 0;
+		border-bottom-left-radius: 8px;
+		border-top-right-radius: 8px;
+		right: 0;
+		top: 0;
+	}
 	decoration-demo {
 		max-width: 400px;
 	}
