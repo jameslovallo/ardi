@@ -213,13 +213,23 @@ ${component === 'helloJsx' ? '' : scriptTag}
 			setPreview()
 			setTimeout(() => colorize(playground), 500)
 
-			editor.onDidChangeModelContent(() => {
+			editor.onKeyUp(() => {
 				colorize(playground)
 				debounce(setPreview, 1000)
 			})
 
-			editor.onDidScrollChange(() => {
-				debounce(colorize(playground), 1000)
+			editor.onMouseUp(() => {
+				debounce(colorize(playground), 500)
 			})
+
+			editor.onDidScrollChange(() => {
+				debounce(colorize(playground), 500)
+			})
+
+			editor.onDidChangeCursorSelection(() => {
+				debounce(colorize(playground), 500)
+			})
+
+			console.log(editor)
 		})
 	})
