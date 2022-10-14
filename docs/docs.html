@@ -463,13 +463,16 @@ ardi({
 
 	<script type="module">
 		import loader from 'https://cdn.skypack.dev/@monaco-editor/loader@1.3.2'
+		import colorize from './js/colorize.js'
 		loader.init().then((monaco) => {
 			document.querySelectorAll('code').forEach((c) => {
-				monaco.editor.colorizeElement(c, {
-					fontSize: '13px',
-					tabSize: 2,
-					theme: 'vs-dark',
-				})
+				monaco.editor
+					.colorizeElement(c, {
+						fontSize: '13px',
+						tabSize: 2,
+						theme: 'vs-dark',
+					})
+					.then(() => colorize(c))
 			})
 		})
 	</script>

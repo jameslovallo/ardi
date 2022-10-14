@@ -340,9 +340,18 @@ main.docs .code-caption {
 
 .mtk9,
 .mtk10 {
+	color: #bbbbbb !important;
+}
+
+.mtk12,
+.mtk22 {
+	color: #e5c07b !important;
+}
+
+.mtk14 {
 	color: #52adf2 !important;
 }
 
-.mtk22 {
-	color: #e5c07b !important;
+.mtk18 {
+	color: #d55fde !important;
 }
