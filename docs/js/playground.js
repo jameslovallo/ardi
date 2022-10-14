@@ -1,6 +1,6 @@
 import loader from 'https://cdn.skypack.dev/@monaco-editor/loader@1.3.2'
 import { debounce } from 'https://cdn.skypack.dev/debounce@1.2.1'
-import colorize from './colorize.js'
+import colorize from '/js/colorize.js'
 
 const playground = document.getElementById('playground')
 const preview = document.getElementById('preview')
@@ -213,10 +213,12 @@ ${component === 'helloJsx' ? '' : scriptTag}
 			setPreview()
 			setTimeout(() => colorize(playground), 500)
 
-			editor.onKeyUp(() => {
-				colorize(playground)
-				debounce(setPreview, 1000)
-			})
+			editor.onDidChangeModelContent(
+				debounce(() => {
+					setPreview()
+					colorize(playground)
+				}, 500)
+			)
 
 			editor.onMouseUp(() => {
 				debounce(colorize(playground), 500)
