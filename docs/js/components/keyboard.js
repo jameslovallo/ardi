@@ -317,7 +317,7 @@ ardi({
 					background: var(--black-key-active, #444);
 				}
 				[part='tracks'] {
-					color: white;
+					color: #fff;
 					column-gap: 2rem;
 					display: flex;
 					flex-flow: row wrap;
@@ -333,7 +333,7 @@ ardi({
 				[part='track'] button {
 					background: none;
 					border: none;
-					color: white;
+					color: #fff;
 					padding: 0;
 				}
 				[part='track'] svg {

@@ -49,12 +49,12 @@ switch (component) {
 </decoration-demo>
 
 <h2>Demo 3</h2>
-<decoration-demo background="#c22" label="4" type="badge">
+<decoration-demo background="#e53935" label="3" type="badge">
 	<div class="demo-card"></div>
 </decoration-demo>
 
 <h2>Demo 4</h2>
-<decoration-demo background="#c22" class="styled-badge" label="240" type="badge">
+<decoration-demo background="#e53935" class="styled-badge" label="123" type="badge">
 	<div class="demo-card"></div>
 </decoration-demo>
 

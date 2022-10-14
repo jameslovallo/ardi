@@ -3,7 +3,7 @@ import ardi, { html } from '/js/ardi.js'
 ardi({
 	component: 'decoration-demo',
 	props: {
-		background: [String, 'darkslateblue'],
+		background: [String, '#5E35B1'],
 		color: [String, 'white'],
 		href: [String, null],
 		label: [String, null],
