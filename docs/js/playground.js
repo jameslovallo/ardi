@@ -229,7 +229,5 @@ ${component === 'helloJsx' ? '' : scriptTag}
 			editor.onDidChangeCursorSelection(() => {
 				debounce(colorize(playground), 500)
 			})
-
-			console.log(editor)
 		})
 	})
