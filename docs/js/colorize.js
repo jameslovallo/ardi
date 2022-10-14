@@ -23,6 +23,9 @@ export default (c) => {
 		) {
 			el.classList.remove('mtk8')
 			el.classList.add('mtk18')
+		} else if (['null', 'undefined'].includes(el.innerText)) {
+			el.classList.remove('mtk8')
+			el.classList.add('mtk16')
 		}
 	})
 	c.querySelectorAll('.mtk9').forEach((el) => {

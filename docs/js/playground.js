@@ -37,6 +37,39 @@ switch (component) {
 ></contact-demo>`
 		break
 
+	case 'decoration':
+		markup = `<h2>Demo 1</h2>
+<decoration-demo label="Ribbon" type="ribbon">
+	<div class="demo-card"></div>
+</decoration-demo>
+
+<h2>Demo 2</h2>
+<decoration-demo href="https://google.com" label="Link Ribbon" type="ribbon">
+	<div class="demo-card"></div>
+</decoration-demo>
+
+<h2>Demo 3</h2>
+<decoration-demo background="#c22" label="4" type="badge">
+	<div class="demo-card"></div>
+</decoration-demo>
+
+<h2>Demo 4</h2>
+<decoration-demo background="#c22" class="styled-badge" label="240" type="badge">
+	<div class="demo-card"></div>
+</decoration-demo>
+
+<style>
+	decoration-demo {
+		max-width: 400px;
+	}
+	.demo-card {
+		border: 1px solid rgba(125, 125, 125, 0.5);
+		border-radius: 8px;
+		height: 80px;
+	}
+</style>`
+		break
+
 	case 'gauge':
 		markup = `<h2>Demo 1</h2>
 <gauge-demo

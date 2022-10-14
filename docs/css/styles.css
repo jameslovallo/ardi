@@ -184,6 +184,12 @@ a {
 	margin: 0;
 }
 
+.demo-card {
+	border: 1px solid rgba(125, 125, 125, 0.5);
+	border-radius: 8px;
+	height: 80px;
+}
+
 @media (min-width: 768px) {
 	.demo-header {
 		display: flex;
@@ -191,6 +197,7 @@ a {
 }
 
 contact-demo,
+decoration-demo,
 keyboard-demo,
 todo-demo,
 youtube-demo {
@@ -326,7 +333,8 @@ main.docs .code-caption {
 }
 
 .mtk4,
-.mtk6 {
+.mtk6,
+.mtk16 {
 	color: #d8985f !important;
 }
 

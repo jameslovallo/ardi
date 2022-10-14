@@ -1,5 +1,6 @@
 import '/js/components/contactCard.js'
 import '/js/components/counter.js'
+import '/js/components/decoration.js'
 import '/js/components/gauge.js'
 import '/js/components/keyboard.js'
 import '/js/components/todo.js'
