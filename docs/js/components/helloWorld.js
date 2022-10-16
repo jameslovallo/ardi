@@ -9,7 +9,8 @@ ardi({
 		name: [String, 'there'],
 	},
 	template() {
-		return html`<img part="image" src=${this.image} />
+		return html`
+			<img part="image" src=${this.image} />
 			<h2 part="message" style=${`--bg: ${this.bg}; --color: ${this.color};`}>
 				Hello ${this.name}
 			</h2>
@@ -43,6 +44,7 @@ ardi({
 					transform: rotate(45deg);
 					width: 1rem;
 				}
-			</style>`
+			</style>
+		`
 	},
 })

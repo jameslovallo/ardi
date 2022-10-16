@@ -35,9 +35,11 @@ ardi({
 
 	template() {
 		return html`${this.numbers().map(
-				(num) => html`<div part="number" style=${`--rotation: ${num.deg}deg`}>
-					<i>${num.label}</i>
-				</div>`
+				(num) => html`
+					<div part="number" style=${`--rotation: ${num.deg}deg`}>
+						<i>${num.label}</i>
+					</div>
+				`
 			)}
 			<div
 				part="dial"

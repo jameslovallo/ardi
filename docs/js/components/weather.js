@@ -57,7 +57,8 @@ ardi({
 	},
 
 	template() {
-		return html`<div part="current">
+		return html`
+			<div part="current">
 				<div part="label">
 					<b>${this.place}</b><br />
 					<small>${this.label}</small>
@@ -189,7 +190,8 @@ ardi({
 					display: inline-block;
 					width: 2em;
 				}
-			</style>`
+			</style>
+		`
 	},
 
 	icon(code) {

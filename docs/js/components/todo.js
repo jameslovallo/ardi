@@ -62,36 +62,37 @@ ardi({
 					${list.tasks.length
 						? html`
 							<h4>${list.label}</h4>
-								<ul part="task-list">
-									${list.tasks.map((task) => html.for(task)`
-										<li part="task">
-											<label>
-												<input
-													type="checkbox"
-													part="task-completed"
-													@input=${() => {
-														task.completed = !task.completed
-													}}
-												/>
-												${task.task}
-											</label>
-											<div part="task-actions">
-												<input
-													type="checkbox"
-													part="star"
-													checked=${task.starred || null}
-													@input=${() => (task.starred = !task.starred)}
-												/>
-												<button part="delete" @click=${() => {
-													const index = this.state.tasks.indexOf(task)
-													delete this.state.tasks[index]
-												}}>
-													⨉
-												</button>
-											</div>
-										</li>`
-									)}
-								</ul>`
+							<ul part="task-list">
+								${list.tasks.map((task) => html.for(task)`
+									<li part="task">
+										<label>
+											<input
+												type="checkbox"
+												part="task-completed"
+												@input=${() => {
+													task.completed = !task.completed
+												}}
+											/>
+											${task.task}
+										</label>
+										<div part="task-actions">
+											<input
+												type="checkbox"
+												part="star"
+												checked=${task.starred || null}
+												@input=${() => (task.starred = !task.starred)}
+											/>
+											<button part="delete" @click=${() => {
+												const index = this.state.tasks.indexOf(task)
+												delete this.state.tasks[index]
+											}}>
+												⨉
+											</button>
+										</div>
+									</li>`
+								)}
+							</ul>
+						`
 						: ''
 					}`
 				)

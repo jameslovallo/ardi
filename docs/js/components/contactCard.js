@@ -20,12 +20,14 @@ ardi({
 			</div>
 			<div part="contact">
 				${this.phone
-					? html`<a
-							@click=${(e) => this.phoneClick(e)}
-							href=${`tel:${this.phone?.match(/[0-9]+/g).join('')}`}
-					  >
-							${this.icons.phone}
-					  </a>`
+					? html`
+							<a
+								@click=${(e) => this.phoneClick(e)}
+								href=${`tel:${this.phone?.match(/[0-9]+/g).join('')}`}
+							>
+								${this.icons.phone}
+							</a>
+					  `
 					: ''}
 				${this.email
 					? html` <a href=${`mailto:${this.email}`}>${this.icons.email}</a>`
