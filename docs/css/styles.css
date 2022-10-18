@@ -197,11 +197,14 @@ a {
 }
 
 contact-demo,
-decoration-demo,
 keyboard-demo,
 todo-demo,
 youtube-demo {
 	max-width: 400px;
+}
+
+decoration-demo {
+	flex-basis: 50%;
 }
 
 .demos a[href*='playground'] {
@@ -235,7 +238,6 @@ youtube-demo {
 
 .demos .container {
 	display: flex;
-	flex-flow: row wrap;
 	gap: 1rem;
 }
 
