@@ -4,9 +4,9 @@ ardi({
 	component: 'todo-demo',
 
 	props: {
-		name: [String, 'To Do'],
 		addtasklabel: [String, 'Add a task'],
 		donelabel: [String, 'Complete'],
+		listLabel: [String, 'To Do'],
 		todolabel: [String, 'Pending'],
 	},
 
@@ -44,7 +44,7 @@ ardi({
 		]
 
 		return html`
-			<h3>${this.name}</h3>
+			<h3>${this.listLabel}</h3>
 
 			<div part="add">
 				<input
@@ -69,6 +69,7 @@ ardi({
 											<input
 												type="checkbox"
 												part="task-completed"
+												checked=${task.completed || null}
 												@input=${() => {
 													task.completed = !task.completed
 												}}
@@ -94,8 +95,9 @@ ardi({
 							</ul>
 						`
 						: ''
-					}`
-				)
+					}
+				`
+			)
 			}
 
 			<style>
