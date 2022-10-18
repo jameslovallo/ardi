@@ -29,7 +29,7 @@ export default (c) => {
 		}
 	})
 	c.querySelectorAll('.mtk9').forEach((el) => {
-		if (['?', ':', '=>'].includes(el.innerText)) {
+		if ('=>' === el.innerText) {
 			el.classList.remove('mtk9')
 			el.classList.add('mtk18')
 		}
