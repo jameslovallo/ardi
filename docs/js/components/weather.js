@@ -39,9 +39,9 @@ ardi({
 			`https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
 		)
 			.then((res) => res.json())
-			.then((state) => {
+			.then((conditions) => {
 				// current
-				const { current_weather, daily } = state
+				const { current_weather, daily } = conditions
 				this.state.current.icon = this.icon(current_weather.weathercode)
 				const temp = Math.round(Number(current_weather.temperature))
 				const unit = this.unit.charAt(0).toUpperCase()
@@ -52,8 +52,8 @@ ardi({
 						weekday: 'long',
 					}),
 					icon: this.icon(daily.weathercode[i]),
-					min: Math.round(daily.temperature_2m_min[i]),
-					max: Math.round(daily.temperature_2m_max[i]),
+					min: Math.round(daily.temperature_2m_min[i]) + '°',
+					max: Math.round(daily.temperature_2m_max[i]) + '°',
 				}))
 			})
 	},
@@ -80,8 +80,8 @@ ardi({
 							${day.icon ? html`<img src=${day.icon} />` : ''}
 						</div>
 						<div part="day_temp">
-							<span part="day_min">${day.min + '°'}</span>
-							<span part="day_max">${day.max + '°'}</span>
+							<span part="day_min">${day.min || ''}</span>
+							<span part="day_max">${day.max || ''}</span>
 						</div>
 					</div>`
 				)}
