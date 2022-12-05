@@ -10,9 +10,11 @@ ardi({
 		sustain: [Number, 2],
 	},
 
-	state: {
-		recording: false,
-		tracks: [],
+	state() {
+		return {
+			recording: false,
+			tracks: [],
+		}
 	},
 
 	ready() {

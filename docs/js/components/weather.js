@@ -13,10 +13,12 @@ ardi({
 		unit: [(v) => (['fahrenheit', 'f'].includes(v) ? 'fahrenheit' : 'celsius')],
 	},
 
-	state: {
-		current: {},
-		forecast: Array(7).fill(''),
-		small: undefined,
+	state() {
+		return {
+			current: {},
+			forecast: Array(7).fill(''),
+			small: undefined,
+		}
 	},
 
 	ready() {

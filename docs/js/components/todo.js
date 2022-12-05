@@ -10,12 +10,14 @@ ardi({
 		todolabel: [String, 'Pending'],
 	},
 
-	state: {
-		tasks: [
-			{ task: 'Do the laundry', starred: false, completed: false },
-			{ task: 'Vacuum', starred: false, completed: true },
-			{ task: 'Wash the dog', starred: true, completed: false },
-		],
+	state() {
+		return {
+			tasks: [
+				{ task: 'Do the laundry', starred: false, completed: false },
+				{ task: 'Vacuum', starred: false, completed: true },
+				{ task: 'Wash the dog', starred: true, completed: false },
+			],
+		}
 	},
 
 	addTask() {
