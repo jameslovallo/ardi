@@ -2,7 +2,7 @@ import { render as uhtml } from 'uhtml'
 export { html, svg } from 'uhtml'
 
 export default function ardi(x) {
-	const props = Object.keys(x.props)
+	const props = Object.keys(x.props || {})
 	const update = new Event('update')
 
 	class c extends HTMLElement {
@@ -47,7 +47,7 @@ export default function ardi(x) {
 					},
 				})
 			}
-			this.state = reactive(typeof x.state === 'function' ? x.state() : x.state)
+			if (typeof this.state === 'function') this.state = reactive(this.state())
 
 			// intersect helper
 			if (typeof this.intersect === 'function') {

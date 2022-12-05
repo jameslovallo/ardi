@@ -80,8 +80,8 @@ ardi({
 							${day.icon ? html`<img src=${day.icon} />` : ''}
 						</div>
 						<div part="day_temp">
-							<span part="day_min">${day.min ? day.min + '°' : ''}</span>
-							<span part="day_max">${day.max ? day.max + '°' : ''}</span>
+							<span part="day_min">${day.min + '°'}</span>
+							<span part="day_max">${day.max + '°'}</span>
 						</div>
 					</div>`
 				)}
