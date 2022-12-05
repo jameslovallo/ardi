@@ -12,7 +12,7 @@ ardi({
 	},
 
 	state() {
-		return { dialRotation: this.min }
+		return { dialRotation: this.deg(this.min) }
 	},
 
 	deg(percentage) {
