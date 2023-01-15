@@ -1,39 +1,39 @@
 {
-	"name": "ardi",
-	"version": "0.0.14",
-	"description": "Welcome to the Weightless Web. Ardi is a tiny (but fierce) web component framework, weighing just 3kb compressed.",
-	"type": "module",
-	"main": "ardi-min.js",
-	"module": "ardi-min.js",
-	"keywords": [
-		"ardi",
-		"web component",
-		"web components",
-		"custom element",
-		"custom elements",
-		"reactive",
-		"small",
-		"fast",
-		"flexible",
-		"shadow dom"
-	],
-	"author": "James Lovallo",
-	"license": "ISC",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/jameslovallo/ardi"
-	},
-	"homepage": "https://jameslovallo.github.io/ardi/",
-	"bugs": {
-		"url": "https://github.com/jameslovallo/ardi/issues"
-	},
-	"scripts": {
-		"build": "esbuild ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=ardi-min.js && cp -fr ardi-min.js docs/js/ardi.js",
-		"dev": "cd docs && ntl dev",
-		"update": "npm version patch && npm publish"
-	},
-	"devDependencies": {
-		"esbuild": "^0.15.9",
-		"uhtml": "^3.0.2"
-	}
+  "name": "ardi",
+  "version": "0.0.14",
+  "description": "Welcome to the Weightless Web. Ardi is a tiny (but fierce) web component framework, weighing just 3kb compressed.",
+  "type": "module",
+  "main": "ardi-min.js",
+  "module": "ardi-min.js",
+  "keywords": [
+    "ardi",
+    "web component",
+    "web components",
+    "custom element",
+    "custom elements",
+    "reactive",
+    "small",
+    "fast",
+    "flexible",
+    "shadow dom"
+  ],
+  "author": "James Lovallo",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jameslovallo/ardi"
+  },
+  "homepage": "https://jameslovallo.github.io/ardi/",
+  "bugs": {
+    "url": "https://github.com/jameslovallo/ardi/issues"
+  },
+  "scripts": {
+    "build": "esbuild ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=ardi-min.js ",
+    "dev": "docsify serve",
+    "update": "npm version patch && npm publish"
+  },
+  "devDependencies": {
+    "esbuild": "^0.15.9",
+    "uhtml": "^3.0.2"
+  }
 }
