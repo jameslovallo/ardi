@@ -6,10 +6,10 @@ Ardi makes it easy to create reactive custom elements that work with any website
 
 ## Features
 
-1. Object-oriented API.
-2. Reactive props and state management.
-3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars).
-4. No tooling required.
+1. Object-oriented API
+2. Reactive props and state management
+3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
+4. No tooling required
 
 <home-grid>
 
@@ -80,11 +80,11 @@ ardi({
 
 ### Props
 
-Properties allow you to configure your component. To create a property, create a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from a prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse), an arrow function, or a method inside your component. Every prop is reactive, meaning that prop's value is changed internally or via its corresponding attribute, that change will trigger a render, Prop values are accessible directly from `this`.
+Properties allow you to configure your component. To create a property, add a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from the prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse), an arrow function, or a method inside your component. Every prop is reactive, which means that whether a prop's value is changed internally or via its corresponding attribute, that change will trigger a render. Prop values are accessible directly from `this`.
 
 For the TMDB component, we'll add two props:
 
-1. type: to configure where it searches for TV series or movies.
+1. type: to configure whether it searches for TV or movies.
 2. time: to configure the time period for trending results, which are displayed by default when the component is scrolled into view.
 
 ```js
