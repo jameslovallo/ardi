@@ -48,7 +48,7 @@ Ardi plays nicely with other frameworks, including React, Vue, Svelte, and many 
 
 ## JSX & Handlebars
 
-μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating language you prefer. Sample code for each option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
+μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating system you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
 
 <!-- tabs:start -->
 
@@ -90,21 +90,19 @@ import ardi, { html } from '//unpkg.com/ardi'
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
 
 ardi({
-  component: 'hbs-counter',
+  component: "hbs-counter",
   state: () => ({ count: 0 }),
-  template: '<button>Count: {{state.count}}</button>',
-  render() {
-    const hbs = handlebars.compile(this.template)
-    this.shadowRoot.innerHTML = hbs(this)
-    this.handleClick()
+  template() {
+    const template = "<button ref='counter'>Count: {{count}}</button>"
+    const hbs = handlebars.compile(template)
+    return hbs(this)
   },
-  handleClick() {
-    const counter = this.shadowRoot.querySelector('button')
-    counter.addEventListener('click', () => this.count++)
+  updated() {
+    this.refs.counter.addEventListener('click', () => this.count++)
   },
-})
+});
 ```
 
 <!-- tabs:end -->
 
-Notice that with Handlebars, a render function was added to override Ardi's default rendering behavior. Typically, Ardi expects that the template method will be a function that returns DOM nodes. Since Handlebars returns markup, not nodes, the render function must be modified to accommodate that. With this setup, the render function is also a good place to setup any event listeners that are required, since the component's markup will be re-rendered by prop and state changes.
+Notice that with Handlebars (or any other language that returns the template as a string: this can even be a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
