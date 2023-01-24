@@ -1,4 +1,4 @@
-import ardi, { html } from '../ardi.js'
+import ardi, { html } from '//unpkg.com/ardi'
 
 ardi({
   component: 'ardi-gauge',
