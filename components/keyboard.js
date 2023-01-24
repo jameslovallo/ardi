@@ -33,18 +33,18 @@ ardi({
   },
 
   record() {
-    this.state.recording = true
+    this.recording = true
     this.currentTrack = { startTime: new Date().getTime(), track: [] }
   },
 
   stop() {
-    this.state.recording = false
-    this.state.tracks.push(this.currentTrack.track)
+    this.recording = false
+    this.tracks.push(this.currentTrack.track)
   },
 
   playNote(instrument, note, octave, sustain) {
     Synth.play(instrument, note, octave, sustain)
-    this.state.recording &&
+    this.recording &&
       this.currentTrack.track.push({
         timestamp: new Date().getTime() - this.currentTrack.startTime,
         note: {
@@ -68,7 +68,9 @@ ardi({
 
   template() {
     return html`
-      <style>${this.css}</style>
+      <style>
+        ${this.css}
+      </style>
       <div part="controls">
         <select @change=${(e) => (this.instrument = e.target.value)}>
           <option
@@ -134,9 +136,9 @@ ardi({
             </optgroup>
           </select>
           <button
-            @click=${() => (this.state.recording ? this.stop() : this.record())}
+            @click=${() => (this.recording ? this.stop() : this.record())}
           >
-            ${this.state.recording ? 'Stop' : 'Record'}
+            ${this.recording ? 'Stop' : 'Record'}
           </button>
         </div>
       </div>
@@ -178,21 +180,21 @@ ardi({
           `
         )}
       </div>
-      ${Object.keys(this.state.tracks).length > 0
+      ${Object.keys(this.tracks).length > 0
         ? html`
             <div part="tracks">
-              ${Object.keys(this.state.tracks).map(
+              ${Object.keys(this.tracks).map(
                 (track, i) => html`
                   <div part="track">
                     ${this.icons.wave} Track ${i + 1}
                     <button
-                      @click=${() => this.playTrack(this.state.tracks[track])}
+                      @click=${() => this.playTrack(this.tracks[track])}
                       title=${`Play Track ${i + 1}`}
                     >
                       ${this.icons.play}
                     </button>
                     <button
-                      @click=${() => delete this.state.tracks[track]}
+                      @click=${() => delete this.tracks[track]}
                       title=${`Delete Track ${i + 1}`}
                     >
                       ${this.icons.trash}
@@ -347,7 +349,7 @@ ardi({
       width: 16px;
     }  
   `,
-  
+
   icons: {
     play: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8,5.14V19.14L19,12.14L8,5.14Z" /></svg>`,
     trash: svg`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M9,8H11V17H9V8M13,8H15V17H13V8Z" /></svg>`,

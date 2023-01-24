@@ -9,12 +9,14 @@ ardi({
 
   template() {
     return html`
-      <style>${this.css}</style>
-      ${!this.state.loaded
+      <style>
+        ${this.css}
+      </style>
+      ${!this.loaded
         ? html`
             <button
               aria-label="Play Video"
-              @click=${() => (this.state.loaded = true)}
+              @click=${() => (this.loaded = true)}
               part="button"
               style=${`background-image: url(https://img.youtube.com/vi/${this.vid}/hqdefault.jpg)`}
             >
@@ -35,8 +37,7 @@ ardi({
               src=${`https://www.youtube.com/embed/${this.vid}?autoplay=1`}
               title="YouTube video player"
             ></iframe>
-          `
-      }
+          `}
     `
   },
 

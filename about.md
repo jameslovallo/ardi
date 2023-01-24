@@ -64,9 +64,8 @@ ardi({
   component: 'uhtml-counter',
   state: () => ({ count: 0 }),
   template() {
-    return html`
-    <button @click=${() => this.state.count++}>
-      Count: ${this.state.count}
+    return html` <button @click=${() => this.count++}>
+      Count: ${this.count}
     </button>`
   },
 })
@@ -82,11 +81,7 @@ ardi({
   component: 'jsx-counter',
   state: () => ({ count: 0 }),
   template() {
-    return (
-      <button onClick={() => this.state.count++}>
-        Count: {this.state.count}
-      </button>
-    )
+    return <button onClick={() => this.count++}>Count: {this.count}</button>
   },
 })
 ```
@@ -108,7 +103,7 @@ ardi({
   },
   handleClick() {
     const counter = this.shadowRoot.querySelector('button')
-    counter.addEventListener('click', () => this.state.count++)
+    counter.addEventListener('click', () => this.count++)
   },
 })
 ```

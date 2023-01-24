@@ -4,9 +4,8 @@ ardi({
   component: 'ardi-counter',
   state: () => ({ count: 0 }),
   template() {
-    return html`
-    <button onClick=${() => (this.state.count++)}>
-      Count: ${this.state.count}
+    return html` <button onClick=${() => this.count++}>
+      Count: ${this.count}
     </button>`
   },
 })

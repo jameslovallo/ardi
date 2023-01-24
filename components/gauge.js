@@ -1,4 +1,4 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi.js'
 
 ardi({
   component: 'ardi-gauge',
@@ -29,28 +29,31 @@ ardi({
 
   intersect(ratio) {
     if (ratio > 0.3) {
-      this.state.dialRotation = this.deg(this.value / this.max)
+      this.dialRotation = this.deg(this.value / this.max)
     }
   },
 
   template() {
     return html`
-      <style>${this.css}</style>
-      ${this.numbers().map((num) =>
-        html`
-          <div part="number" style=${`--rotation: ${num.deg}deg`}>
-            <i>${num.label}</i>
-          </div>
-        `
+      <style>
+        ${this.css}
+      </style>
+      ${this.numbers().map(
+        (num) =>
+          html`
+            <div part="number" style=${`--rotation: ${num.deg}deg`}>
+              <i>${num.label}</i>
+            </div>
+          `
       )}
       <div
         part="dial"
-        style=${`transform: rotate(${this.state.dialRotation}deg)`}
+        style=${`transform: rotate(${this.dialRotation}deg)`}
       ></div>
       <slot name="label" part="label">${this.label}</slot>
     `
   },
-  
+
   css: /* css */ `
     :host {
       align-items: center;
@@ -115,5 +118,5 @@ ardi({
       position: absolute;
       width: 100%;
     }
-  `
+  `,
 })

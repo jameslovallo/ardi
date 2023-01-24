@@ -21,7 +21,7 @@ ardi({
 
   ready() {
     new ResizeObserver(
-      () => (this.state.small = this.clientWidth <= this.breakpoint)
+      () => (this.small = this.clientWidth <= this.breakpoint)
     ).observe(this)
   },
 
@@ -32,8 +32,8 @@ ardi({
   },
 
   template() {
-    const { icon } = this.state.current
-    const { temp } = this.state.current
+    const { icon } = this.current
+    const { temp } = this.current
 
     return html`
       <style>
@@ -49,8 +49,8 @@ ardi({
         <div part="current_temp">${temp}</div>
       </div>
       <!-- 7-day forecast -->
-      <div part="forecast" class=${this.state.small ? 'small' : null}>
-        ${this.state.forecast.map(
+      <div part="forecast" class=${this.small ? 'small' : null}>
+        ${this.forecast.map(
           (day) => html`
             <div part="day">
               <div part="day_name">${day.name || ''}</div>
@@ -185,12 +185,12 @@ ardi({
       .then((conditions) => {
         // current
         const { current_weather, daily } = conditions
-        this.state.current.icon = this.icon(current_weather.weathercode)
+        this.current.icon = this.icon(current_weather.weathercode)
         const temp = Math.round(Number(current_weather.temperature))
         const unit = this.unit.charAt(0).toUpperCase()
-        this.state.current.temp = temp + '°' + unit
+        this.current.temp = temp + '°' + unit
         // render forecast
-        this.state.forecast = daily.time.map((date, i) => ({
+        this.forecast = daily.time.map((date, i) => ({
           name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
             weekday: 'long',
           }),

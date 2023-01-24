@@ -19,7 +19,7 @@ ardi({
   }),
 
   addTask() {
-    this.state.tasks.push({
+    this.tasks.push({
       task: this.refs.task.value,
       starred: this.refs.starred.checked,
     })
@@ -31,13 +31,13 @@ ardi({
     const lists = [
       {
         label: this.todolabel,
-        tasks: this.state.tasks
+        tasks: this.tasks
           .filter((t) => !t.completed)
           .sort((a, b) => Number(b.starred) - Number(a.starred)),
       },
       {
         label: this.donelabel,
-        tasks: this.state.tasks
+        tasks: this.tasks
           .filter((t) => t.completed)
           .sort((a, b) => Number(b.starred) - Number(a.starred)),
       },
@@ -87,8 +87,8 @@ ardi({
                         @input=${() => (task.starred = !task.starred)}
                       />
                       <button part="delete" @click=${() => {
-                        const index = this.state.tasks.indexOf(task)
-                        delete this.state.tasks[index]
+                        const index = this.tasks.indexOf(task)
+                        delete this.tasks[index]
                       }}>
                         ⨉
                       </button>

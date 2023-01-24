@@ -99,7 +99,7 @@ ardi({
 
 ### State
 
-State is also reactive, meaning that any changes will trigger a render. Stateful data is accessible from `this.state`.
+State is also reactive, meaning that any changes will trigger a render. Stateful data is accessible from `this`.
 
 The TMDB component will use an array called 'results' to store movies or tv shows.
 
@@ -150,7 +150,7 @@ ${result.poster_path
 Lists are handled using the `Array.map()` method. In the TMDB component, we will use a map to list the TV series or movies that are returned by the API.
 
 ```js
-${this.state.results.map((result) => {
+${this.results.map((result) => {
   const url = 'https://www.themoviedb.org/tv/' + result.id
   const backdrop = bgRoot + result.backdrop_path
   const poster = posterRoot + result.poster_path
@@ -237,7 +237,7 @@ ardi({
   component: 'ardi-weather',
   ready() {
     new ResizeObserver(
-      () => (this.state.small = this.clientWidth <= this.breakpoint)
+      () => (this.small = this.clientWidth <= this.breakpoint)
     ).observe(this)
   },
 })
