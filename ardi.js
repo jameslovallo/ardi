@@ -119,10 +119,16 @@ export default function ardi(x) {
       }
     }
     render() {
-      uhtml(this.shadowRoot, this.template())
+      const t = this.template()
+      if (typeof t === 'object') {
+        uhtml(this.shadowRoot, t)
+      } else if (typeof t === 'string') {
+        this.shadowRoot.innerHTML = t
+      }
       this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
         this.refs[ref.getAttribute('ref')] = ref
       })
+      if (this.updated) this.updated()
     }
     connectedCallback() {
       this.addEventListener('update', this.debounce(this.render))
