@@ -215,6 +215,28 @@ ardi({
 })
 ```
 
+#### Context
+
+Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
+
+To share context from a parent component, add the `context` attribute with a descriptive name.
+
+```html
+<ardi-component context="theme"></ardi-component>
+```
+
+Then you can use `this.context` to use (and update!) the context inside your child components. When you update the context from a child component, it will be synchronized to the context provider and every other child component that reference it.
+
+```js
+template() {
+  const theme = this.context;
+  return html`
+    <p style=${`font-color: ${theme.fontColor}`}>...</p>
+    <input @input=${(e) => theme.fontColor = e.target.value}
+  `
+}
+```
+
 ### Methods
 
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `trending`, `search`, `prev`
@@ -222,11 +244,7 @@ and `next`.
 
 You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods, or even in your CSS (we'll get to that in a minute). For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
 
-### Built-In Methods
-
-Ardi has a few built-in methods that you should be aware of.
-
-#### Ready
+### Ready
 
 The ready method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
@@ -243,7 +261,7 @@ ardi({
 })
 ```
 
-#### Intersect
+### Intersect
 
 The intersect method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
