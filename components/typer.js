@@ -2,16 +2,19 @@ import ardi, { html } from '//unpkg.com/ardi'
 
 ardi({
   component: 'ardi-typer',
+
   props: {
     base: [String, 'Word'],
     pause: [Number, 5000],
     speed: [Number, 100],
     words: [(v) => (v ? v.split(',') : ['one', 'two', 'three'])],
   },
+
   state: () => ({
     index: 0,
     word: '',
   }),
+
   template() {
     return html`
       <div>
@@ -23,6 +26,7 @@ ardi({
       </style>
     `
   },
+
   setWord(i = 0) {
     const letters = this.words[i].split('')
     const max = this.words.length - 1
@@ -46,9 +50,11 @@ ardi({
       )
     }, pause)
   },
+
   ready() {
     this.setWord()
   },
+  
   css: /* css */ `
     span {
       --color: currentcolor;

@@ -17,7 +17,7 @@ Ardi makes it easy to create reactive custom elements that work with any website
   src="/assets/fast.svg"
   alt="rocket lifting off"
   heading="It's fast"
-  text="Ardi is only 3kb, and the bundled templating system renders changes with scalpel-like precision."
+  text="Ardi is only 3kb, and the bundled templating library renders changes with scalpel-like precision."
 />
 
 <home-card
@@ -239,7 +239,7 @@ template() {
 
 #### JSX & Handlebars
 
-μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating system you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
+μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
 
 <!-- tabs:start -->
 
