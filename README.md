@@ -237,6 +237,69 @@ template() {
 }
 ```
 
+## JSX & Handlebars
+
+μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating system you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
+
+<!-- tabs:start -->
+
+### **μhtml**
+
+```js
+import ardi, { html } from '//unpkg.com/ardi'
+
+ardi({
+  component: 'uhtml-counter',
+  state: () => ({ count: 0 }),
+  template() {
+    return html`
+    <button @click=${() => this.count++}>
+      Count: ${this.count}
+    </button>`
+  },
+})
+```
+
+### **JSX-Dom**
+
+```jsx
+import ardi, { html } from '//unpkg.com/ardi'
+import React from '//cdn.skypack.dev/jsx-dom'
+
+ardi({
+  component: 'jsx-counter',
+  state: () => ({ count: 0 }),
+  template() {
+    return <button onClick={() => this.count++}>Count: {this.count}</button>
+  },
+})
+```
+
+### **Handlebars**
+
+```js
+import ardi, { html } from '//unpkg.com/ardi'
+import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
+
+ardi({
+  component: 'hbs-counter',
+  state: () => ({ count: 0 }),
+  template() {
+    const template = "<button ref='counter'>Count: {{count}}</button>"
+    const hbs = handlebars.compile(template)
+    return hbs(this)
+  },
+  updated() {
+    this.refs.counter.addEventListener('click', () => this.count++)
+  },
+})
+```
+
+<!-- tabs:end -->
+
+Notice that with Handlebars (or any template that returns a string: i.e. a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
+
+
 ### Methods
 
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `trending`, `search`, `prev`

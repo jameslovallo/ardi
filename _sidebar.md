@@ -7,6 +7,7 @@
   - [Keyboard](/demos/keyboard.md)
   - [TMDB Search](/demos/tmdb.md)
   - [To Do List](/demos/todo.md)
+  - [Typer](/demos/typer.md)
   - [Weather Forecast](/demos/weather.md)
   - [YouTube Lite](/demos/youtube.md)
 - [Why Ardi?](/about.md)
