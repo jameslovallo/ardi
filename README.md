@@ -257,11 +257,11 @@ ardi({
   component: 'jsx-counter',
   state: () => ({ count: 0 }),
   template() {
-		return (
-			<button onClick={() => this.count++}>
-				Count: {this.count}
-			</button>
-		)
+    return (
+      <button onClick={() => this.count++}>
+        Count: {this.count}
+      </button>
+    )
   },
 })
 ```
