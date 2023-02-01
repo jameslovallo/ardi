@@ -11,5 +11,6 @@ You can choose any of these components to see a demo, example markup, and the Ja
 - [Keyboard](/demos/keyboard.md)
 - [TMDB Search](/demos/tmdb.md)
 - [To Do List](/demos/todo.md)
+- [Typer](/demos/typer.md)
 - [Weather Forecast](/demos/weather.md)
 - [YouTube Lite](/demos/youtube.md)
