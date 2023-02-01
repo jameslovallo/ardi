@@ -212,7 +212,7 @@ To share context from a parent component, add the `context` attribute with a des
 <ardi-component context="theme"></ardi-component>
 ```
 
-Then you can use `this.context` to use (and update!) the context inside your child components. When you update the context from a child component, it will be synchronized to the context provider and every other child component that reference it.
+Then you can use `this.context` to use (and update!) the context inside your child components. When you update the context, the value will be synchronized to the context provider and each child component that references it.
 
 ```js
 template() {
