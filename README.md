@@ -237,13 +237,13 @@ template() {
 }
 ```
 
-## JSX & Handlebars
+#### JSX & Handlebars
 
 μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating system you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
 
 <!-- tabs:start -->
 
-### **μhtml**
+##### **μhtml**
 
 ```js
 import ardi, { html } from '//unpkg.com/ardi'
@@ -260,9 +260,9 @@ ardi({
 })
 ```
 
-### **JSX-Dom**
+##### **JSX-Dom**
 
-```jsx
+```js
 import ardi, { html } from '//unpkg.com/ardi'
 import React from '//cdn.skypack.dev/jsx-dom'
 
@@ -275,7 +275,7 @@ ardi({
 })
 ```
 
-### **Handlebars**
+##### **Handlebars**
 
 ```js
 import ardi, { html } from '//unpkg.com/ardi'
