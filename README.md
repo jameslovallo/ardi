@@ -99,7 +99,7 @@ ardi({
 
 ### State
 
-State is also reactive, meaning that any changes will trigger a render. Stateful data is accessible from `this`.
+State is also reactive, meaning that any changes will trigger a render. State is accessible from `this`.
 
 The TMDB component will use an array called 'results' to store movies or tv shows.
 
@@ -130,24 +130,11 @@ template() {
 }
 ```
 
-#### Conditionals
-
-The most convenient way to handle conditional rendering is to use a ternary operator.
-
-In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
-
-```js
-${result.backdrop_path
-  ? html`<img part="backdrop" src=${backdrop} />`
-  : ''}
-${result.poster_path
-  ? html`<img part="poster" src=${poster} />`
-  : ''}
-```
-
-#### Lists
+#### Conditionals and Lists
 
 Lists are handled using the `Array.map()` method. In the TMDB component, we will use a map to list the TV series or movies that are returned by the API.
+
+The most convenient way to handle conditional rendering is to use a ternary operator. In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
 
 ```js
 ${this.results.map((result) => {
@@ -190,7 +177,7 @@ The TMDB component will have two named slots to allow the previous and next butt
 
 #### Refs
 
-Ardi allows you to add ref attributes to elements in your template, which are accessible from `this.refs`. Note that this is currently only implemented for components that use μhtml and JSX. We are working to better support Handlebars in a future update.
+Ardi allows you to add ref attributes to elements in your template, which are accessible from `this.refs`.
 
 In the TMDB component, the `list` ref is used by the `prev` and `next` methods to navigate through the search results.
 
