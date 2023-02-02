@@ -2,6 +2,8 @@
 
 ## Demo
 
+<script src="/components/typer.js" type="module"></script>
+
 <ardi-typer base="Ardi was built to:" words="provide great DX with no tooling,work with every framework,break free from frameworks,create portable components,work anywhere" pause="3000"></ardi-typer>
 
 ## HTML

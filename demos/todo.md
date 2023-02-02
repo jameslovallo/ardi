@@ -2,6 +2,8 @@
 
 ## Demo
 
+<script src="/components/todo.js" type="module"></script>
+
 <ardi-todo addtasklabel="Add a chore" donelabel="Complete" listLabel="Chores" todolabel="To Do"></ardi-todo>
 
 ## HTML

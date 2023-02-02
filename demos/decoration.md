@@ -2,6 +2,8 @@
 
 ## Demo
 
+<script src="/components/decoration.js" type="module"></script>
+
 <style>
   ardi-decoration {
     flex-grow: 1;
