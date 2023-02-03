@@ -1,6 +1,6 @@
 import ardi, { html, svg } from '//unpkg.com/ardi'
 
-export default ardi({
+ardi({
   component: 'keyboard-demo',
 
   props: {

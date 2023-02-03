@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-export default ardi({
+ardi({
   component: 'ardi-weather',
 
   props: {
