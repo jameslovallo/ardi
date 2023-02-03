@@ -2,7 +2,7 @@
 
 ## Demo
 
-> This is an iframe. Hovering it will prevent the page from scrolling.
+> This is an iframe. Hovering or touching it will prevent the page from scrolling.
 
 <iframe src="/assets/fullpage.html" style="height: 400px; width: 100%; border: 0;"></iframe>
 

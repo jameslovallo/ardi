@@ -22,6 +22,7 @@ ardi({
             <button
               part="indicator"
               class=${i === this.active ? 'active' : null}
+              aria-label=${`Scroll to section ${i + 1}`}
               @click=${() => el.scrollIntoView()}
             >
               <span>
