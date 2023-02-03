@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'ardi-fullpage',
 
   props: {

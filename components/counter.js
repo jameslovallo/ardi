@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'ardi-counter',
   props: { count: [Number, 0], step: [Number, 1] },
   template() {

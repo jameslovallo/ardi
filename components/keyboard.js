@@ -1,6 +1,6 @@
 import ardi, { html, svg } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'keyboard-demo',
 
   props: {
@@ -12,7 +12,7 @@ ardi({
 
   state: () => ({
     recording: false,
-    tracks: []
+    tracks: [],
   }),
 
   ready() {

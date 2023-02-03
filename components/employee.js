@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'ardi-employee',
 
   props: {
@@ -22,7 +22,9 @@ ardi({
 
   template() {
     return html`
-      <style>${this.css}</style>
+      <style>
+        ${this.css}
+      </style>
       <img part="photo" src=${this.photo} />
       <div part="details">
         ${this.name ? html`<b>${this.name}</b>` : ''}
@@ -57,7 +59,7 @@ ardi({
       </div>
     `
   },
-  
+
   css: /* css */ `
     :host {
       display: flex;

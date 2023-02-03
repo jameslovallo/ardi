@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'ardi-typer',
 
   props: {
@@ -54,7 +54,7 @@ ardi({
   ready() {
     this.setWord()
   },
-  
+
   css: /* css */ `
     span {
       --color: currentcolor;

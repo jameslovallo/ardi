@@ -1,6 +1,6 @@
 import ardi, { html } from '//unpkg.com/ardi'
 
-ardi({
+export default ardi({
   component: 'ardi-decoration',
 
   props: {
@@ -25,7 +25,9 @@ ardi({
           </div>
         `
     return html`
-      <style>${this.styles()}</style>
+      <style>
+        ${this.styles()}
+      </style>
       <slot></slot>
       ${el}
     `
