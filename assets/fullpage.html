@@ -1,0 +1,77 @@
+<style>
+  body {
+    color: white;
+    font-family: sans-serif;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  nav {
+    align-items: center;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 1rem 1rem 0.75rem;
+    position: relative;
+    z-index: 1;
+  }
+  nav img {
+    height: 3rem;
+  }
+  nav ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  footer {
+    padding: 1rem;
+    position: sticky;
+    text-align: center;
+    top: 100vh;
+  }
+
+  section {
+    padding: 0 2rem;
+  }
+</style>
+
+<nav>
+  <a><img src="//ardi.netlify.app/assets/ardi.svg" /></a>
+  <ul>
+    <li><a>Home</a></li>
+    <li><a>About</a></li>
+    <li><a>Contact</a></li>
+  </ul>
+</nav>
+
+<ardi-fullpage alignment="center">
+  <section style="background: #c62828">
+    <div>
+      <h2>Hi there</h2>
+      <p>This is a demo for a "fullpage" component developed in ardi.</p>
+    </div>
+  </section>
+  <section style="background: #2e7d32">
+    <div>
+      <h2>Hi there</h2>
+      <p>This is a demo for a "fullpage" component developed in ardi.</p>
+    </div>
+  </section>
+  <section style="background: #1565c0">
+    <div>
+      <h2>Hi there</h2>
+      <p>This is a demo for a "fullpage" component developed in ardi.</p>
+    </div>
+  </section>
+</ardi-fullpage>
+
+<footer></footer>
+
+<script type="module">
+  import '/components/fullpage.js'
+  const year = new Date().getFullYear()
+  document.querySelector('footer').innerHTML = `© ${year}, all rights reserved`
+</script>

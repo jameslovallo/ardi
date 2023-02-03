@@ -3,6 +3,7 @@
   - [Counter](/demos/counter.md)
   - [Decoration](/demos/decoration.md)
   - [Employee Card](/demos/employee.md)
+  - [FullPage](/demos/fullpage.md)
   - [Gauge](/demos/gauge.md)
   - [Keyboard](/demos/keyboard.md)
   - [TMDB Search](/demos/tmdb.md)
