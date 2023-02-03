@@ -25,7 +25,11 @@ document.body.appendChild(ts)
 ## HTML
 
 ```html
-<ardi-employee alignment="center"></ardi-employee>
+<ardi-fullpage alignment="center">
+  <section>...</section>
+  <section>...</section>
+  <section>...</section>
+</ardi-fullpage>
 ```
 
 ## Javascript
