@@ -6,10 +6,11 @@ Ardi makes it easy to create reactive custom elements that work with any website
 
 ## Features
 
-1. Object-oriented API
-2. Reactive props and state management
+1. Simple object-oriented API
+2. Reactive props and state
 3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
-4. No tooling required
+4. Simple and powerful context API
+5. No building, compiling, or tooling
 
 <home-grid>
 
