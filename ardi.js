@@ -2,10 +2,12 @@ import { render as uhtml } from 'uhtml'
 export { html, svg } from 'uhtml'
 
 export default function ardi(x) {
+  const element = x?.extends ? x.extends[0] : HTMLElement
+  const elementString = x?.extends ? x.extends[1] : undefined
   const props = Object.keys(x.props || {})
   const update = new Event('update')
 
-  class c extends HTMLElement {
+  class c extends element {
     constructor() {
       super().attachShadow({ mode: 'open' })
       Object.assign(this, x)
@@ -146,5 +148,6 @@ export default function ardi(x) {
   }
 
   // define element
-  !customElements.get(x.component) && customElements.define(x.component, c)
+  !customElements.get(x.component) &&
+    customElements.define(x.component, c, { extends: elementString })
 }

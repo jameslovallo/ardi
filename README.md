@@ -79,6 +79,16 @@ ardi({
 })
 ```
 
+### Extends
+
+This is entirely optional. If you want your custom element to extend a default element, you can define those options here.
+
+```js
+ardi({
+  extends: [HTMLPreElement, 'pre'],
+})
+```
+
 ### Props
 
 Properties allow you to configure your component. To create a property, add a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from the prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse), an arrow function, or a method inside your component. Every prop is reactive, which means that whether a prop's value is changed internally or via its corresponding attribute, that change will trigger a render. Prop values are accessible directly from `this`.
@@ -240,8 +250,7 @@ ardi({
   component: 'uhtml-counter',
   state: () => ({ count: 0 }),
   template() {
-    return html`
-    <button @click=${() => this.count++}>
+    return html` <button @click=${() => this.count++}>
       Count: ${this.count}
     </button>`
   },
@@ -258,11 +267,7 @@ ardi({
   component: 'jsx-counter',
   state: () => ({ count: 0 }),
   template() {
-    return (
-      <button onClick={() => this.count++}>
-        Count: {this.count}
-      </button>
-    )
+    return <button onClick={() => this.count++}>Count: {this.count}</button>
   },
 })
 ```
@@ -290,7 +295,6 @@ ardi({
 <!-- tabs:end -->
 
 Notice that with Handlebars (or any template that returns a string: i.e. a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
-
 
 ### Methods
 
