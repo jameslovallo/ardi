@@ -18,7 +18,7 @@ Ardi makes it easy to create reactive custom elements that work with any website
   src="/assets/fast.svg"
   alt="rocket lifting off"
   heading="It's fast"
-  text="Ardi is only 3kb, and the bundled templating library renders changes with scalpel-like precision."
+  text="Ardi is only 4kb, and the bundled templating library renders changes with scalpel-like precision."
 />
 
 <home-card
