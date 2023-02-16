@@ -69,9 +69,9 @@ Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at co
 
 <tmdb-search></tmdb-search>
 
-### Component
+### Tag
 
-Define the component's name. The name must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'tmdb-search'.
+Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'tmdb-search'.
 
 ```js
 ardi({
@@ -81,7 +81,7 @@ ardi({
 
 ### Extends
 
-This is entirely optional. If you want your custom element to extend a default element, you can define those options here.
+This is entirely optional. If you want your custom element to extend a default el ement, you can define those options here.
 
 ```js
 ardi({
@@ -121,7 +121,7 @@ ardi({
 })
 ```
 
-### Template (μhtml)
+### Template
 
 The bundled templating library is called [μhtml](https://www.npmjs.com/package/uhtml). μhtml is comfortably JSX-like and is very similar to how Lit works. With μhtml, you create your templates using a tagged template literal. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed. This makes rendering extremely efficient and removes the need for manual memoization of component data.
 
