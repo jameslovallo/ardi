@@ -250,7 +250,8 @@ ardi({
   tag: 'uhtml-counter',
   state: () => ({ count: 0 }),
   template() {
-    return html` <button @click=${() => this.count++}>
+    return html`
+    <button @click=${() => this.count++}>
       Count: ${this.count}
     </button>`
   },
