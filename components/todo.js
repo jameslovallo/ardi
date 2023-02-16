@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'ardi-todo',
+  tag: 'ardi-todo',
 
   props: {
     addtasklabel: [String, 'Add a task'],

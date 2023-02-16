@@ -1,16 +1,16 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-	component: 'home-grid',
-	template() {
-		return html`
-			<slot></slot>
-			<style>
-				${this.css}
-			</style>
-		`
-	},
-	css: /* css */ `
+  tag: 'home-grid',
+  template() {
+    return html`
+      <slot></slot>
+      <style>
+        ${this.css}
+      </style>
+    `
+  },
+  css: /* css */ `
 		:host {
 			display: grid;
 			gap: 1rem;

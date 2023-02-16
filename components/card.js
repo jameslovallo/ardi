@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'home-card',
+  tag: 'home-card',
   props: {
     src: [String],
     alt: [String],

@@ -50,16 +50,16 @@ npm i ardi
 ```js
 import ardi, { html } from 'ardi'
 
-ardi({ component: 'my-component' })
+ardi({ tag: 'my-component' })
 ```
 
 ### CDN
 
 ```html
 <script type="module">
-  import ardi, { html } from '//unpkg.com/ardi'
+  import ardi, { html } from '../ardi-min.js'
 
-  ardi({ component: 'my-component' })
+  ardi({ tag: 'my-component' })
 </script>
 ```
 
@@ -75,7 +75,7 @@ Define the component's name. The name must follow the [custom element naming con
 
 ```js
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
 })
 ```
 
@@ -100,7 +100,7 @@ For the TMDB component, we'll add two props:
 
 ```js
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
   props: {
     type: [String, 'tv'], // tv, movie, all
     time: [String, 'day'], // day, week
@@ -116,7 +116,7 @@ The TMDB component will use an array called 'results' to store movies or tv show
 
 ```js
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
   state: () => ({ results: [] }),
 })
 ```
@@ -194,7 +194,7 @@ In the TMDB component, the `list` ref is used by the `prev` and `next` methods t
 
 ```js
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
   template() {
     return html`
       ...
@@ -244,10 +244,10 @@ template() {
 ##### **μhtml**
 
 ```js
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'uhtml-counter',
+  tag: 'uhtml-counter',
   state: () => ({ count: 0 }),
   template() {
     return html` <button @click=${() => this.count++}>
@@ -260,11 +260,11 @@ ardi({
 ##### **JSX-Dom**
 
 ```js
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 import React from '//cdn.skypack.dev/jsx-dom'
 
 ardi({
-  component: 'jsx-counter',
+  tag: 'jsx-counter',
   state: () => ({ count: 0 }),
   template() {
     return <button onClick={() => this.count++}>Count: {this.count}</button>
@@ -275,11 +275,11 @@ ardi({
 ##### **Handlebars**
 
 ```js
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
 
 ardi({
-  component: 'hbs-counter',
+  tag: 'hbs-counter',
   state: () => ({ count: 0 }),
   template() {
     const template = "<button ref='counter'>Count: {{count}}</button>"
@@ -311,7 +311,7 @@ A great example of this is in the demo [weather component](/demos/weather), wher
 
 ```js
 ardi({
-  component: 'ardi-weather',
+  tag: 'ardi-weather',
   ready() {
     new ResizeObserver(
       () => (this.small = this.clientWidth <= this.breakpoint)
@@ -328,7 +328,7 @@ In the TMDB component, the intersect method is used to lazy-load the default res
 
 ```js
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
   intersect(r) {
     if (r > 0.2 && !this.intersected) this.trending()
   },

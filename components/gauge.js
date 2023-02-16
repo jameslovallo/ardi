@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'ardi-gauge',
+  tag: 'ardi-gauge',
 
   props: {
     label: [String],
@@ -28,6 +28,7 @@ ardi({
   },
 
   intersect(ratio) {
+    console.log(ratio)
     if (ratio > 0.3) {
       this.dialRotation = this.deg(this.value / this.max)
     }

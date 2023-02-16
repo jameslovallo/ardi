@@ -1,38 +1,62 @@
 import { render as uhtml } from 'uhtml'
 export { html, svg } from 'uhtml'
 
-export default function ardi(x) {
-  const element = x?.extends ? x.extends[0] : HTMLElement
-  const elementString = x?.extends ? x.extends[1] : undefined
-  const props = Object.keys(x.props || {})
+export default function ardi(options) {
+  const element = options?.extends ? options.extends[0] : HTMLElement
+  const elementString = options?.extends ? options.extends[1] : undefined
+  const props = Object.keys(options.props || {})
   const update = new Event('update')
 
   class c extends element {
     constructor() {
-      super().attachShadow({ mode: 'open' })
-      Object.assign(this, x)
-      this.refs = {}
+      super()
+      Object.assign(this, options)
 
-      // register props
+      if (!this.shadow || this.shadow !== false) {
+        this.attachShadow({ mode: 'open' })
+        this.root = this.shadowRoot
+      } else this.root = this
+
+      if (typeof this.props === 'object') this.defineProps()
+      if (typeof this.state === 'function') this.defineState()
+      if (typeof this.intersect === 'function') this.handleIntersect()
+
+      this.refs = {}
+    }
+
+    connectedCallback() {
+      this.addEventListener('update', this.debounce(this.render))
+      this.dispatchEvent(update)
+      if (typeof this.ready === 'function') this.ready()
+    }
+
+    defineProps() {
       props.forEach((prop) => {
-        const [propSetter, propDefault] = this.props[prop]
+        const [handleValue, defaultValue] = this.props[prop]
         Object.defineProperty(this, prop, {
           get: () => {
-            const value = this.getAttribute(prop) || propDefault
-            switch (propSetter) {
+            const value = this.getAttribute(prop) || defaultValue
+            switch (handleValue) {
               case String:
                 return value
               case Boolean:
                 return [true, 'true'].includes(value)
               default:
-                return propSetter(value)
+                return handleValue(value)
             }
           },
           set: (v) => this.setAttribute(prop, v),
         })
       })
+    }
+    static get observedAttributes() {
+      return props
+    }
+    attributeChangedCallback() {
+      this.dispatchEvent(update)
+    }
 
-      // reactive state
+    defineState() {
       const reactive = (object) => {
         if (object === null || typeof object !== 'object') {
           return object
@@ -45,6 +69,7 @@ export default function ardi(x) {
             return target[property]
           },
           set: (target, property, value) => {
+            console.log(value)
             target[property] = reactive(value)
             this.dispatchEvent(update)
             return true
@@ -56,37 +81,18 @@ export default function ardi(x) {
           },
         })
       }
-      if (typeof this.state === 'function') {
-        this._state = reactive(this.state())
-        delete this.state
-        Object.keys(this._state).forEach((key) => {
-          Object.defineProperty(this, key, {
-            get: () => {
-              return this._state[key]
-            },
-            set: (v) => (this._state[key] = v),
-          })
+      this._state = reactive(this.state())
+      delete this.state
+      Object.keys(this._state).forEach((key) => {
+        Object.defineProperty(this, key, {
+          get: () => {
+            return this._state[key]
+          },
+          set: (v) => (this._state[key] = v),
         })
-      }
-
-      // intersect helper
-      if (typeof this.intersect === 'function') {
-        new IntersectionObserver(
-          (entries) =>
-            entries.forEach((entry) => {
-              entry.isIntersecting &&
-                this.intersect(entry.intersectionRatio.toFixed(2))
-            }),
-          {
-            root: null,
-            rootMargin: '0px',
-            threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
-          }
-        ).observe(this)
-      }
+      })
     }
 
-    // context
     context(c) {
       if (!this._ctx) this._ctx = {}
       if (!this._ctx[c]) {
@@ -106,7 +112,6 @@ export default function ardi(x) {
       } else return this._ctx[c]
     }
 
-    // rendering
     debounce(fn) {
       var timeout
       return function () {
@@ -120,34 +125,37 @@ export default function ardi(x) {
         })
       }
     }
+
     render() {
       const t = this.template()
       if (typeof t === 'object') {
-        uhtml(this.shadowRoot, t)
+        uhtml(this.root, t)
       } else if (typeof t === 'string') {
-        this.shadowRoot.innerHTML = t
+        this.root.innerHTML = t
       }
-      this.shadowRoot.querySelectorAll('[ref]').forEach((ref) => {
+      this.root.querySelectorAll('[ref]').forEach((ref) => {
         this.refs[ref.getAttribute('ref')] = ref
       })
       if (this.updated) this.updated()
     }
-    connectedCallback() {
-      this.addEventListener('update', this.debounce(this.render))
-      this.dispatchEvent(update)
-      this?.ready && this.ready()
-    }
 
-    // reactive props
-    static get observedAttributes() {
-      return props
-    }
-    attributeChangedCallback() {
-      this.dispatchEvent(update)
+    handleIntersect() {
+      new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            entry.isIntersecting &&
+              this.intersect(entry.intersectionRatio.toFixed(2))
+          })
+        },
+        {
+          root: null,
+          rootMargin: '0px',
+          threshold: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+        }
+      ).observe(this)
     }
   }
 
-  // define element
-  !customElements.get(x.component) &&
-    customElements.define(x.component, c, { extends: elementString })
+  !customElements.get(options.tag) &&
+    customElements.define(options.tag, c, { extends: elementString })
 }

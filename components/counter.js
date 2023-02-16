@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'ardi-counter',
+  tag: 'ardi-counter',
   props: { count: [Number, 0], step: [Number, 1] },
   template() {
     return html`

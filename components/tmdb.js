@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'tmdb-search',
+  tag: 'tmdb-search',
 
   props: {
     type: [String, 'tv'], // tv, movie, all

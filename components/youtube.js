@@ -1,7 +1,7 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../ardi-min.js'
 
 ardi({
-  component: 'ardi-youtube',
+  tag: 'ardi-youtube',
 
   props: { vid: [String] },
 

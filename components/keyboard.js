@@ -1,7 +1,7 @@
-import ardi, { html, svg } from '//unpkg.com/ardi'
+import ardi, { html, svg } from '../ardi-min.js'
 
 ardi({
-  component: 'keyboard-demo',
+  tag: 'keyboard-demo',
 
   props: {
     instrument: [(v) => (v === 'sitar' ? 'acoustic' : v), 'piano'],
