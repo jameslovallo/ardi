@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '../ardi-min.js'
+import ardi, { html, svg } from '/ardi-min.js'
 
 ardi({
   tag: 'keyboard-demo',

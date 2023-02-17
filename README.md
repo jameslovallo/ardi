@@ -57,7 +57,7 @@ ardi({ tag: 'my-component' })
 
 ```html
 <script type="module">
-  import ardi, { html } from '../ardi-min.js'
+  import ardi, { html } from '//unpkg.com/ardi'
 
   ardi({ tag: 'my-component' })
 </script>
@@ -80,8 +80,6 @@ ardi({
 ```
 
 ### Extends
-
-This is entirely optional. If you want your custom element to extend a default el ement, you can define those options here.
 
 ```js
 ardi({
@@ -244,7 +242,7 @@ template() {
 ##### **μhtml**
 
 ```js
-import ardi, { html } from '../ardi-min.js'
+import ardi, { html } from '/ardi-min.js'
 
 ardi({
   tag: 'uhtml-counter',
@@ -261,7 +259,7 @@ ardi({
 ##### **JSX-Dom**
 
 ```js
-import ardi, { html } from '../ardi-min.js'
+import ardi, { html } from '/ardi-min.js'
 import React from '//cdn.skypack.dev/jsx-dom'
 
 ardi({
@@ -276,16 +274,16 @@ ardi({
 ##### **Handlebars**
 
 ```js
-import ardi, { html } from '../ardi-min.js'
+import ardi, { html } from '/ardi-min.js'
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
 
 ardi({
   tag: 'hbs-counter',
   state: () => ({ count: 0 }),
   template() {
-    const template = "<button ref='counter'>Count: {{count}}</button>"
-    const hbs = handlebars.compile(template)
-    return hbs(this)
+    return handlebars.compile(
+      `<button ref='counter'>Count: {{count}}</button>`
+    )(this)
   },
   updated() {
     this.refs.counter.addEventListener('click', () => this.count++)

@@ -1,4 +1,4 @@
-import ardi, { html } from '../ardi-min.js'
+import ardi, { html } from '/ardi-min.js'
 
 ardi({
   tag: 'ardi-fullpage',
