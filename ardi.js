@@ -69,7 +69,6 @@ export default function ardi(options) {
             return target[property]
           },
           set: (target, property, value) => {
-            console.log(value)
             target[property] = reactive(value)
             this.dispatchEvent(update)
             return true
