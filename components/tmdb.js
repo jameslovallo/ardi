@@ -17,11 +17,12 @@ ardi({
   trending() {
     this.intersected = true
     fetch(
-      `https://api.themoviedb.org/3/trending
-				/${this.type}
-				/${this.time}
-				?api_key=f24e1216d78e7a935fcd5ab6bda1167b
-      `
+      [
+        'https://api.themoviedb.org/3/trending',
+        '/' + this.type,
+        '/' + this.time,
+        '?api_key=f24e1216d78e7a935fcd5ab6bda1167b',
+      ].join('')
     )
       .then((res) => res.json())
       .then((data) => (this.results = data.results))
@@ -29,14 +30,15 @@ ardi({
 
   search(e) {
     fetch(
-      `https://api.themoviedb.org/3/search
-				/${this.type}
-				?api_key=f24e1216d78e7a935fcd5ab6bda1167b
-				&language=en-US
-				&page=1
-				&query=${e.target.value}
-				&include_adult=false
-      `
+      [
+        'https://api.themoviedb.org/3/search',
+        '/' + this.type,
+        '?api_key=f24e1216d78e7a935fcd5ab6bda1167b',
+        '&language=en-US',
+        '&page=1',
+        '&query=' + e.target.value,
+        '&include_adult=false',
+      ].join()
     )
       .then((res) => res.json())
       .then((data) => (this.results = data.results))
@@ -164,7 +166,8 @@ ardi({
     [part=description] {
       display: -webkit-box;
       font-size: 14px;
-      line-clamp: 3; 
+      line-clamp: 3;
+      line-height: 1.5;
       margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;
