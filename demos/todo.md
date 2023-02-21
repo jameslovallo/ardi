@@ -10,7 +10,7 @@
 
 ```html
 <ardi-todo
-  addtasklabel="Add a task"
+  addtasklabel="Add a chore"
   donelabel="Complete"
   listLabel="Chores"
   todolabel="To Do"
