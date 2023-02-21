@@ -109,6 +109,10 @@ ardi({
       top: 1rem;
       z-index: 1;
     }
+    [part=controls] * {
+      border: 0;
+      padding: .25rem .5rem;
+    }
     ul {
       display: flex;
       list-style: none;
