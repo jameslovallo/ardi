@@ -34,9 +34,6 @@ ardi({
           `
         )}
       </div>
-      <style>
-        ${this.css()}
-      </style>
     `
   },
 

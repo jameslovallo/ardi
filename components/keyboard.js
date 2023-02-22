@@ -66,9 +66,6 @@ ardi({
 
   template() {
     return html`
-      <style>
-        ${this.css}
-      </style>
       <div part="controls">
         <select @change=${(e) => (this.instrument = e.target.value)}>
           <option

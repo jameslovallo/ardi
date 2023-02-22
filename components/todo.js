@@ -44,9 +44,6 @@ ardi({
     ]
 
     return html`
-      <style>
-        ${this.css}
-      </style>
       <h3>${this.listLabel}</h3>
 
       <div part="add">

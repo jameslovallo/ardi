@@ -3,14 +3,9 @@ import ardi, { html } from '/ardi-min.js'
 ardi({
   tag: 'home-grid',
   template() {
-    return html`
-      <slot></slot>
-      <style>
-        ${this.css}
-      </style>
-    `
+    return html`<slot></slot>`
   },
-  css: /* css */ `
+  css: `
 		:host {
 			display: grid;
 			gap: 1rem;

@@ -56,9 +56,6 @@ ardi({
     const bgRoot = 'https://image.tmdb.org/t/p/w1920_and_h1080_multi_faces/'
     const posterRoot = 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'
     return html`
-      <style>
-        ${this.css}
-      </style>
       <div part="controls">
         <input
           part="search"

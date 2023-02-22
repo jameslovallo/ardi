@@ -1,5 +1,5 @@
-import { render as uhtml } from 'uhtml'
-export { html, svg } from 'uhtml'
+import { html, render as uhtml, svg } from '//cdn.skypack.dev/uhtml'
+export { html, svg }
 
 export default function ardi(options) {
   const element = options?.extends ? options.extends[0] : HTMLElement
@@ -126,7 +126,14 @@ export default function ardi(options) {
     }
 
     render() {
-      const t = this.template()
+      const css = this.css
+        ? html`
+            <style>
+              ${typeof this.css === 'function' ? this.css() : this.css}
+            </style>
+          `
+        : ''
+      const t = html`${css}${this.template()}`
       if (typeof t === 'object') {
         uhtml(this.root, t)
       } else if (typeof t === 'string') {

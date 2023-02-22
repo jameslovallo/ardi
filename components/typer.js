@@ -21,9 +21,6 @@ ardi({
         ${this.base}
         <span>${this.word}</span>
       </div>
-      <style>
-        ${this.css}
-      </style>
     `
   },
 

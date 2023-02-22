@@ -9,9 +9,6 @@ ardi({
 
   template() {
     return html`
-      <style>
-        ${this.css}
-      </style>
       ${!this.loaded
         ? html`
             <button

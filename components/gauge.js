@@ -36,9 +36,6 @@ ardi({
 
   template() {
     return html`
-      <style>
-        ${this.css}
-      </style>
       ${this.numbers().map(
         (num) =>
           html`

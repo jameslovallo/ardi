@@ -22,9 +22,6 @@ ardi({
 
   template() {
     return html`
-      <style>
-        ${this.css}
-      </style>
       <img part="photo" src=${this.photo} />
       <div part="details">
         ${this.name ? html`<b>${this.name}</b>` : ''}

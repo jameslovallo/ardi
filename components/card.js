@@ -15,9 +15,6 @@ ardi({
         <h3>${this.heading}</h3>
         <p>${this.text}</p>
       </div>
-      <style>
-        ${this.css}
-      </style>
     `
   },
   css: /* css */ `

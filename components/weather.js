@@ -36,9 +36,6 @@ ardi({
     const { temp } = this.current
 
     return html`
-      <style>
-        ${this.css}
-      </style>
       <!-- current conditions -->
       <div part="current">
         <div part="label">

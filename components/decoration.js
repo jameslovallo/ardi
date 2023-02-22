@@ -25,15 +25,12 @@ ardi({
           </div>
         `
     return html`
-      <style>
-        ${this.styles()}
-      </style>
       <slot></slot>
       ${el}
     `
   },
 
-  styles() {
+  css() {
     return /* css */ `
       :host {
         display: block;
