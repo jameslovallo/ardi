@@ -1,4 +1,4 @@
-import { html, render as uhtml, svg } from '//cdn.skypack.dev/uhtml'
+import { html, render as uhtml, svg } from 'uhtml'
 export { html, svg }
 
 export default function ardi(options) {
