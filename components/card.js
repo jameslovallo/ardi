@@ -28,7 +28,8 @@ ardi({
 		img {
 			aspect-ratio: 4/3;
 			display: block;
-			margin: 1rem 0;
+			margin: 1rem auto;
+			max-width: 300px;
 			object-position: center center;
 			width: 100%;
 		}

@@ -2,7 +2,7 @@
 
 **Welcome to the Weightless Web**
 
-Ardi makes it easy to create reactive custom elements that work with any website or Javascript framework.
+Ardi makes it almost too easy to create reactive custom elements that work with any website or Javascript framework.
 
 ## Features
 
@@ -10,7 +10,8 @@ Ardi makes it easy to create reactive custom elements that work with any website
 2. Reactive props and state
 3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
 4. Simple and powerful context API
-5. No building, compiling, or tooling
+5. Lifecycle callbacks, refs, and various helper methods
+6. No building, compiling, or tooling
 
 <home-grid>
 
@@ -81,9 +82,21 @@ ardi({
 
 ### Extends
 
+If you are building a component that extends a default element, you can define the prototype and tag here.
+
 ```js
 ardi({
   extends: [HTMLPreElement, 'pre'],
+})
+```
+
+### Shadow
+
+Ardi renders to the [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) by default. You can disable this behavior if you need to.
+
+```js
+ardi({
+  shadow: false,
 })
 ```
 
@@ -125,7 +138,7 @@ The bundled templating library is called [μhtml](https://www.npmjs.com/package/
 
 #### Event Handlers
 
-Event handlers can be applied to an element using React's `on` syntax (i.e. `onClick`) or Vue's `@` syntax (i.e. `@click`).
+Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`).
 
 The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code [here](/demos/tmdb).
 
@@ -211,7 +224,7 @@ ardi({
 })
 ```
 
-#### Context
+### Context
 
 Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
 
@@ -233,13 +246,13 @@ template() {
 }
 ```
 
-#### JSX & Handlebars
+### JSX & Handlebars
 
 μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
 
 <!-- tabs:start -->
 
-##### **μhtml**
+#### **μhtml**
 
 ```js
 import ardi, { html } from '/ardi-min.js'
@@ -256,7 +269,7 @@ ardi({
 })
 ```
 
-##### **JSX-Dom**
+#### **JSX-Dom**
 
 ```js
 import ardi, { html } from '/ardi-min.js'
@@ -266,16 +279,12 @@ ardi({
   tag: 'jsx-counter',
   state: () => ({ count: 0 }),
   template() {
-    return (
-      <button onClick={() => this.count++}>
-        Count: {this.count}
-      </button>
-    )
+    return <button onClick={() => this.count++}>Count: {this.count}</button>
   },
 })
 ```
 
-##### **Handlebars**
+#### **Handlebars**
 
 ```js
 import ardi, { html } from '/ardi-min.js'
@@ -323,6 +332,10 @@ ardi({
 })
 ```
 
+### Updated
+
+The updated methods runs each time the component renders an update. This was added to support event listeners when with Handlebars, but you can use this method for any purpose.
+
 ### Intersect
 
 The intersect method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
@@ -340,7 +353,7 @@ ardi({
 
 ### Styling
 
-Ardi is mostly un-opinionated when it comes to styling, but you should know that Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM). Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet. It just means that your styles are scoped by default (this is feature, not a bug!) unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+Ardi is mostly un-opinionated when it comes to styling, but you should know that Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet: it just means that your styles are scoped unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). This is feature, not a bug! Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
 This all means that you can build a component and place it on any site without worrying that the site's stylesheets will interfere with your component's core functionality, and you get complete control over what elements inside your template are allowed to be influenced by external CSS.
 
@@ -350,12 +363,13 @@ You can include CSS styling directly in your component's template, like this.
 
 ```js
 template() {
+  const {bg, color} = this.context('theme')
   return html`
     <nav>...</nav>
     <style>
       nav {
-        background: ${this.theme().navBG};
-        color: ${this.theme().navColor};
+        background: ${bg};
+        color: ${color};
       }
     </style>
   `
@@ -368,28 +382,29 @@ You can also use JS in a style attribute, or any html attribute, like this.
 
 ```js
 template() {
+  const {bg, color} = this.context('theme')
   return html`
-    <nav style=${`color: ${this.theme().navColor}`}>...</nav>
+    <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
   `
 }
 ```
 
-#### CSS Method
+#### CSS Key
 
-If you have a lot of CSS, it may be cleaner to move it into it's own method. You can still use Javascript in your CSS styling as long as your method is not an arrow function.
+If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
 
 ```js
 template() {
   return html`
-    <style>${this.css()}</style>
     <nav>...</nav>
   `
 },
 css() {
+  const {bg, color} = this.context('theme')
   return `
     nav {
-      background: ${this.theme().navBG};
-      color: ${this.theme().navColor};
+      background: ${bg};
+      color: ${color};
     }
   `
 }

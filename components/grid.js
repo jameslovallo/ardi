@@ -12,7 +12,7 @@ ardi({
 			margin-block: 1rem;
 			text-align: center;
 		}
-		@media (min-width: 768px) {
+		@media (min-width: 600px) {
 			:host {
 				grid-template-columns: repeat(3, 1fr);
 			}
