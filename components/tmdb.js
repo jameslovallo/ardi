@@ -8,7 +8,7 @@ ardi({
     time: [String, 'day'], // day, week
   },
 
-  state: () => ({ results: [] }),
+  state: { results: [] },
 
   intersect(r) {
     if (r > 0.1 && !this.intersected) this.trending()
@@ -38,7 +38,7 @@ ardi({
         '&page=1',
         '&query=' + e.target.value,
         '&include_adult=false',
-      ].join()
+      ].join('')
     )
       .then((res) => res.json())
       .then((data) => (this.results = data.results))

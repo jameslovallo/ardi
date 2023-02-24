@@ -10,10 +10,10 @@ ardi({
     words: [(v) => (v ? v.split(',') : ['one', 'two', 'three'])],
   },
 
-  state: () => ({
+  state: {
     index: 0,
     word: '',
-  }),
+  },
 
   template() {
     return html`

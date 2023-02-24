@@ -10,10 +10,10 @@ ardi({
     sustain: [Number, 2],
   },
 
-  state: () => ({
+  state: {
     recording: false,
     tracks: [],
-  }),
+  },
 
   ready() {
     document.body.addEventListener('mousedown', () => (this.mousedown = true))

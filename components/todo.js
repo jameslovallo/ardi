@@ -10,13 +10,13 @@ ardi({
     todolabel: [String, 'Pending'],
   },
 
-  state: () => ({
+  state: {
     tasks: [
       { task: 'Do the laundry', starred: false, completed: false },
       { task: 'Vacuum', starred: false, completed: true },
       { task: 'Wash the dog', starred: true, completed: false },
     ],
-  }),
+  },
 
   addTask() {
     this.tasks.push({
@@ -87,7 +87,7 @@ ardi({
                         const index = this.tasks.indexOf(task)
                         delete this.tasks[index]
                       }}>
-                        ⨉
+                        ✕
                       </button>
                     </div>
                   </li>`
@@ -111,9 +111,10 @@ ardi({
       margin: 0;
     }
     [type='checkbox'] {
-      height: 1rem;
+      height: 1.25rem;
       margin: 0;
-      width: 1rem;
+      padding: 0;
+      width: 1.25rem;
     }
     svg {
       display: block;
@@ -129,8 +130,8 @@ ardi({
     [part='star'] {
       appearance: none;
       color: #ffb300;
-      font-size: 1.5rem;
-      line-height: 1rem;
+      font-size: 1.25rem;
+      line-height: 1.25rem;
     }
     [part='star']:before {
       content: '☆';
@@ -167,7 +168,7 @@ ardi({
       color: #e53935;
       display: block;
       font-size: 1.25rem;
-      line-height: 1rem;
+      line-height: 1.25rem;
       padding: 0;
     }
   `,

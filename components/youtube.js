@@ -5,7 +5,7 @@ ardi({
 
   props: { vid: [String] },
 
-  state: () => ({ loaded: false }),
+  state: { loaded: false },
 
   template() {
     return html`

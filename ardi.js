@@ -1,4 +1,4 @@
-import { html, render as uhtml, svg } from 'uhtml'
+import { html, render as uhtml, svg } from 'https://cdn.skypack.dev/uhtml'
 export { html, svg }
 
 export default function ardi(options) {
@@ -18,7 +18,7 @@ export default function ardi(options) {
       } else this.root = this
 
       if (typeof this.props === 'object') this.defineProps()
-      if (typeof this.state === 'function') this.defineState()
+      if (this.state) this.defineState()
       if (typeof this.intersect === 'function') this.handleIntersect()
 
       this.refs = {}
@@ -80,7 +80,9 @@ export default function ardi(options) {
           },
         })
       }
-      this._state = reactive(this.state())
+      this._state = reactive(
+        typeof this.state === 'function' ? this.state() : this.state
+      )
       delete this.state
       Object.keys(this._state).forEach((key) => {
         Object.defineProperty(this, key, {

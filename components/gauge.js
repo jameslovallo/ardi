@@ -28,7 +28,6 @@ ardi({
   },
 
   intersect(ratio) {
-    console.log(ratio)
     if (ratio > 0.3) {
       this.dialRotation = this.deg(this.value / this.max)
     }
