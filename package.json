@@ -30,7 +30,7 @@
   "scripts": {
     "build": "esbuild ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=ardi-min.js ",
     "dev": "docsify serve",
-    "update": "npm version patch && npm publish"
+    "update": "npm run build && npm version patch && npm publish"
   },
   "devDependencies": {
     "esbuild": "^0.15.9",
