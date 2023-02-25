@@ -332,7 +332,7 @@ You can add any number of methods in your component and access them via `this.me
 
 ## Lifecycle
 
-Ardi provides a number of useful lifecycle callbacks. These callbacks are often a useful place to fetch data or apply effects.
+Ardi has several lifecycle callbacks, providing a convenient way to fetch data or apply effects.
 
 ### ready()
 
@@ -355,7 +355,7 @@ ardi({
 
 ### updated()
 
-This method runs each time the component renders an update. This was added to support event listeners when with Handlebars, but you can use this method for any purpose.
+This method runs each time the component renders an update. This was added to support event listeners when using Handlebars, but you can use this method for any purpose.
 
 ### propChange()
 
