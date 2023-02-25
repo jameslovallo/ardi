@@ -92,7 +92,7 @@ ardi({
 
 ### Shadow
 
-Ardi renders to the [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part) by default. You can disable this behavior if you need to.
+Ardi renders to the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. You can disable this behavior if you need to.
 
 ```js
 ardi({
