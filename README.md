@@ -9,8 +9,8 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 1. Simple object-oriented API
 2. Reactive props and state
 3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
-4. Simple and powerful context API
-5. Lifecycle callbacks, refs, and various helper methods
+4. Context API
+5. Helpful lifecycle callbacks
 6. No building, compiling, or tooling
 
 <home-grid>
