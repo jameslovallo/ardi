@@ -1,6 +1,6 @@
 # Typer
 
-This component demonstrates how to use complex prop handlers and Javascript expressions in CSS.
+This component demonstrates complex prop handlers and Javascript expressions in CSS.
 
 <script src="/components/typer.js" type="module"></script>
 
@@ -24,7 +24,7 @@ This component demonstrates how to use complex prop handlers and Javascript expr
     }
   }
 </script>
-<ardi-typer base="Ardi was built to:" pause="5000" speed="100" words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere" cursor="true"></ardi-typer>
+<ardi-typer base="Ardi was built to:" pause="5000" speed="150" words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere" cursor="true"></ardi-typer>
 </element-story>
 
 ## Javascript

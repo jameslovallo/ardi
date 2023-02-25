@@ -1,6 +1,6 @@
 # Decoration
 
-This component demonstrates how to use conditional rendering, slots, and Javascript values in CSS.
+This component demonstrates conditional rendering, slots, and Javascript values in CSS.
 
 <script src="/components/decoration.js" type="module"></script>
 
