@@ -1,4 +1,4 @@
-import ardi, { html } from '/ardi-min.js'
+import ardi, { html } from '/ardi.js'
 
 ardi({
   tag: 'ardi-weather',
@@ -20,13 +20,21 @@ ardi({
   },
 
   ready() {
-    new ResizeObserver(
-      () => (this.small = this.clientWidth <= this.breakpoint)
+    new ResizeObserver(() =>
+      requestAnimationFrame(
+        () => (this.small = this.clientWidth <= this.breakpoint)
+      )
     ).observe(this)
   },
 
   intersect(r) {
     if (!this.gotWeather && r > 0.2) {
+      this.fetchForecast()
+    }
+  },
+
+  propChange(e) {
+    if (e.old && e.new && ['lat', 'lon', 'locale', 'unit'].includes(e.prop)) {
       this.fetchForecast()
     }
   },

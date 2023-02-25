@@ -45,14 +45,22 @@ export default function ardi(options) {
                 return handleValue(value)
             }
           },
-          set: (v) => this.setAttribute(prop, v),
+          set: (v) => {
+            this.setAttribute(prop, v)
+            if (typeof this.propChange === 'function') {
+              this.propChange({ prop: prop, old: this[prop], new: v })
+            }
+          },
         })
       })
     }
     static get observedAttributes() {
       return props
     }
-    attributeChangedCallback() {
+    attributeChangedCallback(prop, oldVal, newVal) {
+      if (typeof this.propChange === 'function') {
+        this.propChange({ prop: prop, old: oldVal, new: newVal })
+      }
       this.dispatchEvent(update)
     }
 

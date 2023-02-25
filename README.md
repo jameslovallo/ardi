@@ -233,16 +233,6 @@ ardi({
 })
 ```
 
-### Context
-
-Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
-
-To share context from a parent component, add the `context` attribute with a descriptive name.
-
-```html
-<ardi-component context="theme"></ardi-component>
-```
-
 Then you can use `this.context` to use (and update!) the context inside your child components. When you update the context, the value will be synchronized to the context provider and each child component that references it.
 
 ```js
@@ -263,6 +253,7 @@ template() {
 
 #### **μhtml**
 
+<!--prettier-ignore-->
 ```js
 import ardi, { html } from '/ardi-min.js'
 
@@ -280,6 +271,7 @@ ardi({
 
 #### **JSX-Dom**
 
+<!--prettier-ignore-->
 ```js
 import ardi, { html } from '/ardi-min.js'
 import React from '//cdn.skypack.dev/jsx-dom'
@@ -321,16 +313,30 @@ ardi({
 
 Notice that with Handlebars (or any template that returns a string: i.e. a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
 
-### Methods
+### Context
+
+Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
+
+To share context from a parent component, add the `context` attribute with a descriptive name.
+
+```html
+<ardi-component context="theme"></ardi-component>
+```
+
+### Other Methods
 
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
 and `next`.
 
 You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods, or even in your CSS (we'll get to that in a minute). For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
 
-### Ready
+## Lifecycle
 
-The ready method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
+Ardi provides a number of useful lifecycle callbacks. These callbacks are often a useful place to fetch data or apply effects.
+
+### ready()
+
+This method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
 A great example of this is in the demo [weather component](/demos/weather), where a resize observer is set up to act like a container query and apply appropriate styling based on the component's rendered width, regardless of the viewport width. (Container queries can't come soon enough.)
 
@@ -338,20 +344,36 @@ A great example of this is in the demo [weather component](/demos/weather), wher
 ardi({
   tag: 'ardi-weather',
   ready() {
-    new ResizeObserver(
-      () => (this.small = this.clientWidth <= this.breakpoint)
+    new ResizeObserver(() =>
+      requestAnimationFrame(
+        () => (this.small = this.clientWidth <= this.breakpoint)
+      )
     ).observe(this)
   },
 })
 ```
 
-### Updated
+### updated()
 
-The updated methods runs each time the component renders an update. This was added to support event listeners when with Handlebars, but you can use this method for any purpose.
+This method runs each time the component renders an update. This was added to support event listeners when with Handlebars, but you can use this method for any purpose.
 
-### Intersect
+### propChange()
 
-The intersect method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
+Props are reactive, meaning the template is automatically updated when a prop's value changes, but you will likely encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this attribute to observe when a prop's value changes.
+
+Here is an example from the weather demo.
+
+```js
+propChange(e) {
+  if (e.old && e.new && ['lat', 'lon', 'locale', 'unit'].includes(e.prop)) {
+    this.fetchForecast()
+  }
+}
+```
+
+### intersect()
+
+This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
 In the TMDB component, the intersect method is used to lazy-load the default results once the component is in the viewport.
 
@@ -364,7 +386,7 @@ ardi({
 })
 ```
 
-### Styling
+## Styling
 
 Ardi is mostly un-opinionated when it comes to styling, but you should know that Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet: it just means that your styles are scoped unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). This is feature, not a bug! Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 

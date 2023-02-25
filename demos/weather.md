@@ -1,6 +1,6 @@
 # Weather Forecast
 
-This component demonstrates how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` helper). Updating the location/unit/locale attributes will not trigger an update, so those attributes were excluded from the playground below.
+This component demonstrates how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` helper).
 
 <script src="/components/weather.js" type="module"></script>
 
@@ -9,6 +9,10 @@ This component demonstrates how to lazy-load data after the component is scrolle
     {
       "place": {"type": "text"},
       "label": {"type": "text"},
+      "lat": {"type": "text"},
+      "lon": {"type": "text"},
+      "unit": {"type": "list", "options": ["fahrenheit", "celsius"]},
+      "locale": {"type": "text"},
       "breakpoint": {"type": "number"}
     }
   </script>
