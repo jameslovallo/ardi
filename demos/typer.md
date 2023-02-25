@@ -1,20 +1,31 @@
-# Counter
+# Typer
 
-## Demo
+This component demonstrates how to use complex prop handlers and Javascript expressions in CSS.
 
 <script src="/components/typer.js" type="module"></script>
 
-<ardi-typer base="Ardi was built to:" words="provide great DX with no tooling,work with every framework,break free from frameworks,create portable components,work anywhere" pause="3000"></ardi-typer>
-
-## HTML
-
-```html
-<ardi-typer
-  base="Ardi was built to:"
-  words="create portable web components,provide great DX with no tooling,work with every framework,break free from frameworks"
-  pause="3000"
-></ardi-typer>
-```
+<element-story>
+<script type="application/json">
+  {
+    "base": {
+      "type": "text"
+    },
+    "words": {
+      "type": "text"
+    },
+    "speed": {
+      "type": "number"
+    },
+    "pause": {
+      "type": "number"
+    },
+    "cursor": {
+      "type": "boolean"
+    }
+  }
+</script>
+<ardi-typer base="Ardi was built to:" pause="5000" speed="100" words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere" cursor="true"></ardi-typer>
+</element-story>
 
 ## Javascript
 

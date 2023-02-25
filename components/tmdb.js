@@ -1,7 +1,7 @@
 import ardi, { html } from '/ardi-min.js'
 
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
 
   props: {
     type: [String, 'tv'], // tv, movie, all
@@ -10,12 +10,7 @@ ardi({
 
   state: { results: [] },
 
-  intersect(r) {
-    if (r > 0.1 && !this.intersected) this.trending()
-  },
-
-  trending() {
-    this.intersected = true
+  fetchTrending() {
     fetch(
       [
         'https://api.themoviedb.org/3/trending',
@@ -28,20 +23,11 @@ ardi({
       .then((data) => (this.results = data.results))
   },
 
-  search(e) {
-    fetch(
-      [
-        'https://api.themoviedb.org/3/search',
-        '/' + this.type,
-        '?api_key=f24e1216d78e7a935fcd5ab6bda1167b',
-        '&language=en-US',
-        '&page=1',
-        '&query=' + e.target.value,
-        '&include_adult=false',
-      ].join('')
-    )
-      .then((res) => res.json())
-      .then((data) => (this.results = data.results))
+  intersect(ratio) {
+    if (ratio >= 0.2 && !this.intersected) {
+      this.fetchTrending()
+      this.intersected = true
+    }
   },
 
   prev() {
@@ -57,11 +43,16 @@ ardi({
     const posterRoot = 'https://www.themoviedb.org/t/p/w300_and_h450_bestv2/'
     return html`
       <div part="controls">
-        <input
-          part="search"
-          @keydown=${(e) => e.key === 'Enter' && this.search(e)}
-          placeholder="Search"
-        />
+        <select
+          @change=${(e) => {
+            this.type = e.target.value
+            this.fetchTrending()
+          }}
+        >
+          <option value="tv">Trending TV</option>
+          <option value="movie">Trending Movies</option>
+          <option value="all">Trending TV and Movies</option>
+        </select>
         <button part="prev" @click=${() => this.prev()}>
           <slot name="prev">❮</slot>
         </button>
@@ -99,22 +90,33 @@ ardi({
     :host {
       aspect-ratio: 16/9;
       display: block;
+      overflow: hidden;
       position: relative;
     }
     [part=controls] {
+      backdrop-filter: blur(5px);
+      background: rgba(0,0,0,0.33);
+      border-radius: 2rem;
       display: flex;
       right: 1rem;
+      padding: .25rem;
       position: absolute;
       top: 1rem;
       z-index: 1;
     }
     [part=controls] * {
+      appearance: none;
+      background: transparent;
       border: 0;
       padding: .25rem .5rem;
+    }
+    [part=controls] *:focus-visible {
+      outline: none;
     }
     ul {
       display: flex;
       list-style: none;
+      margin: 0;
       overflow: hidden;
       padding: 0;
       scroll-behavior: smooth;
@@ -128,6 +130,7 @@ ardi({
       align-items: flex-end;
       aspect-ratio: 16/9;
       background: linear-gradient(to bottom, #88a 50%, black);
+      box-sizing: border-box;
       color: white;
       display: flex;
       font-family: sans-serif;

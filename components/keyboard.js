@@ -1,7 +1,7 @@
 import ardi, { html, svg } from '/ardi-min.js'
 
 ardi({
-  tag: 'keyboard-demo',
+  tag: 'ardi-keyboard',
 
   props: {
     instrument: [(v) => (v === 'sitar' ? 'acoustic' : v), 'piano'],

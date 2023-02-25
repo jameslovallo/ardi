@@ -1,13 +1,13 @@
 # TMDB Search
 
-## Demo
+This component demonstrates loops, conditional rendering, event handlers, slots, and how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` helper).
 
-<tmdb-search></tmdb-search>
+<tmdb-trending style="width: 100%"></tmdb-trending>
 
 ## HTML
 
 ```html
-<tmdb-search type="tv" time="day"></tmdb-search>
+<tmdb-trending type="tv" time="day"></tmdb-trending>
 ```
 
 ## Javascript

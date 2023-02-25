@@ -6,7 +6,7 @@ ardi({
   props: {
     addtasklabel: [String, 'Add a task'],
     donelabel: [String, 'Complete'],
-    listLabel: [String, 'To Do'],
+    listlabel: [String, 'To Do'],
     todolabel: [String, 'Pending'],
   },
 
@@ -44,7 +44,7 @@ ardi({
     ]
 
     return html`
-      <h3>${this.listLabel}</h3>
+      <h3>${this.listlabel}</h3>
 
       <div part="add">
         <input

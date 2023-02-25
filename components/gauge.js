@@ -11,9 +11,7 @@ ardi({
     value: [Number, 90],
   },
 
-  state() {
-    return { dialRotation: this.deg(this.min) }
-  },
+  state: { loaded: false },
 
   deg(percentage) {
     return Math.round(240 * percentage) - 120
@@ -29,11 +27,14 @@ ardi({
 
   intersect(ratio) {
     if (ratio > 0.3) {
-      this.dialRotation = this.deg(this.value / this.max)
+      this.loaded = true
     }
   },
 
   template() {
+    const rotation = this.loaded
+      ? this.deg(this.value / this.max)
+      : this.deg(this.min)
     return html`
       ${this.numbers().map(
         (num) =>
@@ -43,10 +44,7 @@ ardi({
             </div>
           `
       )}
-      <div
-        part="dial"
-        style=${`transform: rotate(${this.dialRotation}deg)`}
-      ></div>
+      <div part="dial" style=${`transform: rotate(${rotation}deg)`}></div>
       <slot name="label" part="label">${this.label}</slot>
     `
   },

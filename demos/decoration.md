@@ -1,43 +1,46 @@
 # Decoration
 
-## Demo
+This component demonstrates how to use conditional rendering, slots, and Javascript values in CSS.
 
 <script src="/components/decoration.js" type="module"></script>
 
 <style>
-  ardi-decoration {
-    flex-grow: 1;
-  }
-  .demo-card {
-		border: 1px solid rgba(125, 125, 125, 0.5);
-		border-radius: 8px;
+  .demo-box {
+    border: 1px solid rgba(125, 125, 125, 0.5);
+    border-radius: 8px;
     height: 5rem;
   }
 </style>
 
-<div style="display: flex; gap: 2rem;">
-
-  <ardi-decoration label="Ribbon" type="ribbon">
-    <div class="demo-card"></div>
+<element-story>
+  <script type="application/json">
+    {
+      "type": {
+        "type": "list",
+        "options": ["badge", "ribbon"]
+      },
+      "label": {
+        "type": "text"
+      },
+      "background": {
+        "type": "color"
+      },
+      "color": {
+        "type": "color"
+      },
+      "href": {
+        "type": "text"
+      },
+      "target": {
+        "type": "list",
+        "options": ["_blank", "_self"]
+      }
+    }
+  </script>
+  <ardi-decoration background="#5E35B1" color="#ffffff" href="https://google.com" label="Ribbon" type="ribbon" style="width: 100%;">
+    <div class="demo-box"></div>
   </ardi-decoration>
-
-  <ardi-decoration background="#e53935" label="3" type="badge">
-    <div class="demo-card"></div>
-  </ardi-decoration>
-
-</div>
-
-## HTML
-
-```html
-<ardi-decoration label="Ribbon" type="ribbon">
-  <div class="demo-card"></div>
-</ardi-decoration>
-
-<ardi-decoration background="#e53935" label="3" type="badge">
-  <div class="demo-card"></div>
-</ardi-decoration>
-```
+</element-story>
 
 ## Javascript
 

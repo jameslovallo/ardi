@@ -1,16 +1,19 @@
 # Counter
 
-## Demo
+This component provides a simple example of how to use props and state in Ardi.
 
 <script src="/components/counter.js" type="module"></script>
 
+<element-story>
+<script type="application/json">
+  {
+    "step": {
+      "type": "number"
+    }
+  }
+</script>
 <ardi-counter step="3"></ardi-counter>
-
-## HTML
-
-```html
-<ardi-counter step="3"></ardi-counter>
-```
+</element-story>
 
 ## Javascript
 

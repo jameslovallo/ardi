@@ -1,17 +1,7 @@
 # Keyboard
 
-## Demo
+This component is totally psycho demonstration of what you can do with Ardi. You can review the full JS [here](https://ardi.netlify.app/components/keyboard.js) if you're curious.
 
 <script src="/components/keyboard.js" type="module"></script>
 
-<keyboard-demo octaves="2" start="3"></keyboard-demo>
-
-## HTML
-
-```html
-<keyboard-demo octaves="2" start="3"></keyboard-demo>
-```
-
-## Javascript
-
-[](../components/keyboard.js ':include')
+<ardi-keyboard instrument="piano" octaves="2" start="3" style="width: 100%"></ardi-keyboard>

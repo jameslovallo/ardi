@@ -1,21 +1,20 @@
 # To Do List
 
-## Demo
+This component demonstrates keyed loops with `html.for`, conditional rendering, state management, and event handlers.
 
 <script src="/components/todo.js" type="module"></script>
 
-<ardi-todo addtasklabel="Add a chore" donelabel="Complete" listLabel="Chores" todolabel="To Do"></ardi-todo>
-
-## HTML
-
-```html
-<ardi-todo
-  addtasklabel="Add a chore"
-  donelabel="Complete"
-  listLabel="Chores"
-  todolabel="To Do"
-></ardi-todo>
-```
+<element-story>
+  <script type="application/json">
+	{
+		"listlabel": {"type": "text"},
+		"addtasklabel": {"type": "text"},
+		"todolabel": {"type": "text"},
+		"donelabel": {"type": "text"}
+	}
+  </script>
+  <ardi-todo addtasklabel="Add a chore" donelabel="Complete" listlabel="Chores" todolabel="To Do" style="width: 100%"></ardi-todo>
+</element-story>
 
 ## Javascript
 

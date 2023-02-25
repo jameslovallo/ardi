@@ -1,6 +1,6 @@
 # FullPage
 
-## Demo
+This component demonstrates state management, conditional rendering, event handlers, loops, and how to use Javascript values and expressions in CSS.
 
 > This demo is loaded in an iframe. Hovering or touching it will prevent the rest of the page from scrolling.
 

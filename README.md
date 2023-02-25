@@ -66,17 +66,17 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from this responsive TMDB search widget. You can see the full code [here](/demos/tmdb).
+Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from this responsive TMDB widget. You can see the full code [here](/demos/tmdb).
 
-<tmdb-search></tmdb-search>
+<tmdb-trending></tmdb-trending>
 
 ### Tag
 
-Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'tmdb-search'.
+Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'tmdb-trending'.
 
 ```js
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
 })
 ```
 
@@ -106,12 +106,12 @@ Properties allow you to configure your component. To create a property, add a ke
 
 For the TMDB component, we'll add two props:
 
-1. type: to configure whether it searches for TV or movies.
-2. time: to configure the time period for trending results, which are displayed by default when the component is scrolled into view.
+1. type: to configure whether it displays trending TV or movies.
+2. time: to configure the time period for trending results.
 
 ```js
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
   props: {
     type: [String, 'tv'], // tv, movie, all
     time: [String, 'day'], // day, week
@@ -127,7 +127,7 @@ The TMDB component will use an array called 'results' to store movies or tv show
 
 ```js
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
   state: () => ({ results: [] }),
 })
 ```
@@ -145,7 +145,16 @@ The TMDB component's toolbar includes 3 examples. The code below is simplified, 
 ```js
 template() {
   return html`
-    <input @keydown=${(e) => e.key === 'Enter' && this.search(e)}/>
+    <select
+      @change=${(e) => {
+        this.type = e.target.value
+        this.fetchTrending()
+      }}
+    >
+      <option value="tv">Trending TV</option>
+      <option value="movie">Trending Movies</option>
+      <option value="all">Trending TV and Movies</option>
+    </select>
     <button @click=${() => this.prev()}>❮</button>
     <button @click=${() => this.next()}>❯</button>
   `
@@ -201,11 +210,11 @@ The TMDB component will have two named slots to allow the previous and next butt
 
 Ardi allows you to add ref attributes to elements in your template, which are accessible from `this.refs`.
 
-In the TMDB component, the `list` ref is used by the `prev` and `next` methods to navigate through the search results.
+In the TMDB component, the `list` ref is used by the `prev` and `next` methods to navigate through the results.
 
 ```js
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
   template() {
     return html`
       ...
@@ -314,7 +323,7 @@ Notice that with Handlebars (or any template that returns a string: i.e. a raw t
 
 ### Methods
 
-You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `trending`, `search`, `prev`
+You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
 and `next`.
 
 You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods, or even in your CSS (we'll get to that in a minute). For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
@@ -348,7 +357,7 @@ In the TMDB component, the intersect method is used to lazy-load the default res
 
 ```js
 ardi({
-  tag: 'tmdb-search',
+  tag: 'tmdb-trending',
   intersect(r) {
     if (r > 0.2 && !this.intersected) this.trending()
   },

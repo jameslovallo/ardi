@@ -32,8 +32,7 @@ ardi({
   },
 
   template() {
-    const { icon } = this.current
-    const { temp } = this.current
+    const { icon, temp } = this.current
 
     return html`
       <!-- current conditions -->
@@ -63,6 +62,31 @@ ardi({
         )}
       </div>
     `
+  },
+
+  fetchForecast() {
+    fetch(
+      `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
+    )
+      .then((res) => res.json())
+      .then((conditions) => {
+        // current
+        const { current_weather, daily } = conditions
+        this.current.icon = this.icon(current_weather.weathercode)
+        const temp = Math.round(Number(current_weather.temperature))
+        const unit = this.unit.charAt(0).toUpperCase()
+        this.current.temp = temp + '°' + unit
+        // render forecast
+        this.forecast = daily.time.map((date, i) => ({
+          name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
+            weekday: 'long',
+          }),
+          icon: this.icon(daily.weathercode[i]),
+          min: Math.round(daily.temperature_2m_min[i]) + '°',
+          max: Math.round(daily.temperature_2m_max[i]) + '°',
+        }))
+        this.gotWeather = true
+      })
   },
 
   css: /* css */ `
@@ -173,31 +197,6 @@ ardi({
       width: 2em;
     }
   `,
-
-  fetchForecast() {
-    fetch(
-      `https://api.open-meteo.com/v1/forecast?latitude=${this.lat}&longitude=${this.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&current_weather=true&temperature_unit=${this.unit}&timezone=auto`
-    )
-      .then((res) => res.json())
-      .then((conditions) => {
-        // current
-        const { current_weather, daily } = conditions
-        this.current.icon = this.icon(current_weather.weathercode)
-        const temp = Math.round(Number(current_weather.temperature))
-        const unit = this.unit.charAt(0).toUpperCase()
-        this.current.temp = temp + '°' + unit
-        // render forecast
-        this.forecast = daily.time.map((date, i) => ({
-          name: new Date(date + 'T00:00').toLocaleDateString(this.locale, {
-            weekday: 'long',
-          }),
-          icon: this.icon(daily.weathercode[i]),
-          min: Math.round(daily.temperature_2m_min[i]) + '°',
-          max: Math.round(daily.temperature_2m_max[i]) + '°',
-        }))
-        this.gotWeather = true
-      })
-  },
 
   icon(code) {
     const icons = {

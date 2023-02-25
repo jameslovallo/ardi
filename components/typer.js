@@ -5,9 +5,12 @@ ardi({
 
   props: {
     base: [String, 'Word'],
+    cursor: [Boolean, true],
     pause: [Number, 5000],
     speed: [Number, 100],
-    words: [(v) => (v ? v.split(',') : ['one', 'two', 'three'])],
+    words: [
+      (v) => (v ? v.split(',').map((v) => v.trim()) : ['one', 'two', 'three']),
+    ],
   },
 
   state: {
@@ -52,21 +55,23 @@ ardi({
     this.setWord()
   },
 
-  css: /* css */ `
-    span {
-      --color: currentcolor;
-      animation: blink 1s linear infinite;
-      border-right: 1px solid var(--color);
-      display: inline-block;
-    }
-    @keyframes blink {
-      0% {
-        --color: transparent;
-      } 50% {
+  css() {
+    return `
+      span {
         --color: currentcolor;
-      } 100% {
-        --color: transparent;
+        animation: blink 1s linear infinite;
+        border-right: ${this.cursor ? '1px' : '0'} solid var(--color);
+        display: inline-block;
       }
-    }
-  `,
+      @keyframes blink {
+        0% {
+          --color: transparent;
+        } 50% {
+          --color: currentcolor;
+        } 100% {
+          --color: transparent;
+        }
+      }
+    `
+  },
 })
