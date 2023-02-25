@@ -1,6 +1,6 @@
 # Employee Card
 
-This component demonstrates how to use conditional rendering and how to handle events in the template.
+This component demonstrates conditional rendering and event handlers.
 
 <script src="/components/employee.js" type="module"></script>
 

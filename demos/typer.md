@@ -1,6 +1,6 @@
 # Typer
 
-This component demonstrates how to use complex prop handlers and Javascript expressions in CSS.
+This component demonstrates complex prop handlers and Javascript expressions in CSS.
 
 <script src="/components/typer.js" type="module"></script>
 

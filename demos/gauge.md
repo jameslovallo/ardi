@@ -1,6 +1,6 @@
 # Gauge
 
-This component demonstrates how to use state management and Ardi's `intersect` helper apply animations when an element is scrolled into view.
+This component demonstrates how to use state management and Ardi's `intersect` helper to apply animations when an element is scrolled into view.
 
 <script src="/components/gauge.js" type="module"></script>
 
