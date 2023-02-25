@@ -30,7 +30,7 @@ This component demonstrates how to use conditional rendering and how to handle e
     phone="1234567890"
     email="ashely@fake.com"
     photo="/assets/ashley.png"
-    style="width: 400px; max-width: 100%;"
+    style="width: 100%; max-width: 350px;"
   ></ardi-employee>
 </element-story>
 

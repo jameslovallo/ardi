@@ -37,7 +37,7 @@ This component demonstrates how to use conditional rendering, slots, and Javascr
       }
     }
   </script>
-  <ardi-decoration background="#5E35B1" color="#ffffff" href="https://google.com" label="Ribbon" type="ribbon" style="width: 100%;">
+  <ardi-decoration background="#5E35B1" color="#ffffff" href="https://google.com" label="Ribbon" type="ribbon" style="max-width: 350px; width: 100%;">
     <div class="demo-box"></div>
   </ardi-decoration>
 </element-story>
