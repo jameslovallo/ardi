@@ -1,6 +1,6 @@
 # Weather Forecast
 
-This component demonstrates how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` helper).
+This component demonstrates how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` callback).
 
 <script src="/components/weather.js" type="module"></script>
 

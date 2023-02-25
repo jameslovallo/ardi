@@ -1,6 +1,6 @@
 # TMDB Search
 
-This component demonstrates loops, conditional rendering, event handlers, slots, and how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` helper).
+This component demonstrates loops, conditional rendering, event handlers, slots, and how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` callback).
 
 <tmdb-trending style="width: 100%"></tmdb-trending>
 
