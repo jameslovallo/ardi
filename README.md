@@ -338,7 +338,7 @@ Ardi has several lifecycle callbacks, providing a convenient way to fetch data o
 
 This method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
-A great example of this is in the demo [weather component](/demos/weather), where a resize observer is set up to act like a container query and apply appropriate styling based on the component's rendered width, regardless of the viewport width. (Container queries can't come soon enough.)
+A great example of this is in the demo [weather component](/demos/weather), where a resize observer is set up to mimic a container query and apply styles based on the component's rendered width, regardless of the viewport width. (Container queries can't come soon enough.)
 
 ```js
 ardi({
@@ -364,8 +364,12 @@ Props are reactive, meaning the template is automatically updated when a prop's 
 Here is an example from the weather demo.
 
 ```js
-propChange(e) {
-  if (e.old && e.new && ['lat', 'lon', 'locale', 'unit'].includes(e.prop)) {
+propChange(prop) {
+  if (
+    prop.old &&
+    prop.new &&
+    ['lat', 'lon', 'locale', 'unit'].includes(prop.name)
+  ) {
     this.fetchForecast()
   }
 }

@@ -33,8 +33,12 @@ ardi({
     }
   },
 
-  propChange(e) {
-    if (e.old && e.new && ['lat', 'lon', 'locale', 'unit'].includes(e.prop)) {
+  propChange(prop) {
+    if (
+      prop.old &&
+      prop.new &&
+      ['lat', 'lon', 'locale', 'unit'].includes(prop.name)
+    ) {
       this.fetchForecast()
     }
   },

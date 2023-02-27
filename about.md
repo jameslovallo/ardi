@@ -13,15 +13,14 @@ With custom elements, you can bring your components with you! This solves some p
 
 <h3>Custom elements sound great in theory, but...</h3>
 
-Then you try writing one, and you run into a few problems...
+Then you try writing one, and you realize...
 
-1. There's no templating or declarative rendering system.
-2. Nothing is reactive. Proof don't even update to reflect attribute values.
-3. There's nothing like state, props, or any other modern DX features.
+1. There's no declarative rendering system.
+2. Nothing is reactive. You're back to old-fashioned manual DOM manipulation to get anything done.
 
 <h3>Ardi to the rescue!</h3>
 
-Ardi gives custom elements a modern DX. State management, reactivity, templating... it's all there. The API is object-oriented and comfortably Vue-like, the templates work just like JSX, and you don't need Babel, Typescript, compilers or even a Node environment to get started.
+Ardi gives custom elements a modern DX. State management, reactivity, templating, context... it's all there. The API is object-oriented and comfortably Vue-like, the templates work just like JSX, and you don't need Babel, Typescript, compilers or even a Node environment to get started.
 
 ## Framework Demos
 
