@@ -249,7 +249,7 @@ Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/We
 
 This all means that you can build a component and place it on any site without worrying that the site's stylesheets will interfere with your component's core functionality, and you get complete control over which elements inside your template are allowed to be influenced by external CSS.
 
-#### JS in CSS
+#### In the template
 
 You can include CSS styling directly in your component's template, like this.
 
@@ -268,7 +268,7 @@ template() {
 }
 ```
 
-#### Inline JS in CSS
+#### Inline
 
 You can also use JS in a style attribute, or any html attribute, like this.
 
@@ -281,7 +281,7 @@ template() {
 }
 ```
 
-#### CSS Key
+#### CSS key
 
 If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
 
@@ -375,7 +375,7 @@ Notice that with Handlebars (or any template that returns a string: i.e. a raw t
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
 and `next`.
 
-You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods, or even in your CSS (we'll get to that in a minute). For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
+You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods. For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
 
 ## Lifecycle
 
@@ -406,7 +406,7 @@ This method runs each time the component renders an update. This was added to su
 
 ### propChange()
 
-Props are reactive, meaning the template is automatically updated when a prop's value changes, but you will likely encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this attribute to observe when a prop's value changes.
+Props are reactive, meaning the template is automatically updated when a prop's value changes, but you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this attribute to observe when a prop's value changes.
 
 Here is an example from the weather demo.
 
