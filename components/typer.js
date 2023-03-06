@@ -9,7 +9,7 @@ ardi({
     pause: [Number, 5000],
     speed: [Number, 100],
     words: [
-      (v) => (v ? v.split(',').map((v) => v.trim()) : ['one', 'two', 'three']),
+      (v) => (v ? v.split(',').map((w) => w.trim()) : ['one', 'two', 'three']),
     ],
   },
 

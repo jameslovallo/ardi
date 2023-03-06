@@ -27,7 +27,6 @@ export default function ardi(options) {
     connectedCallback() {
       this.addEventListener('update', this.debounce(this.render))
       this.dispatchEvent(update)
-      if (typeof this.ready === 'function') this.ready()
     }
 
     defineProps() {
@@ -152,7 +151,11 @@ export default function ardi(options) {
       this.root.querySelectorAll('[ref]').forEach((ref) => {
         this.refs[ref.getAttribute('ref')] = ref
       })
-      if (this.updated) this.updated()
+      if (!this.ranReady && typeof this.ready === 'function') {
+        this.ready()
+        this.ranReady = true
+      }
+      if (typeof this.updated === 'function') this.updated()
     }
 
     handleIntersect() {
