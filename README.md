@@ -233,18 +233,6 @@ ardi({
 })
 ```
 
-Then you can use `this.context` to use (and update!) the context inside your child components. When you update the context, the value will be synchronized to the context provider and each child component that references it.
-
-```js
-template() {
-  const theme = this.context;
-  return html`
-    <p style=${`font-color: ${theme.fontColor}`}>...</p>
-    <input @input=${(e) => theme.fontColor = e.target.value}
-  `
-}
-```
-
 ### JSX & Handlebars
 
 μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
