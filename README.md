@@ -233,6 +233,75 @@ ardi({
 })
 ```
 
+### Context
+
+Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
+
+To share context from a parent component, add the `context` attribute with a descriptive name. You can then use `this.context` to reference the element and access its props or state, as demonstrated in the CSS section below.
+
+```html
+<ardi-component context="theme"></ardi-component>
+```
+
+### CSS
+
+Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet: it just means that your styles are scoped unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). This is a feature, not a bug! Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+
+This all means that you can build a component and place it on any site without worrying that the site's stylesheets will interfere with your component's core functionality, and you get complete control over which elements inside your template are allowed to be influenced by external CSS.
+
+#### JS in CSS
+
+You can include CSS styling directly in your component's template, like this.
+
+```js
+template() {
+  const {bg, color} = this.context('theme')
+  return html`
+    <nav>...</nav>
+    <style>
+      nav {
+        background: ${bg};
+        color: ${color};
+      }
+    </style>
+  `
+}
+```
+
+#### Inline JS in CSS
+
+You can also use JS in a style attribute, or any html attribute, like this.
+
+```js
+template() {
+  const {bg, color} = this.context('theme')
+  return html`
+    <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
+  `
+}
+```
+
+#### CSS Key
+
+If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
+
+```js
+template() {
+  return html`
+    <nav>...</nav>
+  `
+},
+css() {
+  const {bg, color} = this.context('theme')
+  return `
+    nav {
+      background: ${bg};
+      color: ${color};
+    }
+  `
+}
+```
+
 ### JSX & Handlebars
 
 μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
@@ -301,16 +370,6 @@ ardi({
 
 Notice that with Handlebars (or any template that returns a string: i.e. a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
 
-### Context
-
-Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
-
-To share context from a parent component, add the `context` attribute with a descriptive name.
-
-```html
-<ardi-component context="theme"></ardi-component>
-```
-
 ### Other Methods
 
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
@@ -376,63 +435,4 @@ ardi({
     if (r > 0.2 && !this.intersected) this.trending()
   },
 })
-```
-
-## Styling
-
-Ardi is mostly un-opinionated when it comes to styling, but you should know that Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet: it just means that your styles are scoped unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). This is feature, not a bug! Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
-
-This all means that you can build a component and place it on any site without worrying that the site's stylesheets will interfere with your component's core functionality, and you get complete control over what elements inside your template are allowed to be influenced by external CSS.
-
-#### JS in CSS
-
-You can include CSS styling directly in your component's template, like this.
-
-```js
-template() {
-  const {bg, color} = this.context('theme')
-  return html`
-    <nav>...</nav>
-    <style>
-      nav {
-        background: ${bg};
-        color: ${color};
-      }
-    </style>
-  `
-}
-```
-
-#### Inline JS in CSS
-
-You can also use JS in a style attribute, or any html attribute, like this.
-
-```js
-template() {
-  const {bg, color} = this.context('theme')
-  return html`
-    <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
-  `
-}
-```
-
-#### CSS Key
-
-If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
-
-```js
-template() {
-  return html`
-    <nav>...</nav>
-  `
-},
-css() {
-  const {bg, color} = this.context('theme')
-  return `
-    nav {
-      background: ${bg};
-      color: ${color};
-    }
-  `
-}
 ```
