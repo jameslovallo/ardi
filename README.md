@@ -426,13 +426,16 @@ propChange(prop) {
 
 This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
-In the TMDB component, the intersect method is used to lazy-load the default results once the component is in the viewport.
+In the TMDB component, the intersect method is used to lazy-load data once the component is in the viewport. This trick can save a lot of money if you use paid APIs!
 
 ```js
 ardi({
   tag: 'tmdb-trending',
-  intersect(r) {
-    if (r > 0.2 && !this.intersected) this.trending()
+  intersect(ratio) {
+    if (ratio >= 0.2 && !this.intersected) {
+      this.fetchTrending()
+      this.intersected = true
+    }
   },
 })
 ```
