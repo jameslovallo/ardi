@@ -406,7 +406,7 @@ This method runs each time the component renders an update. This was added to su
 
 ### propChange()
 
-Props are reactive, meaning the template is automatically updated when a prop's value changes, but you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this attribute to observe when a prop's value changes.
+Props are reactive, meaning the template is automatically updated when a prop's value changes, but you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and react to prop updates.
 
 Here is an example from the weather demo.
 
