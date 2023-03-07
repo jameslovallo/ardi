@@ -124,14 +124,8 @@ export default function ardi(options) {
     debounce(fn) {
       var timeout
       return function () {
-        var context = this
-        var args = arguments
-        if (timeout) {
-          window.cancelAnimationFrame(timeout)
-        }
-        timeout = window.requestAnimationFrame(function () {
-          fn.apply(context, args)
-        })
+        if (timeout) cancelAnimationFrame(timeout)
+        timeout = requestAnimationFrame(() => fn.apply(this, arguments))
       }
     }
 
