@@ -144,6 +144,7 @@ The TMDB component's toolbar includes 3 examples. The code below is simplified, 
 ardi({
   template() {
     return html`
+      ...
       <select
         @change=${(e) => {
           this.type = e.target.value
@@ -156,6 +157,7 @@ ardi({
       </select>
       <button @click=${() => this.prev()}>❮</button>
       <button @click=${() => this.next()}>❯</button>
+      ...
     `
   }
 })
