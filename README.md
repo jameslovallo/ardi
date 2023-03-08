@@ -111,7 +111,6 @@ For the TMDB component, we'll add two props:
 
 ```js
 ardi({
-  tag: 'tmdb-trending',
   props: {
     type: [String, 'tv'], // tv, movie, all
     time: [String, 'day'], // day, week
@@ -127,8 +126,7 @@ The TMDB component will use an array called 'results' to store movies or tv show
 
 ```js
 ardi({
-  tag: 'tmdb-trending',
-  state: () => ({ results: [] }),
+  state: { results: [] },
 })
 ```
 
@@ -214,7 +212,6 @@ In the TMDB component, the `list` ref is used by the `prev` and `next` methods t
 
 ```js
 ardi({
-  tag: 'tmdb-trending',
   template() {
     return html`
       ...
@@ -254,18 +251,20 @@ This all means that you can build a component and place it on any site without w
 You can include CSS styling directly in your component's template, like this.
 
 ```js
-template() {
-  const {bg, color} = this.context('theme')
-  return html`
-    <nav>...</nav>
-    <style>
-      nav {
-        background: ${bg};
-        color: ${color};
-      }
-    </style>
-  `
-}
+ardi({
+  template() {
+    const {bg, color} = this.context('theme')
+    return html`
+      <nav>...</nav>
+      <style>
+        nav {
+          background: ${bg};
+          color: ${color};
+        }
+      </style>
+    `
+  }
+})
 ```
 
 #### Inline
@@ -273,12 +272,14 @@ template() {
 You can also use JS in a style attribute, or any html attribute, like this.
 
 ```js
-template() {
-  const {bg, color} = this.context('theme')
-  return html`
-    <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
-  `
-}
+ardi({
+  template() {
+    const {bg, color} = this.context('theme')
+    return html`
+      <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
+    `
+  }
+})
 ```
 
 #### CSS key
@@ -286,20 +287,22 @@ template() {
 If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
 
 ```js
-template() {
-  return html`
-    <nav>...</nav>
-  `
-},
-css() {
-  const {bg, color} = this.context('theme')
-  return `
-    nav {
-      background: ${bg};
-      color: ${color};
-    }
-  `
-}
+ardi({
+  template() {
+    return html`
+      <nav>...</nav>
+    `
+  },
+  css() {
+    const {bg, color} = this.context('theme')
+    return `
+      nav {
+        background: ${bg};
+        color: ${color};
+      }
+    `
+  }
+})
 ```
 
 ### JSX & Handlebars
