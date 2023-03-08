@@ -4,6 +4,8 @@ This component demonstrates how to use state management and Ardi's `intersect` c
 
 <script src="/components/gauge.js" type="module"></script>
 
+## Playground
+
 <element-story>
 <script type="application/json">
 	{

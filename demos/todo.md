@@ -4,6 +4,8 @@ This component demonstrates keyed loops with `html.for`, conditional rendering, 
 
 <script src="/components/todo.js" type="module"></script>
 
+## Playground
+
 <element-story>
   <script type="application/json">
 	{

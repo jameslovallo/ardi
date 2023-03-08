@@ -4,6 +4,8 @@ This component demonstrates state management, conditional rendering, and event h
 
 <script src="/components/youtube.js" type="module"></script>
 
+## Playground
+
 <element-story>
 <script type="application/json">
 	{

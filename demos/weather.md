@@ -4,6 +4,8 @@ This component demonstrates how to lazy-load data after the component is scrolle
 
 <script src="/components/weather.js" type="module"></script>
 
+## Playground
+
 <element-story>
   <script type="application/json">
     {

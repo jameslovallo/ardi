@@ -4,6 +4,8 @@ This component demonstrates complex prop handlers and Javascript expressions in 
 
 <script src="/components/typer.js" type="module"></script>
 
+## Playground
+
 <element-story>
 <script type="application/json">
   {

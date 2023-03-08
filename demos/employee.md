@@ -4,6 +4,8 @@ This component demonstrates conditional rendering and event handlers.
 
 <script src="/components/employee.js" type="module"></script>
 
+## Playground
+
 <element-story>
   <script type="application/json">
     {

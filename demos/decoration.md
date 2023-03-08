@@ -12,6 +12,8 @@ This component demonstrates conditional rendering, slots, and Javascript values 
   }
 </style>
 
+## Playground
+
 <element-story>
   <script type="application/json">
     {
