@@ -8,7 +8,7 @@ ardi({
     time: [String, 'day'], // day, week
   },
 
-  state: { results: [] },
+  state: () => ({ results: [] }),
 
   fetchTrending() {
     fetch(
