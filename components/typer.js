@@ -13,10 +13,10 @@ ardi({
     ],
   },
 
-  state: {
+  state: () => ({
     index: 0,
     word: '',
-  },
+  }),
 
   template() {
     return html`
