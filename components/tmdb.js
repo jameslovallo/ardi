@@ -98,9 +98,8 @@ ardi({
       background: rgba(0,0,0,0.33);
       border-radius: 2rem;
       display: flex;
-      right: 1rem;
-      padding: .25rem;
       position: absolute;
+      right: 1rem;
       top: 1rem;
       z-index: 1;
     }
@@ -108,7 +107,7 @@ ardi({
       appearance: none;
       background: transparent;
       border: 0;
-      padding: .25rem .5rem;
+      padding: .5rem;
     }
     [part=controls] *:focus-visible {
       outline: none;
@@ -117,7 +116,7 @@ ardi({
       display: flex;
       list-style: none;
       margin: 0;
-      overflow: hidden;
+      overflow-x: scroll;
       padding: 0;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
