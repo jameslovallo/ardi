@@ -11,7 +11,7 @@ ardi({
     indicatorcolor: [String, 'currentcolor'],
   },
 
-  state: { active: 0 },
+  state: () => ({ active: 0 }),
 
   template() {
     return html`
