@@ -141,22 +141,24 @@ Event handlers can be applied to an element using React's `on` syntax (`onClick`
 The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code [here](/demos/tmdb).
 
 ```js
-template() {
-  return html`
-    <select
-      @change=${(e) => {
-        this.type = e.target.value
-        this.fetchTrending()
-      }}
-    >
-      <option value="tv">Trending TV</option>
-      <option value="movie">Trending Movies</option>
-      <option value="all">Trending TV and Movies</option>
-    </select>
-    <button @click=${() => this.prev()}>❮</button>
-    <button @click=${() => this.next()}>❯</button>
-  `
-}
+ardi({
+  template() {
+    return html`
+      <select
+        @change=${(e) => {
+          this.type = e.target.value
+          this.fetchTrending()
+        }}
+      >
+        <option value="tv">Trending TV</option>
+        <option value="movie">Trending Movies</option>
+        <option value="all">Trending TV and Movies</option>
+      </select>
+      <button @click=${() => this.prev()}>❮</button>
+      <button @click=${() => this.next()}>❯</button>
+    `
+  }
+})
 ```
 
 #### Conditionals and Lists
@@ -166,27 +168,35 @@ Lists are handled using the `Array.map()` method. In the TMDB component, we will
 The most convenient way to handle conditional rendering is to use a ternary operator. In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
 
 ```js
-${this.results.map((result) => {
-  const url = 'https://www.themoviedb.org/tv/' + result.id
-  const backdrop = bgRoot + result.backdrop_path
-  const poster = posterRoot + result.poster_path
-  return html`
-    <li>
-      <a part="result" href=${url}>
-        ${result.backdrop_path
-          ? html`<img part="backdrop" src=${backdrop} />`
-          : ''}
-        ${result.poster_path
-          ? html`<img part="poster" src=${poster} />`
-          : ''}
-        <div part="details">
-          <h3 part="title">${result.name}</h3>
-          <p part="description">${result.overview}</p>
-        </div>
-      </a>
-    </li>
-  `
-})}
+ardi({
+  template() {
+    return html`
+      ...
+      ${this.results.map((result) => {
+        const url = 'https://www.themoviedb.org/tv/' + result.id
+        const backdrop = bgRoot + result.backdrop_path
+        const poster = posterRoot + result.poster_path
+        return html`
+          <li>
+            <a part="result" href=${url}>
+              ${result.backdrop_path
+                ? html`<img part="backdrop" src=${backdrop} />`
+                : ''}
+              ${result.poster_path
+                ? html`<img part="poster" src=${poster} />`
+                : ''}
+              <div part="details">
+                <h3 part="title">${result.name}</h3>
+                <p part="description">${result.overview}</p>
+              </div>
+            </a>
+          </li>
+        `
+      })}
+      ...
+    `
+  }
+})
 ```
 
 #### Slots
@@ -196,12 +206,20 @@ Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/We
 The TMDB component will have two named slots to allow the previous and next button's icons to be customized.
 
 ```js
-<button part="prev" @click=${() => this.prev()}>
-  <slot name="prev">❮</slot>
-</button>
-<button part="next" @click=${() => this.next()}>
-  <slot name="next">❯</slot>
-</button>
+ardi({
+  template() {
+    return html`
+    ...
+      <button part="prev" @click=${() => this.prev()}>
+        <slot name="prev">❮</slot>
+      </button>
+      <button part="next" @click=${() => this.next()}>
+        <slot name="next">❯</slot>
+      </button>
+    ...
+    `
+  }
+})
 ```
 
 #### Refs
