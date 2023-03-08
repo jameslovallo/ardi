@@ -3,7 +3,7 @@ import ardi, { html } from '/ardi-min.js'
 ardi({
   tag: 'element-story',
   props: { breakpoint: [Number, 600] },
-  state: { args: {} },
+  state: () => ({ args: {} }),
   template() {
     return html`
       <div class="wrapper">
