@@ -128,15 +128,16 @@ export default function ardi(options) {
     }
 
     render() {
-      let css, style
+      // handle css
+      let css
       if (this.css) css = typeof this.css === 'function' ? this.css() : this.css
-      // prettier-ignore
-      if (css) style = html`<style>${css}</style>`
-      const t = html`${style || ''}${this.template()}`
+      // handle template
+      const t = this.template()
       if (typeof t === 'object') {
-        uhtml(this.root, t)
+        // prettier-ignore
+        uhtml(this.root, html`${t}${html`<style>${css}</style>`}`)
       } else if (typeof t === 'string') {
-        this.root.innerHTML = t
+        this.root.innerHTML = `${t}<style>${css}</style>`
       }
       this.root.querySelectorAll('[ref]').forEach((ref) => {
         this.refs[ref.getAttribute('ref')] = ref
