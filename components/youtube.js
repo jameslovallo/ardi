@@ -3,7 +3,7 @@ import ardi, { html } from '/ardi-min.js'
 ardi({
   tag: 'ardi-youtube',
   props: { vid: [String] },
-  state: { loaded: false },
+  state: () => ({ loaded: false }),
 
   template() {
     return !this.loaded
