@@ -126,7 +126,7 @@ The TMDB component will use an array called 'results' to store movies or tv show
 
 ```js
 ardi({
-  state: { results: [] },
+  state: () => ({ results: [] }),
 })
 ```
 
