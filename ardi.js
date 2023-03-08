@@ -18,7 +18,7 @@ export default function ardi(options) {
       } else this.root = this
 
       if (typeof this.props === 'object') this.defineProps()
-      if (this.state) this.defineState()
+      if (typeof this.state === 'function') this.defineState()
       if (typeof this.intersect === 'function') this.handleIntersect()
 
       this.refs = {}
@@ -88,9 +88,7 @@ export default function ardi(options) {
           },
         })
       }
-      this._state = reactive(
-        typeof this.state === 'function' ? this.state() : this.state
-      )
+      this._state = reactive(this.state())
       delete this.state
       Object.keys(this._state).forEach((key) => {
         Object.defineProperty(this, key, {
@@ -130,14 +128,11 @@ export default function ardi(options) {
     }
 
     render() {
-      const css = this.css
-        ? html`
-            <style>
-              ${typeof this.css === 'function' ? this.css() : this.css}
-            </style>
-          `
-        : ''
-      const t = html`${css}${this.template()}`
+      let css, style
+      if (this.css) css = typeof this.css === 'function' ? this.css() : this.css
+      // prettier-ignore
+      if (css) style = html`<style>${css}</style>`
+      const t = html`${style || ''}${this.template()}`
       if (typeof t === 'object') {
         uhtml(this.root, t)
       } else if (typeof t === 'string') {
