@@ -66,10 +66,11 @@ ardi({
           `
           return wrapper(control)
         case 'boolean':
+          console.log(this.el.getAttribute(arg) === 'true')
           control = html`
             <input
               type="checkbox"
-              checked=${this.el.getAttribute(arg)}
+              checked=${this.el.getAttribute(arg) === 'true' ? true : null}
               @input=${(e) => {
                 this.el.setAttribute(arg, e.target.checked)
               }}
@@ -177,9 +178,7 @@ ardi({
 			margin: 0;
 			padding: 0;
 		}
-		
 		/* textarea junk */
-		
 		.grow-wrap {
 		  display: grid;
 		}
@@ -198,9 +197,7 @@ ardi({
 			font: inherit;
 			grid-area: 1 / 1 / 2 / 2;
 		}
-		
 		/* checkbox junk */
-		
 		input[type=checkbox] {
 			align-items: center;
 			appearance: none;

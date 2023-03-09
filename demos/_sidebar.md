@@ -1,5 +1,6 @@
 - [Docs](/)
 - [Demos](/demos/)
+  - [Accordion](/demos/accordion.md)
   - [Counter](/demos/counter.md)
   - [Decoration](/demos/decoration.md)
   - [Employee Card](/demos/employee.md)
