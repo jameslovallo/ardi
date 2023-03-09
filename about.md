@@ -1,26 +1,8 @@
 # Why Ardi?
 
-<h3>Has this ever happened to you?</h3>
-
-You get a ticket to write a new component that draws store locations on an interactive Google map. The client already has this component on their React site, but you need to make it again because the new site is written in Svelte. You down a Monster and get started, but you really wish there was a way to just copy over the old one.
-
-<h3>Custom elements to the rescue!</h3>
-
-With custom elements, you can bring your components with you! This solves some problems:
-
-1. No more re-writing code. Custom elements work with any framework, or without one!
-2. No more framework lock-in. You can bring your old components with you!
-
-<h3>Custom elements sound great in theory, but...</h3>
-
-Then you try writing one, and you realize...
-
-1. There's no declarative rendering system.
-2. Nothing is reactive. You're back to old-fashioned manual DOM manipulation to get anything done.
-
-<h3>Ardi to the rescue!</h3>
-
-Ardi gives custom elements a modern DX. State management, reactivity, templating, context... it's all there. The API is object-oriented and comfortably Vue-like, the templates work just like JSX, and you don't need Babel, Typescript, compilers or even a Node environment to get started.
+1. Create components that work with any framework, or without one!
+2. Minimal boilerplate code. Ardi uses a simple, object-oriented API.
+3. No Virtual DOM, TypeScript, build steps, or tooling required. Ardi provides a modern DX without fighting the platform.
 
 ## Framework Demos
 

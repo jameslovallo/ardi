@@ -4,6 +4,8 @@
 
 Ardi makes it almost too easy to create reactive custom elements that work with any website or Javascript framework.
 
+[Check out our demos!](https://ardi.netlify.app/#/demos/)
+
 ## Features
 
 1. Simple object-oriented API
@@ -159,7 +161,7 @@ ardi({
       <button @click=${() => this.next()}>❯</button>
       ...
     `
-  }
+  },
 })
 ```
 
@@ -173,8 +175,7 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ardi({
   template() {
     return html`
-      ...
-      ${this.results.map((result) => {
+      ... ${this.results.map((result) => {
         const url = 'https://www.themoviedb.org/tv/' + result.id
         const backdrop = bgRoot + result.backdrop_path
         const poster = posterRoot + result.poster_path
@@ -183,8 +184,7 @@ ardi({
             <a part="result" href=${url}>
               ${result.backdrop_path
                 ? html`<img part="backdrop" src=${backdrop} />`
-                : ''}
-              ${result.poster_path
+                : ''} ${result.poster_path
                 ? html`<img part="poster" src=${poster} />`
                 : ''}
               <div part="details">
@@ -194,10 +194,9 @@ ardi({
             </a>
           </li>
         `
-      })}
-      ...
+      })} ...
     `
-  }
+  },
 })
 ```
 
@@ -211,16 +210,16 @@ The TMDB component will have two named slots to allow the previous and next butt
 ardi({
   template() {
     return html`
-    ...
+      ...
       <button part="prev" @click=${() => this.prev()}>
         <slot name="prev">❮</slot>
       </button>
       <button part="next" @click=${() => this.next()}>
         <slot name="next">❯</slot>
       </button>
-    ...
+      ...
     `
-  }
+  },
 })
 ```
 
@@ -273,7 +272,7 @@ You can include CSS styling directly in your component's template, like this.
 ```js
 ardi({
   template() {
-    const {bg, color} = this.context('theme')
+    const { bg, color } = this.context('theme')
     return html`
       <nav>...</nav>
       <style>
@@ -283,7 +282,7 @@ ardi({
         }
       </style>
     `
-  }
+  },
 })
 ```
 
@@ -294,11 +293,9 @@ You can also use JS in a style attribute, or any html attribute, like this.
 ```js
 ardi({
   template() {
-    const {bg, color} = this.context('theme')
-    return html`
-      <nav style=${`background: ${bg}; color: ${color};`}>...</nav>
-    `
-  }
+    const { bg, color } = this.context('theme')
+    return html` <nav style=${`background: ${bg}; color: ${color};`}>...</nav> `
+  },
 })
 ```
 
@@ -309,19 +306,17 @@ If you have a lot of CSS, it may be cleaner to move it into it's own key. If pre
 ```js
 ardi({
   template() {
-    return html`
-      <nav>...</nav>
-    `
+    return html` <nav>...</nav> `
   },
   css() {
-    const {bg, color} = this.context('theme')
+    const { bg, color } = this.context('theme')
     return `
       nav {
         background: ${bg};
         color: ${color};
       }
     `
-  }
+  },
 })
 ```
 
