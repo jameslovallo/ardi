@@ -429,15 +429,17 @@ Props are reactive, meaning the template is automatically updated when a prop's 
 Here is an example from the weather demo.
 
 ```js
-propChange(prop) {
-  if (
-    prop.old &&
-    prop.new &&
-    ['lat', 'lon', 'locale', 'unit'].includes(prop.name)
-  ) {
-    this.fetchForecast()
+ardi({
+  propChange(prop) {
+    if (
+      prop.old &&
+      prop.new &&
+      ['lat', 'lon', 'locale', 'unit'].includes(prop.name)
+    ) {
+      this.fetchForecast()
+    }
   }
-}
+})
 ```
 
 ### intersect()
