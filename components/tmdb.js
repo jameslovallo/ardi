@@ -4,8 +4,8 @@ ardi({
   tag: 'tmdb-trending',
 
   props: {
-    type: [String, 'tv'], // tv, movie, all
     time: [String, 'day'], // day, week
+    type: [String, 'tv'], // tv, movie, all
   },
 
   state: () => ({ results: [] }),

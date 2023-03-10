@@ -10,10 +10,15 @@ This component demonstrates props, state, loops, conditional rendering, event ha
 <script type="application/json">
   {
 		"feed": {"type": "text"},
-		"perpage": {"type": "number"}
+		"pagesize": {"type": "number"},
+		"playlabel": {"type": "text"},
+		"pauselabel": {"type": "text"},
+		"pagelabel": {"type": "text"},
+		"prevpagelabel": {"type": "text"},
+		"nextpagelabel": {"type": "text"}
   }
 </script>
-<ardi-podcast feed="https://feeds.megaphone.fm/howto" perpage="5"></ardi-podcast>
+<ardi-podcast feed="https://feeds.megaphone.fm/howto" pagesize="5" playlabel="play" pauselabel="pause" pagelabel="Page" prevpagelabel="Previous Page" nextpagelabel="Next Page"></ardi-podcast>
 </element-story>
 
 ## Javascript

@@ -4,8 +4,8 @@ ardi({
   tag: 'ardi-accordion',
   props: {
     indicator: [String],
-    summary: [String],
     open: [Boolean, false],
+    summary: [String],
   },
   template() {
     return html`

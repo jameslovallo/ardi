@@ -10,18 +10,23 @@ ardi({
   tag: 'ardi-podcast',
   props: {
     feed: [String, 'https://feeds.simplecast.com/dxZsm5kX'],
-    perpage: [Number, 10],
+    nextpagelabel: [String, 'Next Page'],
+    pagelabel: [String, 'Page'],
+    pagesize: [Number, 10],
+    pauselabel: [String, 'pause'],
+    playlabel: [String, 'play'],
+    prevpagelabel: [String, 'Prevous Page'],
   },
   state: () => ({
-    title: '',
     author: '',
-    link: '',
     description: '',
-    image: '',
     episodes: [],
-    page: 0,
+    image: '',
+    link: '',
     nowPlaying: null,
+    page: 0,
     paused: true,
+    title: '',
   }),
   template() {
     const { player } = this.refs
@@ -30,7 +35,7 @@ ardi({
         <path d=${path} />
       </svg>
     `
-    const lastPage = Math.floor(this.episodes.length / this.perpage) + 1
+    const lastPage = Math.floor(this.episodes.length / this.pagesize) + 1
     return html`
         <audio ref="player" src=${this.nowPlaying}/>
         <div part="header">
@@ -46,8 +51,8 @@ ardi({
           ${this.episodes
             .filter(
               (episode, i) =>
-                i >= this.page * this.perpage &&
-                i < this.page * this.perpage + this.perpage
+                i >= this.page * this.pagesize &&
+                i < this.page * this.pagesize + this.pagesize
             )
             .map((episode, i) => {
               const { title, track, duration } = episode
@@ -70,6 +75,9 @@ ardi({
                         player[player.paused ? 'play' : 'pause']()
                       }
                     }}
+                    aria-label=${this.nowPlaying === track && !this.paused
+                      ? this.pauselabel
+                      : this.playlabel}
                   >
                     ${icon(
                       this.nowPlaying === track && !this.paused
@@ -90,14 +98,16 @@ ardi({
             part="pagination-prev"
             @click=${() => this.page--}
             disabled=${this.page > 0 ? null : true}
+						aria-label=${this.prevpagelabel}
           >
             ${icon(mdiArrowLeftBold)}
           </button>
-          Page ${this.page + 1} / ${lastPage}
+          ${this.pagelabel} ${this.page + 1} / ${lastPage}
           <button
             part="pagination-next"
             @click=${() => this.page++}
             disabled=${this.page + 1 < lastPage ? null : true}
+						aria-label=${this.nextpagelabel}
           >
             ${icon(mdiArrowRightBold)}
           </button>

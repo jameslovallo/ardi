@@ -3,9 +3,9 @@ import ardi, { html } from '/ardi-min.js'
 ardi({
   tag: 'home-card',
   props: {
-    src: [String],
     alt: [String],
     heading: [String],
+    src: [String],
     text: [String],
   },
   template() {
