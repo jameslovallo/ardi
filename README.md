@@ -438,7 +438,7 @@ ardi({
     ) {
       this.fetchForecast()
     }
-  }
+  },
 })
 ```
 

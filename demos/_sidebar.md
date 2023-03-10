@@ -8,7 +8,7 @@
   - [Gauge](/demos/gauge.md)
   - [Keyboard](/demos/keyboard.md)
   - [Podcast Embed](/demos/podcast.md)
-  - [TMDB Search](/demos/tmdb.md)
+  - [TMDB Trending](/demos/tmdb.md)
   - [To Do List](/demos/todo.md)
   - [Typer](/demos/typer.md)
   - [Weather Forecast](/demos/weather.md)
