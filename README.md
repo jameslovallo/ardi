@@ -4,7 +4,7 @@
 
 Ardi makes it almost too easy to create reactive custom elements that work with any website or Javascript framework.
 
-[Check out our demos!](https://ardi.netlify.app/#/demos/)
+<a href="https://ardi.netlify.app/#/demos/" class="demo-link">Check out the demos!</a>
 
 ## Features
 
@@ -175,8 +175,7 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ardi({
   template() {
     return html`
-      ...
-      ${this.results.map((result) => {
+      ... ${this.results.map((result) => {
         const url = 'https://www.themoviedb.org/tv/' + result.id
         const backdrop = bgRoot + result.backdrop_path
         const poster = posterRoot + result.poster_path
@@ -195,8 +194,7 @@ ardi({
             </a>
           </li>
         `
-      })}
-      ...
+      })} ...
     `
   },
 })
