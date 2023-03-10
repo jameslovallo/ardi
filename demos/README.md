@@ -11,6 +11,7 @@ The demos below use an interactive playground (created with Ardi) that allows yo
 - [FullPage](/demos/fullpage.md)
 - [Gauge](/demos/gauge.md)
 - [Keyboard](/demos/keyboard.md)
+- [Podcast](/demos/podcast.md)
 - [TMDB Search](/demos/tmdb.md)
 - [To Do List](/demos/todo.md)
 - [Typer](/demos/typer.md)

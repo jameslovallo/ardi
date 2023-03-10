@@ -4,6 +4,13 @@ This component demonstrates conditional rendering and event handlers.
 
 <script src="/components/employee.js" type="module"></script>
 
+<style>
+  ardi-employee {
+    max-width: var(--demo-max-width);
+    width: 100%;
+  }
+</style>
+
 ## Playground
 
 <element-story>
@@ -32,7 +39,6 @@ This component demonstrates conditional rendering and event handlers.
     phone="1234567890"
     email="ashely@fake.com"
     photo="/assets/ashley.png"
-    style="width: 100%; max-width: 350px;"
   ></ardi-employee>
 </element-story>
 

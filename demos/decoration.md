@@ -5,6 +5,10 @@ This component demonstrates conditional rendering, slots, and Javascript values 
 <script src="/components/decoration.js" type="module"></script>
 
 <style>
+  ardi-decoration {
+    max-width: var(--demo-max-width);
+    width: 100%;
+  }
   .demo-box {
     border: 1px solid rgba(125, 125, 125, 0.5);
     border-radius: 8px;
@@ -39,7 +43,7 @@ This component demonstrates conditional rendering, slots, and Javascript values 
       }
     }
   </script>
-  <ardi-decoration background="#5E35B1" color="#ffffff" href="https://google.com" label="Ribbon" type="ribbon" style="max-width: 350px; width: 100%;">
+  <ardi-decoration background="#5E35B1" color="#ffffff" href="https://google.com" label="Ribbon" type="ribbon">
     <div class="demo-box"></div>
   </ardi-decoration>
 </element-story>

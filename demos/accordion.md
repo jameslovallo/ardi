@@ -6,8 +6,11 @@ This component provides a simple example of how to use props and state in Ardi.
 
 <style>
 	ardi-accordion-group {
-		max-width: 400px;
+		max-width: var(--demo-max-width);
 		width: 100%;
+	}
+	.markdown-section ardi-accordion-group img {
+		max-width: unset;
 	}
 </style>
 
