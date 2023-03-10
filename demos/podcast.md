@@ -7,16 +7,13 @@ This component demonstrates props, state, loops, conditional rendering, event ha
 ## Playground
 
 <element-story>
-
 <script type="application/json">
   {
 		"feed": {"type": "text"},
 		"perpage": {"type": "number"},
   }
 </script>
-
 <ardi-podcast feed="https://feeds.megaphone.fm/RECU9765916949" perpage="5"></ardi-podcast>
-
 </element-story>
 
 ## Javascript
