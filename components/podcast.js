@@ -37,82 +37,81 @@ ardi({
     `
     const lastPage = Math.floor(this.episodes.length / this.pagesize) + 1
     return html`
-        <audio ref="player" src=${this.nowPlaying}/>
-        <div part="header">
-          <img part="image" src=${this.image} />
-          <div part="header-wrapper">
-            <p part="title">${this.title}</p>
-            <p part="author">${this.author}</p>
-            <a part="link" href=${this.link}>${this.link}</a>
-          </div>
+      <audio ref="player" src=${this.nowPlaying} />
+      <div part="header">
+        <img part="image" src=${this.image} />
+        <div part="header-wrapper">
+          <p part="title">${this.title}</p>
+          <p part="author">${this.author}</p>
+          <a part="link" href=${this.link}>${this.link}</a>
         </div>
-          <p part="description">${this.description}</p>
-        <div part="episodes">
-          ${this.episodes
-            .filter(
-              (episode, i) =>
-                i >= this.page * this.pagesize &&
-                i < this.page * this.pagesize + this.pagesize
-            )
-            .map((episode, i) => {
-              const { title, track, duration } = episode
-              return html`
-                <div part="episode">
-                  <button
-                    part="play-button"
-                    @click=${() => {
-                      if (this.nowPlaying !== track) {
-                        this.nowPlaying = track
+      </div>
+      <p part="description">${this.description}</p>
+      <div part="episodes">
+        ${this.episodes
+          .filter(
+            (episode, i) =>
+              i >= this.page * this.pagesize &&
+              i < this.page * this.pagesize + this.pagesize
+          )
+          .map((episode, i) => {
+            const { title, track, duration } = episode
+            return html`
+              <div part="episode">
+                <button
+                  part="play-button"
+                  @click=${() => {
+                    if (this.nowPlaying !== track) {
+                      this.nowPlaying = track
 
-                        const play = () => {
-                          player.play()
-                          this.paused = false
-                          player.removeEventListener('canplay', play)
-                        }
-                        player.addEventListener('canplay', play)
-                      } else {
-                        this.paused = !this.paused
-                        player[player.paused ? 'play' : 'pause']()
+                      const play = () => {
+                        player.play()
+                        this.paused = false
+                        player.removeEventListener('canplay', play)
                       }
-                    }}
-                    aria-label=${this.nowPlaying === track && !this.paused
-                      ? this.pauselabel
-                      : this.playlabel}
-                  >
-                    ${icon(
-                      this.nowPlaying === track && !this.paused
-                        ? mdiPause
-                        : mdiPlay
-                    )}
-                  </button>
-                  <div part="episode-wrapper">
-                    <div part="episode-title">${title}</div>
-                    <div part="episode-duration">${duration}</div>
-                  </div>
+                      player.addEventListener('canplay', play)
+                    } else {
+                      this.paused = !this.paused
+                      player[player.paused ? 'play' : 'pause']()
+                    }
+                  }}
+                  aria-label=${this.nowPlaying === track && !this.paused
+                    ? this.pauselabel
+                    : this.playlabel}
+                >
+                  ${icon(
+                    this.nowPlaying === track && !this.paused
+                      ? mdiPause
+                      : mdiPlay
+                  )}
+                </button>
+                <div part="episode-wrapper">
+                  <div part="episode-title">${title}</div>
+                  <div part="episode-duration">${duration}</div>
                 </div>
-              `
-            })}
-        </div>
-        <div part="pagination">
-          <button
-            part="pagination-prev"
-            @click=${() => this.page--}
-            disabled=${this.page > 0 ? null : true}
-						aria-label=${this.prevpagelabel}
-          >
-            ${icon(mdiArrowLeftBold)}
-          </button>
-          ${this.pagelabel} ${this.page + 1} / ${lastPage}
-          <button
-            part="pagination-next"
-            @click=${() => this.page++}
-            disabled=${this.page + 1 < lastPage ? null : true}
-						aria-label=${this.nextpagelabel}
-          >
-            ${icon(mdiArrowRightBold)}
-          </button>
-        </div>
-      </audio>
+              </div>
+            `
+          })}
+      </div>
+      <div part="pagination">
+        <button
+          part="pagination-prev"
+          @click=${() => this.page--}
+          disabled=${this.page > 0 ? null : true}
+          aria-label=${this.prevpagelabel}
+        >
+          ${icon(mdiArrowLeftBold)}
+        </button>
+        ${this.pagelabel} ${this.page + 1} / ${lastPage}
+        <button
+          part="pagination-next"
+          @click=${() => this.page++}
+          disabled=${this.page + 1 < lastPage ? null : true}
+          aria-label=${this.nextpagelabel}
+        >
+          ${icon(mdiArrowRightBold)}
+        </button>
+      </div>
     `
   },
   css: `
