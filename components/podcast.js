@@ -4,7 +4,7 @@ import {
   mdiPause,
   mdiPlay,
 } from 'https://cdn.skypack.dev/@mdi/js'
-import ardi, { html, svg } from 'https://cdn.skypack.dev/ardi'
+import ardi, { html, svg } from '/ardi-min.js'
 
 ardi({
   tag: 'ardi-podcast',
