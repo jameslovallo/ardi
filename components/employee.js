@@ -1,4 +1,8 @@
-import ardi, { html } from '/ardi-min.js'
+import {
+  mdiEmailOutline,
+  mdiPhoneOutline,
+} from 'https://cdn.skypack.dev/@mdi/js'
+import ardi, { html, svg } from '/ardi-min.js'
 
 ardi({
   tag: 'ardi-employee',
@@ -21,8 +25,13 @@ ardi({
   },
 
   template() {
+    const icon = (path) => svg`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d=${path} />
+      </svg>
+    `
     return html`
-      <img part="photo" src=${this.photo} />
+      ${this.photo ? html`<img part="photo" src=${this.photo} />` : ''}
       <div part="details">
         ${this.name ? html`<b>${this.name}</b>` : ''}
         ${this.position ? html`<small>${this.position}</small>` : ''}
@@ -34,24 +43,12 @@ ardi({
                 @click=${(e) => this.phoneClick(e)}
                 href=${`tel:${this.phone?.match(/[0-9]+/g).join('')}`}
               >
-                <img
-                  src="https://s2.svgbox.net/hero-outline.svg?ic=phone&color=00acc1"
-                  width="20"
-                  height="20"
-                />
+                ${icon(mdiPhoneOutline)}
               </a>
             `
           : ''}
         ${this.email
-          ? html`
-              <a href=${`mailto:${this.email}`}>
-                <img
-                  src="https://s2.svgbox.net/hero-outline.svg?ic=mail&color=00acc1"
-                  width="20"
-                  height="20"
-                />
-              </a>
-            `
+          ? html`<a href=${`mailto:${this.email}`}>${icon(mdiEmailOutline)}</a>`
           : ''}
       </div>
     `
@@ -91,10 +88,9 @@ ardi({
       text-decoration: none;
     }
     [part='contact'] svg {
-      color: #00acc1;
+      fill: #00acc1;
       display: block;
       width: 20px;
-      pointer-events: none;
     }  
   `,
 })

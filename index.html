@@ -33,8 +33,9 @@
         --code-font-family: 'JetBrains Mono', monospace;
         --mono-hue: 222;
         --mono-saturation: 5%;
-        --theme-color: #ffab00;
         --sidebar-nav-link-font-weight--active: 700;
+        --theme-color: #ffab00;
+        --theme-weak: #30230e;
       }
       iframe {
         display: block;
@@ -53,18 +54,19 @@
         padding: 4rem 1.5rem;
       }
       .markdown-section a.demo-link {
-        border: 1px solid var(--theme-color);
+        background: var(--theme-weak);
         box-sizing: border-box;
         color: var(--theme-color);
         display: inline-block;
-        font-size: 14px;
+        font-size: 12px;
         letter-spacing: 1px;
         padding: 0.5rem 1rem;
         text-decoration: none;
         text-transform: uppercase;
         transition: 0.25s;
       }
-      .markdown-section a.demo-link:hover {
+      .markdown-section a.demo-link:hover,
+      .markdown-section a.demo-link:focus {
         background: var(--theme-color);
         color: var(--base-background-color);
       }

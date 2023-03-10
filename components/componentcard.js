@@ -30,25 +30,23 @@ ardi({
 			text-decoration: none;
 			text-align: center;
 		}
+		a:hover,
+		a:focus {
+			background: var(--theme-weak);
+		}
 		[part=icon] {
+			background: var(--theme-weak);
 			border: 1px solid var(--theme-color);
 			border-radius: 50%;
 			display: grid;
-			fill: var(--base-background-color);
 			height: 64px;
 			margin: 0 auto 1rem;
 			place-items: center;
 			width: 64px;
 		}
-		[part=icon]:before {
-			background: var(--theme-color);
-			border-radius: 50%;
-			content: '';
-			display: block;
-			grid-area: 1/-1;
-			height: 64px;
-			opacity: 0.1;
-			width: 64px;
+		a:hover [part=icon],
+		a:focus [part=icon] {
+			background: var(--base-background-color);
 		}
 		svg {
 			display: block;

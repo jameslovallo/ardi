@@ -61,7 +61,8 @@ ardi({
         --color: currentcolor;
         animation: blink 1s linear infinite;
         border-right: ${this.cursor ? '1px' : '0'} solid var(--color);
-        display: inline-block;
+        display: inline;
+        word-break: break-word;
       }
       @keyframes blink {
         0% {
