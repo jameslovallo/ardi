@@ -26,24 +26,24 @@ ardi({
   template() {
     const { player } = this.refs
     const icon = (path) => svg`
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-				<path d=${path} />
-			</svg>
-		`
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d=${path} />
+      </svg>
+    `
     const lastPage = Math.floor(this.episodes.length / this.perpage) + 1
     return html`
-				<audio ref="player" src=${this.nowPlaying}/>
-				<div part="header">
-					<img part="image" src=${this.image} />
-					<div part="header-wrapper">
-						<p part="title">${this.title}</p>
-						<p part="author">${this.author}</p>
-						<a part="link" href=${this.link}>${this.link}</a>
-					</div>
-				</div>
-					<p part="description">${this.description}</p>
-				<div part="episodes">
-					${this.episodes
+        <audio ref="player" src=${this.nowPlaying}/>
+        <div part="header">
+          <img part="image" src=${this.image} />
+          <div part="header-wrapper">
+            <p part="title">${this.title}</p>
+            <p part="author">${this.author}</p>
+            <a part="link" href=${this.link}>${this.link}</a>
+          </div>
+        </div>
+          <p part="description">${this.description}</p>
+        <div part="episodes">
+          ${this.episodes
             .filter(
               (episode, i) =>
                 i >= this.page * this.perpage &&
@@ -84,119 +84,119 @@ ardi({
                 </div>
               `
             })}
-				</div>
-				<div part="pagination">
-					<button
-						part="pagination-prev"
-						@click=${() => this.page--}
-						disabled=${this.page > 0 ? null : true}
-					>
-						${icon(mdiArrowLeftBold)}
-					</button>
-					Page ${this.page + 1} / ${lastPage}
-					<button
-						part="pagination-next"
-						@click=${() => this.page++}
-						disabled=${this.page + 1 < lastPage ? null : true}
-					>
-						${icon(mdiArrowRightBold)}
-					</button>
-				</div>
-			</audio>
-		`
+        </div>
+        <div part="pagination">
+          <button
+            part="pagination-prev"
+            @click=${() => this.page--}
+            disabled=${this.page > 0 ? null : true}
+          >
+            ${icon(mdiArrowLeftBold)}
+          </button>
+          Page ${this.page + 1} / ${lastPage}
+          <button
+            part="pagination-next"
+            @click=${() => this.page++}
+            disabled=${this.page + 1 < lastPage ? null : true}
+          >
+            ${icon(mdiArrowRightBold)}
+          </button>
+        </div>
+      </audio>
+    `
   },
   css: `
-		:host {
-			border: 1px solid rgba(125,125,125,0.5);
-			display: grid;
-			gap: 1rem;
-			overflow: hidden;
-			padding: .5rem;
-		}
-		button {
-			border: 1px solid rgba(125,125,125,0.5);
-			border-radius: 4px;
-		}
-		svg {
-			display: block;
-			fill: currentcolor;
-			height: 1rem;
-			width: 1rem;
-		}
-		[part=header] {
-			align-items: center;
-			display: grid;
-			gap: .5rem;
-			grid-template-columns: 8rem 1fr;
-		}
-		[part=image] {
-			display: block;
-			width: 100%;
-		}
-		[part=title],
-		[part=author],
-		[part=link],
-		[part=description],
-		[part=episode-title],
-		[part=episode-duration] {
-			font-size: .8rem;
-			line-height: 1.5;
-			margin: 0;
-		}
-		[part=header-wrapper],
-		[part=episode-wrapper] {
-			min-width: 0;
-			max-width: 100%;
-		}
-		[part=title] {
-		  font-size: 1rem;
-			font-weight:bold;
-		}
-		[part=link] {
-			display: inline-block;
-			max-width: 100%;
-			overflow: hidden;
-			text-overflow: ellipsis;
-    	white-space: nowrap;
-		}
-		[part=description] {
-			margin: 0;
-		}
-		[part=episodes] {
-			display: grid;
-			gap: .75rem;
-		}
-		[part=episode] {
-			align-items: center;
-			display: flex;
-			gap: 1rem;
-			min-width: 0;
-		}
-		[part=play-button] {
-			border-radius: 50%;
-			display: grid;
-			flex-shrink: 0;
-			height: 2rem;
-			padding: 0;
-			place-items: center;
-			width: 2rem;
-		}
-		[part=episode-title] {
-			overflow: hidden;
-			text-overflow: ellipsis;
-    	white-space: nowrap;
-		}
-		[part=episode-duration] {
-			opacity: 0.8;
-		}
-		[part=pagination] {
-			align-items: center;
-			display: flex;
-			font-size: .8rem;
-			justify-content: space-between;
-			margin-top: .5rem;
-		}
-	`,
+    :host {
+      border: 1px solid rgba(125,125,125,0.5);
+      display: grid;
+      gap: 1rem;
+      overflow: hidden;
+      padding: .5rem;
+    }
+    button {
+      border: 1px solid rgba(125,125,125,0.5);
+      border-radius: 4px;
+    }
+    svg {
+      display: block;
+      fill: currentcolor;
+      height: 1rem;
+      width: 1rem;
+    }
+    [part=header] {
+      align-items: center;
+      display: grid;
+      gap: .5rem;
+      grid-template-columns: 8rem 1fr;
+    }
+    [part=image] {
+      display: block;
+      width: 100%;
+    }
+    [part=title],
+    [part=author],
+    [part=link],
+    [part=description],
+    [part=episode-title],
+    [part=episode-duration] {
+      font-size: .8rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+    [part=header-wrapper],
+    [part=episode-wrapper] {
+      min-width: 0;
+      max-width: 100%;
+    }
+    [part=title] {
+      font-size: 1rem;
+      font-weight:bold;
+    }
+    [part=link] {
+      display: inline-block;
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [part=description] {
+      margin: 0;
+    }
+    [part=episodes] {
+      display: grid;
+      gap: .75rem;
+    }
+    [part=episode] {
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+      min-width: 0;
+    }
+    [part=play-button] {
+      border-radius: 50%;
+      display: grid;
+      flex-shrink: 0;
+      height: 2rem;
+      padding: 0;
+      place-items: center;
+      width: 2rem;
+    }
+    [part=episode-title] {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    [part=episode-duration] {
+      opacity: 0.8;
+    }
+    [part=pagination] {
+      align-items: center;
+      display: flex;
+      font-size: .8rem;
+      justify-content: space-between;
+      margin-top: .5rem;
+    }
+  `,
   formatEpisode(item) {
     const tags = ['title', 'enclosure', 'itunes:duration']
     const episode = {}
