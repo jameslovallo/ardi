@@ -175,7 +175,8 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ardi({
   template() {
     return html`
-      ... ${this.results.map((result) => {
+      ...
+      ${this.results.map((result) => {
         const url = 'https://www.themoviedb.org/tv/' + result.id
         const backdrop = bgRoot + result.backdrop_path
         const poster = posterRoot + result.poster_path
@@ -194,7 +195,8 @@ ardi({
             </a>
           </li>
         `
-      })} ...
+      })}
+      ...
     `
   },
 })
