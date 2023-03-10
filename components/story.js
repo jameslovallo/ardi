@@ -66,7 +66,6 @@ ardi({
           `
           return wrapper(control)
         case 'boolean':
-          console.log(this.el.getAttribute(arg) === 'true')
           control = html`
             <input
               type="checkbox"
@@ -196,6 +195,7 @@ ardi({
 			border: 1px solid black;
 			font: inherit;
 			grid-area: 1 / 1 / 2 / 2;
+			word-break: break-all;
 		}
 		/* checkbox junk */
 		input[type=checkbox] {
