@@ -1,8 +1,8 @@
-# Weather Forecast
+# Forecast
 
 This component demonstrates how to lazy-load data after the component is scrolled into view (using Ardi's `intersect` callback).
 
-<script src="/components/weather.js" type="module"></script>
+<script src="/components/forecast.js" type="module"></script>
 
 ## Playground
 
@@ -18,9 +18,9 @@ This component demonstrates how to lazy-load data after the component is scrolle
       "breakpoint": {"type": "number"}
     }
   </script>
-  <ardi-weather lat="42.375" lon="-83" place="Detroit" unit="fahrenheit" label="forecast" locale="en-us" breakpoint="500" style="width: 100%"></ardi-weather>
+  <ardi-forecast lat="42.375" lon="-83" place="Detroit" unit="fahrenheit" label="forecast" locale="en-us" breakpoint="500" style="width: 100%"></ardi-forecast>
 </element-story>
 
 ## Javascript
 
-[](../components/weather.js ':include')
+[](../components/forecast.js ':include')

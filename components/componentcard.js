@@ -22,13 +22,14 @@ ardi({
   css: `
 		a {
 			border: 1px solid rgba(125,125,125,0.5);
-			border-radius: 12px;
+			border-radius: 1rem;
 			color: inherit;
 			display: block;
 			justify-content: center;
 			padding: 1rem;
 			text-decoration: none;
 			text-align: center;
+			transition: .5s;
 		}
 		a:hover,
 		a:focus {
@@ -42,6 +43,7 @@ ardi({
 			height: 64px;
 			margin: 0 auto 1rem;
 			place-items: center;
+			transition: .5s;
 			width: 64px;
 		}
 		a:hover [part=icon],

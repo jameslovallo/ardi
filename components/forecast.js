@@ -1,7 +1,7 @@
 import ardi, { html } from '/ardi.js'
 
 ardi({
-  tag: 'ardi-weather',
+  tag: 'ardi-forecast',
 
   props: {
     breakpoint: [Number, 500],
