@@ -1,6 +1,6 @@
 # Demo Components
 
-These sample components demonstrate Ardi's API. Our hope is to give you the opportunity to see Ardi in action and decide if it's right for you. You can review the complete Javascript source for each component, and many have an interactive playground that allows you to modify each component's attributes.
+These sample components were built so you can see Ardi's API in action and decide if it's right for you. You can review the complete Javascript source for each component, and many have an interactive playground that allows you to modify each component's attributes.
 
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); grid-gap: 1rem;">
 <component-card
