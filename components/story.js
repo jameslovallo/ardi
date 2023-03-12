@@ -195,7 +195,7 @@ ardi({
 			border: 1px solid black;
 			font: inherit;
 			grid-area: 1 / 1 / 2 / 2;
-			word-break: break-all;
+			word-break: break-word;
 		}
 		/* checkbox junk */
 		input[type=checkbox] {
