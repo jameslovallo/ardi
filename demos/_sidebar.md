@@ -8,6 +8,7 @@
   - [FullPage](/demos/fullpage.md)
   - [Gauge](/demos/gauge.md)
   - [Keyboard](/demos/keyboard.md)
+  - [Plyr](/demos/plyr.md)
   - [Podcast Embed](/demos/podcast.md)
   - [TMDB Trending](/demos/tmdb.md)
   - [To Do List](/demos/todo.md)
