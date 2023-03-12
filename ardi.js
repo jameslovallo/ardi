@@ -1,4 +1,4 @@
-import { html, render as uhtml, svg } from 'https://cdn.skypack.dev/uhtml'
+import { html, render as uhtml, svg } from 'uhtml'
 export { html, svg }
 
 export default function ardi(options) {
@@ -11,11 +11,13 @@ export default function ardi(options) {
     constructor() {
       super()
       Object.assign(this, options)
-
-      if (!this.shadow || this.shadow !== false) {
+      
+      if (this.shadow === false) {
+        this.root = this
+      } else {
         this.attachShadow({ mode: 'open' })
         this.root = this.shadowRoot
-      } else this.root = this
+      }
 
       if (typeof this.props === 'object') this.defineProps()
       if (typeof this.state === 'function') this.defineState()
