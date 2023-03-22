@@ -161,7 +161,7 @@ ardi({
         font-weight: bold;
         height: 50px;
         overflow: hidden;
-        padding-left: 2%;
+        padding-left: 10px;
         position: absolute;
         right: 0;
         top: calc(50% - 50px / 2);
