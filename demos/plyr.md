@@ -1,6 +1,6 @@
 # Plyr
 
-This component demonstrates conditional rendering and disabling the Shadow DOM.
+This component demonstrates disabling the Shadow DOM, conditional rendering, and the `updated` callback.
 
 <script src="/components/plyr.js" type="module"></script>
 
