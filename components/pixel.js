@@ -74,7 +74,6 @@ ardi({
     return /* css */ `
       :host {
         --accent: #64B5F6;
-        --size: 300px;
         aspect-ratio: 1;
         background: black;
         border: 1px solid rgba(125,125,125,0.5);
@@ -84,17 +83,17 @@ ardi({
         display: grid;
         font-family: system-ui;
         overflow: hidden;
-        padding: .5%;
+        padding: 2px;
         place-items: center;
         position: relative;
-        width: var(--size);
+        width: 300px;
       }
       :host > * {
         box-sizing: border-box;
         grid-area: 1/-1;
       }
       [part=hour] {
-        font-size: calc(var(--size)/4);
+        font-size: 75px;
         font-weight: bold;
       }
       [part=seconds] {
@@ -105,11 +104,11 @@ ardi({
         width: 100%;
       }
       [part=minutes] {
-        height: 77%;
+        height: 75%;
         opacity: 0.5;
         position: relative;
         transition: 1s linear;
-        width: 77%;
+        width: 75%;
       }
       [part=tick] {
         --length: 2%;
@@ -136,10 +135,10 @@ ardi({
       }
       [part=number] {
         box-sizing: border-box;
-        font-size: calc(var(--size)/20);
+        font-size: 15px;
         height: 50%;
         left: 45%;
-        padding-top: calc(var(--size)/40);;
+        padding-top: 10px;
         position: absolute;
         text-align: center;
         transform: rotate(var(--rotate));
@@ -152,21 +151,20 @@ ardi({
         transition: 1s linear;
       }
       [part=minute-container] {
-        --height: calc(var(--size)/6);
         align-items: center;
         border: 2px solid var(--accent);
         border-right: none;
-        border-bottom-left-radius: var(--height);
-        border-top-left-radius: var(--height);
+        border-bottom-left-radius: 50px;
+        border-top-left-radius: 50px;
         display: flex;
-        font-size: calc(var(--size)/10);
+        font-size: 30px;
         font-weight: bold;
-        height: var(--height);
+        height: 50px;
         overflow: hidden;
         padding-left: 2%;
         position: absolute;
         right: 0;
-        top: calc(50% - var(--height) / 2);
+        top: calc(50% - 50px / 2);
         width: 33%;
       }
       [part=minute-container]:before {
