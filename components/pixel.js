@@ -89,21 +89,17 @@ ardi({
         display: grid;
         font-family: system-ui;
         overflow: hidden;
-        padding: 2px;
         place-items: center;
         position: relative;
         width: 300px;
       }
       :host > * {
         box-sizing: border-box;
+        position: absolute;
       }
       [part=hour] {
         font-size: 75px;
         font-weight: bold;
-      }
-      [part=seconds],
-      [part=minutes] {
-        position: absolute;
       }
       [part=seconds] {
         color: var(--accent);
@@ -169,7 +165,6 @@ ardi({
         height: 50px;
         overflow: hidden;
         padding-left: 10px;
-        position: absolute;
         right: 0;
         top: calc(50% - 50px / 2);
         width: 33%;
