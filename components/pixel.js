@@ -8,20 +8,26 @@ ardi({
     minuteRotation: 0,
     secondRotation: 0,
   }),
-  ready() {
+  init() {
     let date = new Date()
     this.hour = date.getHours() % 12 || 12
     this.minute = date.getMinutes()
     this.minuteRotation = this.minute * 6
     const second = date.getSeconds()
     this.secondRotation = second * 6 + 6
-    setInterval(() => {
+    this.keepTime = setInterval(() => {
       date = new Date()
       this.hour = date.getHours() % 12 || 12
       this.minute = date.getMinutes()
       this.minuteRotation += 0.1
       this.secondRotation += 6
     }, 1000)
+  },
+  ready() {
+    this.init()
+    document.addEventListener('visibilitychange', () =>
+      document.hidden ? clearInterval(this.keepTime) : this.init()
+    )
   },
   formatNumber: (n) => (n < 10 ? `0${n}` : n),
   ticks() {
@@ -90,23 +96,24 @@ ardi({
       }
       :host > * {
         box-sizing: border-box;
-        grid-area: 1/-1;
       }
       [part=hour] {
         font-size: 75px;
         font-weight: bold;
       }
+      [part=seconds],
+      [part=minutes] {
+        position: absolute;
+      }
       [part=seconds] {
         color: var(--accent);
         height: 100%;
-        position: relative;
         transition: 1s linear;
         width: 100%;
       }
       [part=minutes] {
         height: 75%;
         opacity: 0.5;
-        position: relative;
         transition: 1s linear;
         width: 75%;
       }
