@@ -77,7 +77,6 @@
     <div id="app"></div>
     <script>
       window.$docsify = {
-        auto2top: true,
         executeScript: true,
         loadSidebar: true,
         logo: '/assets/ardi.svg',
@@ -87,6 +86,7 @@
         subMaxLevel: 3,
         topMargin: 64,
       }
+      addEventListener('popstate', () => scrollTo({ top: 0 }))
     </script>
     <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
