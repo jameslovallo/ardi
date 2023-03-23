@@ -8,7 +8,7 @@
   - [FullPage](/demos/fullpage.md)
   - [Gauge](/demos/gauge.md)
   - [Keyboard](/demos/keyboard.md)
-  - [Pixel Watch](/demos/watch.md)
+  - [Pixel Watch](/demos/pixel.md)
   - [Plyr](/demos/plyr.md)
   - [Podcast Embed](/demos/podcast.md)
   - [TMDB Trending](/demos/tmdb.md)
