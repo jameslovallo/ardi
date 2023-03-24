@@ -185,7 +185,8 @@ ardi({
             <a part="result" href=${url}>
               ${result.backdrop_path
                 ? html`<img part="backdrop" src=${backdrop} />`
-                : ''} ${result.poster_path
+                : ''}
+              ${result.poster_path
                 ? html`<img part="poster" src=${poster} />`
                 : ''}
               <div part="details">
