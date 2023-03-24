@@ -11,6 +11,7 @@
   - [Pixel Watch](/demos/pixel.md)
   - [Plyr](/demos/plyr.md)
   - [Podcast Embed](/demos/podcast.md)
+  - [Scroll Indicator](/demos/scrollindicator.md)
   - [TMDB Trending](/demos/tmdb.md)
   - [To Do List](/demos/todo.md)
   - [Typer](/demos/typer.md)

@@ -6,7 +6,7 @@ This component demonstrates keyed loops with `html.for`, conditional rendering, 
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-todo">
   <script type="application/json">
 	{
 		"listlabel": {"type": "text"},

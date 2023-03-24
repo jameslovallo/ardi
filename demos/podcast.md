@@ -6,7 +6,7 @@ This component demonstrates props, state, loops, conditional rendering, event ha
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-podcast">
 <script type="application/json">
   {
 		"feed": {"type": "text"},

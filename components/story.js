@@ -2,11 +2,11 @@ import ardi, { html } from '/ardi-min.js'
 
 ardi({
   tag: 'element-story',
-  props: { breakpoint: [Number, 600] },
+  props: { breakpoint: [Number, 600], tag: [String] },
   state: () => ({ args: {} }),
   template() {
     return html`
-      <div class="wrapper">
+      <div part="wrapper">
         <slot></slot>
       </div>
       <aside>${this.controls()}</aside>
@@ -101,8 +101,7 @@ ardi({
     return controls
   },
   ready() {
-    const children = [...this.children]
-    this.el = children.filter((el) => el.tagName !== 'SCRIPT')[0]
+    this.el = this.querySelector(this.tag)
     this.args = JSON.parse(this.querySelector('script').innerText)
     const setSize = () => {
       if (this.offsetWidth < this.breakpoint) {
@@ -120,17 +119,19 @@ ardi({
 			overflow: hidden;
 			grid-template-columns: 1fr 200px;
 		}
-		.wrapper {
+		[part=wrapper] {
 			border-right: 1px solid rgba(125,125,125,0.5);
+			box-sizing: border-box;
 			display: grid;
 			min-height: 3rem;
 			padding: 1rem;
 			place-items: center;
+			position: relative;
 		}
 		:host(.small) {
 			grid-template-columns: unset;
 		}
-		:host(.small) .wrapper {
+		:host(.small) [part=wrapper] {
 			border-bottom: 1px solid rgba(125,125,125,0.5);
 			border-right: 0;
 		}

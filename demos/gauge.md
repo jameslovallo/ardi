@@ -6,7 +6,7 @@ This component demonstrates how to use state management and Ardi's `intersect` c
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-gauge">
 <script type="application/json">
 	{
 		"label": {"type": "text"},

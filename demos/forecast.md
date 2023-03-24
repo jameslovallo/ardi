@@ -6,7 +6,7 @@ This component demonstrates how to lazy-load data after the component is scrolle
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-forecast">
   <script type="application/json">
     {
       "place": {"type": "text"},

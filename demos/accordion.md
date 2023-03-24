@@ -16,7 +16,7 @@ This component provides a simple example of how to use props and state in Ardi.
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-accordion-group">
 <script type="application/json">
   {
     "multiple": {

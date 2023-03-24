@@ -18,7 +18,7 @@ This component demonstrates conditional rendering, slots, and Javascript values 
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-decoration">
   <script type="application/json">
     {
       "type": {

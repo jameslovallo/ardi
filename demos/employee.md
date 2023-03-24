@@ -13,7 +13,7 @@ This component demonstrates conditional rendering and event handlers.
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-employee">
   <script type="application/json">
     {
       "name": {

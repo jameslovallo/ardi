@@ -6,7 +6,7 @@ This component demonstrates complex prop handlers and Javascript expressions in 
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-typer">
 <script type="application/json">
   {
     "base": {

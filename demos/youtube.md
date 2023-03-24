@@ -6,7 +6,7 @@ This component demonstrates state management, conditional rendering, and event h
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-youtube">
 <script type="application/json">
 	{
 		"vid": {"type": "text"}

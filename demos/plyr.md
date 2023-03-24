@@ -13,7 +13,7 @@ This component demonstrates disabling the Shadow DOM, conditional rendering, and
 
 ## Playground
 
-<element-story>
+<element-story tag="ardi-plyr">
   <script type="application/json">
     {
       "src": {
