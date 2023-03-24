@@ -6,6 +6,7 @@ This component demonstrates complex prop handlers and Javascript expressions in 
 
 <style>
   element-story::part(wrapper) {
+    min-height: 300px;
     padding: 0;
   }
   element-story > div {
