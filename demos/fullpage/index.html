@@ -8,21 +8,44 @@
     body {
       color: white;
     }
+    section {
+      background-position: center center;
+      background-size: cover;
+    }
+    section > div {
+      align-items: center;
+      background: radial-gradient(rgba(0, 0, 0, 0.25), black);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: center;
+      text-shadow: 0 0 3px black;
+      width: 100%;
+    }
   </style>
+
+  <h1>FullPage</h1>
+
   <ardi-fullpage alignment="center">
-    <section style="background: #c62828">
+    <section
+      style="background-image: url(https://picsum.photos/id/204/1600/1200)"
+    >
       <div>
         <h2>&lt;ardi-fullpage&gt;</h2>
         <p>Scroll up and down to try it out.</p>
       </div>
     </section>
-    <section style="background: #2e7d32">
+    <section
+      style="background-image: url(https://picsum.photos/id/551/1600/1200)"
+    >
       <div>
         <h2>Huzzah!</h2>
         <p>Fun fact, this component is only, like, 3kb</p>
       </div>
     </section>
-    <section style="background: #1565c0">
+    <section
+      style="background-image: url(https://picsum.photos/id/693/1600/1200)"
+    >
       <div>
         <h2>Source</h2>
         <p>

@@ -125,6 +125,7 @@ ardi({
     li {
       min-width: max(200px, 100%);
       scroll-snap-align: start;
+      scroll-snap-stop: always;
     }
     a {
       align-items: flex-end;
