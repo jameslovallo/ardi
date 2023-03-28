@@ -1,32 +1,35 @@
 import { exec } from 'child_process'
 import fs from 'fs'
-import { marked } from 'marked'
 import path from 'path'
-import unescape from 'unescape'
 import headJSON from './head.json' assert { type: 'json' }
 
+fs.rmSync('./dist', { recursive: true, force: true })
+
+const date = new Date().toLocaleDateString()
+
 const doc = (head, body) => `
+<!-- Built ${date} -->
 <!DOCTYPE html>
 <html lang="en-us">
-${head}
-${body}
-</html>
-`
+${head.trim()}
+${body.trim()}
+</html>`
 
-const head = `<head>
-<meta name="prebuilt" content="true">
-${Object.keys(headJSON)
-  .map((tagType) =>
-    headJSON[tagType]
-      .map(
-        (el) =>
-          `<${tagType} ${Object.keys(el)
-            .map((attr) => `${attr}="${el[attr]}"`)
-            .join(' ')}>`
-      )
-      .join('')
-  )
-  .join('')}
+const head = `
+<head>
+  <meta name="prebuilt" content="true">
+  ${Object.keys(headJSON)
+    .map((tagType) =>
+      headJSON[tagType]
+        .map(
+          (el) =>
+            `<${tagType} ${Object.keys(el)
+              .map((attr) => `${attr}="${el[attr]}"`)
+              .join(' ')}>`
+        )
+        .join('\n\t')
+    )
+    .join('\n\t')}
 </head>`
 
 const getFile = (path) =>
@@ -52,16 +55,7 @@ function buildHTML(startPath, filter) {
         '<body',
         '<body style="opacity: 0; transition: opacity .5s;"'
       )
-      if (file.includes('lang="md"')) {
-        let openingTag = body.match(/<body.+>/)[0]
-        body = body.replace(openingTag, '')
-        body = body.replace('</body>', '')
-        body = marked.parse(unescape(body), {
-          gfm: true,
-        })
-        body = openingTag.replace(' lang="md"', '') + body + '</body>'
-      }
-      fs.writeFileSync(filename, doc(head, body), {
+      fs.writeFileSync(filename, doc(head, body).trim(), {
         encoding: 'utf8',
       })
     }
@@ -76,20 +70,20 @@ const excludes = [
   'node_modules',
   'package-lock.json',
   'package.json',
+  '.netlify',
 ]
+  .map((e) => `--exclude "${e}"`)
+  .join(' ')
 
-exec(
-  `rsync -a ${excludes.map((e) => `--exclude "${e}"`).join(' ')} ./ ./dist/`,
-  (error, stdout, stderr) => {
-    if (error) {
-      console.log(`error: ${error.message}`)
-      return
-    }
-    if (stderr) {
-      console.log(`stderr: ${stderr}`)
-      return
-    }
-    console.log(`stdout: ${stdout}`)
-    if (!error && !stderr) buildHTML('./dist/', '.html')
+exec(`rsync -a ${excludes} ./ ./dist/`, (error, stdout, stderr) => {
+  if (error) {
+    console.log(`error: ${error.message}`)
+    return
   }
-)
+  if (stderr) {
+    console.log(`stderr: ${stderr}`)
+    return
+  }
+  console.log(`stdout: ${stdout}`)
+  if (!error && !stderr) buildHTML('./dist/', 'index.html')
+})
