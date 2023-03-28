@@ -11,6 +11,7 @@ const components = [
   'spa-root',
   'story',
   'tmdb',
+  'toc',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
 

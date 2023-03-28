@@ -7,10 +7,17 @@ const nav = [
 
 ardi({
   tag: 'app-nav',
+  logoClick(e) {
+    console.log(e, location.pathname)
+    if (location.pathname === '/') {
+      e.preventDefault()
+      window.scrollTo({ top: 0 })
+    }
+  },
   template() {
     return html`
       <nav>
-        <spa-link href="/">
+        <spa-link href="/" @click=${(e) => this.logoClick(e)}>
           <img
             src="/@/assets/ardi.svg"
             alt="Ardi Logo, a cute monkey in a spacesuit."
@@ -29,6 +36,12 @@ ardi({
       padding: 0 1rem;
       position: relative;
       z-index: 999;
+    }
+    @media (min-width: 1200px) {
+      nav {
+        position: sticky;
+        top: 0;
+      }
     }
     spa-link:first-of-type {
       margin-right: auto;

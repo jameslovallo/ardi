@@ -6,11 +6,13 @@ ardi({
   template() {
     return html`
       <app-nav></app-nav>
-      <main>
-        <spa-root>
-          <slot></slot>
-        </spa-root>
-      </main>
+      <div part="wrapper">
+        <main>
+          <spa-root>
+            <slot></slot>
+          </spa-root>
+        </main>
+      </div>
       <app-footer></app-footer>
     `
   },
@@ -19,6 +21,11 @@ ardi({
       margin: 0 auto;
       max-width: 85ch;
       padding: 0 1rem 4rem;
+    }
+    @media (min-width: 1200px) {
+      [part=wrapper] {
+        margin-left: var(--sidebar-width);
+      }
     }
   `,
 })
