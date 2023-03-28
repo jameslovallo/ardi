@@ -21,21 +21,21 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
   src="/@/assets/fast.svg"
   alt="rocket lifting off"
   heading="It's fast"
-  text="Ardi is only 4kb, and the bundled template library renders changes with scalpel-like precision."
+  text="Ardi is only 4kb and renders changes with scalpel-like precision."
 />
 
 <home-card
   src="/@/assets/familiar.svg"
   alt="guy chillin in a convertible in orbit"
   heading="It's familiar"
-  text="Ardi gives custom elements a modern DX, and you can write components in µhtml, JSX or Handlebars."
+  text="Ardi's modern DX works with templates in µhtml, JSX or Handlebars."
 />
 
 <home-card
   src="/@/assets/portable.svg"
   alt="guy getting abducted by a UFO"
   heading="It's universal"
-  text="Ardi components work seamlessly with any framework: React, Vue, Svelte, Angular, you name it."
+  text="Ardi components work well with JS apps or static & legacy platforms."
 />
 
 </home-grid>
