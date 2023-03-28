@@ -254,9 +254,9 @@ ardi({
 
 ### Context
 
-Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. Here is a [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010).
+Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. You can see this API in action in the [i18n Demo](/demos/i18n/), this [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010), and in the CSS section below.
 
-To share context from a parent component, add the `context` attribute with a descriptive name, i.e. `context="theme"` You can then use `this.context("theme")` to reference the element and access its props or state, as demonstrated in the CSS section below. When a child component uses the context to make changes to the parent element's props or state, the parent element will notify every other child component that accesses the same values, keeping the context synchronized throughout the application.
+To share context from a parent component, add the `context` attribute with a descriptive name, i.e. `context="theme"` You can then use `this.context("theme")` to reference the element and access its props or state. When a child component uses the context to make changes to the parent element's props or state, the parent element will notify every other child component that accesses the same values, keeping the context synchronized throughout the application.
 
 ```html
 <ardi-component context="theme"></ardi-component>
