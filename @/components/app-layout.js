@@ -27,5 +27,10 @@ ardi({
         margin-left: var(--sidebar-width);
       }
     }
+    @media (min-width: 1600px) {
+      [part=wrapper] {
+        margin-left: 0;
+      }
+    }
   `,
 })
