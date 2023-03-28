@@ -1,10 +1,10 @@
-<h1>Ardi</h1>
+# Ardi
 
 **Welcome to the Weightless Web**
 
-Ardi makes it almost too easy to create reactive custom elements that work with any website or Javascript framework.
+Ardi makes it almost too easy to create reactive custom elements that work with any site or framework.
 
-<a href="https://ardi.netlify.app/#/demos/" class="demo-link">Check out the demos!</a>
+<a href="https://ardi.netlify.app/demos/" class="demo-link">Check out the demos!</a>
 
 ## Features
 
@@ -18,21 +18,21 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 <home-grid>
 
 <home-card
-  src="/assets/fast.svg"
+  src="/@/assets/fast.svg"
   alt="rocket lifting off"
   heading="It's fast"
-  text="Ardi is only 4kb, and the bundled templating library renders changes with scalpel-like precision."
+  text="Ardi is only 4kb, and the bundled template library renders changes with scalpel-like precision."
 />
 
 <home-card
-  src="/assets/familiar.svg"
+  src="/@/assets/familiar.svg"
   alt="guy chillin in a convertible in orbit"
   heading="It's familiar"
   text="Ardi gives custom elements a modern DX, and you can write components in µhtml, JSX or Handlebars."
 />
 
 <home-card
-  src="/assets/portable.svg"
+  src="/@/assets/portable.svg"
   alt="guy getting abducted by a UFO"
   heading="It's universal"
   text="Ardi components work seamlessly with any framework: React, Vue, Svelte, Angular, you name it."
@@ -134,7 +134,7 @@ ardi({
 
 ### Template
 
-The bundled templating library is called [μhtml](https://www.npmjs.com/package/uhtml). μhtml is comfortably JSX-like and is very similar to how Lit works. With μhtml, you create your templates using a tagged template literal. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed. This makes rendering extremely efficient and removes the need for manual memoization of component data.
+The bundled template library is called [μhtml](https://www.npmjs.com/package/uhtml). μhtml is comfortably JSX-like and is very similar to how Lit works. With μhtml, you create your templates using a tagged template literal. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed. This makes rendering extremely efficient and removes the need for manual memoization of component data.
 
 #### Event Handlers
 
@@ -175,8 +175,7 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ardi({
   template() {
     return html`
-      ...
-      ${this.results.map((result) => {
+      ... ${this.results.map((result) => {
         const url = 'https://www.themoviedb.org/tv/' + result.id
         const backdrop = bgRoot + result.backdrop_path
         const poster = posterRoot + result.poster_path
@@ -185,8 +184,7 @@ ardi({
             <a part="result" href=${url}>
               ${result.backdrop_path
                 ? html`<img part="backdrop" src=${backdrop} />`
-                : ''}
-              ${result.poster_path
+                : ''} ${result.poster_path
                 ? html`<img part="poster" src=${poster} />`
                 : ''}
               <div part="details">
@@ -196,8 +194,7 @@ ardi({
             </a>
           </li>
         `
-      })}
-      ...
+      })} ...
     `
   },
 })
@@ -325,7 +322,7 @@ ardi({
 
 ### JSX & Handlebars
 
-μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever templating library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
+μhtml is tiny, fast and efficient, and we strongly recommend it. However, JSX is king right now, and Handlebars is still holding on strong. That's why Ardi allows you to use whatever template library you prefer. Sample code for each supported option is provided below, for comparison. There is also an interactive [CodePen demo](https://codepen.io/jameslovallo/pen/WNKpqMj?editors=0010) showing all three examples.
 
 <!-- tabs:start -->
 
@@ -333,7 +330,7 @@ ardi({
 
 <!--prettier-ignore-->
 ```js
-import ardi, { html } from '/ardi-min.js'
+import ardi, { html } from /@/assets/ardi-min.js
 
 ardi({
   tag: 'uhtml-counter',
@@ -351,7 +348,7 @@ ardi({
 
 <!--prettier-ignore-->
 ```js
-import ardi, { html } from '/ardi-min.js'
+import ardi, { html } from /@/assets/ardi-min.js
 import React from '//cdn.skypack.dev/jsx-dom'
 
 ardi({
@@ -370,7 +367,7 @@ ardi({
 #### **Handlebars**
 
 ```js
-import ardi, { html } from '/ardi-min.js'
+import ardi, { html } from /@/assets/ardi-min.js
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
 
 ardi({

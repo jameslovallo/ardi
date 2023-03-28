@@ -1,3 +1,0 @@
-- [Docs](/)
-- [Demos](/demos/)
-- [Why Ardi?](/about.md)

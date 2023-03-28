@@ -1,0 +1,68 @@
+:root {
+  --border: rgba(125, 125, 125, 0.5);
+  --demo-max-width: 400px;
+  --surface: rgba(125, 125, 125, 0.1);
+  --surface-heavy: rgba(125, 125, 125, 0.25);
+  --theme-color: #ffab00;
+  --theme-weak: #30230e;
+  color-scheme: dark;
+  font-family: sans-serif;
+  line-height: 1.75;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  color: #d3d3d3;
+  margin: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: white;
+  font-weight: normal;
+  margin-bottom: 1rem;
+  scroll-margin-top: 3rem;
+}
+
+.docs h2 {
+  border-bottom: 1px solid var(--border);
+  line-height: 1;
+  margin-bottom: 1rem;
+  margin-top: 2em;
+  padding-bottom: 1rem;
+}
+
+h3 {
+  margin-top: 2em;
+}
+
+a.demo-link {
+  background: var(--theme-weak);
+  box-sizing: border-box;
+  color: var(--theme-color);
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: 0.25s;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: 13px;
+  line-height: 2;
+}
+
+code:not([class^='language']) {
+  border: 1px solid var(--border);
+  font-size: 14px;
+  padding: 2px 2px;
+}
