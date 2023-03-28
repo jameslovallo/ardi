@@ -32,7 +32,10 @@ ardi({
         highlightAllUnder(this.root)
       })
   },
-  propChange() {
-    this.ready()
+  propChange(prop) {
+    if (prop.name === 'src' && prop.old && prop.old !== prop.new) {
+      console.log(prop)
+      this.ready()
+    }
   },
 })
