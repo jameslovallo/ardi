@@ -98,6 +98,7 @@ ardi({
       background: rgba(0,0,0,0.33);
       border-radius: 2rem;
       display: flex;
+      padding: 0 .5rem;
       position: absolute;
       right: 1rem;
       top: 1rem;
