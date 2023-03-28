@@ -18,6 +18,7 @@ ardi({
       position: sticky;
       text-align: center;
       top: 100vh;
+      z-index: 999;
     }
   `,
 })

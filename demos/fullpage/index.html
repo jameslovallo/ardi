@@ -1,19 +1,38 @@
 <body is="app-layout">
-  <h1>FullPage</h1>
-  <p>
-    This component demonstrates state management, conditional rendering, event
-    handlers, loops, and how to use Javascript values and expressions in CSS.
-  </p>
+  <style>
+    :root {
+      --border: none;
+      --surface: transparent;
+      --surface-heavy: transparent;
+    }
+    body {
+      color: white;
+    }
+  </style>
+  <ardi-fullpage alignment="center">
+    <section style="background: #c62828">
+      <div>
+        <h2>&lt;ardi-fullpage&gt;</h2>
+        <p>Scroll up and down to try it out.</p>
+      </div>
+    </section>
+    <section style="background: #2e7d32">
+      <div>
+        <h2>Huzzah!</h2>
+        <p>Fun fact, this component is only, like, 3kb</p>
+      </div>
+    </section>
+    <section style="background: #1565c0">
+      <div>
+        <h2>Source</h2>
+        <p>
+          You can see the full source
+          <a href="/demos/fullpage/fullpage.js">here</a>.
+        </p>
+      </div>
+    </section>
+  </ardi-fullpage>
 
-  <h2>Demo</h2>
-  <iframe
-    src="/@/assets/fullpage.html"
-    style="height: 400px; width: 100%; border: 0"
-  ></iframe>
-
-  <h2>Javascript</h2>
-  <ardi-md src="/@/components/fullpage.js" theme="/@/css/prism.css"></ardi-md>
-  <script src="/@/components/fullpage.js" type="module"></script>
-  <!-- <script src="/@/assets/lock.js" type="module"></script> -->
+  <script src="./fullpage.js" type="module"></script>
   <script src="/@/main.js" type="module"></script>
 </body>

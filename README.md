@@ -171,11 +171,13 @@ Lists are handled using the `Array.map()` method. In the TMDB component, we will
 
 The most convenient way to handle conditional rendering is to use a ternary operator. In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
 
+<!-- prettier-ignore -->
 ```js
 ardi({
   template() {
     return html`
-      ... ${this.results.map((result) => {
+      ... 
+      ${this.results.map((result) => {
         const url = 'https://www.themoviedb.org/tv/' + result.id
         const backdrop = bgRoot + result.backdrop_path
         const poster = posterRoot + result.poster_path
@@ -194,7 +196,8 @@ ardi({
             </a>
           </li>
         `
-      })} ...
+      })}
+      ...
     `
   },
 })
