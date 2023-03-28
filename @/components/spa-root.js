@@ -32,13 +32,7 @@ ardi({
       }
     } else sessionStorage.removeItem('spa-reload')
     // handle markdown
-    if (
-      (init && document.body.lang === 'md') ||
-      doc.trim().startsWith('<!-- md -->')
-    ) {
-      this.handleMD(doc)
-    } else document.body.innerHTML = doc
-    !init && document.body.removeAttribute('lang')
+    document.body.innerHTML = doc
     // handle page title
     this.handleTitle(doc)
     // handle scripts
@@ -51,39 +45,14 @@ ardi({
         tag.replaceWith(newTag)
       }
     })
-    // highlight code blocks
-    if (doc.includes('```') || doc.includes('language-')) this.highlight()
   },
   handleTitle(doc) {
-    let mdH1 = doc.match(/# .+/)
-    if (mdH1) mdH1 = mdH1[0].replace('# ', '')
     let htmlH1 = doc.match(/<h1.+<\/h1>/)
     if (htmlH1) htmlH1 = htmlH1[0].replace(/<h1.*?>/, '').replace('</h1>', '')
     let htmlTitle = doc.match(/<title>.+<\/title>/)
     if (htmlTitle)
       htmlTitle = [0].replace('<title>', '').replace('</title>', '')
-    document.title = htmlTitle || htmlH1 || mdH1
-  },
-  async handleMD(doc) {
-    const marked = await import('//unpkg.com/marked@4.2.12/lib/marked.esm.js')
-    let unescape = await import('https://cdn.skypack.dev/unescape@1.0.1')
-    unescape = unescape.default
-    document.body.innerHTML = marked.parse(unescape(doc), {
-      gfm: true,
-    })
-    this.highlight()
-  },
-  highlight() {
-    import('//cdn.skypack.dev/prismjs').then((prism) => {
-      prism.highlightAllUnder(document.body)
-    })
-    if (!this.prismCssLoaded) {
-      this.createTag(document.head, 'link', {
-        rel: 'stylesheet',
-        href: '/@/css/prism.css',
-      })
-      this.prismCssLoaded = true
-    }
+    document.title = htmlTitle || htmlH1
   },
   createTag(target, type, attrs) {
     const tag = document.createElement(type)
@@ -105,12 +74,7 @@ ardi({
       window.appSlot = this
       this.setPage(document.body.innerHTML, location.pathname, true)
       // history stuff
-      const firstPageIsMD = document.body.lang === 'md'
-      this.pushHistory(
-        location.pathname,
-        (firstPageIsMD ? '<!-- md -->' : '') + document.body.innerHTML
-      )
-      firstPageIsMD && document.body.removeAttribute('lang')
+      this.pushHistory(location.pathname, document.body.innerHTML)
       addEventListener('popstate', (e) => {
         if (e.state.path) {
           this.setPage(sessionStorage.getItem(e.state.path), e.state.path)

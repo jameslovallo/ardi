@@ -29,9 +29,7 @@ ardi({
       fetch(this.pagePath())
         .then((res) => res.text())
         .then((html) => {
-          const md = html.includes(`lang="md"`)
           this.pageData = html.split(/<body.+>/g)[1].split(`</body>`)[0]
-          if (md) this.pageData = `<!-- md -->` + this.pageData
           setPage && this.setPage()
         })
     }
