@@ -28,10 +28,11 @@
     "url": "https://github.com/jameslovallo/ardi/issues"
   },
   "scripts": {
-    "ardi:build": "esbuild ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=ardi-min.js ",
+    "ardi:build": "esbuild ./@/assets/ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=./@/assets/ardi-min.js ",
     "ardi:update": "npm run build && npm version patch && npm publish",
     "build": "node @/build.js",
-    "dev": "npx http-server -p 3000 -o"
+    "dev": "npx http-server -p 3000 -o",
+    "deploy": "npm run build && ntl deploy --prod"
   },
   "devDependencies": {
     "esbuild": "^0.15.9",
