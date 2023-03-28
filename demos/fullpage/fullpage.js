@@ -87,7 +87,7 @@ ardi({
   css() {
     return /* css */ `
       :host {
-        height: 100vh;
+        height: 100%;
         left: 0;
         overflow-y: ${this.touch() ? 'auto' : 'hidden'};
         padding: 0;
@@ -95,7 +95,7 @@ ardi({
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
         top: 0;
-        width: 100vw;
+        width: 100%;
       }
       slot::slotted(*) {
         align-items: ${this.flexAlign()};
