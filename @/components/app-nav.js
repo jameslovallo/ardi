@@ -8,7 +8,6 @@ const nav = [
 ardi({
   tag: 'app-nav',
   logoClick(e) {
-    console.log(e, location.pathname)
     if (location.pathname === '/') {
       e.preventDefault()
       window.scrollTo({ top: 0 })

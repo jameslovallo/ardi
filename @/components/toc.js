@@ -9,9 +9,11 @@ ardi({
       <ul part="list">
         ${this.headings.map(
           (h) =>
-            html`<li class=${h.level}>
-              <a href=${'#' + h.id} part="link">${h.text}</a>
-            </li>`
+            html`
+              <li class=${h.level}>
+                <a href=${'#' + h.id} part="link">${h.text}</a>
+              </li>
+            `
         )}
       </ul>
     `
