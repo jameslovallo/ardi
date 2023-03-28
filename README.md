@@ -35,7 +35,7 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
   src="/@/assets/portable.svg"
   alt="guy getting abducted by a UFO"
   heading="It's universal"
-  text="Ardi components work well with JS apps or static & legacy platforms."
+  text="Ardi works the same with JS apps, static sites, or legacy platforms."
 />
 
 </home-grid>
