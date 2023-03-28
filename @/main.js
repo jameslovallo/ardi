@@ -3,6 +3,7 @@ const components = [
   'app-footer',
   'app-layout',
   'app-nav',
+  'app-sidebar',
   'card',
   'componentcard',
   'grid',
@@ -11,7 +12,6 @@ const components = [
   'spa-root',
   'story',
   'tmdb',
-  'toc',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
 

@@ -14,6 +14,7 @@ ardi({
       background: var(--surface);
       display: block;
       left: 0;
+      margin-left: var(--sidebar-width);
       padding: 1rem 1rem;
       position: sticky;
       text-align: center;
