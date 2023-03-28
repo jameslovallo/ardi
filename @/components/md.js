@@ -26,9 +26,9 @@ ardi({
         const lang = nameArray[nameArray.length - 1]
         const md = lang === 'md' ? text : codeToMd(lang, text)
         this.root.innerHTML = `
-					<style>@import "${this.theme}";</style>
-					${parse(md)}
-				`
+          <style>@import "${this.theme}";</style>
+          ${parse(md)}
+        `
         highlightAllUnder(this.root)
       })
   },
