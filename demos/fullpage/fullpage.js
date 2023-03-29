@@ -39,18 +39,30 @@ ardi({
 
   touch: () => navigator.maxTouchPoints > 0,
 
-  wheel() {
-    if (!this.touch()) {
-      this.addEventListener('wheel', (e) => {
-        console.log(e)
-        e.preventDefault()
-        if (e.deltaY > 0) {
-          this.scrollTop += this.offsetHeight
-        } else {
-          this.scrollTop -= this.offsetHeight
-        }
-      })
+  throttle(cb, delay) {
+    let wait = false
+    return (...args) => {
+      if (wait) return
+      cb(...args)
+      wait = true
+      setTimeout(() => {
+        wait = false
+      }, delay)
     }
+  },
+
+  wheel() {
+    this.addEventListener('scroll', (e) => e.preventDefault())
+    this.addEventListener('wheel', (e) => {
+      console.log(this.scrolling)
+      e.preventDefault()
+      const direction = e.deltaY > 0 ? 1 : -1
+      if (!this.scrolling) {
+        this.scrolling = true
+        setTimeout(() => (this.scrolling = false), 2000)
+        this.children[this.active + direction].scrollIntoView()
+      }
+    })
   },
 
   handleIntersect() {
@@ -87,7 +99,7 @@ ardi({
       :host {
         height: 100%;
         left: 0;
-        overflow-y: scroll;
+        overflow: ${this.touch() ? 'scroll' : 'hidden'};
         overscroll-behavior: contain;
         padding: 0;
         position: fixed;
@@ -138,7 +150,7 @@ ardi({
   },
 
   ready() {
-    // this.wheel()
+    !this.touch() && this.wheel()
     this.handleIntersect()
   },
 })
