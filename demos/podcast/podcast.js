@@ -1,13 +1,8 @@
-import {
-  mdiArrowLeftBold,
-  mdiArrowRightBold,
-  mdiPause,
-  mdiPlay,
-} from 'https://cdn.skypack.dev/@mdi/js'
 import ardi, { html, svg } from '/@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-podcast',
+
   props: {
     feed: [String, 'https://feeds.simplecast.com/dxZsm5kX'],
     nextpagelabel: [String, 'Next Page'],
@@ -17,6 +12,7 @@ ardi({
     playlabel: [String, 'play'],
     prevpagelabel: [String, 'Prevous Page'],
   },
+
   state: () => ({
     author: '',
     description: '',
@@ -28,13 +24,23 @@ ardi({
     paused: true,
     title: '',
   }),
-  template() {
-    const { player } = this.refs
-    const icon = (path) => svg`
+
+  icon(name) {
+    const icons = {
+      leftArrow: 'M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z',
+      play: 'M8,5.14V19.14L19,12.14L8,5.14Z',
+      pause: 'M14,19H18V5H14M6,19H10V5H6V19Z',
+      rightArrow: 'M4,15V9H12V4.16L19.84,12L12,19.84V15H4Z',
+    }
+    return svg`
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-        <path d=${path} />
+        <path d=${icons[name]} />
       </svg>
     `
+  },
+
+  template() {
+    const { player } = this.refs
     const lastPage = Math.floor(this.episodes.length / this.pagesize) + 1
     return html`
       <audio ref="player" src=${this.nowPlaying} />
@@ -79,10 +85,8 @@ ardi({
                     ? this.pauselabel
                     : this.playlabel}
                 >
-                  ${icon(
-                    this.nowPlaying === track && !this.paused
-                      ? mdiPause
-                      : mdiPlay
+                  ${this.icon(
+                    this.nowPlaying === track && !this.paused ? 'pause' : 'play'
                   )}
                 </button>
                 <div part="episode-wrapper">
@@ -100,7 +104,7 @@ ardi({
           disabled=${this.page > 0 ? null : true}
           aria-label=${this.prevpagelabel}
         >
-          ${icon(mdiArrowLeftBold)}
+          ${this.icon('leftArrow')}
         </button>
         ${this.pagelabel} ${this.page + 1} / ${lastPage}
         <button
@@ -109,11 +113,12 @@ ardi({
           disabled=${this.page + 1 < lastPage ? null : true}
           aria-label=${this.nextpagelabel}
         >
-          ${icon(mdiArrowRightBold)}
+          ${this.icon('rightArrow')}
         </button>
       </div>
     `
   },
+
   css: `
     :host {
       border: 1px solid rgba(125,125,125,0.5);
@@ -125,6 +130,9 @@ ardi({
     button {
       border: 1px solid rgba(125,125,125,0.5);
       border-radius: 4px;
+    }
+    button:not([disabled]) {
+      cursor: pointer;
     }
     svg {
       display: block;
@@ -206,6 +214,7 @@ ardi({
       margin-top: .5rem;
     }
   `,
+
   formatEpisode(item) {
     const tags = ['title', 'enclosure', 'itunes:duration']
     const episode = {}
@@ -237,6 +246,7 @@ ardi({
       })
     return episode
   },
+
   ready() {
     fetch(this.feed)
       .then((res) => res.text())
