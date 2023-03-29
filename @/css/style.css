@@ -48,6 +48,10 @@ h3 {
   margin-top: 2em;
 }
 
+.docs a {
+  color: var(--theme-color);
+}
+
 .demo-link {
   --length: calc(100% - 8px);
   background: var(--theme-weak);
