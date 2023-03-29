@@ -1,11 +1,31 @@
 import ardi, { html } from '/@/assets/ardi-min.js'
 
+const sharedStyles = /* css */ `
+  fieldset {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    display: grid;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  fieldset * {
+    margin: 0;
+    width: max-content
+  }
+`
+
 ardi({
-  tag: 'ardi-i18n-provider',
+  tag: 'i18n-provider',
   state() {
     return { i18n: this.langs.en }
   },
-  template: () => html`<slot></slot>`,
+  template: () =>
+    html`
+      <fieldset>
+        <legend>&lt;i18n-provider&gt;</legend>
+        <slot></slot>
+      </fieldset>
+    `,
   setLang(lang) {
     this.i18n = this.langs[lang]
   },
@@ -21,28 +41,39 @@ ardi({
       label: 'Español',
     },
   },
+  css: sharedStyles,
 })
 
 ardi({
-  tag: 'ardi-i18n-text',
+  tag: 'i18n-text',
   template() {
     const { i18n } = this.context('i18n')
-    return html`<p>${i18n.demoText}.</p>`
+    return html`
+      <fieldset>
+        <legend>&lt;i18n-text&gt;</legend>
+        <p>${i18n.demoText}.</p>
+      </fieldset>
+    `
   },
+  css: sharedStyles,
 })
 
 ardi({
-  tag: 'ardi-i18n-change',
+  tag: 'i18n-change',
   template() {
     const provider = this.context('i18n')
     const { i18n, langs } = provider
     return html`
-      <p>${i18n.changeLanguage}:</p>
-      <select @change=${(e) => provider.setLang(e.target.value)}>
-        ${Object.keys(langs).map(
-          (lang) => html`<option value=${lang}>${langs[lang].label}</option>`
-        )}
-      </select>
+      <fieldset>
+        <legend>&lt;i18n-change&gt;</legend>
+        <p>${i18n.changeLanguage}:</p>
+        <select @change=${(e) => provider.setLang(e.target.value)}>
+          ${Object.keys(langs).map(
+            (lang) => html`<option value=${lang}>${langs[lang].label}</option>`
+          )}
+        </select>
+      </fieldset>
     `
   },
+  css: sharedStyles,
 })
