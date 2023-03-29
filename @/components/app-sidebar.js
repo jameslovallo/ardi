@@ -43,7 +43,7 @@ ardi({
 			height: 100vh;
 			left: 0;
       overflow: auto;
-			padding: 7rem 1rem 3rem;
+			padding: 5rem 1rem 3rem;
 			position: fixed;
 			top: 0;
 			width: var(--sidebar-width);
