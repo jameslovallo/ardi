@@ -25,7 +25,7 @@ ardi({
         const nameArray = this.src.split('.')
         const lang = nameArray[nameArray.length - 1]
         let md = lang === 'md' ? text : codeToMd(lang, text)
-        md = md.split(`<!-- split -->`)[1]
+        if (md.includes(`<!-- split -->`)) md = md.split(`<!-- split -->`)[1]
         const hasCodeBlocks = md.includes('```')
         this.root.innerHTML = `
           ${hasCodeBlocks ? `<style>@import "${this.theme}";</style>` : ''}
