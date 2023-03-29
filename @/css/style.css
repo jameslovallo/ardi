@@ -18,8 +18,10 @@ body {
   min-height: 100vh;
 }
 
-body:has(app-sidebar) {
-  --sidebar-width: 200px;
+@media (min-width: 1200px) {
+  body:has(app-sidebar) {
+    --sidebar-width: 200px;
+  }
 }
 
 h1,
