@@ -6,6 +6,8 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 
 <a href="https://ardi.netlify.app/demos/" class="demo-link">Check out the demos!</a>
 
+<!-- split -->
+
 ## Features
 
 1. Simple object-oriented API
@@ -298,7 +300,7 @@ You can also use JS in a style attribute, or any html attribute, like this.
 ardi({
   template() {
     const { bg, color } = this.context('theme')
-    return html` <nav style=${`background: ${bg}; color: ${color};`}>...</nav> `
+    return html`<nav style=${`background: ${bg}; color: ${color};`}>...</nav>`
   },
 })
 ```
@@ -310,7 +312,7 @@ If you have a lot of CSS, it may be cleaner to move it into it's own key. If pre
 ```js
 ardi({
   template() {
-    return html` <nav>...</nav> `
+    return html`<nav>...</nav>`
   },
   css() {
     const { bg, color } = this.context('theme')

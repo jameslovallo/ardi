@@ -18,24 +18,28 @@ ardi({
       'https://unpkg.com/prism-themes@1.9.0/themes/prism-dracula.min.css',
     ],
   },
-  ready() {
+  getMarkdown() {
     fetch(this.src)
       .then((res) => res.text())
       .then((text) => {
         const nameArray = this.src.split('.')
         const lang = nameArray[nameArray.length - 1]
-        const md = lang === 'md' ? text : codeToMd(lang, text)
+        let md = lang === 'md' ? text : codeToMd(lang, text)
+        md = md.split(`<!-- split -->`)[1]
+        const hasCodeBlocks = md.includes('```')
         this.root.innerHTML = `
-          <style>@import "${this.theme}";</style>
+          ${hasCodeBlocks ? `<style>@import "${this.theme}";</style>` : ''}
           ${parse(md)}
         `
-        highlightAllUnder(this.root)
+        hasCodeBlocks && highlightAllUnder(this.root)
       })
+  },
+  ready() {
+    this.getMarkdown()
   },
   propChange(prop) {
     if (prop.name === 'src' && prop.old && prop.old !== prop.new) {
-      console.log(prop)
-      this.ready()
+      this.getMarkdown()
     }
   },
 })
