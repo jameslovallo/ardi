@@ -41,17 +41,15 @@ ardi({
 
   wheel() {
     if (!this.touch()) {
-      this.addEventListener(
-        'wheel',
-        this.debounce((e) => {
-          e.preventDefault()
-          if (e.deltaY > 0) {
-            this.scrollTop += this.offsetHeight
-          } else {
-            this.scrollTop -= this.offsetHeight
-          }
-        })
-      )
+      this.addEventListener('wheel', (e) => {
+        console.log(e)
+        e.preventDefault()
+        if (e.deltaY > 0) {
+          this.scrollTop += this.offsetHeight
+        } else {
+          this.scrollTop -= this.offsetHeight
+        }
+      })
     }
   },
 
@@ -89,13 +87,18 @@ ardi({
       :host {
         height: 100%;
         left: 0;
-        overflow-y: ${this.touch() ? 'auto' : 'hidden'};
+        overflow-y: scroll;
+        overscroll-behavior: contain;
         padding: 0;
         position: fixed;
         scroll-behavior: smooth;
         scroll-snap-type: y mandatory;
+        scrollbar-width: none;
         top: 0;
         width: 100%;
+      }
+      :host::-webkit-scrollbar {
+        display: none;
       }
       slot::slotted(*) {
         align-items: ${this.flexAlign()};
@@ -135,7 +138,7 @@ ardi({
   },
 
   ready() {
-    this.wheel()
+    // this.wheel()
     this.handleIntersect()
   },
 })
