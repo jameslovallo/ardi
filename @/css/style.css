@@ -49,8 +49,17 @@ h3 {
 }
 
 a.demo-link {
+  --length: calc(100% - 8px);
   background: var(--theme-weak);
   box-sizing: border-box;
+  clip-path: polygon(
+    8px 0%,
+    100% 0,
+    100% var(--length),
+    var(--length) 100%,
+    0 100%,
+    0% 8px
+  );
   color: var(--theme-color);
   display: inline-block;
   font-size: 12px;
@@ -58,7 +67,11 @@ a.demo-link {
   padding: 0.5rem 1rem;
   text-decoration: none;
   text-transform: uppercase;
-  transition: 0.25s;
+}
+
+a.demo-link:hover {
+  background: var(--theme-color);
+  color: var(--theme-weak);
 }
 
 code[class*='language-'],
