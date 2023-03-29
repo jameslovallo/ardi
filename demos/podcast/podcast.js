@@ -143,7 +143,7 @@ ardi({
     [part=header] {
       align-items: center;
       display: grid;
-      gap: .5rem;
+      gap: 1rem;
       grid-template-columns: 8rem 1fr;
     }
     [part=image] {
