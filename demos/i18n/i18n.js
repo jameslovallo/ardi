@@ -6,6 +6,9 @@ ardi({
     return { i18n: this.langs.en }
   },
   template: () => html`<slot></slot>`,
+  setLang(lang) {
+    this.i18n = this.langs[lang]
+  },
   langs: {
     en: {
       changeLanguage: 'Change the Language',
@@ -35,7 +38,7 @@ ardi({
     const { i18n, langs } = provider
     return html`
       <p>${i18n.changeLanguage}:</p>
-      <select @change=${(e) => (provider.i18n = langs[e.target.value])}>
+      <select @change=${(e) => provider.setLang(e.target.value)}>
         ${Object.keys(langs).map(
           (lang) => html`<option value=${lang}>${langs[lang].label}</option>`
         )}

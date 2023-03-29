@@ -54,6 +54,7 @@ ardi({
       }
     }
 		[part=list] {
+      line-height: 2;
 			list-style: none;
 			padding: 0;
 		}
@@ -61,7 +62,7 @@ ardi({
       display: none;
     }
     .H3 {
-      padding-left: .75rem;
+      padding-left: 1rem;
     }
 		[part=link] {
 			color: inherit;
