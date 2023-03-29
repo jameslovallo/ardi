@@ -62,9 +62,8 @@ h3 {
   );
   color: var(--theme-color);
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 1px;
-  padding: 0.5rem 1rem;
   text-decoration: none;
   text-transform: uppercase;
 }
@@ -76,6 +75,8 @@ h3 {
 
 .demo-link::part(link) {
   color: inherit;
+  display: inline-block;
+  padding: 0.55rem 1rem;
   text-decoration: none;
 }
 
