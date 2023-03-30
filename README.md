@@ -106,7 +106,7 @@ ardi({
 
 ### Props
 
-Properties allow you to configure your component. To create a property, add a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from the prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse), an arrow function, or a method inside your component. Every prop is reactive, which means that whether a prop's value is changed internally or via its corresponding attribute, that change will trigger a render. Prop values are accessible directly from `this`.
+Properties allow you to configure your component. To create a property, add a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from the prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is changed internally or via its corresponding attribute, that change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.type`.
 
 For the TMDB component, we'll add two props:
 
@@ -124,7 +124,7 @@ ardi({
 
 ### State
 
-State is also reactive, meaning that any changes will trigger a render. State is accessible from `this`.
+Anything declared in state is reactive, which means changes will trigger a render. Keys from state are accessible from `this`, i.e. `this.results`.
 
 The TMDB component will use an array called 'results' to store movies or tv shows.
 
@@ -136,7 +136,7 @@ ardi({
 
 ### Template
 
-The bundled template library is called [μhtml](https://www.npmjs.com/package/uhtml). μhtml is comfortably JSX-like and is very similar to how Lit works. With μhtml, you create your templates using a tagged template literal. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed. This makes rendering extremely efficient and removes the need for manual memoization of component data.
+[μhtml](https://www.npmjs.com/package/uhtml) is the default template library, and it's just like JSX except you create your templates using a tagged template literal. μhtml is extremely efficient. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed.
 
 #### Event Handlers
 
@@ -332,7 +332,7 @@ ardi({
 
 <!-- tabs:start -->
 
-#### **μhtml**
+#### μhtml
 
 <!--prettier-ignore-->
 ```js
@@ -350,7 +350,7 @@ ardi({
 })
 ```
 
-#### **JSX-Dom**
+#### JSX-Dom
 
 <!--prettier-ignore-->
 ```js
@@ -370,7 +370,7 @@ ardi({
 })
 ```
 
-#### **Handlebars**
+#### Handlebars
 
 ```js
 import ardi, { html } from /@/assets/ardi-min.js
