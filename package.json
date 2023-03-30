@@ -36,8 +36,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.15.9",
-    "marked": "^4.3.0",
-    "uhtml": "^3.0.2",
-    "unescape": "^1.0.1"
+    "uhtml": "^3.0.2"
   }
 }
