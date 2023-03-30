@@ -40,7 +40,6 @@ ardi({
     const numerator =
       this.parentElement.scrollTop + this.parentElement.offsetHeight
     const denominator = this.parentElement.scrollHeight
-    console.log(numerator, denominator)
     this.scrollPercent = (numerator / denominator) * 100 + '%'
   },
   ready() {

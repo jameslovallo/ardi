@@ -54,7 +54,6 @@ ardi({
   wheel() {
     this.addEventListener('scroll', (e) => e.preventDefault())
     this.addEventListener('wheel', (e) => {
-      console.log(this.scrolling)
       e.preventDefault()
       const direction = e.deltaY > 0 ? 1 : -1
       if (!this.scrolling) {
