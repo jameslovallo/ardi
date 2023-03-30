@@ -48,6 +48,17 @@ ardi({
 			top: 0;
 			width: var(--sidebar-width);
 		}
+    @media (min-width: 1200px) {
+      :host {
+        display: flex;
+      }
+    }
+    @media (min-width: 1600px) {
+      :host {
+        justify-content: flex-end;
+        padding-top: 7rem;
+      }
+    }
 		[part=list] {
       line-height: 2;
 			list-style: none;
@@ -57,6 +68,7 @@ ardi({
       display: none;
     }
     .H3 {
+      opacity: 0.8;
       padding-left: 1rem;
     }
 		[part=link] {

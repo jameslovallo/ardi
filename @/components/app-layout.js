@@ -29,9 +29,8 @@ ardi({
       }
     }
     @media (min-width: 1600px) {
-      :host(.home) main {
-        left: unset;
-        position: static;
+      :host(.home) [part=wrapper] {
+        padding-left: unset;
       }
     }
   `,
