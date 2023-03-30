@@ -141,7 +141,7 @@ ardi({
       width: 1rem;
     }
     [part=header] {
-      align-items: center;
+      align-items: flex-end;
       display: grid;
       gap: 1rem;
       grid-template-columns: 8rem 1fr;
