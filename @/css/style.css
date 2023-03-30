@@ -97,6 +97,10 @@ a {
   text-decoration: none;
 }
 
+home-grid p {
+  margin: 0;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   font-size: 14px;
