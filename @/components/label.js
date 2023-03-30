@@ -27,7 +27,7 @@ ardi({
 			border-top-left-radius: var(--border-radius, 8px);
 			display: block;
 			height: 1rem;
-			width: .75rem;
+			width: .5rem;
 		}
 		[part=label]:after {
 			content: '';
@@ -37,11 +37,11 @@ ardi({
 			flex-grow: 1;
 		}
 		[part=label-text] {
-			font-size: 1rem;
+			font-size: .8rem;
 			line-height: 1;
 			padding: 0 .25rem;
 			position: relative;
-			top: -.5rem;
+			top: -.4rem;
 		}
 		[part=label-text]:before {
 			content: '<'
@@ -56,7 +56,7 @@ ardi({
 			border-top: none;
 			display: block;
 			overflow: auto;
-			padding: 0 .5rem .5rem;
+			padding: 0 .75rem .75rem;
 		}
 	`,
 })
