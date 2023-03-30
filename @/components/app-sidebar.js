@@ -48,11 +48,6 @@ ardi({
 			top: 0;
 			width: var(--sidebar-width);
 		}
-    @media (min-width: 1200px) {
-      :host {
-        display: block;
-      }
-    }
 		[part=list] {
       line-height: 2;
 			list-style: none;

@@ -18,9 +18,29 @@ body {
   min-height: 100vh;
 }
 
+body::part(wrapper) {
+  margin-left: var(--sidebar-width);
+}
+
 @media (min-width: 1200px) {
   body:has(app-sidebar) {
     --sidebar-width: 225px;
+  }
+  app-sidebar {
+    display: flex;
+  }
+}
+
+@media (min-width: 1600px) {
+  body:has(app-sidebar) {
+    --sidebar-width: calc(50vw - 50ch);
+  }
+  body:has(app-sidebar)::part(wrapper) {
+    margin-left: 0;
+  }
+  app-sidebar {
+    justify-content: flex-end;
+    padding-top: 7rem;
   }
 }
 

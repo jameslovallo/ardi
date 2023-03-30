@@ -22,13 +22,5 @@ ardi({
       max-width: 85ch;
       padding: 0 1rem 4rem;
     }
-    [part=wrapper] {
-      margin-left: var(--sidebar-width);
-    }
-    @media (min-width: 1600px) {
-      [part=wrapper] {
-        margin-left: 0;
-      }
-    }
   `,
 })
