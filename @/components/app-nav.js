@@ -57,5 +57,8 @@ ardi({
       height: 100%;
       text-decoration: none;
     }
+    spa-link::part(link):hover {
+      color: var(--theme-color);
+    }
   `,
 })
