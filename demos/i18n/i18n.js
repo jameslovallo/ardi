@@ -13,14 +13,14 @@ ardi({
     en: {
       label: 'English',
       home: 'Home',
-      about: 'About Us',
+      about: 'About',
       contact: 'Contact Us',
       changeLanguage: 'Change the Language',
     },
     es: {
       label: 'Español',
       home: 'Inicio',
-      about: 'Acerca de Nosotros',
+      about: 'Acerca',
       contact: 'Contáctanos',
       changeLanguage: 'Cambia el Idioma',
     },
