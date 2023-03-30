@@ -24,9 +24,8 @@ ardi({
       padding: 0 1rem 4rem;
     }
     @media (min-width: 1200px) {
-      :host(.home) main {
-        left: calc(var(--sidebar-width) / 2);
-        position: relative;
+      :host(.home) [part=wrapper] {
+        padding-left: var(--sidebar-width);
       }
     }
     @media (min-width: 1600px) {
