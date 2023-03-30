@@ -52,7 +52,7 @@ ardi({
     :host {
       align-items: center;
       background: var(--background, #000);
-      border: 2px solid rgba(125, 125, 125, 0.5);
+      border: 2px solid var(--border);
       border-radius: 50%;
       color: var(--color, #fff);
       display: flex;

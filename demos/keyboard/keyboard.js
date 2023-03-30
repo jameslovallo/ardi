@@ -206,7 +206,7 @@ ardi({
   css: /* css */ `
     :host {
       background: var(--bg, #000);
-      border: 1px solid rgba(125, 125, 125, 0.5);
+      border: 1px solid var(--border);
       border-radius: 8px;
       display: grid;
       font-family: sans-serif;

@@ -7,6 +7,7 @@ const components = [
   'card',
   'componentcard',
   'grid',
+  'label',
   'md',
   'spa-link',
   'spa-root',

@@ -72,7 +72,7 @@ ardi({
         border-top: 0;
       }
       details {
-        border: 1px solid rgba(125,125,125,0.5);
+        border: 1px solid var(--border);
         box-sizing: border-box;
       }
       summary {

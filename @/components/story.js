@@ -113,14 +113,14 @@ ardi({
   },
   css: /* css */ `
 		:host {
-			border: 1px solid rgba(125,125,125,0.5);
+			border: 1px solid var(--border);
 			border-radius: 8px;
 			display: grid;
 			overflow: hidden;
 			grid-template-columns: 1fr 200px;
 		}
 		[part=wrapper] {
-			border-right: 1px solid rgba(125,125,125,0.5);
+			border-right: 1px solid var(--border);
 			box-sizing: border-box;
 			display: grid;
 			min-height: 3rem;
@@ -132,14 +132,14 @@ ardi({
 			grid-template-columns: unset;
 		}
 		:host(.small) [part=wrapper] {
-			border-bottom: 1px solid rgba(125,125,125,0.5);
+			border-bottom: 1px solid var(--border);
 			border-right: 0;
 		}
 		aside {
 			font-family: sans-serif;
 		}
 		aside .control {
-			border-bottom: 1px solid rgba(125,125,125,0.5);
+			border-bottom: 1px solid var(--border);
 			display: grid;
 			font-size: .75rem;
 			gap: .25rem;
@@ -173,7 +173,7 @@ ardi({
 			width: 2rem;
 		}
 		aside .control input[type=color]::-webkit-color-swatch {
-			border: 1px solid rgba(125,125,125,0.5);
+			border: 1px solid var(--border);
 			border-radius: 1rem;
 			margin: 0;
 			padding: 0;
@@ -202,8 +202,8 @@ ardi({
 		input[type=checkbox] {
 			align-items: center;
 			appearance: none;
-			background-color: rgba(125,125,125,0.5);
-			border: 1px solid rgba(125,125,125,0.5);
+			background-color: var(--border);
+			border: 1px solid var(--border);
 			border-radius: 2rem;
 			box-sizing: content-box;
 			cursor: pointer;

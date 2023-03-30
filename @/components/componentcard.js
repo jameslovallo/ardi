@@ -21,7 +21,7 @@ ardi({
   },
   css: `
 		spa-link {
-			border: 1px solid rgba(125,125,125,0.5);
+			border: 1px solid var(--border);
 			border-radius: 1rem;
 			cursor: pointer;
 			display: block;

@@ -1,5 +1,5 @@
 :root {
-  --border: rgba(125, 125, 125, 0.5);
+  --border: #555;
   --demo-max-width: 400px;
   --surface: rgba(125, 125, 125, 0.1);
   --surface-heavy: rgba(125, 125, 125, 0.25);

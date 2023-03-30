@@ -121,14 +121,14 @@ ardi({
 
   css: `
     :host {
-      border: 1px solid rgba(125,125,125,0.5);
+      border: 1px solid var(--border);
       display: grid;
       gap: 1rem;
       overflow: hidden;
       padding: .5rem;
     }
     button {
-      border: 1px solid rgba(125,125,125,0.5);
+      border: 1px solid var(--border);
       border-radius: 4px;
     }
     button:not([disabled]) {

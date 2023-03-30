@@ -123,7 +123,7 @@ ardi({
       width: 1.25rem;
     }
     [part='add-task'] {
-      border: 1px solid rgba(155, 155, 155, 0.5);
+      border: 1px solid var(--border);
       font-size: 1rem;
       padding: 4px 8px;
     }
@@ -140,7 +140,7 @@ ardi({
       content: '★';
     }
     [part='task-list'] {
-      border: 1px solid rgba(155, 155, 155, 0.5);
+      border: 1px solid var(--border);
       border-radius: 8px;
       list-style: none;
       padding: 0;
@@ -157,7 +157,7 @@ ardi({
       padding: 12px;
     }
     [part='task']:not(:last-child) {
-      border-bottom: 1px solid rgba(155, 155, 155, 0.5);
+      border-bottom: 1px solid var(--border);
     }
     label {
       flex-grow: 1;

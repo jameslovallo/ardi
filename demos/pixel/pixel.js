@@ -82,7 +82,7 @@ ardi({
         --accent: #64B5F6;
         aspect-ratio: 1;
         background: black;
-        border: 1px solid rgba(125,125,125,0.5);
+        border: 1px solid var(--border);
         border-radius: 50%;
         box-sizing: border-box;
         color: white;

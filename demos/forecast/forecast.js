@@ -112,9 +112,9 @@ ardi({
       gap: 1rem;
     }
     :host {
-      --divider-color: rgba(125, 125, 125, 0.5);
+      --divider-color: var(--border);
       --icon-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
-      --placeholder-color: rgba(125, 125, 125, 0.5);
+      --placeholder-color: var(--border);
     }
     img {
       display: block;

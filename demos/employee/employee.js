@@ -61,7 +61,7 @@ ardi({
     :host {
       display: flex;
       align-items: center;
-      border: 1px solid rgba(125, 125, 125, 0.5);
+      border: 1px solid var(--border);
       border-radius: 0.75rem;
       gap: .75rem;
       overflow: hidden;

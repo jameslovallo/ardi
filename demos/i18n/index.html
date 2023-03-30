@@ -7,10 +7,16 @@
   </p>
 
   <h2>Demo</h2>
-  <i18n-provider context="i18n">
-    <i18n-text></i18n-text>
-    <i18n-change></i18n-change>
-  </i18n-provider>
+  <ardi-label tag="i18n-provider">
+    <i18n-provider context="i18n">
+      <ardi-label tag="i18n-consumer">
+        <i18n-consumer></i18n-consumer>
+      </ardi-label>
+      <ardi-label tag="i18n-changer">
+        <i18n-changer></i18n-changer>
+      </ardi-label>
+    </i18n-provider>
+  </ardi-label>
 
   <h2>HTML</h2>
   <ardi-md src="/demos/i18n/i18n.html" theme="/@/css/prism.css"></ardi-md>
