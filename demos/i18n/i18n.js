@@ -3,7 +3,7 @@ import ardi, { html } from '/@/assets/ardi-min.js'
 ardi({
   tag: 'i18n-provider',
   state() {
-    return { i18n: this.langs.en }
+    return { t: this.langs.en }
   },
   template: () => html`<slot></slot>`,
   setLang(lang) {
@@ -30,13 +30,13 @@ ardi({
 ardi({
   tag: 'i18n-consumer',
   template() {
-    const { i18n } = this.context('i18n')
+    const { t } = this.context('i18n')
     return html`
       <nav>
-        <a>${i18n.home}</a>
-        <a>${i18n.about}</a>
+        <a>${t.home}</a>
+        <a>${t.about}</a>
         <span></span>
-        <a>${i18n.contact}</a>
+        <a>${t.contact}</a>
       </nav>
     `
   },
@@ -56,11 +56,11 @@ ardi({
 ardi({
   tag: 'i18n-changer',
   template() {
-    const t = this.context('i18n')
-    const { i18n, langs } = t
+    const i18n = this.context('i18n')
+    const { t, langs } = i18n
     return html`
-      <p style="margin-top: 0;">${i18n.changeLanguage}:</p>
-      <select @change=${(e) => t.setLang(e.target.value)}>
+      <p style="margin-top: 0;">${t.changeLanguage}:</p>
+      <select @change=${(e) => i18n.setLang(e.target.value)}>
         ${Object.keys(langs).map(
           (lang) => html`<option value=${lang}>${langs[lang].label}</option>`
         )}
