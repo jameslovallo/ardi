@@ -16,10 +16,24 @@ ardi({
     `
   },
   css: /* css */ `
-    main {
+    app-nav, main {
       margin: 0 auto;
       max-width: 85ch;
+    }
+    main {
       padding: 0 1rem 4rem;
+    }
+    @media (min-width: 1200px) {
+      :host(.home) main {
+        left: calc(var(--sidebar-width) / 2);
+        position: relative;
+      }
+    }
+    @media (min-width: 1600px) {
+      :host(.home) main {
+        left: unset;
+        position: static;
+      }
     }
   `,
 })

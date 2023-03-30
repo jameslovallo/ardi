@@ -5,7 +5,7 @@ ardi({
   template() {
     return html`<slot></slot>`
   },
-  css: `
+  css: /* css */ `
 		:host {
 			display: grid;
 			gap: 1rem;
@@ -15,6 +15,10 @@ ardi({
 		@media (min-width: 600px) {
 			:host {
 				grid-template-columns: repeat(3, 1fr);
+			}
+		}
+		@media (min-width: 900px) {
+			:host {
 				margin: 1rem -1rem;
 			}
 		}

@@ -14,12 +14,16 @@ ardi({
       background: var(--surface);
       display: block;
       left: 0;
-      margin-left: var(--sidebar-width);
       padding: 1rem 1rem;
       position: sticky;
       text-align: center;
       top: 100vh;
       z-index: 999;
+    }
+    @media (min-width: 1200px) and (max-width: 1600px) {
+      :host {
+        margin-left: var(--sidebar-width);
+      }
     }
   `,
 })

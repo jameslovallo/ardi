@@ -35,8 +35,10 @@ ardi({
     this.appLayout.innerHTML = doc
     // handle page title
     this.handleTitle(doc)
+    const pageClass = path.split('/')[1] || 'home'
+    this.appLayout.classList = [pageClass]
     // handle scripts
-    this.querySelectorAll('script').forEach((tag) => {
+    this.appLayout.querySelectorAll('script').forEach((tag) => {
       const newTag = document.createElement('script')
       newTag.src = tag.src
       newTag.type = tag.type
