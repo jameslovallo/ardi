@@ -56,7 +56,7 @@ ardi({
 			border-top: none;
 			display: block;
 			overflow: auto;
-			padding: 0 1rem 1rem;
+			padding: 0 .5rem .5rem;
 		}
 	`,
 })

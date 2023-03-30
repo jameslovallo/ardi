@@ -11,14 +11,18 @@ ardi({
   },
   langs: {
     en: {
-      changeLanguage: 'Change the Language',
-      demoText: 'This is a demo of the Context API',
       label: 'English',
+      home: 'Home',
+      about: 'About Us',
+      contact: 'Contact Us',
+      changeLanguage: 'Change the Language',
     },
     es: {
-      changeLanguage: 'Cambia el Idioma',
-      demoText: 'Esta es una demostración de la API de Contexto',
       label: 'Español',
+      home: 'Inicio',
+      about: 'Acerca de Nosotros',
+      contact: 'Contáctanos',
+      changeLanguage: 'Cambia el Idioma',
     },
   },
 })
@@ -27,18 +31,36 @@ ardi({
   tag: 'i18n-consumer',
   template() {
     const { i18n } = this.context('i18n')
-    return html`<p style="margin: 0;">${i18n.demoText}.</p>`
+    return html`
+      <nav>
+        <a>${i18n.home}</a>
+        <a>${i18n.about}</a>
+        <span></span>
+        <a>${i18n.contact}</a>
+      </nav>
+    `
   },
+  css: /* css */ `
+    nav {
+      background: var(--surface-heavy);
+      display: flex;
+      gap: 1rem;
+      padding: .5rem 1rem;
+    }
+    span {
+      flex-grow: 1;
+    }
+  `,
 })
 
 ardi({
   tag: 'i18n-changer',
   template() {
-    const provider = this.context('i18n')
-    const { i18n, langs } = provider
+    const t = this.context('i18n')
+    const { i18n, langs } = t
     return html`
       <p style="margin-top: 0;">${i18n.changeLanguage}:</p>
-      <select @change=${(e) => provider.setLang(e.target.value)}>
+      <select @change=${(e) => t.setLang(e.target.value)}>
         ${Object.keys(langs).map(
           (lang) => html`<option value=${lang}>${langs[lang].label}</option>`
         )}
