@@ -1,32 +1,34 @@
-<body is="app-layout">
-  <h1>Typer</h1>
-  <p>
-    This component demonstrates complex prop handlers and Javascript expressions
-    in CSS.
-  </p>
+<body>
+  <app-layout>
+    <h1>Typer</h1>
+    <p>
+      This component demonstrates complex prop handlers and Javascript
+      expressions in CSS.
+    </p>
 
-  <h2>Playground</h2>
-  <element-story tag="ardi-typer">
-    <script type="application/json">
-      {
-        "base": { "type": "text" },
-        "words": { "type": "text" },
-        "speed": { "type": "number" },
-        "pause": { "type": "number" },
-        "cursor": { "type": "boolean" }
-      }
-    </script>
-    <ardi-typer
-      base="Ardi was built to:"
-      pause="5000"
-      speed="150"
-      words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere"
-      cursor="true"
-    ></ardi-typer>
-  </element-story>
+    <h2>Playground</h2>
+    <element-story tag="ardi-typer">
+      <script type="application/json">
+        {
+          "base": { "type": "text" },
+          "words": { "type": "text" },
+          "speed": { "type": "number" },
+          "pause": { "type": "number" },
+          "cursor": { "type": "boolean" }
+        }
+      </script>
+      <ardi-typer
+        base="Ardi was built to:"
+        pause="5000"
+        speed="150"
+        words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere"
+        cursor="true"
+      ></ardi-typer>
+    </element-story>
 
-  <h2>Javascript</h2>
-  <ardi-md src="/demos/typer/typer.js" theme="/@/css/prism.css"></ardi-md>
-  <script src="/demos/typer/typer.js" type="module"></script>
+    <h2>Javascript</h2>
+    <ardi-md src="/demos/typer/typer.js" theme="/@/css/prism.css"></ardi-md>
+    <script src="/demos/typer/typer.js" type="module"></script>
+  </app-layout>
   <script src="/@/main.js" type="module"></script>
 </body>

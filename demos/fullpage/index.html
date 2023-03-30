@@ -1,60 +1,62 @@
-<body is="app-layout">
-  <style>
-    :root {
-      --border: none;
-      --surface: transparent;
-      --surface-heavy: transparent;
-    }
-    body {
-      color: white;
-    }
-    section {
-      background-position: center center;
-      background-size: cover;
-    }
-  </style>
+<body>
+  <app-layout>
+    <style>
+      :root {
+        --border: none;
+        --surface: transparent;
+        --surface-heavy: transparent;
+      }
+      body {
+        color: white;
+      }
+      section {
+        background-position: center center;
+        background-size: cover;
+      }
+    </style>
 
-  <h1 hidden>FullPage</h1>
+    <h1 hidden>FullPage</h1>
 
-  <ardi-fullpage alignment="center">
-    <section
-      style="
-        background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
-          url(https://picsum.photos/id/204/1600/1200);
-      "
-    >
-      <div>
-        <h2>&lt;ardi-fullpage&gt;</h2>
-        <p>Scroll up and down to try it out.</p>
-      </div>
-    </section>
-    <section
-      style="
-        background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
-          url(https://picsum.photos/id/551/1600/1200);
-      "
-    >
-      <div>
-        <h2>Huzzah!</h2>
-        <p>Fun fact, this component is only, like, 3kb</p>
-      </div>
-    </section>
-    <section
-      style="
-        background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
-          url(https://picsum.photos/id/693/1600/1200);
-      "
-    >
-      <div>
-        <h2>Source</h2>
-        <p>
-          You can see the full source
-          <a href="/demos/fullpage/fullpage.js">here</a>.
-        </p>
-      </div>
-    </section>
-  </ardi-fullpage>
+    <ardi-fullpage alignment="center">
+      <section
+        style="
+          background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
+            url(https://picsum.photos/id/204/1600/1200);
+        "
+      >
+        <div>
+          <h2>&lt;ardi-fullpage&gt;</h2>
+          <p>Scroll up and down to try it out.</p>
+        </div>
+      </section>
+      <section
+        style="
+          background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
+            url(https://picsum.photos/id/551/1600/1200);
+        "
+      >
+        <div>
+          <h2>Huzzah!</h2>
+          <p>Fun fact, this component is only, like, 3kb</p>
+        </div>
+      </section>
+      <section
+        style="
+          background-image: radial-gradient(rgba(0, 0, 0, 0.25), black),
+            url(https://picsum.photos/id/693/1600/1200);
+        "
+      >
+        <div>
+          <h2>Source</h2>
+          <p>
+            You can see the full source
+            <a href="/demos/fullpage/fullpage.js">here</a>.
+          </p>
+        </div>
+      </section>
+    </ardi-fullpage>
 
-  <script src="/demos/fullpage/fullpage.js" type="module"></script>
+    <script src="/demos/fullpage/fullpage.js" type="module"></script>
+  </app-layout>
   <script src="/@/main.js" type="module"></script>
 </body>

@@ -32,18 +32,16 @@ ardi({
       }
     } else sessionStorage.removeItem('spa-reload')
     // handle markdown
-    document.body.innerHTML = doc
+    this.appLayout.innerHTML = doc
     // handle page title
     this.handleTitle(doc)
     // handle scripts
-    document.querySelectorAll('script').forEach((tag) => {
-      if (tag.src !== '/@/main.js') {
-        const newTag = document.createElement('script')
-        newTag.src = tag.src
-        newTag.type = tag.type
-        newTag.textContent = tag.textContent
-        tag.replaceWith(newTag)
-      }
+    this.querySelectorAll('script').forEach((tag) => {
+      const newTag = document.createElement('script')
+      newTag.src = tag.src
+      newTag.type = tag.type
+      newTag.textContent = tag.textContent
+      tag.replaceWith(newTag)
     })
   },
   handleTitle(doc) {
@@ -71,10 +69,11 @@ ardi({
   },
   ready() {
     if (!window.ramidusInitialized) {
-      window.appSlot = this
-      this.setPage(document.body.innerHTML, location.pathname, true)
+      window.appRoot = this
+      this.appLayout = document.querySelector('app-layout')
+      this.setPage(this.appLayout.innerHTML, location.pathname, true)
       // history stuff
-      this.pushHistory(location.pathname, document.body.innerHTML)
+      this.pushHistory(location.pathname, this.appLayout.innerHTML)
       addEventListener('popstate', (e) => {
         if (e.state.path) {
           this.setPage(sessionStorage.getItem(e.state.path), e.state.path)

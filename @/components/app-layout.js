@@ -2,7 +2,6 @@ import ardi, { html } from '/@/assets/ardi-min.js'
 
 ardi({
   tag: 'app-layout',
-  extends: [HTMLBodyElement, 'body'],
   template() {
     return html`
       <app-nav></app-nav>

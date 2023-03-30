@@ -30,6 +30,7 @@ ardi({
   },
   css: /* css */ `
     nav {
+      align-items: center;
       display: flex;
       gap: 1rem;
       padding: 0 1rem;
@@ -51,10 +52,7 @@ ardi({
       width: 3rem;
     }
     spa-link::part(link) {
-      align-items: center;
       color: inherit;
-      display: flex;
-      height: 100%;
       text-decoration: none;
     }
     spa-link::part(link):hover {
