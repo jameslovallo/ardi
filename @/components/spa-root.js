@@ -31,7 +31,7 @@ ardi({
         return
       }
     } else sessionStorage.removeItem('spa-reload')
-    // handle markdown
+    // set page content
     this.appLayout.innerHTML = doc
     // handle page title
     this.handleTitle(doc)
