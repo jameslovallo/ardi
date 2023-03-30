@@ -7,7 +7,7 @@ ardi({
   },
   template: () => html`<slot></slot>`,
   setLang(lang) {
-    this.i18n = this.langs[lang]
+    this.t = this.langs[lang]
   },
   langs: {
     en: {

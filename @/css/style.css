@@ -60,7 +60,7 @@ h3 {
   margin-top: 2em;
 }
 
-.docs a {
+a {
   color: inherit;
   text-decoration-color: var(--theme-color);
 }

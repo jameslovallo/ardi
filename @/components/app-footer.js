@@ -5,7 +5,7 @@ ardi({
   template() {
     return html`
       <footer>
-        <p>Made with <a href="https://ardi.netlify.app">Ardi</a></p>
+        <p>This SPA was made with Ardi components.</p>
       </footer>
     `
   },
