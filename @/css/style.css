@@ -20,7 +20,7 @@ body {
 
 @media (min-width: 1200px) {
   body:has(app-sidebar) {
-    --sidebar-width: 200px;
+    --sidebar-width: 225px;
   }
 }
 
