@@ -20,10 +20,5 @@ ardi({
       top: 100vh;
       z-index: 999;
     }
-    @media (min-width: 1200px) and (max-width: 1600px) {
-      :host {
-        margin-left: var(--sidebar-width);
-      }
-    }
   `,
 })
