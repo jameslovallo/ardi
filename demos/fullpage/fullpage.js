@@ -59,7 +59,7 @@ ardi({
       const direction = e.deltaY > 0 ? 1 : -1
       if (!this.scrolling) {
         this.scrolling = true
-        setTimeout(() => (this.scrolling = false), 2000)
+        setTimeout(() => (this.scrolling = false), 1500)
         this.children[this.active + direction].scrollIntoView()
       }
     })
