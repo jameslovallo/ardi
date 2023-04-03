@@ -37,7 +37,7 @@ ardi({
   },
   css: /* css */ `
 		:host {
-			background: var(--surface);
+			background: var(--surface-heavy);
 			box-sizing: border-box;
 			display: none;
 			height: 100vh;

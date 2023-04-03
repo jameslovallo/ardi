@@ -11,7 +11,7 @@ ardi({
   },
   css: /* css */ `
     :host {
-      background: var(--surface);
+      background: var(--surface-heavy);
       display: block;
       left: 0;
       padding: 1rem 1rem;
