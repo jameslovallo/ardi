@@ -20,7 +20,7 @@ ardi({
   css: /* css */ `
 		:host {
 			display: flex;
-			border: 1px solid var(--border);
+			background: var(--surface-heavy);
 			border-radius: 1rem;
 			flex-direction: column;
 			height: 100%;
