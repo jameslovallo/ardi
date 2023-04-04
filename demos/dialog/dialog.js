@@ -82,7 +82,6 @@ ardi({
         min-width: 300px;
         max-width: 90vw;
       }
-      
       :host([modal]) .closed {
         opacity: 0;
         transform: translate3d(0, 25%, 0);
