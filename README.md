@@ -70,7 +70,7 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from this responsive TMDB widget. You can see the full code [here](/demos/tmdb).
+Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from the [TMDB demo component](/demos/tmdb).
 
 <tmdb-trending></tmdb-trending>
 
@@ -142,7 +142,7 @@ ardi({
 
 Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`).
 
-The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code [here](/demos/tmdb).
+The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code on the [TMDB demo page](/demos/tmdb).
 
 ```js
 ardi({
@@ -331,7 +331,7 @@ ardi({
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
 and `next`.
 
-You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods. For examples, you can view the complete code for the TMDB component [here](/demos/tmdb).
+You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods. For examples, you can view the complete code for the [TMDB demo component](/demos/tmdb).
 
 ## Lifecycle
 
