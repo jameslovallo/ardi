@@ -2,7 +2,6 @@ import ardi from '/@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-verses',
-  shadow: false,
   props: { query: [String, 'John 1 1-34'] },
   state: () => ({ html: '' }),
   propChange() {
@@ -20,10 +19,4 @@ ardi({
   template() {
     return this.html
   },
-  css: /* css */ `
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
-    h2, h3 {
-      font-family: Cinzel Decorative
-    }
-  `,
 })
