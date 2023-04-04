@@ -20,10 +20,10 @@ ardi({
   template() {
     return this.html
   },
-  css: `
-		@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
-		h2, h3 {
-			font-family: Cinzel Decorative
-		}
-	`,
+  css: /* css */ `
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative&display=swap');
+    h2, h3 {
+      font-family: Cinzel Decorative
+    }
+  `,
 })
