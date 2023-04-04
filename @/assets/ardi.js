@@ -1,4 +1,4 @@
-import { html, render as uhtml, svg } from 'uhtml'
+import { html, svg, render as uhtml } from 'uhtml'
 export { html, svg }
 
 export default function ardi(options) {
@@ -11,7 +11,7 @@ export default function ardi(options) {
     constructor() {
       super()
       Object.assign(this, options)
-      
+
       if (this.shadow === false) {
         this.root = this
       } else {
@@ -130,20 +130,23 @@ export default function ardi(options) {
     }
 
     render() {
-      // handle css
-      let css
-      if (this.css) css = typeof this.css === 'function' ? this.css() : this.css
-      // handle template
-      const t = this.template()
-      if (typeof t === 'object') {
-        // prettier-ignore
-        uhtml(this.root, html`${t}${html`<style>${css}</style>`}`)
-      } else if (typeof t === 'string') {
-        this.root.innerHTML = `${t}<style>${css}</style>`
+      if (typeof this.template === 'function') {
+        // handle css
+        let css
+        if (this.css)
+          css = typeof this.css === 'function' ? this.css() : this.css
+        // handle template
+        const t = this.template()
+        if (typeof t === 'object') {
+          // prettier-ignore
+          uhtml(this.root, html`${t}${html`<style>${css}</style>`}`)
+        } else if (typeof t === 'string') {
+          this.root.innerHTML = `${t}<style>${css}</style>`
+        }
+        this.root.querySelectorAll('[ref]').forEach((ref) => {
+          this.refs[ref.getAttribute('ref')] = ref
+        })
       }
-      this.root.querySelectorAll('[ref]').forEach((ref) => {
-        this.refs[ref.getAttribute('ref')] = ref
-      })
       if (this.updated) this.updated()
     }
 
