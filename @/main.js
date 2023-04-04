@@ -8,7 +8,7 @@ const components = [
   'componentcard',
   'grid',
   'label',
-  'md',
+  'mark-down',
   'spa-link',
   'spa-root',
   'story',

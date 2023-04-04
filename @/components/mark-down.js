@@ -9,7 +9,7 @@ ${code}
 `
 
 ardi({
-  tag: 'ardi-md',
+  tag: 'mark-down',
   shadow: false,
   props: {
     src: [String, '/README.md'],
