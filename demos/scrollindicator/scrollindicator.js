@@ -37,13 +37,12 @@ ardi({
     `
   },
   setScrollPercent() {
-    const numerator =
-      this.parentElement.scrollTop + this.parentElement.offsetHeight
-    const denominator = this.parentElement.scrollHeight
+    const numerator = this.parentElement.scrollTop
+    const denominator =
+      this.parentElement.scrollHeight - this.parentElement.offsetHeight
     this.scrollPercent = (numerator / denominator) * 100 + '%'
   },
   ready() {
-    this.setScrollPercent()
     this.parentElement.addEventListener('resize', () => this.setScrollPercent())
     this.parentElement.addEventListener('scroll', () => this.setScrollPercent())
   },
