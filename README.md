@@ -12,7 +12,7 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 
 1. Simple object-oriented API
 2. Reactive props and state
-3. Declarative templating with [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
+3. Templates in [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
 4. Context API
 5. Helpful lifecycle callbacks
 6. No building, compiling, or tooling
@@ -106,7 +106,7 @@ ardi({
 
 ### Props
 
-Properties allow you to configure your component. To create a property, add a key under `props` whose value is an array containing a function and (optionally) a default value. The function takes the string value from the prop's corresponding attribute and transforms it, i.e. from a string `'4'` to a number `4`. The function can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is changed internally or via its corresponding attribute, that change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.type`.
+Props allow you to configure your component using the element's corresponding attributes. To create a property, add a key under `props` whose value is an array containing a handler function and (optionally) a default value. The handler takes the string value from the prop's attribute and transforms it, i.e. from a string `'4'` to a number `4`. The handler can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is set internally or via its attribute, the change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.type`.
 
 For the TMDB component, we'll add two props:
 
@@ -124,7 +124,7 @@ ardi({
 
 ### State
 
-Anything declared in state is reactive, which means changes will trigger a render. Keys from state are accessible from `this`, i.e. `this.results`.
+State is a reactive container for data, which means any change will trigger a render. Values declared in state are accessible from `this`, i.e. `this.results`.
 
 The TMDB component will use an array called 'results' to store movies or tv shows.
 
@@ -136,7 +136,7 @@ ardi({
 
 ### Template
 
-[μhtml](https://www.npmjs.com/package/uhtml) is the default template library, and it's just like JSX except you create your templates using a tagged template literal. μhtml is extremely efficient. When the component's state changes, instead of re-rendering the entire component, μhtml makes tiny, surgical DOM updates as-needed.
+[μhtml](https://www.npmjs.com/package/uhtml) is the default template library, and it's just like JSX except you create your templates using a tagged template literal. μhtml is extremely efficient. When the component's state changes, instead of re-rendering an entire element, μhtml makes tiny, surgical DOM updates as-needed.
 
 #### Event Handlers
 
@@ -148,20 +148,18 @@ The TMDB component's toolbar includes 3 examples. The code below is simplified, 
 ardi({
   template() {
     return html`
-      ...
+      <!-- ... -->
       <select
         @change=${(e) => {
           this.type = e.target.value
           this.fetchTrending()
         }}
       >
-        <option value="tv">Trending TV</option>
-        <option value="movie">Trending Movies</option>
-        <option value="all">Trending TV and Movies</option>
+        <!-- options -->
       </select>
       <button @click=${() => this.prev()}>❮</button>
       <button @click=${() => this.next()}>❯</button>
-      ...
+      <!-- ... -->
     `
   },
 })
@@ -178,14 +176,14 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ardi({
   template() {
     return html`
-      ... 
+      <!-- ... -->
+      <!-- map results -->
       ${this.results.map((result) => {
-        const url = 'https://www.themoviedb.org/tv/' + result.id
-        const backdrop = bgRoot + result.backdrop_path
-        const poster = posterRoot + result.poster_path
+        // ...
         return html`
           <li>
             <a part="result" href=${url}>
+              <!-- conditionally render images -->
               ${result.backdrop_path
                 ? html`<img part="backdrop" src=${backdrop} />`
                 : ''}
@@ -200,7 +198,7 @@ ardi({
           </li>
         `
       })}
-      ...
+      <!-- ... -->
     `
   },
 })
@@ -216,14 +214,14 @@ The TMDB component will have two named slots to allow the previous and next butt
 ardi({
   template() {
     return html`
-      ...
+      <!-- ... -->
       <button part="prev" @click=${() => this.prev()}>
         <slot name="prev">❮</slot>
       </button>
       <button part="next" @click=${() => this.next()}>
         <slot name="next">❯</slot>
       </button>
-      ...
+      <!-- ... -->
     `
   },
 })
@@ -239,11 +237,11 @@ In the TMDB component, the `list` ref is used by the `prev` and `next` methods t
 ardi({
   template() {
     return html`
-      ...
+      <!-- ... -->
       <ul ref="list">
-        ...
+        <!-- results -->
       </ul>
-      ...
+      <!-- ... -->
     `
   },
   prev() {
@@ -328,10 +326,9 @@ ardi({
 
 ### Methods
 
-You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev`
-and `next`.
+You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev` and `next`.
 
-You can add any number of methods in your component and access them via `this.methodName`. Custom methods can be used in props, in your template, inside of other methods. For examples, you can view the complete code for the [TMDB demo component](/demos/tmdb).
+You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the [TMDB demo component](/demos/tmdb).
 
 ## Lifecycle
 
@@ -341,7 +338,7 @@ Ardi has several lifecycle callbacks, providing a convenient way to fetch data o
 
 This method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
-A great example of this is in the demo [forecast component](/demos/forecast), where a resize observer is set up to mimic a container query and apply styles based on the component's rendered width, regardless of the viewport width. (Container queries can't come soon enough.)
+A great example of this is in the demo [forecast component](/demos/forecast), where a resize observer is created to apply styles based on the component's rendered width, regardless of the viewport width.
 
 ```js
 ardi({
@@ -358,11 +355,11 @@ ardi({
 
 ### updated()
 
-This method runs each time the component renders an update. This was added to support event listeners when using Handlebars, but you can use this method for any purpose.
+This method runs each time the component renders an update. This was added to support event listeners when writing templates with Handlebars or untagged template literals, but you can use this method for any purpose.
 
 ### propChange()
 
-Props are reactive, meaning the template is automatically updated when a prop's value changes, but you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and react to prop updates.
+Although props are reactive, meaning the template is automatically updated when a prop's value changes, you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and respond to prop updates.
 
 Here is an example from the forecast demo.
 
@@ -384,7 +381,7 @@ ardi({
 
 This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
-In the TMDB component, the intersect method is used to lazy-load data once the component is in the viewport. This trick can save a lot of money if you use paid APIs!
+In the TMDB component, the intersect method is used to lazy-load data once the component is scrolled into view. This trick can save a lot of money if you use paid APIs!
 
 ```js
 ardi({
