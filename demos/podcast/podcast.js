@@ -170,7 +170,7 @@ ardi({
       font-weight:bold;
     }
     [part=link] {
-      display: inline-block;
+      display: block;
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
