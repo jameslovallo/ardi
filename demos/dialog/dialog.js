@@ -17,6 +17,7 @@ ardi({
         }}
       ></slot>
       <dialog
+        part="dialog"
         ref="dialog"
         class=${this.open ? 'open' : 'closed'}
         @click=${(e) => {
