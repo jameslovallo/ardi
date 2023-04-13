@@ -1,0 +1,36 @@
+<body>
+  <app-layout>
+    <style>
+      ardi-video {
+        --button: darkslateblue;
+        --on-button: white;
+        aspect-ratio: 16/9;
+      }
+    </style>
+    <h1>Video Player</h1>
+    <p>
+      This component demonstrates state management and how to use various event
+      handlers in the template.
+    </p>
+
+    <h2>Playground</h2>
+    <element-story tag="ardi-video">
+      <script type="application/json">
+        {
+          "src": { "type": "text" },
+          "poster": { "type": "text" }
+        }
+      </script>
+      <ardi-video
+        src="https://joy1.videvo.net/videvo_files/video/free/2013-08/large_watermarked/hd0992_preview.mp4"
+        poster=""
+      >
+      </ardi-video>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/video/video.js" theme="/@/css/prism.css"></mark-down>
+    <script src="/demos/video/video.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
