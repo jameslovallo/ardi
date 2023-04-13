@@ -2,7 +2,12 @@ import ardi, { html } from 'https://unpkg.com/ardi'
 
 ardi({
   tag: 'ardi-video',
-  props: { src: [String], poster: [String, null] },
+  props: {
+    pauselabel: [String, 'Pause'],
+    playlabel: [String, 'Play'],
+    poster: [String, null],
+    src: [String],
+  },
   state: () => ({ playing: false, progress: 0 }),
   playPause() {
     this.playing = !this.playing
@@ -11,6 +16,9 @@ ardi({
   template() {
     const pause = 'M14,19H18V5H14M6,19H10V5H6V19Z'
     const play = 'M8,5.14V19.14L19,12.14L8,5.14Z'
+    const buttonLabel = `${
+      this.playing ? this.pauselabel : this.playlabel
+    } - ${Math.round(this.progress)}%`
     return html`
       <video
         ref="video"
@@ -30,8 +38,8 @@ ardi({
       ></video>
       <button
         part="button"
-        aria-label=${this.playing ? 'pause' : 'play'}
-        title=${this.playing ? 'pause' : 'play'}
+        aria-label=${buttonLabel}
+        title=${buttonLabel}
         @click=${() => this.playPause()}
       >
         <svg part="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
