@@ -1,0 +1,34 @@
+<body>
+  <app-layout>
+    <style>
+      ardi-switch {
+        --switch-bg-checked: var(--theme-color);
+        --switch-border-color: var(--border);
+      }
+    </style>
+
+    <h1>Switch</h1>
+    <p>
+      This component demonstrates how to synchronize a child element's state
+      with the host component's, which is helpful when event listeners need to
+      be applied to the host component. This component also demonstrates the
+      effective use of CSS variables to apply styling to the Shadow DOM.
+    </p>
+
+    <h2>Playground</h2>
+    <element-story tag="ardi-switch">
+      <script type="application/json">
+        { "checked": { "type": "boolean" } }
+      </script>
+      <ardi-switch checked="false"></ardi-switch>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down
+      src="/demos/switch/switch.js"
+      theme="/@/css/prism.css"
+    ></mark-down>
+    <script src="/demos/switch/switch.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
