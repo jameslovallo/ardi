@@ -1,4 +1,5 @@
 import ardi, { html } from '/@/assets/ardi-min.js'
+import headJSON from '/@/head.js'
 
 ardi({
   tag: 'spa-root',
@@ -6,15 +7,11 @@ ardi({
     return html`<slot></slot>`
   },
   setHead() {
-    fetch('/@/head.json')
-      .then((res) => res.json())
-      .then((data) => {
-        Object.keys(data).forEach((tagType) => {
-          data[tagType].forEach((el) => {
-            this.createTag(document.head, tagType, el)
-          })
-        })
+    Object.keys(headJSON).forEach((tagType) => {
+      headJSON[tagType].forEach((el) => {
+        this.createTag(document.head, tagType, el)
       })
+    })
   },
   async setPage(doc, path, init) {
     // check if page is prebuilt
