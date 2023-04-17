@@ -1,14 +1,10 @@
-import { exec } from 'child_process'
 import fs from 'fs'
 import path from 'path'
-import headJSON from './head.json' assert { type: 'json' }
+import headJSON from './head.js'
 
 fs.rmSync('./dist', { recursive: true, force: true })
 
-const date = new Date().toLocaleDateString()
-
 const doc = (head, body) => `
-<!-- Built ${date} -->
 <!DOCTYPE html>
 <html lang="en-us">
 ${head.trim()}
@@ -16,6 +12,7 @@ ${body.trim()}
 </html>`
 
 const head = `
+<!-- Built ${new Date().toLocaleDateString()} -->
 <head>
   <meta name="prebuilt" content="true">
   ${Object.keys(headJSON)
@@ -62,28 +59,47 @@ function buildHTML(startPath, filter) {
   }
 }
 
-const excludes = [
-  '.git',
-  '.gitignore',
-  '@/build.js',
-  'bin.js',
-  'node_modules',
-  'package-lock.json',
-  'package.json',
-  '.netlify',
-]
-  .map((e) => `--exclude "${e}"`)
-  .join(' ')
+fs.mkdirSync('./dist')
 
-exec(`rsync -a ${excludes} ./ ./dist/`, (error, stdout, stderr) => {
-  if (error) {
-    console.log(`error: ${error.message}`)
-    return
-  }
-  if (stderr) {
-    console.log(`stderr: ${stderr}`)
-    return
-  }
-  console.log(`stdout: ${stdout}`)
-  if (!error && !stderr) buildHTML('./dist/', 'index.html')
-})
+var copy = function (srcDir, dstDir) {
+  var results = []
+  var list = fs.readdirSync(srcDir)
+  var src, dst
+  list.forEach(function (file) {
+    src = srcDir + '/' + file
+    dst = dstDir + '/' + file
+    var stat = fs.statSync(src)
+    const exclusions = [
+      '.git',
+      '.gitignore',
+      'bin.js',
+      'dist',
+      'node_modules',
+      'package-lock.json',
+      'package.json',
+    ]
+    if (!exclusions.includes(file)) {
+      if (stat && stat.isDirectory()) {
+        try {
+          console.log('creating dir: ' + dst)
+          fs.mkdirSync(dst)
+        } catch (e) {
+          console.log('directory already exists: ' + dst)
+        }
+        results = results.concat(copy(src, dst))
+      } else {
+        try {
+          console.log('copying file: ' + dst)
+          fs.writeFileSync(dst, fs.readFileSync(src))
+        } catch (e) {
+          console.log("could't copy file: " + dst)
+        }
+        results.push(src)
+      }
+    }
+  })
+  return results
+}
+
+copy('./', './dist')
+buildHTML('./dist/', 'index.html')
