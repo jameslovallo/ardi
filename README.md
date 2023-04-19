@@ -407,7 +407,7 @@ ardi({
 
 <!--prettier-ignore-->
 ```js
-import ardi, { html } from ../../@/assets/ardi-min.js
+import ardi, { html } from '//unpkg.com/ardi'
 
 ardi({
   tag: 'uhtml-counter',
@@ -425,7 +425,7 @@ ardi({
 
 <!--prettier-ignore-->
 ```js
-import ardi, { html } from ../../@/assets/ardi-min.js
+import ardi, { html } from '//unpkg.com/ardi'
 import React from '//cdn.skypack.dev/jsx-dom'
 
 ardi({
@@ -444,7 +444,7 @@ ardi({
 ### Handlebars
 
 ```js
-import ardi, { html } from ../../@/assets/ardi-min.js
+import ardi, { html } from '//unpkg.com/ardi'
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
 
 ardi({
