@@ -50,7 +50,7 @@ ardi({
       })}
     `
   },
-  css: `
+  css: /* css */ `
 		:host {
 			display: flex;
 			flex-wrap: wrap;
@@ -69,6 +69,9 @@ ardi({
 			text-decoration: none;
 			text-transform: uppercase;
 		}
+    spa-link:hover::part(link) {
+      background: var(--theme-weak);
+    }
 		svg {
 			fill: var(--theme-color);
 			height: 1.25rem;
