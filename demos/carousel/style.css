@@ -1,0 +1,91 @@
+ardi-carousel {
+  --button-background: black;
+}
+@media (min-width: 600px) {
+  ardi-carousel {
+    --slide-width: 50%;
+  }
+}
+@media (min-width: 900px) {
+  ardi-carousel {
+    --slide-width: 33.3333%;
+  }
+}
+@media (min-width: 1200px) {
+  ardi-carousel {
+    margin: 0 -4rem;
+  }
+}
+ardi-carousel .slide {
+  align-items: center;
+  aspect-ratio: 8/5;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ardi-carousel .slide h3 {
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 0 0 1rem;
+  text-shadow: 1px 1px 2px black;
+}
+ardi-carousel .slide a {
+  background: darkslateblue;
+  border-radius: 1rem;
+  color: white;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  padding: 0.1em 1em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+ardi-carousel.custom-indicators {
+  --button-background: black;
+  --indicator-color: white;
+  --indicator-gap: 0;
+  --indicator-font-size: 1.5rem;
+  --indicator-size: 1.5rem;
+}
+ardi-carousel.custom-controls {
+  background: black;
+  border: 1px solid var(--border);
+  --button-background: transparent;
+  --button-color: white;
+  --button-font-size: 1.5rem;
+  --button-size: 3rem;
+  --button-position: static;
+  --indicator-color: #aaa;
+  --indicator-gap: 0.75rem;
+  --indicator-position: static;
+  --indicator-size: auto;
+  --indicator-text-shadow: none;
+}
+ardi-carousel.custom-control-order {
+  background: black;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  overflow: hidden;
+  --button-background: transparent;
+  --button-color: white;
+  --button-position: static;
+  --button-size: 3rem;
+  --indicator-color: #aaa;
+  --indicator-gap: 1rem;
+  --indicator-position: static;
+  --indicator-size: auto;
+  --indicator-text-shadow: none;
+}
+ardi-carousel.custom-control-order::part(prev) {
+  order: 0;
+}
+ardi-carousel.custom-control-order::part(next) {
+  order: 1;
+}
+ardi-carousel.custom-control-order::part(indicators) {
+  justify-content: flex-end;
+  order: 2;
+  padding-right: 1rem;
+}
