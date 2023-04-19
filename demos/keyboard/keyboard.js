@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '/@/assets/ardi-min.js'
+import ardi, { html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-keyboard',

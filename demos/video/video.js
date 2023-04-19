@@ -1,4 +1,4 @@
-import ardi, { html } from 'https://unpkg.com/ardi'
+import ardi, { html } from 'https:../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-video',

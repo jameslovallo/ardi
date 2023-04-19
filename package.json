@@ -3,8 +3,8 @@
   "version": "0.1.34",
   "description": "Welcome to the Weightless Web. Ardi is a tiny (but fierce) web component framework, weighing just 4kb compressed.",
   "type": "module",
-  "main": "/@/assets/ardi-min.js",
-  "module": "/@/assets/ardi-min.js",
+  "main": "../../@/assets/ardi-min.js",
+  "module": "../../@/assets/ardi-min.js",
   "keywords": [
     "ardi",
     "web component",
@@ -28,7 +28,7 @@
     "url": "https://github.com/jameslovallo/ardi/issues"
   },
   "scripts": {
-    "ardi:build": "esbuild ./@/assets/ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=./@/assets/ardi-min.js ",
+    "ardi:build": "esbuild ./@/assets/ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=.../../@/assets/ardi-min.js ",
     "ardi:update": "npm run build && npm version patch && npm publish",
     "build": "node @/build.js",
     "dev": "npx http-server -p 3000 -o",

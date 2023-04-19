@@ -1,4 +1,4 @@
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-youtube',
