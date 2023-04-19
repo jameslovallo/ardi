@@ -33,7 +33,7 @@ ardi({
     }
   },
 
-  propUpdated(prop) {
+  changed(prop) {
     if (
       prop.old &&
       prop.new &&

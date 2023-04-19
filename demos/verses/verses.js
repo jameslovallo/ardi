@@ -4,7 +4,7 @@ ardi({
   tag: 'ardi-verses',
   props: { query: [String, 'John 1 1-34'] },
   state: () => ({ html: '' }),
-  propUpdated() {
+  changed() {
     fetch(
       ['https://api.esv.org', '/v3/passage/html', '/?q=', this.query].join(''),
       {

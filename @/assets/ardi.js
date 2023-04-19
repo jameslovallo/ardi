@@ -49,8 +49,8 @@ export default function ardi(options) {
           },
           set: (v) => {
             this.setAttribute(prop, v)
-            if (typeof this.propUpdated === 'function') {
-              this.propUpdated({ name: prop, old: this[prop], new: v })
+            if (typeof this.changed === 'function') {
+              this.changed({ name: prop, old: this[prop], new: v })
             }
           },
         })
@@ -60,8 +60,8 @@ export default function ardi(options) {
       return props
     }
     attributeChangedCallback(prop, oldVal, newVal) {
-      if (typeof this.propUpdated === 'function') {
-        this.propUpdated({ name: prop, old: oldVal, new: newVal })
+      if (typeof this.changed === 'function') {
+        this.changed({ name: prop, old: oldVal, new: newVal })
       }
       this.dispatchEvent(update)
     }

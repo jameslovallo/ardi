@@ -62,7 +62,7 @@ ardi({ tag: 'my-component' })
 
 ```html
 <script type="module">
-  import ardi, { html } from '../../@/assets/ardi-min.js'
+  import ardi, { html } from '//unpkg.com/ardi'
 
   ardi({ tag: 'my-component' })
 </script>
@@ -361,7 +361,7 @@ This callback runs as soon as the component's template is rendered, allowing you
 
 This method runs each time the component renders an update. This was added to support event listeners when writing templates with Handlebars or untagged template literals, but you can use this method for any purpose.
 
-### propUpdated()
+### changed()
 
 Although props are reactive, meaning the template is automatically updated when a prop's value changes, you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and respond to prop updates.
 
@@ -369,7 +369,7 @@ Here is an example from the forecast demo.
 
 ```js
 ardi({
-  propUpdated(prop) {
+  changed(prop) {
     if (
       prop.old &&
       prop.new &&
