@@ -124,3 +124,24 @@ ardi({
     `
   },
 })
+
+ardi({
+  tag: 'ardi-accordion-group',
+  props: { multiple: [Boolean, false] },
+  template() {
+    return html`<slot></slot>`
+  },
+  ready() {
+    ;[...this.children].forEach((el, i) => {
+      el.classList.add('border-collapse')
+      el.index = i
+    })
+  },
+  closeOpen(i) {
+    if (!this.multiple) {
+      ;[...this.children]
+        .filter((el) => el.index !== i)
+        .forEach((el) => el.collapse())
+    }
+  },
+})
