@@ -4,15 +4,16 @@ const components = [
   'app-layout',
   'app-nav',
   'app-sidebar',
-  'card',
-  'componentcard',
-  'grid',
-  'label',
+  'ardi-label',
+  'component-card',
+  'element-story',
+  'feature-pills',
+  'home-card',
+  'home-grid',
   'mark-down',
   'spa-link',
   'spa-root',
-  'story',
-  'tmdb',
+  'tmdb-trending',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
 

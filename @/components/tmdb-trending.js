@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'tmdb-trending',
@@ -23,11 +23,8 @@ ardi({
       .then((data) => (this.results = data.results))
   },
 
-  intersect(ratio) {
-    if (ratio >= 0.2 && !this.intersected) {
-      this.fetchTrending()
-      this.intersected = true
-    }
+  ready() {
+    this.fetchTrending()
   },
 
   prev() {

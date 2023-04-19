@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { html } from '../assets/ardi-min.js'
 import headJSON from '/@/head.js'
 
 ardi({
