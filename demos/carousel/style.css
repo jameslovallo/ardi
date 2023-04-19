@@ -33,12 +33,20 @@ ardi-carousel .slide h3 {
   text-shadow: 1px 1px 2px black;
 }
 ardi-carousel .slide a {
-  background: darkslateblue;
-  border-radius: 1rem;
-  color: white;
-  font-size: 0.75rem;
+  --length: calc(100% - 8px);
+  background: var(--theme-color);
+  clip-path: polygon(
+    8px 0%,
+    100% 0,
+    100% var(--length),
+    var(--length) 100%,
+    0 100%,
+    0% 8px
+  );
+  color: black;
+  font-size: 0.8rem;
   letter-spacing: 1px;
-  padding: 0.1em 1em;
+  padding: 0.25em 1em;
   text-transform: uppercase;
   text-decoration: none;
 }
