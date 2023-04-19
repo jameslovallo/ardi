@@ -10,12 +10,13 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 
 ## Features
 
-1. Simple object-oriented API
-2. Reactive props and state
-3. Templates in [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
-4. Context API
-5. Helpful lifecycle callbacks
-6. No building, compiling, or tooling
+1. Object-oriented API
+2. Single-file components
+3. Reactive props and state
+4. Easy-to-use Context API
+5. Templates in [µhtml](https://www.npmjs.com/package/uhtml), [JSX](https://www.npmjs.com/package/jsx-dom), or [Handlebars](https://www.npmjs.com/package/handlebars)
+6. Helpful lifecycle callbacks
+7. No building, compiling, or tooling
 
 <home-grid>
 
@@ -369,6 +370,7 @@ Here is an example from the forecast demo.
 
 ```js
 ardi({
+  tag: 'ardi-forecast',
   changed(prop) {
     if (
       prop.old &&
@@ -385,15 +387,14 @@ ardi({
 
 This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
-In the TMDB component, the intersect method is used to lazy-load data once the component is scrolled into view. This trick can save a lot of money if you use paid APIs!
+In the [forecast component](/demos/forecast), the intersect method is used to lazy-load data once the component is scrolled into view. This trick can save a lot of money if you use paid APIs!
 
 ```js
 ardi({
-  tag: 'tmdb-trending',
-  intersected(ratio) {
-    if (ratio >= 0.2 && !this.intersected) {
-      this.fetchTrending()
-      this.intersected = true
+  tag: 'ardi-forecast',
+  intersected(r) {
+    if (!this.gotWeather && r > 0.2) {
+      this.fetchForecast()
     }
   },
 })
