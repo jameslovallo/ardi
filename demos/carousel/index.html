@@ -1,0 +1,424 @@
+<body>
+  <app-layout>
+    <style>
+      ardi-carousel {
+        --button-background: black;
+      }
+      @media (min-width: 600px) {
+        ardi-carousel {
+          --slide-width: 50%;
+        }
+      }
+      @media (min-width: 900px) {
+        ardi-carousel {
+          --slide-width: 33.3333%;
+        }
+      }
+      @media (min-width: 1200px) {
+        ardi-carousel {
+          margin: 0 -4rem;
+        }
+      }
+      ardi-carousel .slide {
+        align-items: center;
+        aspect-ratio: 8/5;
+        background-size: cover;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      ardi-carousel .slide h3 {
+        font-weight: 400;
+        letter-spacing: 1px;
+        line-height: 1;
+        margin: 0 0 1rem;
+        text-shadow: 1px 1px 2px black;
+      }
+      ardi-carousel .slide a {
+        background: darkslateblue;
+        border-radius: 1rem;
+        color: white;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+        padding: 0.1em 1em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+
+      ardi-carousel.custom-indicators {
+        --button-background: black;
+        --indicator-color: white;
+        --indicator-gap: 0;
+        --indicator-font-size: 1.5rem;
+        --indicator-size: 1.5rem;
+      }
+
+      ardi-carousel.custom-controls {
+        background: black;
+        border: 1px solid var(--border);
+        --button-background: transparent;
+        --button-color: white;
+        --button-font-size: 1.5rem;
+        --button-size: 3rem;
+        --button-position: static;
+        --indicator-color: #aaa;
+        --indicator-gap: 0.75rem;
+        --indicator-position: static;
+        --indicator-size: auto;
+        --indicator-text-shadow: none;
+      }
+
+      ardi-carousel.custom-control-order {
+        background: black;
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        overflow: hidden;
+        --button-background: transparent;
+        --button-color: white;
+        --button-position: static;
+        --button-size: 3rem;
+        --indicator-color: #aaa;
+        --indicator-gap: 1rem;
+        --indicator-position: static;
+        --indicator-size: auto;
+        --indicator-text-shadow: none;
+      }
+      ardi-carousel.custom-control-order::part(prev) {
+        order: 0;
+      }
+      ardi-carousel.custom-control-order::part(next) {
+        order: 1;
+      }
+      ardi-carousel.custom-control-order::part(indicators) {
+        justify-content: flex-end;
+        order: 2;
+        padding-right: 1rem;
+      }
+    </style>
+
+    <h1>Carousel</h1>
+    <p>
+      This component demonstrates how to use CSS variables to customize
+      element's in a custom element's Shadow DOM.
+    </p>
+
+    <h2>Default Layout</h2>
+
+    <ardi-carousel>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/1/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/2/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/3/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/4/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/5/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+    </ardi-carousel>
+
+    <h2>Custom Indicators</h2>
+
+    <ardi-carousel class="custom-indicators" indicator="○" activeindicator="●">
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/6/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/7/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/8/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/9/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/10/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+    </ardi-carousel>
+
+    <h2>Custom Control Bar</h2>
+
+    <ardi-carousel class="custom-controls">
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/11/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/12/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/13/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/14/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/15/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <svg slot="prev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M7,12L12,7V10H16V14H12V17L7,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z"
+        />
+      </svg>
+      <svg slot="next" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M17,12L12,17V14H8V10H12V7L17,12M21,16.5C21,16.88 20.79,17.21 20.47,17.38L12.57,21.82C12.41,21.94 12.21,22 12,22C11.79,22 11.59,21.94 11.43,21.82L3.53,17.38C3.21,17.21 3,16.88 3,16.5V7.5C3,7.12 3.21,6.79 3.53,6.62L11.43,2.18C11.59,2.06 11.79,2 12,2C12.21,2 12.41,2.06 12.57,2.18L20.47,6.62C20.79,6.79 21,7.12 21,7.5V16.5M12,4.15L5,8.09V15.91L12,19.85L19,15.91V8.09L12,4.15Z"
+        />
+      </svg>
+    </ardi-carousel>
+
+    <h2>Custom Control Order</h2>
+
+    <ardi-carousel class="custom-control-order">
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/16/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/17/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/18/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/19/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+      <div
+        class="slide"
+        style="
+          background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.5),
+              rgba(0, 0, 0, 0.5)
+            ),
+            url(//picsum.photos/seed/20/400/250);
+        "
+      >
+        <h3>Slide Heading</h3>
+        <a href="https://google.com">Slide Action</a>
+      </div>
+    </ardi-carousel>
+
+    <h2>Javascript</h2>
+    <mark-down
+      src="/demos/carousel/carousel.js"
+      theme="/@/css/prism.css"
+    ></mark-down>
+    <script src="/demos/carousel/carousel.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
