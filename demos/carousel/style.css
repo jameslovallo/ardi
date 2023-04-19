@@ -1,6 +1,3 @@
-ardi-carousel {
-  --button-background: black;
-}
 @media (min-width: 600px) {
   ardi-carousel {
     --slide-width: 50%;
@@ -9,11 +6,6 @@ ardi-carousel {
 @media (min-width: 900px) {
   ardi-carousel {
     --slide-width: 33.3333%;
-  }
-}
-@media (min-width: 1200px) {
-  ardi-carousel {
-    margin: 0 -4rem;
   }
 }
 ardi-carousel .slide {

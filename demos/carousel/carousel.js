@@ -132,7 +132,7 @@ ardi({
     [part=prev],
     [part=next] {
       align-items: center;
-      background: var(--button-background, rgba(0,0,0,0.66));
+      background: var(--button-background, black);
       border-color: var(--button-border-color, transparent);
       border-radius: var(--button-border-radius, 50%);
       border-width: var(--button-border-width, 0);
