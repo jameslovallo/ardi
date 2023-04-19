@@ -23,7 +23,7 @@ ardi({
       this.secondRotation += 6
     }, 1000)
   },
-  ready() {
+  created() {
     this.init()
     document.addEventListener('visibilitychange', () =>
       document.hidden ? clearInterval(this.keepTime) : this.init()

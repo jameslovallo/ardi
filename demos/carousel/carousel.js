@@ -22,7 +22,7 @@ ardi({
       track.scrollLeft += d * children[0].offsetWidth
     }
   },
-  handleIntersect() {
+  handleintersected() {
     ;[...this.children]
       .filter((child) => !child.hasAttribute('slot'))
       .map((slide, i) => {
@@ -45,8 +45,8 @@ ardi({
         ).observe(slide)
       })
   },
-  ready() {
-    this.handleIntersect()
+  created() {
+    this.handleintersected()
   },
   template() {
     const buttons = html`

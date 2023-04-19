@@ -100,7 +100,7 @@ ardi({
     })
     return controls
   },
-  ready() {
+  created() {
     this.el = this.querySelector(this.tag)
     this.args = JSON.parse(this.querySelector('script').innerText)
     const setSize = () => {

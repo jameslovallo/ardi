@@ -66,7 +66,7 @@ ardi({
     )
     if (!sessionStorage[href]) sessionStorage[href] = data
   },
-  ready() {
+  created() {
     if (!window.ramidusInitialized) {
       window.appRoot = this
       this.appLayout = document.querySelector('app-layout')

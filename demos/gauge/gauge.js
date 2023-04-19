@@ -27,7 +27,7 @@ ardi({
     return numbers
   },
 
-  intersect(ratio) {
+  intersected(ratio) {
     if (ratio > 0.3) {
       this.rotation = this.deg(this.value / this.max)
     }

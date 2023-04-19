@@ -21,7 +21,7 @@ export default function ardi(options) {
 
       if (typeof this.props === 'object') this.defineProps()
       if (typeof this.state === 'function') this.defineState()
-      if (typeof this.intersect === 'function') this.handleIntersect()
+      if (typeof this.intersected === 'function') this.handleintersected()
 
       this.refs = {}
     }
@@ -29,7 +29,7 @@ export default function ardi(options) {
     connectedCallback() {
       this.addEventListener('update', this.debounce(this.render))
       this.dispatchEvent(update)
-      if (typeof this.ready === 'function') this.ready()
+      if (typeof this.created === 'function') this.created()
     }
 
     defineProps() {
@@ -49,8 +49,8 @@ export default function ardi(options) {
           },
           set: (v) => {
             this.setAttribute(prop, v)
-            if (typeof this.propChange === 'function') {
-              this.propChange({ name: prop, old: this[prop], new: v })
+            if (typeof this.propUpdated === 'function') {
+              this.propUpdated({ name: prop, old: this[prop], new: v })
             }
           },
         })
@@ -60,8 +60,8 @@ export default function ardi(options) {
       return props
     }
     attributeChangedCallback(prop, oldVal, newVal) {
-      if (typeof this.propChange === 'function') {
-        this.propChange({ name: prop, old: oldVal, new: newVal })
+      if (typeof this.propUpdated === 'function') {
+        this.propUpdated({ name: prop, old: oldVal, new: newVal })
       }
       this.dispatchEvent(update)
     }
@@ -147,15 +147,19 @@ export default function ardi(options) {
           this.refs[ref.getAttribute('ref')] = ref
         })
       }
-      if (this.updated) this.updated()
+      if (this.ready && !this.isReady) {
+        this.ready()
+        this.isReady = true
+      }
+      if (this.rendered) this.rendered()
     }
 
-    handleIntersect() {
+    handleintersected() {
       new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             entry.isIntersecting &&
-              this.intersect(entry.intersectionRatio.toFixed(2))
+              this.intersected(entry.intersectionRatio.toFixed(2))
           })
         },
         {

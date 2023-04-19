@@ -64,7 +64,7 @@ ardi({
     })
   },
 
-  handleIntersect() {
+  handleintersected() {
     ;[...this.children].map((el, i) => {
       new IntersectionObserver(
         (entries) =>
@@ -148,8 +148,8 @@ ardi({
     `
   },
 
-  ready() {
+  created() {
     !this.touch() && this.wheel()
-    this.handleIntersect()
+    this.handleintersected()
   },
 })

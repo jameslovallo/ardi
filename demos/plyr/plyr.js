@@ -18,7 +18,7 @@ ardi({
       return html`<audio src=${this.src}></audio>`
     }
   },
-  updated() {
+  ready() {
     import('https://unpkg.com/plyr@3/dist/plyr.min.mjs').then((m) => {
       m.default.setup(this.root.querySelectorAll('div, video, audio'))
     })

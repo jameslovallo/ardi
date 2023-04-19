@@ -334,16 +334,16 @@ You can add any number of methods in your component and access them via `this`. 
 
 Ardi has several lifecycle callbacks, providing a convenient way to fetch data or apply effects.
 
-### ready()
+### created()
 
-This method runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
+This callback runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
-A great example of this is in the demo [forecast component](/demos/forecast), where a resize observer is created to apply styles based on the component's rendered width, regardless of the viewport width.
+A great example of this is in the demo [forecast component](/demos/forecast), where a resize observer is created to apply styles based on the component's rendered width (regardless of the viewport width).
 
 ```js
 ardi({
   tag: 'ardi-forecast',
-  ready() {
+  created() {
     new ResizeObserver(() =>
       requestAnimationFrame(
         () => (this.small = this.clientWidth <= this.breakpoint)
@@ -353,11 +353,15 @@ ardi({
 })
 ```
 
-### updated()
+### ready()
+
+This callback runs as soon as the component's template is rendered, allowing you to call methods that access refs defined in the template.
+
+### rendered()
 
 This method runs each time the component renders an update. This was added to support event listeners when writing templates with Handlebars or untagged template literals, but you can use this method for any purpose.
 
-### propChange()
+### propUpdated()
 
 Although props are reactive, meaning the template is automatically updated when a prop's value changes, you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and respond to prop updates.
 
@@ -365,7 +369,7 @@ Here is an example from the forecast demo.
 
 ```js
 ardi({
-  propChange(prop) {
+  propUpdated(prop) {
     if (
       prop.old &&
       prop.new &&
@@ -377,7 +381,7 @@ ardi({
 })
 ```
 
-### intersect()
+### intersected()
 
 This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
@@ -386,7 +390,7 @@ In the TMDB component, the intersect method is used to lazy-load data once the c
 ```js
 ardi({
   tag: 'tmdb-trending',
-  intersect(ratio) {
+  intersected(ratio) {
     if (ratio >= 0.2 && !this.intersected) {
       this.fetchTrending()
       this.intersected = true
@@ -451,7 +455,7 @@ ardi({
       `<button ref='counter'>Count: {{count}}</button>`
     )(this)
   },
-  updated() {
+  rendered() {
     this.refs.counter.addEventListener('click', () => this.count++)
   },
 })

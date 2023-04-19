@@ -247,7 +247,7 @@ ardi({
     return episode
   },
 
-  ready() {
+  created() {
     fetch(this.feed)
       .then((res) => res.text())
       .then((text) => {

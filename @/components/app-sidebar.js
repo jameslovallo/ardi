@@ -26,7 +26,7 @@ ardi({
       level: h.tagName,
     }))
   },
-  ready() {
+  created() {
     const target = document.querySelector(this.selector)
     this.getHeadings(target)
     new MutationObserver((mutationList) => {

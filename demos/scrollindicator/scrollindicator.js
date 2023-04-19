@@ -42,7 +42,7 @@ ardi({
       this.parentElement.scrollHeight - this.parentElement.offsetHeight
     this.scrollPercent = (numerator / denominator) * 100 + '%'
   },
-  ready() {
+  created() {
     this.parentElement.addEventListener('resize', () => this.setScrollPercent())
     this.parentElement.addEventListener('scroll', () => this.setScrollPercent())
   },

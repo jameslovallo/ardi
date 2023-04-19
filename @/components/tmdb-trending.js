@@ -23,7 +23,7 @@ ardi({
       .then((data) => (this.results = data.results))
   },
 
-  ready() {
+  created() {
     this.fetchTrending()
   },
 

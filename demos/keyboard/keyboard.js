@@ -15,12 +15,12 @@ ardi({
     tracks: [],
   }),
 
-  ready() {
+  created() {
     document.body.addEventListener('mousedown', () => (this.mousedown = true))
     document.body.addEventListener('mouseup', () => (this.mousedown = false))
   },
 
-  intersect(r) {
+  intersected(r) {
     if (!this.synthLoaded && r > 0.2) {
       const synthTag = document.createElement('script')
       synthTag.src =

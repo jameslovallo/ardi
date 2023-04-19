@@ -41,10 +41,10 @@ ardi({
         }, 500)
       })
   },
-  ready() {
+  created() {
     this.getMarkdown()
   },
-  propChange(prop) {
+  propUpdated(prop) {
     if (prop.name === 'src' && prop.old && prop.old !== prop.new) {
       this.getMarkdown()
     }

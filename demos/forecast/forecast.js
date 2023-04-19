@@ -19,7 +19,7 @@ ardi({
     small: undefined,
   }),
 
-  ready() {
+  created() {
     new ResizeObserver(() =>
       requestAnimationFrame(
         () => (this.small = this.clientWidth <= this.breakpoint)
@@ -27,13 +27,13 @@ ardi({
     ).observe(this)
   },
 
-  intersect(r) {
+  intersected(r) {
     if (!this.gotWeather && r > 0.2) {
       this.fetchForecast()
     }
   },
 
-  propChange(prop) {
+  propUpdated(prop) {
     if (
       prop.old &&
       prop.new &&

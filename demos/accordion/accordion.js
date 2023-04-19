@@ -50,8 +50,8 @@ ardi({
     this.open = false
     this.refs.content.style.maxHeight = 0
   },
-  updated() {
-    if (this.open && !this.firstRender) {
+  ready() {
+    if (this.open) {
       this.refs.details.open = true
       const getContentHeight = () => {
         const height = this.refs.content.assignedElements()[0].offsetHeight
@@ -60,7 +60,6 @@ ardi({
         } else setTimeout(getContentHeight, 500)
       }
       getContentHeight()
-      this.firstRender = true
     }
   },
   css() {
@@ -123,26 +122,5 @@ ardi({
         width: calc(100% + var(--padding) * 2);
       }
     `
-  },
-})
-
-ardi({
-  tag: 'ardi-accordion-group',
-  props: { multiple: [Boolean, false] },
-  template() {
-    return html`<slot></slot>`
-  },
-  ready() {
-    ;[...this.children].forEach((el, i) => {
-      el.classList.add('border-collapse')
-      el.index = i
-    })
-  },
-  closeOpen(i) {
-    if (!this.multiple) {
-      ;[...this.children]
-        .filter((el) => el.index !== i)
-        .forEach((el) => el.collapse())
-    }
   },
 })
