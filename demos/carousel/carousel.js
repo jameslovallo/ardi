@@ -73,24 +73,27 @@ ardi({
       <div part="indicators" ref="indicators">
         ${[...this.children]
           .filter((child) => !child.hasAttribute('slot'))
-          .map(
-            (slide, i) =>
-              html`
-                <button
-                  part="indicator"
-                  @click=${() => this.children[i].scrollIntoView()}
-                >
-                  ${this.indicator
-                    ? html`
-                        <span ref="indicator">${this.indicator}</span>
-                        <span ref="activeIndicator"
-                          >${this.activeindicator}</span
-                        >
-                      `
-                    : i + 1}
-                </button>
-              `
-          )}
+          .map((slide, i) => {
+            return html`
+              <button
+                part="indicator"
+                @click=${() => {
+                  this.refs.track.scrollTo({
+                    left: slide.offsetLeft,
+                  })
+                }}
+              >
+                ${this.indicator
+                  ? html`
+                      <span ref="indicator">${this.indicator}</span>
+                      <span ref="activeIndicator">
+                        ${this.activeindicator}
+                      </span>
+                    `
+                  : i + 1}
+              </button>
+            `
+          })}
       </div>
     `
     return html`
@@ -114,7 +117,7 @@ ardi({
     }
     [ref=track] {
       display: flex;
-      overflow-x: auto;
+      overflow-x: scroll;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
