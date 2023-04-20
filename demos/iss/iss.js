@@ -51,7 +51,9 @@ ardi({
       .then((res) => res.json())
       .then((data) => {
         const {
-          iss_position: { latitude, longitude },
+          data: {
+            iss_position: { latitude, longitude },
+          },
         } = data
         if (!this.mapCreated) {
           this.createMap(latitude, longitude)
