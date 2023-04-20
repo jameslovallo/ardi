@@ -51,11 +51,11 @@ ardi({
       outline: none;
     }
     textarea, [ref=preview] {
-			overflow: auto;
+      overflow: auto;
       padding: .5rem;
     }
-		[ref=preview] {
-			padding: 0 1rem;
-		}
+    [ref=preview] {
+      padding: 0 1rem;
+    }
   `,
 })
