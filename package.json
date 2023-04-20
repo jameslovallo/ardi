@@ -31,7 +31,7 @@
     "ardi:build": "esbuild ./@/assets/ardi.js --bundle --format=esm --minify --tree-shaking=true --outfile=.../../@/assets/ardi-min.js ",
     "ardi:update": "npm run build && npm version patch && npm publish",
     "build": "node @/build.js",
-    "dev": "npx http-server -p 3000 -o",
+    "dev": "npx browser-sync --server --files '**/*'",
     "deploy": "npm run build && ntl deploy --prod"
   },
   "devDependencies": {
