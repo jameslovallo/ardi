@@ -25,7 +25,7 @@ ardi({
         attribution:
           'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>',
       }
-    )
+    ).addTo(this.map)
   },
   createIcon() {
     this.icon = icon({
