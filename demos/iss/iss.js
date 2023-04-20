@@ -69,13 +69,13 @@ ardi({
     setInterval(() => this.getIssPosition(), this.updateinterval)
   },
   template: () => "<div ref='map'></div>",
-  css: `
+  css: /* css */ `
 		@import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
 		[ref=map] {
-			height: 400px
+			height: 400px;
 		}
 		.leaflet-touch .leaflet-bar a {
-			line-height: unset;
+			font-family: arial;
 		}
 	`,
 })
