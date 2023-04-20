@@ -64,12 +64,12 @@ ardi({
   },
   template: () => "<div ref='map'></div>",
   css: /* css */ `
-		@import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
-		[ref=map] {
-			height: 400px;
-		}
-		.leaflet-touch .leaflet-bar a {
-			font-family: arial;
-		}
-	`,
+    @import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
+    [ref=map] {
+      height: 400px;
+    }
+    .leaflet-touch .leaflet-bar a {
+      font-family: arial;
+    }
+  `,
 })
