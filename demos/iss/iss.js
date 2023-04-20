@@ -25,7 +25,7 @@ ardi({
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     ],
     updateinterval: [Number, 3000],
-    zoomlevel: [Number, 5],
+    zoomlevel: [Number, 3],
   },
   createTileLayer() {
     const attribution = this.attribution
