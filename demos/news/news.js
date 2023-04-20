@@ -6,6 +6,8 @@ ardi({
   tag: 'ardi-news',
   props: {
     feed: [String, 'https://rsshub.app/apnews/topics/apf-topnews'],
+    storyheading: [String, 'Latest Headlines'],
+    linklabel: [String, 'Visit Site'],
   },
   state: () => ({
     title: 'Loading Title',
@@ -45,9 +47,13 @@ ardi({
       <h2>${this.title.split(' - ')[0]}</h2>
       <p>${this.description.split(' - ')[0]}</p>
       ${this.link
-        ? html`<p><a part="weblink" href=${this.link}>Visit Site</a></p>`
+        ? html`
+            <p>
+              <a part="weblink" href=${this.link}>${this.linklabel}</a>
+            </p>
+          `
         : ''}
-      <h2>Latest Headlines</h2>
+      <h2>${this.storyheading}</h2>
       <div part="stories">
         ${this.stories.map(
           (item) =>
