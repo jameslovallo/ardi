@@ -41,13 +41,17 @@ ardi({
     this.marker = marker([lat, lng], { icon: this.icon }).addTo(this.map)
   },
   getIssPosition() {
-    fetch('/.netlify/functions/iss')
+    fetch(
+      [
+        '/.netlify/functions/proxy',
+        '?url=http://api.open-notify.org/iss-now.json',
+        '&format=json',
+      ].join('')
+    )
       .then((res) => res.json())
       .then((data) => {
         const {
-          data: {
-            iss_position: { latitude, longitude },
-          },
+          iss_position: { latitude, longitude },
         } = data
         if (!this.mapCreated) {
           this.createMap(latitude, longitude)

@@ -1,0 +1,40 @@
+<body>
+  <app-layout>
+    <style>
+      element-story::part(wrapper) {
+        max-height: 500px;
+        overflow: auto;
+      }
+    </style>
+
+    <h1>News Reader</h1>
+
+    <feature-pills
+      features="tag, props, state, template, css, methods, lifecycle"
+    ></feature-pills>
+
+    <h2>Playground</h2>
+    <element-story tag="ardi-news">
+      <script type="application/json">
+        {
+          "feed": {
+            "type": "list",
+            "options": [
+              "https://rsshub.app/apnews/topics/apf-topnews",
+              "https://rsshub.app/reuters/world/us",
+              "https://rsshub.app/bbc/world-asia"
+            ]
+          }
+        }
+      </script>
+      <ardi-news
+        feed="https://rsshub.app/apnews/topics/apf-topnews"
+      ></ardi-news>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/news/news.js" theme="/@/css/prism.css"></mark-down>
+    <script src="/demos/news/news.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>

@@ -251,7 +251,7 @@ ardi({
     fetch(this.feed)
       .then((res) => res.text())
       .then((text) => {
-        if (window.DOMParser) {
+        if (DOMParser) {
           const parser = new DOMParser()
           const xmlDoc = parser.parseFromString(text, 'text/xml')
           const channel = xmlDoc.querySelector('channel')
