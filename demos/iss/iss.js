@@ -74,5 +74,8 @@ ardi({
 		[ref=map] {
 			height: 400px
 		}
+		.leaflet-touch .leaflet-bar a {
+			line-height: unset;
+		}
 	`,
 })
