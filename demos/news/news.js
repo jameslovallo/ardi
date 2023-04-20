@@ -43,7 +43,7 @@ ardi({
   template() {
     return html`
       <h2>${this.title.split(' - ')[0]}</h2>
-      <p>${this.description}</p>
+      <p>${this.description.split(' - ')[0]}</p>
       ${this.link
         ? html`<p><a part="weblink" href=${this.link}>Visit Site</a></p>`
         : ''}
