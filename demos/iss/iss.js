@@ -71,11 +71,8 @@ ardi({
   template: () => "<div ref='map'></div>",
   css: `
 		@import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
-		:host {
-			height: 400px;
-		}
 		[ref=map] {
-			height: 100%
+			height: 400px
 		}
 	`,
 })
