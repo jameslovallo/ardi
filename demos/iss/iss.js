@@ -1,5 +1,6 @@
 import {
   icon,
+  latLng,
   map,
   marker,
   tileLayer,
@@ -10,27 +11,21 @@ ardi({
   tag: 'ardi-iss',
   shadow: false,
   props: {
-    attribution: [
-      String,
-      'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-    ],
     iconheight: [Number, 48],
-    iconurl: [
-      String,
-      'https://img.icons8.com/external-topaz-kerismaker/512/external-ISS-space-topaz-kerismaker.png',
-    ],
+    iconurl: [String, '/@/assets/iss.png'],
     iconwidth: [Number, 48],
-    tiles: [
-      String,
-      'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    ],
     updateinterval: [Number, 3000],
-    zoomlevel: [Number, 3],
+    zoomlevel: [Number, 4],
   },
   createTileLayer() {
-    tileLayer(this.tiles, {
-      attribution: `<span title="${this.attribution}">Hover for Attribution</span>`,
-    }).addTo(this.map)
+    tileLayer(
+      'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}',
+      {
+        maxZoom: 20,
+        attribution:
+          'Tiles courtesy of the <a href="https://usgs.gov/">U.S. Geological Survey</a>',
+      }
+    )
   },
   createIcon() {
     this.icon = icon({
@@ -58,9 +53,9 @@ ardi({
           this.createMap(latitude, longitude)
           this.mapCreated = true
         } else {
-          const latlng = L.latLng(latitude, longitude)
-          this.map.setView(latlng)
-          this.marker.setLatLng(latlng)
+          const position = latLng(latitude, longitude)
+          this.map.setView(position)
+          this.marker.setLatLng(position)
         }
       })
   },
