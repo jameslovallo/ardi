@@ -1,0 +1,46 @@
+<body>
+  <app-layout>
+    <style>
+      ardi-iss {
+        height: 100%;
+        min-height: 400px;
+        min-width: 100%;
+      }
+    </style>
+
+    <h1>ISS Tracker</h1>
+
+    <feature-pills
+      features="tag, props, state, template, css, methods, lifecycle"
+    ></feature-pills>
+
+    <h2>Playground</h2>
+    <element-story tag="ardi-iss">
+      <script type="application/json">
+        {
+          "iconurl": { "type": "text" },
+          "iconheight": { "type": "number" },
+          "iconwidth": { "type": "number" },
+          "tileurl": { "type": "text" },
+          "tileattribution": { "type": "text" },
+          "updateinterval": { "type": "number" },
+          "zoomlevel": { "type": "number" }
+        }
+      </script>
+      <ardi-iss
+        iconheight="48"
+        iconurl="https://img.icons8.com/external-topaz-kerismaker/512/external-ISS-space-topaz-kerismaker.png"
+        iconwidth="48"
+        tileattribution="Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community"
+        tileurl="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+        updateinterval="3000"
+        zoomlevel="5"
+      ></ardi-iss>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/iss/iss.js" theme="/@/css/prism.css"></mark-down>
+    <script src="/demos/iss/iss.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
