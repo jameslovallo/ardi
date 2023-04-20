@@ -10,17 +10,17 @@ ardi({
   tag: 'ardi-iss',
   shadow: false,
   props: {
+    attribution: [
+      String,
+      'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
+    ],
     iconheight: [Number, 48],
     iconurl: [
       String,
       'https://img.icons8.com/external-topaz-kerismaker/512/external-ISS-space-topaz-kerismaker.png',
     ],
     iconwidth: [Number, 48],
-    tileattribution: [
-      String,
-      'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community',
-    ],
-    tileurl: [
+    tiles: [
       String,
       'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
     ],
@@ -28,9 +28,8 @@ ardi({
     zoomlevel: [Number, 3],
   },
   createTileLayer() {
-    const attribution = this.attribution
-    tileLayer(this.tileurl, {
-      attribution: `<span title="${attribution}">Hover for Attribution</span>`,
+    tileLayer(this.tiles, {
+      attribution: `<span title="${this.attribution}">Hover for Attribution</span>`,
     }).addTo(this.map)
   },
   createIcon() {
