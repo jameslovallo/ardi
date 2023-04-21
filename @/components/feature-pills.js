@@ -40,12 +40,12 @@ ardi({
       ${this.features.split(',').map((feature) => {
         feature = feature.trim()
         return html`
-          <spa-link href=${this.links[feature]}>
+          <a is="app-link" href=${this.links[feature]}>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d=${this.icons[feature]} />
             </svg>
             ${feature}
-          </spa-link>
+          </a>
         `
       })}
     `
@@ -56,7 +56,7 @@ ardi({
 			flex-wrap: wrap;
 			gap: .5rem;
 		}
-		spa-link::part(link) {
+		a {
 			align-items: center;
 			border: 1px solid var(--border);
 			border-radius: 5rem;
@@ -69,7 +69,7 @@ ardi({
 			text-decoration: none;
 			text-transform: uppercase;
 		}
-    spa-link:hover::part(link) {
+    a:hover {
       background: var(--theme-weak);
     }
 		svg {

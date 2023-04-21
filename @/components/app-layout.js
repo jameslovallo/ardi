@@ -7,9 +7,9 @@ ardi({
       <app-nav></app-nav>
       <div part="wrapper">
         <main>
-          <spa-root>
+          <app-root>
             <slot></slot>
-          </spa-root>
+          </app-root>
         </main>
       </div>
       <app-footer></app-footer>

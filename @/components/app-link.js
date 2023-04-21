@@ -1,25 +1,17 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi from '../assets/ardi-min.js'
 
 ardi({
-  tag: 'spa-link',
+  tag: 'app-link',
+  extends: [HTMLAnchorElement, 'a'],
+  shadow: false,
   props: { href: [String, '/'] },
   state: () => ({ pageData: '' }),
-  template() {
-    return html`
-      <style>
-        :host {
-          display: inline-block;
-        }
-      </style>
-      <a
-        part="link"
-        href=${this.href}
-        @mouseover=${this.href.startsWith('./#') ? null : (e) => this.hover(e)}
-        @click=${(e) => this.click(e)}
-      >
-        <slot></slot>
-      </a>
-    `
+  created() {
+    this.addEventListener('mouseover', (e) => this.hover(e))
+    this.addEventListener('click', (e) => {
+      e.preventDefault()
+      this.click()
+    })
   },
   pagePath() {
     return (this.href !== '/' ? this.href : '') + '/index.html'
@@ -46,8 +38,7 @@ ardi({
     e.preventDefault()
     this.getPage()
   },
-  click(e) {
-    e.preventDefault()
+  click() {
     if (this.href !== location.pathname) {
       sessionStorage.removeItem('spa-reload')
       this.setPage()

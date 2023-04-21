@@ -2,7 +2,7 @@ import ardi, { html } from '../assets/ardi-min.js'
 import headJSON from '/@/head.js'
 
 ardi({
-  tag: 'spa-root',
+  tag: 'app-root',
   template() {
     return html`<slot></slot>`
   },

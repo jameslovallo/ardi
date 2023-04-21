@@ -16,14 +16,14 @@ ardi({
   template() {
     return html`
       <nav>
-        <spa-link href="/" @click=${(e) => this.logoClick(e)}>
+        <a is="app-link" href="/" @click=${(e) => this.logoClick(e)}>
           <img
             src="/@/assets/ardi.svg"
             alt="Ardi Logo, a cute monkey in a spacesuit."
           />
-        </spa-link>
+        </a>
         ${nav.map(
-          (page) => html`<spa-link href=${page.href}>${page.label}</spa-link>`
+          (page) => html`<a is="app-link" href=${page.href}>${page.label}</a>`
         )}
       </nav>
     `
@@ -43,20 +43,21 @@ ardi({
         top: 0;
       }
     }
-    spa-link:first-of-type {
-      margin-right: auto;
-      padding: 0;
-    }
-    spa-link:first-of-type img {
-      margin: 1rem 0;
-      width: 3rem;
-    }
-    spa-link::part(link) {
+    a {
       color: inherit;
+      display: inline-block;
       text-decoration: none;
     }
-    spa-link::part(link):hover {
+    a:hover {
       color: var(--theme-color);
+    }
+    a:first-of-type {
+      margin-right: auto;
+    }
+    a:first-of-type img {
+      height: auto;
+      margin: 1rem 0;
+      width: 3rem;
     }
   `,
 })

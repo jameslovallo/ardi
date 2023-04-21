@@ -9,35 +9,33 @@ ardi({
   },
   template() {
     return html`
-      <spa-link href=${this.href}>
+      <a is="app-link" href=${this.href}>
         <span part="icon">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path d=${this.icon} />
           </svg>
         </span>
         <span part="label">${this.label}</span>
-      </spa-link>
+      </a>
     `
   },
-  css: `
-		spa-link {
-			border: 1px solid var(--border);
+  css: /* css */ `
+		a {
 			border-radius: 1rem;
+			border: 1px solid var(--border);
+			color: white;
 			cursor: pointer;
 			display: block;
+			display: block;
 			justify-content: center;
+			padding: 1rem;
 			text-align: center;
+			text-decoration: none;
 			transition: .5s;
 		}
-		spa-link:hover,
-		spa-link:focus {
+		a:hover,
+		a:focus {
 			background: var(--theme-weak);
-		}
-		spa-link::part(link) {
-			color: white;
-			display: block;
-			padding: 1rem;
-			text-decoration: none;
 		}
 		[part=icon] {
 			border: 1px solid var(--theme-color);

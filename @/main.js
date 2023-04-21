@@ -2,7 +2,9 @@
 const components = [
   'app-footer',
   'app-layout',
+  'app-link',
   'app-nav',
+  'app-root',
   'app-sidebar',
   'ardi-label',
   'component-card',
@@ -11,8 +13,6 @@ const components = [
   'home-card',
   'home-grid',
   'mark-down',
-  'spa-link',
-  'spa-root',
   'tmdb-trending',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
