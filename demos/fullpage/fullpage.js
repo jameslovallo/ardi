@@ -71,7 +71,8 @@ ardi({
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               this.active = i
-            }
+              el.removeAttribute('inert')
+            } else el.setAttribute('inert', '')
           }),
         {
           root: this,
