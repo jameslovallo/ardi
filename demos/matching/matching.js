@@ -5,6 +5,7 @@ ardi({
   state: () => ({
     tiles: ['🐕', '🐒', '🐈', '🦝', '🐄', '🐖', '🐓', '🦖'],
     randomizedTiles: [],
+    lastClicked: null,
     flipped: [],
     match: [],
     matched: [],
@@ -19,6 +20,8 @@ ardi({
     )
   },
   handleClick(tile, i) {
+    if (i === this.lastClicked) return
+    this.lastClicked = i
     this.flipped.push(i)
     this.match.push(tile)
     if (this.flipped.length === 2) {
@@ -28,12 +31,13 @@ ardi({
         this.matched.push(tile)
       }
       setTimeout(() => {
+        this.lastClicked = null
         this.flipped = []
         this.match = []
         this.locked = false
       }, 1000)
       if (this.matched.length === 8) {
-        this.handleWin()
+        setTimeout(() => this.handleWin(), 500)
       }
     }
   },
@@ -67,7 +71,7 @@ ardi({
               <button
                 class=${`flip-card ${this.isFlipped(tile, i)}`}
                 disabled=${this.locked ? true : null}
-                @click=${() => this.handleClick(tile, i)}
+                @click=${(e) => this.handleClick(tile, i)}
               >
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
@@ -90,9 +94,12 @@ ardi({
     }
     .stats {
       display: flex;
-      justify-content: space-between;
+      gap: 1rem;
       margin-bottom: 1rem;
     }
+    .stats :last-child {
+      margin-left: auto;
+    } 
     .cards {
       display: grid;
       gap: 1rem;
