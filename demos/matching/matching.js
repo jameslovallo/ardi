@@ -137,21 +137,22 @@ ardi({
     .flip-card-front, .flip-card-back {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
-      display: grid;
-      font-size: 4rem;
       height: 100%;
-      place-items: center;
       position: absolute;
       width: 100%;
-    }
-    .flip-card-front {
-      background-color: #bbb;
-      color: black;
     }
     .flip-card-back {
       background-color: var(--surface-heavy);
       color: white;
+      display: grid;
+      font-size: 2rem;
+      place-items: center;
       transform: rotateY(180deg);
+    }
+    @media (min-width: 600px) {
+      .flip-card-back {
+        font-size: 4rem;
+      }
     }
   `,
 })
