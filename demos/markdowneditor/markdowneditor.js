@@ -8,11 +8,15 @@ Type some markdown...
 ##  Heading 2
 ### Heading 3
 
+List
+
 - List item
 - Another list item
 
-1. Numbered list item
-1. Another numbered list item
+Ordered List
+
+1. List item
+1. Another list item
 
 [Link Text](url)
 ![Alt Text](url)
@@ -51,11 +55,11 @@ ardi({
       outline: none;
     }
     textarea, [ref=preview] {
-			overflow: auto;
+      overflow: auto;
       padding: .5rem;
     }
-		[ref=preview] {
-			padding: 0 1rem;
-		}
+    [ref=preview] {
+      padding: 0 1rem;
+    }
   `,
 })
