@@ -71,7 +71,7 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from the [TMDB demo component](/demos/tmdb).
+Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from the <a is="app-link" href="/demos/tmdb">TMDB demo component</a>.
 
 <tmdb-trending></tmdb-trending>
 
