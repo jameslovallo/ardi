@@ -1,0 +1,27 @@
+<body>
+  <app-layout>
+    <style>
+      img {
+        width: 100%;
+      }
+    </style>
+
+    <h1>Compare</h1>
+    <feature-pills features="tag, props, template, css"></feature-pills>
+
+    <h2>Demo</h2>
+    <ardi-compare>
+      <img src="/@/assets/before-0 Large.jpeg" alt="an abandoned building" />
+      <img src="/@/assets/after-0 Large.jpeg" alt="a renovated building" />
+    </ardi-compare>
+
+    <h2>Javascript</h2>
+    <mark-down
+      src="/demos/compare/compare.js"
+      theme="/@/css/prism.css"
+    ></mark-down>
+
+    <script src="/demos/compare/compare.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
