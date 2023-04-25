@@ -1,7 +1,7 @@
 <body>
   <app-layout>
     <style>
-      element-story::part(wrapper) {
+      component-story::part(wrapper) {
         height: 300px;
         overflow: auto;
       }
@@ -9,17 +9,17 @@
 
     <h1>Verses</h1>
 
-    <feature-pills
+    <component-pills
       features="tag, props, state, template, lifecycle"
-    ></feature-pills>
+    ></component-pills>
 
     <h2>Playground</h2>
-    <element-story tag="ardi-verses">
+    <component-story tag="ardi-verses">
       <script type="application/json">
         { "query": { "type": "text" } }
       </script>
       <ardi-verses query="John 1 1-18"></ardi-verses>
-    </element-story>
+    </component-story>
 
     <h2>Javascript</h2>
     <mark-down

@@ -2,12 +2,12 @@
   <app-layout>
     <h1>To Do List</h1>
 
-    <feature-pills
+    <component-pills
       features="tag, props, state, template, css, methods"
-    ></feature-pills>
+    ></component-pills>
 
     <h2>Playground</h2>
-    <element-story tag="ardi-todo">
+    <component-story tag="ardi-todo">
       <script type="application/json">
         {
           "listlabel": { "type": "text" },
@@ -23,7 +23,7 @@
         todolabel="To Do"
         style="width: 100%"
       ></ardi-todo>
-    </element-story>
+    </component-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/todo/todo.js" theme="/@/css/prism.css"></mark-down>

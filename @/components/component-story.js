@@ -1,7 +1,7 @@
 import ardi, { html } from '../assets/ardi-min.js'
 
 ardi({
-  tag: 'element-story',
+  tag: 'component-story',
   props: { breakpoint: [Number, 600], tag: [String] },
   state: () => ({ args: {} }),
   template() {

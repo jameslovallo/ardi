@@ -1,7 +1,7 @@
 <body>
   <app-layout>
     <style>
-      element-story::part(wrapper) {
+      component-story::part(wrapper) {
         display: block;
         height: 400px;
         overflow: auto;
@@ -10,12 +10,12 @@
 
     <h1>Markdown Embed</h1>
 
-    <feature-pills
+    <component-pills
       features="tag, shadow, props, methods, lifecycle"
-    ></feature-pills>
+    ></component-pills>
 
     <h2>Playground</h2>
-    <element-story tag="mark-down">
+    <component-story tag="mark-down">
       <script type="application/json">
         {
           "src": {
@@ -31,7 +31,7 @@
       <mark-down
         src="https://unpkg.com/@11ty/eleventy@2.0.1/README.md"
       ></mark-down>
-    </element-story>
+    </component-story>
 
     <h2>Javascript</h2>
     <mark-down

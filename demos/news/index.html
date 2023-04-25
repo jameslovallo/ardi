@@ -1,7 +1,7 @@
 <body>
   <app-layout>
     <style>
-      element-story::part(wrapper) {
+      component-story::part(wrapper) {
         max-height: 500px;
         overflow: auto;
       }
@@ -9,12 +9,12 @@
 
     <h1>News Reader</h1>
 
-    <feature-pills
+    <component-pills
       features="tag, props, state, template, css, methods, lifecycle"
-    ></feature-pills>
+    ></component-pills>
 
     <h2>Playground</h2>
-    <element-story tag="ardi-news">
+    <component-story tag="ardi-news">
       <script type="application/json">
         {
           "feed": {
@@ -34,7 +34,7 @@
         linklabel="Visit Site"
         storyheading="Latest Headlines"
       ></ardi-news>
-    </element-story>
+    </component-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/news/news.js" theme="/@/css/prism.css"></mark-down>

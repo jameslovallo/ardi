@@ -1,7 +1,7 @@
 import ardi, { html } from '../assets/ardi-min.js'
 
 ardi({
-  tag: 'ardi-label',
+  tag: 'component-label',
   props: { tag: [String] },
   template() {
     return html`

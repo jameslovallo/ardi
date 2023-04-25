@@ -2,21 +2,21 @@
   <app-layout>
     <h1>i18n with Context API</h1>
 
-    <feature-pills
+    <component-pills
       features="tag, state, context, template, css, methods"
-    ></feature-pills>
+    ></component-pills>
 
     <h2>Demo</h2>
-    <ardi-label tag="i18n-provider">
+    <component-label tag="i18n-provider">
       <i18n-provider context="i18n">
-        <ardi-label tag="i18n-consumer">
+        <component-label tag="i18n-consumer">
           <i18n-consumer></i18n-consumer>
-        </ardi-label>
-        <ardi-label tag="i18n-changer">
+        </component-label>
+        <component-label tag="i18n-changer">
           <i18n-changer></i18n-changer>
-        </ardi-label>
+        </component-label>
       </i18n-provider>
-    </ardi-label>
+    </component-label>
 
     <h2>HTML</h2>
     <mark-down src="/demos/i18n/i18n.html" theme="/@/css/prism.css"></mark-down>

@@ -1,7 +1,7 @@
 import ardi, { html } from '../assets/ardi-min.js'
 
 ardi({
-  tag: 'feature-pills',
+  tag: 'component-pills',
   props: { features: [String] },
   links: {
     tag: '/#tag',

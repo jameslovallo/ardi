@@ -2,15 +2,17 @@
   <app-layout>
     <h1>YouTube Lite</h1>
 
-    <feature-pills features="tag, props, state, template, css"></feature-pills>
+    <component-pills
+      features="tag, props, state, template, css"
+    ></component-pills>
 
     <h2>Playground</h2>
-    <element-story tag="ardi-youtube">
+    <component-story tag="ardi-youtube">
       <script type="application/json">
         { "vid": { "type": "text" } }
       </script>
       <ardi-youtube vid="uLtkt8BonwM" style="width: 100%"></ardi-youtube>
-    </element-story>
+    </component-story>
 
     <h2>Javascript</h2>
     <mark-down
