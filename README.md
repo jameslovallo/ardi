@@ -143,7 +143,7 @@ ardi({
 
 Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`).
 
-The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code on the [TMDB demo page](/demos/tmdb).
+The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code on the <a is="app-link" href="/demos/tmdb">TMDB demo page</a>.
 
 ```js
 ardi({
@@ -329,7 +329,7 @@ ardi({
 
 You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev` and `next`.
 
-You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the [TMDB demo component](/demos/tmdb).
+You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the <a is="app-link" href="/demos/tmdb">TMDB demo page</a>.
 
 ## Lifecycle
 
@@ -339,7 +339,7 @@ Ardi has several lifecycle callbacks, providing a convenient way to fetch data o
 
 This callback runs as soon as the component is initialized. This is a good place to load data, setup observers, etc.
 
-A great example of this is in the demo [forecast component](/demos/forecast), where a resize observer is created to apply styles based on the component's rendered width (regardless of the viewport width).
+A great example of this is in the <a is="app-link" href="/demos/forecast">forecast demo</a>, where a resize observer is created to apply styles based on the component's rendered width (regardless of the viewport width).
 
 ```js
 ardi({
@@ -366,7 +366,7 @@ This method runs each time the component renders an update. This was added to su
 
 Although props are reactive, meaning the template is automatically updated when a prop's value changes, you may encounter scenarios where you need to handle a property's value manually, i.e. to fetch data or apply an effect. You can use this callback to observe and respond to prop updates.
 
-Here is an example from the forecast demo.
+Here is an example from the <a is="app-link" href="/demos/forecast">forecast demo</a>.
 
 ```js
 ardi({
@@ -387,7 +387,7 @@ ardi({
 
 This method is called when the component is scrolled into view. You can use the ratio parameter to determine how much of the component should be visible before you apply an effect. Ardi will only create the intersection observer if you include this method, so omit it if you do not intend to use it.
 
-In the [forecast component](/demos/forecast), the intersect method is used to lazy-load data once the component is scrolled into view. This trick can save a lot of money if you use paid APIs!
+In the <a is="app-link" href="/demos/forecast">forecast demo</a>, the intersect method is used to lazy-load data once the component is scrolled into view. This trick can save a lot of money if you use paid APIs!
 
 ```js
 ardi({
