@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min'
+import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-compare',
