@@ -1,10 +1,7 @@
 import { parse } from 'https://cdn.skypack.dev/marked@4.1'
 import ardi, { html } from '//unpkg.com/ardi'
 
-const placeholder = `
-Type some markdown...
-
-#   Heading 1
+const placeholder = `#   Heading 1
 ##  Heading 2
 ### Heading 3
 
