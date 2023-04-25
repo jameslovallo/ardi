@@ -18,20 +18,30 @@ Ordered List
 1. List item
 1. Another list item
 
+Link
+
 [Link Text](url)
-![Alt Text](url)
+
+Image
+
+![Alt Text](//picsum.photos/100/100)
 `
 
 ardi({
   tag: 'markdown-editor',
+  ready() {
+    this.refs.preview.innerHTML = parse(placeholder)
+  },
   template() {
     return html`
       <textarea
-        placeholder=${placeholder.trim()}
         @input=${(e) => {
           this.refs.preview.innerHTML = parse(e.target.value)
         }}
-      ></textarea>
+      >
+        ${placeholder.trim()}
+      </textarea
+      >
       <div ref="preview"></div>
     `
   },
@@ -49,6 +59,7 @@ ardi({
 			background: transparent;
       border: 0;
       border-right: 1px solid var(--border);
+      font-family: sans-serif;
       resize: none;
     }
     textarea:focus-visible {
