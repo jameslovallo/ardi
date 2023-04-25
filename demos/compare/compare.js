@@ -25,76 +25,79 @@ ardi({
   },
   css() {
     return /* css */ `
-			:host {
-				border-radius: .5rem;
-				display: block;
-				overflow: hidden;
-				position: relative;
-			}
-			::slotted(*:last-of-type) {
-				clip-path: polygon(
-					${this.percent}% 0,
-					100% 0,
-					100% 100%,
-					${this.percent}% 100%
-				);
-				display: block;
-				position: absolute;
-				left: 0;
-				top: 0;
-				width: 100%
-			}
-			input[type="range"] {
-				-webkit-appearance: none;
-				appearance: none;
-				background: transparent;
-				cursor: pointer;
-				height: 100%;
-				left: 0;
-				margin: 0;
-				position: absolute;
-				top: 0;
-				width: 100%;
-			}
-			input[type="range"]:focus {
-				outline: none;
-			}
-			input[type="range"]::-webkit-slider-runnable-track {
-				background-color: transparent;
-				height: 100%;  
-			}
-			input[type="range"]::-webkit-slider-thumb {
-				-webkit-appearance: none;
-				appearance: none;
-				background-color: white;
-				cursor: ew-resize;
-				height: 100%;
-				width: .5rem;
-			}
-			input[type="range"]::-moz-range-track {
-				background-color: transparent;
-				height: 100%;
-			}
-			input[type="range"]::-moz-range-thumb {
-				background-color: white;
-				border: none;
-				border-radius: 0;
-				cursor: ew-resize;
-				height: 100%;
-				width: .5rem;
-			}
-			button {
-				background: white;
-				border: 0;
-				border-radius: 2rem;
-				box-shadow: 0 0 5px black;
-				height: 2rem;
-				left: calc(((100% - 8px) * ${this.percent}) / 100 - 12px);
-				pointer-events: none;
-				position: absolute;
-				top: calc(50% - 1rem);
-				width: 2rem;
-			}
-		`
+      :host {
+        border-radius: .5rem;
+        display: block;
+        overflow: hidden;
+        position: relative;
+      }
+      ::slotted(img) {
+        display: block;
+      }
+      ::slotted(*:last-of-type) {
+        clip-path: polygon(
+          ${this.percent}% 0,
+          100% 0,
+          100% 100%,
+          ${this.percent}% 100%
+        );
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%
+      }
+      input[type="range"] {
+        -webkit-appearance: none;
+        appearance: none;
+        background: transparent;
+        cursor: pointer;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+      input[type="range"]:focus {
+        outline: none;
+      }
+      input[type="range"]::-webkit-slider-runnable-track {
+        background-color: transparent;
+        height: 100%;  
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        background-color: white;
+        cursor: ew-resize;
+        height: 100%;
+        width: .5rem;
+      }
+      input[type="range"]::-moz-range-track {
+        background-color: transparent;
+        height: 100%;
+      }
+      input[type="range"]::-moz-range-thumb {
+        background-color: white;
+        border: none;
+        border-radius: 0;
+        cursor: ew-resize;
+        height: 100%;
+        width: .5rem;
+      }
+      button {
+        background: white;
+        border: 0;
+        border-radius: 2rem;
+        box-shadow: 0 0 5px black;
+        height: 2rem;
+        left: calc(((100% - 8px) * ${this.percent}) / 100 - 12px);
+        pointer-events: none;
+        position: absolute;
+        top: calc(50% - 1rem);
+        width: 2rem;
+      }
+    `
   },
 })
