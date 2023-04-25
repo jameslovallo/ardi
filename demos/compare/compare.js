@@ -70,7 +70,7 @@ ardi({
       input[type="range"]::-webkit-slider-thumb {
         -webkit-appearance: none;
         appearance: none;
-        background-color: white;
+        background-color: var(--divider, white);
         cursor: ew-resize;
         height: 100%;
         width: .5rem;
@@ -80,7 +80,7 @@ ardi({
         height: 100%;
       }
       input[type="range"]::-moz-range-thumb {
-        background-color: white;
+        background-color: var(--divider, white);
         border: none;
         border-radius: 0;
         cursor: ew-resize;
@@ -88,16 +88,24 @@ ardi({
         width: .5rem;
       }
       button {
-        background: white;
-        border: 0;
+        align-items: center;
+        background: var(--button-color, white);
         border-radius: 2rem;
+        border: 0;
         box-shadow: 0 0 5px black;
+        display: flex;
         height: 2rem;
+        justify-content: center;
         left: calc(((100% - 8px) * ${this.percent}) / 100 - 12px);
+        padding: 0;
         pointer-events: none;
         position: absolute;
         top: calc(50% - 1rem);
         width: 2rem;
+      }
+      button svg {
+        fill: var(--icon-color, #555);
+        width: 24px;
       }
     `
   },
