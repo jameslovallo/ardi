@@ -29,13 +29,15 @@ ardi({
       }
     } else sessionStorage.removeItem('spa-reload')
     // set page content
-    this.appLayout.innerHTML = doc
+    appLayout.innerHTML = doc
     // handle page title
     this.handleTitle(doc)
-    const pageClass = path.split('/')[1] || 'home'
-    this.appLayout.classList = [pageClass]
+    const pathArray = path.split('/')
+    const pageClass = pathArray[1] || 'home'
+    const pageLevel = 'level-' + pathArray.filter((i) => i.length).length
+    appLayout.classList = `${pageClass} ${pageLevel}`
     // handle scripts
-    this.appLayout.querySelectorAll('script').forEach((tag) => {
+    appLayout.querySelectorAll('script').forEach((tag) => {
       const newTag = document.createElement('script')
       newTag.src = tag.src
       newTag.type = tag.type
@@ -69,10 +71,10 @@ ardi({
   created() {
     if (!window.ramidusInitialized) {
       window.appRoot = this
-      this.appLayout = document.querySelector('app-layout')
-      this.setPage(this.appLayout.innerHTML, location.pathname, true)
+      window.appLayout = document.querySelector('app-layout')
+      this.setPage(appLayout.innerHTML, location.pathname, true)
       // history stuff
-      this.pushHistory(location.pathname, this.appLayout.innerHTML)
+      this.pushHistory(location.pathname, appLayout.innerHTML)
       addEventListener('popstate', (e) => {
         if (e.state.path) {
           this.setPage(sessionStorage.getItem(e.state.path), e.state.path)
