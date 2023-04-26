@@ -16,8 +16,8 @@ ardi({
   created() {
     this.fetchVerses()
   },
-  changed() {
-    this.fetchVerses()
+  changed(prop) {
+    prop.old && prop.new && this.fetchVerses()
   },
   template() {
     return this.html

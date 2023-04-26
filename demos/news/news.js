@@ -40,7 +40,7 @@ ardi({
     this.fetchRSS()
   },
   changed(prop) {
-    if (prop.old && prop.new) this.fetchRSS()
+    prop.old && prop.new && this.fetchRSS()
   },
   template() {
     return html`
