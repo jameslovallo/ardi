@@ -43,8 +43,5 @@ ardi({
       sessionStorage.removeItem('spa-reload')
       this.setPage()
     }
-    if (this.href.startsWith('/demos/')) {
-      window.scrollY = 0
-    }
   },
 })
