@@ -1,51 +1,50 @@
 <body>
   <app-layout>
-  <h1>Decoration</h1>
-
-  <component-pills
-    features="tag, props, template, css"
-  ></component-pills>
-
-  <style>
-    ardi-decoration {
-      max-width: var(--demo-max-width);
-      width: 100%;
-    }
-    .demo-box {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      height: 5rem;
-    }
-  </style>
-
-  <h2>Playground</h2>
-  <component-story tag="ardi-decoration">
-    <script type="application/json">
-      {
-        "type": { "type": "list", "options": ["badge", "ribbon"] },
-        "label": { "type": "text" },
-        "background": { "type": "color" },
-        "color": { "type": "color" },
-        "href": { "type": "text" },
-        "target": { "type": "list", "options": ["_blank", "_self"] }
+    <style>
+      ardi-decoration {
+        max-width: var(--demo-max-width);
+        width: 100%;
       }
-    </script>
-    <ardi-decoration
-      background="#5E35B1"
-      color="#ffffff"
-      href="https://google.com"
-      label="Ribbon"
-      type="ribbon"
-    >
-      <div class="demo-box"></div>
-    </ardi-decoration>
-  </component-story>
+      .demo-box {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        height: 5rem;
+      }
+    </style>
 
-  <h2>Javascript</h2>
-  <mark-down
-    src="/demos/decoration/decoration.js"
-    theme="/@/css/prism.css"
-  ></mark-down>
-  <script src="/demos/decoration/decoration.js" type="module"></script>
+    <h1>Decoration</h1>
+    <component-pills features="tag, props, template, css"></component-pills>
+
+    <h2>Playground</h2>
+    <component-story tag="ardi-decoration">
+      <script type="application/json">
+        {
+          "type": { "type": "list", "options": ["badge", "ribbon"] },
+          "label": { "type": "text" },
+          "background": { "type": "color" },
+          "color": { "type": "color" },
+          "href": { "type": "text" },
+          "target": { "type": "list", "options": ["_blank", "_self"] }
+        }
+      </script>
+      <ardi-decoration
+        background="#5E35B1"
+        color="#ffffff"
+        href="https://google.com"
+        label="Ribbon"
+        type="ribbon"
+      >
+        <div class="demo-box"></div>
+      </ardi-decoration>
+    </component-story>
+
+    <h2>Javascript</h2>
+    <mark-down
+      src="/demos/decoration/decoration.js"
+      theme="/@/css/prism.css"
+    ></mark-down>
+
+    <script src="/demos/decoration/decoration.js" type="module"></script>
+  </app-layout>
   <script src="/@/main.js" type="module"></script>
 </body>
