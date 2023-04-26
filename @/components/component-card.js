@@ -38,7 +38,7 @@ ardi({
 			background: var(--theme-weak);
 		}
 		[part=icon] {
-			border: 1px solid var(--theme-color);
+			border: 2px solid var(--theme-color);
 			border-radius: 50%;
 			color: white;
 			display: grid;
