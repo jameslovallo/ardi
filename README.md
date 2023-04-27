@@ -4,7 +4,7 @@
 
 Ardi makes it almost too easy to create reactive custom elements that work with any site or framework.
 
-<a is="app-link" href="https://ardi.netlify.app/demos/" class="demo-link">Check out the demos!</a>
+<a is="app-link" href="https://ardi.netlify.app/demos" class="demo-link">Check out the demos!</a>
 
 ## Features
 
