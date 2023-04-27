@@ -45,11 +45,11 @@ ardi({
     })
   },
   async setPage(path, doc, init) {
+    // check for native reload
+    this.handleNativeReload(doc, path)
     // check if page is prebuilt
     const prebuilt = document.querySelector('meta[name=prebuilt][content=true]')
     if (init && !prebuilt) this.handleHead()
-    // check for native load
-    this.handleNativeReload(doc, path)
     // set page
     if (!init) appLayout.innerHTML = doc
     document.title = document.querySelector('h1').innerText
