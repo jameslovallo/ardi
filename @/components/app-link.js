@@ -35,6 +35,8 @@ ardi({
   click(e) {
     e.preventDefault()
     const href = this.href.split('#')[0]
-    if (!this.doc) this.fetchPage(href, true)
+    if (!this.doc) {
+      this.fetchPage(href, true)
+    } else this.setPage()
   },
 })
