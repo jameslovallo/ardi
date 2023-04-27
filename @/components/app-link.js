@@ -5,7 +5,7 @@ ardi({
   extends: [HTMLAnchorElement, 'a'],
   shadow: false,
   props: {
-    href: [String, '/'],
+    href: [(v) => (v.startsWith('/') ? v : new URL(v).pathname), '/'],
   },
   state: () => ({ pageData: '' }),
   created() {
