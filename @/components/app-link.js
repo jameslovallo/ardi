@@ -4,7 +4,12 @@ ardi({
   tag: 'app-link',
   extends: [HTMLAnchorElement, 'a'],
   shadow: false,
-  props: { href: [String, '/'] },
+  props: {
+    href: [
+      (v) => (v.startsWith(location.href) ? v.replace(location.href, '/') : v),
+      '/',
+    ],
+  },
   state: () => ({ pageData: '' }),
   created() {
     this.addEventListener('mouseover', (e) => this.hover(e))

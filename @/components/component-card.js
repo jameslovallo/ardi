@@ -31,7 +31,7 @@ ardi({
 			padding: 1rem;
 			text-align: center;
 			text-decoration: none;
-			transition: .5s;
+			transition: background .5s;
 		}
 		a:hover,
 		a:focus {
@@ -45,7 +45,6 @@ ardi({
 			height: 64px;
 			margin: 0 auto 1rem;
 			place-items: center;
-			transition: .5s;
 			width: 64px;
 		}
 		svg {
