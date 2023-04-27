@@ -63,7 +63,7 @@ ardi({
       path.replace('index.html', '')
     )
   },
-  ready() {
+  created() {
     if (!window.ramidusInitialized) {
       window.appRoot = this
       window.appLayout = document.querySelector('app-layout')
