@@ -5,10 +5,7 @@ ardi({
   extends: [HTMLAnchorElement, 'a'],
   shadow: false,
   props: {
-    href: [
-      (v) => (v.startsWith(location.href) ? v.replace(location.href, '/') : v),
-      '/',
-    ],
+    href: [String, '/'],
   },
   state: () => ({ pageData: '' }),
   created() {
