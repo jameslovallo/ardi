@@ -36,18 +36,18 @@ ardi({
     }).observe(target, { attributes: true, childList: true, subtree: true })
   },
   css: /* css */ `
-		:host {
-			background: var(--surface-heavy);
-			box-sizing: border-box;
-			display: none;
-			height: 100vh;
-			left: 0;
+    :host {
+      background: var(--surface-heavy);
+      box-sizing: border-box;
+      display: none;
+      height: 100vh;
+      left: 0;
       overflow: auto;
-			padding: 5rem 1rem 3rem;
-			position: fixed;
-			top: 0;
-			width: var(--sidebar-width);
-		}
+      padding: 5rem 1rem 3rem;
+      position: fixed;
+      top: 0;
+      width: var(--sidebar-width);
+    }
     @media (min-width: 1200px) {
       :host {
         display: flex;
@@ -59,11 +59,11 @@ ardi({
         padding-top: 7rem;
       }
     }
-		[part=list] {
+    [part=list] {
       line-height: 2;
-			list-style: none;
-			padding: 0;
-		}
+      list-style: none;
+      padding: 0;
+    }
     .H1 {
       display: none;
     }
@@ -71,13 +71,13 @@ ardi({
       opacity: 0.8;
       padding-left: 1rem;
     }
-		[part=link] {
-			color: inherit;
-			text-decoration: none;
-		}
-		[part=link]:hover {
+    [part=link] {
+      color: inherit;
+      text-decoration: none;
+    }
+    [part=link]:hover {
       color: var(--theme-color);
-			text-decoration: underline;
-		}
-	`,
+      text-decoration: underline;
+    }
+  `,
 })

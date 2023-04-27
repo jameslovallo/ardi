@@ -45,15 +45,15 @@ ardi({
   css: /* css */ `
     :host {
       border: 1px solid var(--border);
-			border-radius: .5rem;
+      border-radius: .5rem;
       display: block;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       height: 400px;
-			overflow: hidden;
+      overflow: hidden;
     }
     textarea {
-			background: transparent;
+      background: transparent;
       border: 0;
       border-right: 1px solid var(--border);
       font-family: sans-serif;

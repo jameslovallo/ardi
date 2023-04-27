@@ -30,7 +30,7 @@ ardi({
         position: relative;
       }
       ::slotted(img) {
-				border-radius: var(--border-radius, .5rem);
+        border-radius: var(--border-radius, .5rem);
         display: block;
       }
       ::slotted(*:last-of-type) {
@@ -50,12 +50,12 @@ ardi({
         -webkit-appearance: none;
         appearance: none;
         background: transparent;
-				border-radius: var(--border-radius, .5rem);
+        border-radius: var(--border-radius, .5rem);
         cursor: pointer;
         height: 100%;
         left: 0;
         margin: 0;
-				overflow: hidden;
+        overflow: hidden;
         position: absolute;
         top: 0;
         width: 100%;

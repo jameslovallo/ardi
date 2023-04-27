@@ -51,31 +51,31 @@ ardi({
     `
   },
   css: /* css */ `
-		:host {
-			display: flex;
-			flex-wrap: wrap;
-			gap: .5rem;
-		}
-		a {
-			align-items: center;
-			border: 1px solid var(--border);
-			border-radius: 5rem;
-			color: inherit;
-			display: inline-flex;
-			font-size: .8rem;
-			gap: .5rem;
-			letter-spacing: 1px;
-			padding: .25rem .75rem;
-			text-decoration: none;
-			text-transform: uppercase;
-		}
+    :host {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    a {
+      align-items: center;
+      border: 1px solid var(--border);
+      border-radius: 5rem;
+      color: inherit;
+      display: inline-flex;
+      font-size: .8rem;
+      gap: .5rem;
+      letter-spacing: 1px;
+      padding: .25rem .75rem;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
     a:hover {
       background: var(--theme-weak);
     }
-		svg {
-			fill: var(--theme-color);
-			height: 1.25rem;
-			width: 1.25rem;
-		}
-	`,
+    svg {
+      fill: var(--theme-color);
+      height: 1.25rem;
+      width: 1.25rem;
+    }
+  `,
 })
