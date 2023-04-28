@@ -1,4 +1,4 @@
-import { highlightAllUnder } from 'https://cdn.skypack.dev/prismjs@1.29.0'
+import hljs from 'https://cdn.skypack.dev/highlight.js@11.7.0'
 import { parse } from 'https://unpkg.com/marked@4.3.0/lib/marked.esm.js'
 import ardi from '../assets/ardi-min.js'
 
@@ -13,10 +13,6 @@ ardi({
   shadow: false,
   props: {
     src: [String, '/README.md'],
-    theme: [
-      String,
-      'https://unpkg.com/prism-themes@1.9.0/themes/prism-dracula.min.css',
-    ],
   },
   getMarkdown() {
     fetch(this.src)
@@ -29,10 +25,14 @@ ardi({
         if (md.includes(split)) md = md.split(split)[1]
         const hasCodeBlocks = md.includes('```')
         this.root.innerHTML = `
-          ${hasCodeBlocks ? `<style>@import "${this.theme}";</style>` : ''}
           ${parse(md)}
         `
-        hasCodeBlocks && highlightAllUnder(this.root)
+        if (hasCodeBlocks) {
+          this.querySelectorAll('pre code').forEach((el) => {
+            console.log(el)
+            hljs.highlightElement(el)
+          })
+        }
         setTimeout(() => {
           if (location.hash) {
             const hashEl = document.querySelector(location.hash)

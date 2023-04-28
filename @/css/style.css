@@ -111,6 +111,11 @@ code:not([class^='language']) {
   margin-top: 3rem;
 }
 
+.tree ul {
+  list-style: none;
+  padding: 0 0 0 0.75rem;
+}
+
 table,
 th,
 td {

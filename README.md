@@ -147,11 +147,12 @@ Event handlers can be applied to an element using React's `on` syntax (`onClick`
 
 The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code on the <app-link>[TMDB demo page](https://ardi.netlify.app/demos/tmdb)</app-link>.
 
+<div class="highlight-lines">
+
 ```js
 ardi({
   template() {
     return html`
-      <!-- ... -->
       <select
         @change=${(e) => {
           this.type = e.target.value
@@ -162,50 +163,53 @@ ardi({
       </select>
       <button @click=${() => this.prev()}>❮</button>
       <button @click=${() => this.next()}>❯</button>
-      <!-- ... -->
     `
   },
 })
 ```
 
-#### Conditionals and Lists
+<div class="highlight" style="--line: 5; --lines: 4;"></div>
+<div class="highlight" style="--line: 12; --lines: 2;"></div>
+</div>
+
+#### Lists and Conditional Rendering
 
 Lists are handled using the `Array.map()` method. In the TMDB component, we will use a map to list the TV series or movies that are returned by the API.
 
 The most convenient way to handle conditional rendering is to use a ternary operator. In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
 
+<div class="highlight-lines">
+
 <!-- prettier-ignore -->
 ```js
 ardi({
   template() {
-    return html`
-      <!-- ... -->
-      <!-- map results -->
-      ${this.results.map((result) => {
-        // ...
-        return html`
-          <li>
-            <a part="result" href=${url}>
-              <!-- conditionally render images -->
-              ${result.backdrop_path
-                ? html`<img part="backdrop" src=${backdrop} />`
-                : ''}
-              ${result.poster_path
-                ? html`<img part="poster" src=${poster} />`
-                : ''}
-              <div part="details">
-                <h3 part="title">${result.name}</h3>
-                <p part="description">${result.overview}</p>
-              </div>
-            </a>
-          </li>
-        `
-      })}
-      <!-- ... -->
-    `
+    return this.results.map((result) => {
+      return html`
+        <li>
+          <a part="result" href=${url}>
+            ${result.backdrop_path
+              ? html`<img part="backdrop" src=${backdrop} />`
+              : ''}
+            ${result.poster_path
+              ? html`<img part="poster" src=${poster} />`
+              : ''}
+            <div part="details">
+              <h3 part="title">${result.name}</h3>
+              <p part="description">${result.overview}</p>
+            </div>
+          </a>
+        </li>
+      `
+    })
   },
 })
 ```
+
+<div class="highlight" style="--line: 3"></div>
+<div class="highlight" style="--line: 7; --lines: 6;"></div>
+
+</div>
 
 #### Slots
 
@@ -213,22 +217,27 @@ Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/We
 
 The TMDB component will have two named slots to allow the previous and next button's icons to be customized.
 
+<div class="highlight-lines">
+
 ```js
 ardi({
   template() {
     return html`
-      <!-- ... -->
       <button part="prev" @click=${() => this.prev()}>
         <slot name="prev">❮</slot>
       </button>
       <button part="next" @click=${() => this.next()}>
         <slot name="next">❯</slot>
       </button>
-      <!-- ... -->
     `
   },
 })
 ```
+
+<div class="highlight" style="--line: 5"></div>
+<div class="highlight" style="--line: 8"></div>
+
+</div>
 
 #### Refs
 
@@ -236,15 +245,15 @@ Ardi allows you to add ref attributes to elements in your template, which are ac
 
 In the TMDB component, the `list` ref is used by the `prev` and `next` methods to navigate through the results.
 
+<div class="highlight-lines">
+
 ```js
 ardi({
   template() {
     return html`
-      <!-- ... -->
       <ul ref="list">
         <!-- results -->
       </ul>
-      <!-- ... -->
     `
   },
   prev() {
@@ -255,6 +264,12 @@ ardi({
   },
 })
 ```
+
+<div class="highlight" style="--line: 4"></div>
+<div class="highlight" style="--line: 10"></div>
+<div class="highlight" style="--line: 13"></div>
+
+</div>
 
 ### Context
 
@@ -276,6 +291,8 @@ This all means that you can build a component and place it on any site without w
 
 You can include CSS styling directly in your component's template, like this.
 
+<div class="highlight-lines">
+
 ```js
 ardi({
   template() {
@@ -293,9 +310,15 @@ ardi({
 })
 ```
 
+<div class="highlight" style="--line: 6; --lines: 6;"></div>
+
+</div>
+
 #### Inline
 
 You can also use JS in a style attribute, or any html attribute, like this.
+
+<div class="highlight-lines">
 
 ```js
 ardi({
@@ -306,9 +329,15 @@ ardi({
 })
 ```
 
+<div class="highlight" style="--line: 4"></div>
+
+</div>
+
 #### CSS key
 
 If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
+
+<div class="highlight-lines">
 
 ```js
 ardi({
@@ -326,6 +355,10 @@ ardi({
   },
 })
 ```
+
+<div class="highlight" style="--line: 5; --lines: 9;"></div>
+
+</div>
 
 ### Methods
 

@@ -1,38 +1,9 @@
 <body>
   <app-layout>
-    <style>
-      .tree ul {
-        list-style: none;
-        padding: 0 0 0 0.75rem;
-      }
-    </style>
     <app-sidebar class="ramidus-docs" selector="mark-down"></app-sidebar>
-    <h1 id="ramidus">Ramidus</h1>
-    <p>
-      Ramidus is a Single Page Application (SPA) template for the modern web.
-      Built with and for custom elements, Ramidus is a template that provides
-      familiar conventions and a <em>tiny</em> bit of tooling to provide the
-      best UX and DX possible.
-    </p>
-    <h2 id="features">Features</h2>
-    <ul>
-      <li>Familiar app structure, similar to Next or Nuxt.</li>
-      <li>Global layout is shared across multiple pages.</li>
-      <li>Vanilla folder structure and routing.</li>
-      <li>
-        SPA navigation with <code>&lt;app-root&gt;</code> and
-        <code>&lt;app-link&gt;</code>.
-      </li>
-      <li>
-        Write pages in markdown with
-        <code>&lt;mark-down&gt;</code>.
-      </li>
-      <li>No building or tooling required.</li>
-    </ul>
-    <mark-down
-      src="https://raw.githubusercontent.com/jameslovallo/ramidus/main/README.md"
-      theme="/@/css/prism.css"
-    ></mark-down>
+    <mark-down src="/ramidus/README.md" theme="/@/css/prism.css">
+      <h1>Ramidus</h1>
+    </mark-down>
     <script src="/@/components/tree-icon.js" type="module"></script>
   </app-layout>
   <script src="/@/main.js" type="module"></script>
