@@ -1,5 +1,4 @@
 import ardi, { html } from '//unpkg.com/ardi'
-import headJSON from '/@/head.js'
 
 ardi({
   tag: 'app-root',
@@ -14,9 +13,12 @@ ardi({
     target.appendChild(tag)
   },
   handleHead() {
-    Object.keys(headJSON).forEach((tagType) => {
-      headJSON[tagType].forEach((el) => {
-        this.createTag(document.head, tagType, el)
+    import('/@/head.js').then((m) => {
+      const headJSON = m.default
+      Object.keys(headJSON).forEach((tagType) => {
+        headJSON[tagType].forEach((el) => {
+          this.createTag(document.head, tagType, el)
+        })
       })
     })
   },
