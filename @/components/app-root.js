@@ -51,7 +51,11 @@ ardi({
     const prebuilt = document.querySelector('meta[name=prebuilt][content=true]')
     if (init && !prebuilt) this.handleHead()
     // set page
-    if (!init) appLayout.innerHTML = doc
+    if (!init) {
+      // appLayout.innerHTML = ''
+      appLayout.innerHTML = doc
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
     document.title = document.querySelector('h1').innerText
     this.handleClassList(path)
     this.handleScripts()
