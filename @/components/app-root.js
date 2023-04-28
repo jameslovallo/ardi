@@ -52,7 +52,6 @@ ardi({
     if (init && !prebuilt) this.handleHead()
     // set page
     if (!init) {
-      // appLayout.innerHTML = ''
       appLayout.innerHTML = doc
       window.scrollTo({ top: 0, behavior: 'instant' })
     }
