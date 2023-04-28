@@ -14,7 +14,7 @@ ardi({
   },
   handleHead() {
     import(location.href + '/@/head.js').then((m) => {
-      const { headJSON } = m.default
+      const headJSON = m.default
       Object.keys(headJSON).forEach((tagType) => {
         headJSON[tagType].forEach((el) => {
           this.createTag(document.head, tagType, el)
