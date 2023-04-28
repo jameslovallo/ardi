@@ -35,8 +35,12 @@ ardi({
   click(e) {
     e.preventDefault()
     const href = this.href.split('#')[0]
-    if (!this.doc) {
-      this.fetchPage(href, true)
-    } else this.setPage()
+    if (href !== location.pathname) {
+      if (!this.doc) {
+        this.fetchPage(href, true)
+      } else this.setPage()
+    } else if (window.scrollY !== 0) {
+      window.scrollTo({ top: 0 })
+    }
   },
 })
