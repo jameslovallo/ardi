@@ -19,7 +19,7 @@ ardi({
     `
   },
   getHeadings(target) {
-    const headings = target.querySelectorAll('h1, h2, h3')
+    const headings = target.querySelectorAll('h2:not(#features), h3')
     this.headings = [...headings].map((h) => ({
       text: h.innerText,
       id: h.id,
@@ -63,9 +63,6 @@ ardi({
       line-height: 2;
       list-style: none;
       padding: 0;
-    }
-    .H1 {
-      display: none;
     }
     .H3 {
       opacity: 0.8;

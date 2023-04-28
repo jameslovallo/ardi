@@ -37,7 +37,8 @@ h6 {
   scroll-margin-top: 3rem;
 }
 
-.docs h2 {
+.home h2,
+.ramidus h2 {
   border-bottom: 1px solid var(--border);
   line-height: 1;
   margin-bottom: 1rem;
@@ -108,4 +109,12 @@ code:not([class^='language']) {
 
 .demos h2 {
   margin-top: 3rem;
+}
+
+table,
+th,
+td {
+  border: 1px solid var(--border);
+  border-collapse: collapse;
+  padding: 0.5rem;
 }

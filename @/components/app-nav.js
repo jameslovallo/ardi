@@ -1,8 +1,8 @@
 import ardi, { html } from '../assets/ardi-min.js'
 
 const nav = [
-  { href: '/', label: 'Home' },
   { href: '/demos', label: 'Demos' },
+  { href: '/ramidus', label: 'Ramidus' },
 ]
 
 ardi({
