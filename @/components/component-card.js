@@ -9,14 +9,16 @@ ardi({
   },
   template() {
     return html`
-      <a is="app-link" href=${this.href}>
-        <span part="icon">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d=${this.icon} />
-          </svg>
-        </span>
-        <span part="label">${this.label}</span>
-      </a>
+      <app-link>
+        <a href=${this.href}>
+          <span part="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <path d=${this.icon} />
+            </svg>
+          </span>
+          <span part="label">${this.label}</span>
+        </a>
+      </app-link>
     `
   },
   css: /* css */ `

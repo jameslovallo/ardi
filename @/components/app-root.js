@@ -13,7 +13,7 @@ ardi({
     target.appendChild(tag)
   },
   handleHead() {
-    import(location.href + '/@/head.js').then((m) => {
+    import(location.origin + '/@/head.js').then((m) => {
       const headJSON = m.default
       Object.keys(headJSON).forEach((tagType) => {
         headJSON[tagType].forEach((el) => {

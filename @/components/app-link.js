@@ -2,13 +2,14 @@ import ardi from '../assets/ardi-min.js'
 
 ardi({
   tag: 'app-link',
-  extends: [HTMLAnchorElement, 'a'],
   shadow: false,
-  props: { href: [(v) => (v.startsWith('/') ? v : new URL(v).pathname), '/'] },
-  state: () => ({ doc: '' }),
+  state: () => ({ href: '/', doc: '' }),
   created() {
-    this.addEventListener('mouseover', (e) => this.hover(e))
-    this.addEventListener('click', (e) => this.click(e))
+    const link = this.querySelector('a')
+    const href = link.getAttribute('href')
+    this.href = href.startsWith('/') ? href : new URL(href).pathname
+    link.addEventListener('mouseover', (e) => this.hover(e))
+    link.addEventListener('click', (e) => this.click(e))
   },
   fetchPage(href, setPage) {
     fetch((href !== '/' ? href : '') + '/index.html')

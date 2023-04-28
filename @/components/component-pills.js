@@ -40,12 +40,14 @@ ardi({
       ${this.features.split(',').map((feature) => {
         feature = feature.trim()
         return html`
-          <a is="app-link" href=${this.links[feature]}>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path d=${this.icons[feature]} />
-            </svg>
-            ${feature}
-          </a>
+          <app-link>
+            <a href=${this.links[feature]}>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d=${this.icons[feature]} />
+              </svg>
+              ${feature}
+            </a>
+          </app-link>
         `
       })}
     `
