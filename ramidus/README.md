@@ -2,6 +2,8 @@
 
 Ramidus is a Single Page Application (SPA) template built for custom elements.
 
+![](/@/assets/static-site.svg)
+
 ## Features
 
 1. Instant page loading using `<app-root>` and `<app-link>` elements.
