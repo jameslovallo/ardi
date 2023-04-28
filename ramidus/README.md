@@ -93,7 +93,7 @@ No build step is required to deploy this site: you can copy this project to a si
 ### Benefits of Building
 
 1. The site's `head` is included with each page instead of being generated when the first page loads.
-2. Building will make it so the first page the user loads is hidden at first, then gracefully fades in after the globally-registered components have loaded, preventing [CLS](https://web.dev/cls/).
+2. Building will make it so the first page visited fades in after the globally-registered components have loaded, preventing [CLS](https://web.dev/cls/).
 
 ### Deployment Settings
 
