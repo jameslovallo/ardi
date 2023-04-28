@@ -54,6 +54,10 @@ a {
   text-decoration-color: var(--theme-color);
 }
 
+.demo-link-container {
+  filter: drop-shadow(0 0 1px var(--theme-color));
+}
+
 .demo-link {
   background: var(--theme-weak);
   box-sizing: border-box;
