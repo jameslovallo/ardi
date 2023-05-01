@@ -4,7 +4,7 @@ Ramidus is a Single Page Application (SPA) template built for custom elements.
 
 ## Features
 
-1. Instant page loading using `<app-root>` and `<app-link>` elements.
+1. Instant page loading using `<app-content>` and `<app-link>` elements.
 2. Templates can be shared between pages using a customizable `<app-layout>` component.
 3. Easily embed markdown and syntax-highlighted files using the `<mark-down>` element.
 4. Familiar conventions, similar to Next or Nuxt.
@@ -19,7 +19,7 @@ npx ramidus@latest && npm run dev
 
 ## Project Structure
 
-The "@" folder contains global content like components, assets, layouts and your site's head. This convention keeps the folder first alphabetically so you don't lose it in your content.
+The "@" folder contains global content like components, assets, layouts and your site's head. This naming convention keeps the folder first alphabetically so it's always easy to find.
 
 <div class="tree">
 
@@ -59,7 +59,7 @@ You can include markdown on any page using the `<mark-down>` custom element.
 
 ### Linking to Pages
 
-To enable SPA-style routing, just wrap links in an `<app-link>` element.
+To enable SPA-style routing, just wrap links in an `<app-link>` element. You can set `preload="true"` if you want the linked page to be pre-fetched as soon as the current page loads.
 
 ```html
 <app-link><a href="/about">About Us</a></app-link>
@@ -67,16 +67,16 @@ To enable SPA-style routing, just wrap links in an `<app-link>` element.
 
 ## Layout
 
-A layout is a custom element containing the site's shared markup. Layouts should include the `<app-root>` element with a nested `<slot>` to load the page's content. Here is the default layout included with Ramidus.
+A layout is a custom element containing the site's shared markup. Layouts should include the `<app-content>` element with a nested `<slot>` to load the page's content. Here is the default layout included with Ramidus.
 
 ```html
 <!-- /@/app-layout.js -->
 <app-nav></app-nav>
 
 <main>
-  <app-root>
+  <app-content>
     <slot></slot>
-  </app-root>
+  </app-content>
 </main>
 
 <app-footer></app-footer>
