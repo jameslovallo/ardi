@@ -13,7 +13,6 @@ const components = [
   'home-card',
   'home-grid',
   'mark-down',
-  'tmdb-trending',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
 

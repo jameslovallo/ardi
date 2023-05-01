@@ -1,10 +1,10 @@
 import ardi, { html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
-  tag: 'ardi-podcast',
+  tag: 'podcast-embed',
 
   props: {
-    feed: [String, 'https://feeds.simplecast.com/dxZsm5kX'],
+    feed: [String, 'https://feeds.simplecast.com/54nAGcIl'],
     nextpagelabel: [String, 'Next Page'],
     pagelabel: [String, 'Page'],
     pagesize: [Number, 10],
@@ -25,6 +25,78 @@ ardi({
     title: '',
   }),
 
+  fetchFeed() {
+    fetch(this.feed)
+      .then((res) => res.text())
+      .then((text) => {
+        if (DOMParser) {
+          const parser = new DOMParser()
+          const xmlDoc = parser.parseFromString(text, 'text/xml')
+          const channel = xmlDoc.querySelector('channel')
+          this.title = channel.querySelector('title').textContent
+          this.author = channel.querySelector('author').textContent
+          this.description = channel.querySelector('description').textContent
+          const imageContainer = channel.querySelector('image')
+          this.image = imageContainer.querySelector('url').textContent
+          this.link = imageContainer.querySelector('link').textContent
+          const items = xmlDoc.querySelectorAll('item')
+          this.episodes = [...items].map((item) => this.formatEpisode(item))
+        }
+      })
+  },
+
+  formatEpisode(item) {
+    const tags = ['title', 'enclosure', 'itunes:duration']
+    const episode = {}
+    ;[...item.childNodes]
+      .filter((el) => tags.includes(el.tagName))
+      .map((el) => {
+        switch (el.tagName) {
+          case 'title':
+            episode.title = el.textContent
+            break
+          case 'enclosure':
+            episode.track = el.getAttribute('url')
+            break
+          case 'itunes:duration':
+            let duration = el.textContent
+            let hours, minutes
+            if (duration.includes(':')) {
+              duration = duration.split(':')
+              hours = Number(duration[0])
+              minutes = Number(duration[1])
+            } else {
+              hours = Math.floor(duration / 60 / 60)
+              minutes = Math.floor(duration / 60)
+            }
+            hours = hours > 0 ? `${hours}h ` : ''
+            episode.duration = `${hours}${minutes}m`
+            break
+        }
+      })
+    return episode
+  },
+
+  created() {
+    this.fetchFeed()
+  },
+
+  togglePlayback(track) {
+    const { player } = this.refs
+    if (this.nowPlaying !== track) {
+      this.nowPlaying = track
+      const play = () => {
+        player.play()
+        this.paused = false
+        player.removeEventListener('canplay', play)
+      }
+      player.addEventListener('canplay', play)
+    } else {
+      this.paused = !this.paused
+      player[player.paused ? 'play' : 'pause']()
+    }
+  },
+
   icon(name) {
     const icons = {
       leftArrow: 'M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z',
@@ -40,19 +112,22 @@ ardi({
   },
 
   template() {
-    const { player } = this.refs
     const lastPage = Math.floor(this.episodes.length / this.pagesize) + 1
     return html`
       <audio ref="player" src=${this.nowPlaying} />
       <div part="header">
-        <img part="image" src=${this.image} />
+        ${this.image ? html`<img part="image" src=${this.image} />` : ''}
         <div part="header-wrapper">
-          <p part="title">${this.title}</p>
-          <p part="author">${this.author}</p>
-          <a part="link" href=${this.link}>${this.link}</a>
+          ${this.title ? html`<p part="title">${this.title}</p>` : ''}
+          ${this.author ? html`<p part="author">${this.author}</p>` : ''}
+          ${this.link
+            ? html`<a part="link" href=${this.link}>${this.link}</a>`
+            : ''}
         </div>
       </div>
-      <p part="description">${this.description}</p>
+      ${this.description
+        ? html`<p part="description">${this.description}</p>`
+        : ''}
       <div part="episodes">
         ${this.episodes
           .filter(
@@ -66,21 +141,7 @@ ardi({
               <div part="episode">
                 <button
                   part="play-button"
-                  @click=${() => {
-                    if (this.nowPlaying !== track) {
-                      this.nowPlaying = track
-
-                      const play = () => {
-                        player.play()
-                        this.paused = false
-                        player.removeEventListener('canplay', play)
-                      }
-                      player.addEventListener('canplay', play)
-                    } else {
-                      this.paused = !this.paused
-                      player[player.paused ? 'play' : 'pause']()
-                    }
-                  }}
+                  @click=${() => this.togglePlayback(track)}
                   aria-label=${this.nowPlaying === track && !this.paused
                     ? this.pauselabel
                     : this.playlabel}
@@ -104,7 +165,7 @@ ardi({
           disabled=${this.page > 0 ? null : true}
           aria-label=${this.prevpagelabel}
         >
-          ${this.icon('leftArrow')}
+          <slot name="prev-icon"> ${this.icon('leftArrow')} </slot>
         </button>
         ${this.pagelabel} ${this.page + 1} / ${lastPage}
         <button
@@ -113,19 +174,20 @@ ardi({
           disabled=${this.page + 1 < lastPage ? null : true}
           aria-label=${this.nextpagelabel}
         >
-          ${this.icon('rightArrow')}
+          <slot name="next-icon"> ${this.icon('rightArrow')} </slot>
         </button>
       </div>
     `
   },
 
-  css: `
+  css: /* css */ `
     :host {
-      border: 1px solid var(--border);
+      background: var(--surface-heavy);
+      border-radius: .5rem;
       display: grid;
-      gap: 1rem;
+      gap: 1.5rem;
       overflow: hidden;
-      padding: .5rem;
+      padding: 1rem;
     }
     button {
       border: 1px solid var(--border);
@@ -211,59 +273,6 @@ ardi({
       display: flex;
       font-size: .8rem;
       justify-content: space-between;
-      margin-top: .5rem;
     }
   `,
-
-  formatEpisode(item) {
-    const tags = ['title', 'enclosure', 'itunes:duration']
-    const episode = {}
-    ;[...item.childNodes]
-      .filter((el) => tags.includes(el.tagName))
-      .map((el) => {
-        switch (el.tagName) {
-          case 'title':
-            episode.title = el.textContent
-            break
-          case 'enclosure':
-            episode.track = el.getAttribute('url')
-            break
-          case 'itunes:duration':
-            let duration = el.textContent
-            let hours, minutes
-            if (duration.includes(':')) {
-              duration = duration.split(':')
-              hours = Number(duration[0])
-              minutes = Number(duration[1])
-            } else {
-              hours = Math.floor(duration / 60 / 60)
-              minutes = Math.floor(duration / 60)
-            }
-            hours = hours > 0 ? `${hours}h ` : ''
-            episode.duration = `${hours}${minutes}m`
-            break
-        }
-      })
-    return episode
-  },
-
-  created() {
-    fetch(this.feed)
-      .then((res) => res.text())
-      .then((text) => {
-        if (DOMParser) {
-          const parser = new DOMParser()
-          const xmlDoc = parser.parseFromString(text, 'text/xml')
-          const channel = xmlDoc.querySelector('channel')
-          this.title = channel.querySelector('title').textContent
-          this.author = channel.querySelector('author').textContent
-          this.description = channel.querySelector('description').textContent
-          const imageContainer = channel.querySelector('image')
-          this.image = imageContainer.querySelector('url').textContent
-          this.link = imageContainer.querySelector('link').textContent
-          const items = xmlDoc.querySelectorAll('item')
-          this.episodes = [...items].map((item) => this.formatEpisode(item))
-        }
-      })
-  },
 })

@@ -1,7 +1,7 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
-  tag: 'tmdb-trending',
+  tag: 'ardi-tmdb',
 
   props: {
     time: [String, 'day'], // day, week

@@ -73,27 +73,27 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at code from the <app-link>[TMDB demo component](https://ardi.netlify.app/demos/tmdb)</app-link>.
+Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
 
-<tmdb-trending></tmdb-trending>
+<podcast-embed feed="https://feeds.simplecast.com/54nAGcIl" pagesize="5" style="max-width: 450px"></podcast-embed>
 
 ### Tag
 
-Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'tmdb-trending'.
+Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'podcast-embed'.
 
 ```js
 ardi({
-  tag: 'tmdb-trending',
+  tag: 'podcast-embed',
 })
 ```
 
 ### Extends
 
-If you are building a component that extends a default element, you can define the prototype and tag here.
+If you are building a component that extends a default element, you can define the prototype and tag here. Note that Safari still does not support extending built-in elements 😭.
 
 ```js
 ardi({
-  extends: [HTMLPreElement, 'pre'],
+  extends: [HTMLAnchorElement, 'a'],
 })
 ```
 
@@ -111,29 +111,41 @@ ardi({
 
 Props allow you to configure your component using the element's corresponding attributes. To create a property, add a key under `props` whose value is an array containing a handler function and (optionally) a default value. The handler takes the string value from the prop's attribute and transforms it, i.e. from a string `'4'` to a number `4`. The handler can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is set internally or via its attribute, the change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.type`.
 
-For the TMDB component, we'll add two props:
-
-1. type: to configure whether it displays trending TV or movies.
-2. time: to configure the time period for trending results.
+For the podcast demo, we'll add several props:
 
 ```js
 ardi({
   props: {
-    type: [String, 'tv'], // tv, movie, all
-    time: [String, 'day'], // day, week
+    feed: [String, 'https://feeds.simplecast.com/54nAGcIl'],
+    pagesize: [Number, 10],
+    pagelabel: [String, 'Page'],
+    prevpagelabel: [String, 'Prevous Page'],
+    nextpagelabel: [String, 'Next Page'],
+    pauselabel: [String, 'pause'],
+    playlabel: [String, 'play'],
   },
 })
 ```
 
 ### State
 
-State is a reactive container for data, which means any change will trigger a render. Values declared in state are accessible from `this`, i.e. `this.results`.
+State is a reactive container for data, which means any change will trigger a render. Values declared in state are accessible from `this`, i.e. `this.episodes`.
 
-The TMDB component will use an array called 'results' to store movies or tv shows.
+Here is how state is defined in the podcast demo.
 
 ```js
 ardi({
-  state: () => ({ results: [] }),
+  state: () => ({
+    image: '',
+    title: '',
+    author: '',
+    description: '',
+    link: '',
+    episodes: [],
+    nowPlaying: null,
+    paused: true,
+    page: 0,
+  }),
 })
 ```
 
@@ -145,7 +157,7 @@ ardi({
 
 Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`).
 
-The TMDB component's toolbar includes 3 examples. The code below is simplified, you can view the complete code on the <app-link>[TMDB demo page](https://ardi.netlify.app/demos/tmdb)</app-link>.
+Here is a snippet showing the play/pause button for an episode in the podcast demo. You can view the complete code on the <app-link>[podcast demo page](https://ardi.netlify.app/demos/podcast)</app-link>.
 
 <div class="highlight-lines">
 
@@ -153,30 +165,56 @@ The TMDB component's toolbar includes 3 examples. The code below is simplified, 
 ardi({
   template() {
     return html`
-      <select
-        @change=${(e) => {
-          this.type = e.target.value
-          this.fetchTrending()
-        }}
+      ...
+      <button
+        part="play-button"
+        @click=${() => this.playPause(track)}
+        aria-label=${this.nowPlaying === track && !this.paused
+          ? this.pauselabel
+          : this.playlabel}
       >
-        <!-- options -->
-      </select>
-      <button @click=${() => this.prev()}>❮</button>
-      <button @click=${() => this.next()}>❯</button>
+        ${this.icon(
+          this.nowPlaying === track && !this.paused ? 'pause' : 'play'
+        )}
+      </button>
+      ...
     `
   },
 })
 ```
 
-<div class="highlight" style="--line: 5; --lines: 4;"></div>
-<div class="highlight" style="--line: 12; --lines: 2;"></div>
+<div class="highlight" style="--line: 7"></div>
 </div>
 
-#### Lists and Conditional Rendering
+#### Lists
 
-Lists are handled using the `Array.map()` method. In the TMDB component, we will use a map to list the TV series or movies that are returned by the API.
+Lists are handled using the `Array.map()` method. In the podcast demo, we will use a map to list the episodes that are returned by the xml feed.
 
-The most convenient way to handle conditional rendering is to use a ternary operator. In the TMDB component, we'll use conditionals to determine whether or not to show the poster or backdrop images.
+<div class="highlight-lines">
+
+```js
+ardi({
+  template() {
+    return html`
+      ...
+      <div part="episodes">
+        ${this.episodes.map((episode, i) => {
+          return html`<div part="episode">...</div>`
+        })}
+      </div>
+      ...
+    `
+  },
+})
+```
+
+<div class="highlight" style="--line: 6; --lines: 3;"></div>
+
+</div>
+
+#### Conditional Rendering
+
+Ternary operators are the recommended way to handle conditional rendering. There are several examples in the snippet from the podcast demo below.
 
 <div class="highlight-lines">
 
@@ -184,38 +222,39 @@ The most convenient way to handle conditional rendering is to use a ternary oper
 ```js
 ardi({
   template() {
-    return this.results.map((result) => {
-      return html`
-        <li>
-          <a part="result" href=${url}>
-            ${result.backdrop_path
-              ? html`<img part="backdrop" src=${backdrop} />`
-              : ''}
-            ${result.poster_path
-              ? html`<img part="poster" src=${poster} />`
-              : ''}
-            <div part="details">
-              <h3 part="title">${result.name}</h3>
-              <p part="description">${result.overview}</p>
-            </div>
-          </a>
-        </li>
-      `
-    })
+    return html`
+      ...
+      <audio ref="player" src=${this.nowPlaying} />
+      <div part="header">
+        ${this.image ? html`<img part="image" src=${this.image} />` : ''}
+        <div part="header-wrapper">
+          ${this.title ? html`<p part="title">${this.title}</p>` : ''}
+          ${this.author ? html`<p part="author">${this.author}</p>` : ''}
+          ${this.link
+            ? html`<a part="link" href=${this.link}>${this.link}</a>`
+            : ''}
+        </div>
+      </div>
+      ${this.description
+        ? html`<p part="description">${this.description}</p>`
+        : ''}
+      ...
+    `
   },
 })
 ```
 
-<div class="highlight" style="--line: 3"></div>
-<div class="highlight" style="--line: 7; --lines: 6;"></div>
+<div class="highlight" style="--line: 7"></div>
+<div class="highlight" style="--line: 9; --lines: 5;"></div>
+<div class="highlight" style="--line: 16; --lines: 3;"></div>
 
 </div>
 
 #### Slots
 
-Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM), which means you can use [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement) tags inside your templates. You can use a single default slot or multiple named slots.
+Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default, which means you can use [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement) tags to project nested elements into your templates. You can use a single default slot or multiple named slots.
 
-The TMDB component will have two named slots to allow the previous and next button's icons to be customized.
+The podcast demo has two named slots allowing the pagination button icons to be customized.
 
 <div class="highlight-lines">
 
@@ -223,19 +262,22 @@ The TMDB component will have two named slots to allow the previous and next butt
 ardi({
   template() {
     return html`
-      <button part="prev" @click=${() => this.prev()}>
-        <slot name="prev">❮</slot>
+      ...
+      <button
+        part="pagination-prev"
+        @click=${() => this.page--}
+        disabled=${this.page > 0 ? null : true}
+        aria-label=${this.prevpagelabel}
+      >
+        <slot name="prev-icon"> ${this.icon('leftArrow')} </slot>
       </button>
-      <button part="next" @click=${() => this.next()}>
-        <slot name="next">❯</slot>
-      </button>
+      ...
     `
   },
 })
 ```
 
-<div class="highlight" style="--line: 5"></div>
-<div class="highlight" style="--line: 8"></div>
+<div class="highlight" style="--line: 11"></div>
 
 </div>
 
@@ -243,31 +285,25 @@ ardi({
 
 Ardi allows you to add ref attributes to elements in your template, which are accessible from `this.refs`.
 
-In the TMDB component, the `list` ref is used by the `prev` and `next` methods to navigate through the results.
+In the podcast component, the `player` ref is used by the `togglePlayback` method to control playback.
 
 <div class="highlight-lines">
 
 ```js
 ardi({
   template() {
-    return html`
-      <ul ref="list">
-        <!-- results -->
-      </ul>
-    `
+    return html`<audio ref="player" src=${this.nowPlaying} />...`
   },
-  prev() {
-    this.refs.list.scrollLeft -= this.offsetWidth
-  },
-  next() {
-    this.refs.list.scrollLeft += this.offsetWidth
+  togglePlayback() {
+    // ...
+    this.refs.player.play()
+    // ...
   },
 })
 ```
 
-<div class="highlight" style="--line: 4"></div>
-<div class="highlight" style="--line: 10"></div>
-<div class="highlight" style="--line: 13"></div>
+<div class="highlight" style="--line: 3"></div>
+<div class="highlight" style="--line: 7"></div>
 
 </div>
 
@@ -362,9 +398,7 @@ ardi({
 
 ### Methods
 
-You've probably noticed by now that the code samples from the TMDB component refer to a number of other methods, namely `fetchTrending`, `prev` and `next`.
-
-You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the <app-link>[TMDB demo page](https://ardi.netlify.app/demos/tmdb)</app-link>.
+You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the <app-link>[podcast demo](https://ardi.netlify.app/demos/demo)</app-link>. There are many more examples in components listed on the <app-link>[demos page](https://ardi.netlify.app/demos)</app-link>.
 
 ## Lifecycle
 
@@ -479,6 +513,10 @@ ardi({
 
 ### Handlebars
 
+With Handlebars (or any template that returns a simple string: i.e. an untagged template literal), event listeners can be added to the `rendered` method. If present, the `rendered` method will run after each render.
+
+<div class="highlight-lines">
+
 ```js
 import ardi, { html } from '//unpkg.com/ardi'
 import handlebars from 'https://cdn.skypack.dev/handlebars@4.7.7'
@@ -497,4 +535,6 @@ ardi({
 })
 ```
 
-Notice that with Handlebars (or any template that returns a string: i.e. a raw template literal), event listeners can be added to the `updated` method. If present, the `updated` method will run after each render.
+<div class="highlight" style="--line: 12; --lines: 3;"></div>
+
+</div>
