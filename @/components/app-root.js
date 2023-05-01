@@ -91,13 +91,11 @@ ardi({
       this.pushHistory(location.pathname)
       addEventListener('popstate', (e) => {
         if (e.state.path) {
-          this.setPage([
-            {
-              path: e.state.path,
-              doc: sessionStorage.getItem(e.state.path),
-              scrollTop: false,
-            },
-          ])
+          this.setPage({
+            path: e.state.path,
+            doc: sessionStorage.getItem(e.state.path),
+            scrollTop: false,
+          })
         }
       })
       window.ramidusInitialized = true
