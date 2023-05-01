@@ -73,7 +73,7 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses an object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
+Ardi uses a very simple object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
 
 <podcast-embed feed="https://feeds.simplecast.com/54nAGcIl" pagesize="5" style="max-width: 450px"></podcast-embed>
 
