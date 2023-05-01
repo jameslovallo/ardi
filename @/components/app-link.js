@@ -3,12 +3,15 @@ import ardi from '../assets/ardi-min.js'
 ardi({
   tag: 'app-link',
   shadow: false,
+  props: { preload: [Boolean, false] },
   state: () => ({ href: '/', doc: '' }),
   created() {
     const link = this.querySelector('a')
     const href = link.getAttribute('href')
     this.href = href.startsWith('/') ? href : new URL(href).pathname
-    link.addEventListener('mouseover', (e) => this.hover(e))
+    if (this.preload) {
+      this.hover()
+    } else link.addEventListener('mouseover', (e) => this.hover(e))
     link.addEventListener('click', (e) => this.click(e))
   },
   fetchPage(href, setPage) {
@@ -21,11 +24,11 @@ ardi({
       })
   },
   setPage() {
-    appRoot.setPage(this.href, this.doc)
+    appRoot.setPage({ path: this.href, doc: this.doc })
     appRoot.pushHistory(this.href)
   },
   hover(e) {
-    e.preventDefault()
+    e?.preventDefault()
     const href = this.href.split('#')[0]
     if (Object.keys(sessionStorage).includes(href)) {
       this.doc = sessionStorage[this.href]

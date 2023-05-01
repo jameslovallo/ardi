@@ -21,7 +21,7 @@ ardi({
         ${nav.map(
           (page) =>
             html`
-              <app-link>
+              <app-link preload="true">
                 <a href=${page.href}>${page.label}</a>
               </app-link>
             `

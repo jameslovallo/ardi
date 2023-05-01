@@ -29,7 +29,6 @@ ardi({
         `
         if (hasCodeBlocks) {
           this.querySelectorAll('pre code').forEach((el) => {
-            console.log(el)
             hljs.highlightElement(el)
           })
         }

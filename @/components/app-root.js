@@ -46,16 +46,26 @@ ardi({
       tag.replaceWith(newTag)
     })
   },
-  async setPage(path, doc, init) {
+  async setPage(options) {
+    const { path, doc, init = false, scrollTop = true } = options
     // check for native reload
     this.handleNativeReload(doc, path)
     // check if page is prebuilt
     const prebuilt = document.querySelector('meta[name=prebuilt][content=true]')
-    if (init && !prebuilt) this.handleHead()
-    // set page
-    if (!init) {
+    if (init) {
+      // handle sessionStorage for first page loaded
+      let path
+      if (location.pathname === '/') {
+        path = '/'
+      } else if (location.pathname.endsWith('/')) {
+        path = location.pathname.slice(0, -1)
+      } else path = location.pathname
+      sessionStorage.setItem(path, doc)
+      // update head in dev
+      if (!prebuilt) this.handleHead()
+    } else {
       appLayout.innerHTML = doc
-      window.scrollTo({ top: 0, behavior: 'instant' })
+      scrollTop && window.scrollTo({ top: 0, behavior: 'instant' })
     }
     document.title = document.querySelector('h1').innerText
     this.handleClassList(path)
@@ -72,12 +82,22 @@ ardi({
     if (!window.ramidusInitialized) {
       window.appRoot = this
       window.appLayout = document.querySelector('app-layout')
-      this.setPage(location.pathname, appLayout.innerHTML, true)
+      this.setPage({
+        path: location.pathname,
+        doc: appLayout.innerHTML,
+        init: true,
+      })
       // history stuff
       this.pushHistory(location.pathname)
       addEventListener('popstate', (e) => {
         if (e.state.path) {
-          this.setPage(e.state.path, sessionStorage.getItem(e.state.path))
+          this.setPage([
+            {
+              path: e.state.path,
+              doc: sessionStorage.getItem(e.state.path),
+              scrollTop: false,
+            },
+          ])
         }
       })
       window.ramidusInitialized = true
