@@ -4,7 +4,7 @@ Ramidus is a Single Page Application (SPA) template built for custom elements.
 
 ## Features
 
-1. Instant page loading using `<app-content>` and `<app-link>` elements.
+1. Instant page loading using `<app-root>` and `<app-link>` elements.
 2. Templates can be shared between pages using a customizable `<app-layout>` component.
 3. Easily embed markdown and syntax-highlighted files using the `<mark-down>` element.
 4. Familiar conventions, similar to Next or Nuxt.
@@ -67,16 +67,16 @@ To enable SPA-style routing, just wrap links in an `<app-link>` element. You can
 
 ## Layout
 
-A layout is a custom element containing the site's shared markup. Layouts should include the `<app-content>` element with a nested `<slot>` to load the page's content. Here is the default layout included with Ramidus.
+A layout is a custom element containing the site's shared markup. Layouts should include the `<app-root>` element with a nested `<slot>` to load the page's content. Here is the default layout included with Ramidus.
 
 ```html
 <!-- /@/app-layout.js -->
 <app-nav></app-nav>
 
 <main>
-  <app-content>
+  <app-root>
     <slot></slot>
-  </app-content>
+  </app-root>
 </main>
 
 <app-footer></app-footer>
