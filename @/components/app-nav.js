@@ -10,7 +10,7 @@ ardi({
   template() {
     return html`
       <nav>
-        <app-link>
+        <app-link preload="true">
           <a href="/">
             <img
               src="/@/assets/ardi.svg"
