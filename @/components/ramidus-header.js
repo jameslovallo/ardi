@@ -39,6 +39,10 @@ ardi({
 			--height: 350px;
 			--width: 200px;
 			height: 450px;
+		}
+	}
+	@media (min-width: 900px) {
+		:host {
 			margin: 0;
 		}
 	}

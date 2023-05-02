@@ -24,17 +24,20 @@ ardi({
       padding: 0 1rem 4rem;
     }
     @media (min-width: 1200px) {
-      :host(.home) [part=wrapper] {
+      :host(.home) [part=wrapper],
+      :host(.ramidus) [part=wrapper] {
         padding-left: var(--sidebar-width);
       }
     }
     @media (min-width: 1600px) {
-      :host(.home) [part=wrapper] {
+      :host(.home) [part=wrapper],
+      :host(.ramidus) [part=wrapper] {
         padding-left: unset;
       }
     }
     @media (min-width: 1200px) and (max-width: 1600px) {
-      :host(.home) app-footer {
+      :host(.home) app-footer,
+      :host(.ramidus) app-footer {
         margin-left: var(--sidebar-width);
       }
     }
