@@ -248,6 +248,23 @@ ardi({
 
 </div>
 
+If you prefer a more HTML-like syntax, Ardi provides a `<if-else>` element that you can use instead. To use it, just assign the `if` prop with a condition and nest your element inside. If you want to provide a fallback element, you can assign it to the `else` slot and it will be displayed if the condition is falsey. You can see this in action in the <app-link>[Employee Card](/demos/employee)</app-link> component.
+
+```js
+ardi({
+  template() {
+    return html`
+      <if-else if=${this.photo}>
+        <img part="photo" src=${this.photo} />
+        <svg slot="else" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="..." />
+        </svg>
+      </if-else>
+    `
+  },
+})
+```
+
 #### Slots
 
 Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default, which means you can use [&lt;slot&gt;](https://developer.mozilla.org/en-US/docs/Web/API/HTMLSlotElement) tags to project nested elements into your templates. You can use a single default slot or multiple named slots.

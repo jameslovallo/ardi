@@ -174,3 +174,13 @@ export default function ardi(options) {
   !customElements.get(options.tag) &&
     customElements.define(options.tag, c, { extends: elementString })
 }
+
+ardi({
+  tag: 'if-else',
+  props: { if: [(v) => (v ? true : false)] },
+  template() {
+    return html`
+      <slot name=${this.if || this['else-if'] ? null : 'else'}></slot>
+    `
+  },
+})

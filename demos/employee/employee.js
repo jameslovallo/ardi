@@ -34,25 +34,29 @@ ardi({
       </svg>
     `
     return html`
-      ${this.photo ? html`<img part="photo" src=${this.photo} />` : ''}
+      <if-else if=${this.photo}>
+        <img part="photo" src=${this.photo} />
+      </if-else>
       <div part="details">
-        ${this.name ? html`<b>${this.name}</b>` : ''}
-        ${this.position ? html`<small>${this.position}</small>` : ''}
+        <if-else if=${this.name}>
+          <b>${this.name}</b>
+        </if-else>
+        <if-else if=${this.position}>
+          <small>${this.position}</small>
+        </if-else>
       </div>
       <div part="contact">
-        ${this.phone
-          ? html`
-              <a
-                @click=${(e) => this.phoneClick(e)}
-                href=${`tel:${this.phone?.match(/[0-9]+/g).join('')}`}
-              >
-                ${icon(icons.phone)}
-              </a>
-            `
-          : ''}
-        ${this.email
-          ? html`<a href=${`mailto:${this.email}`}>${icon(icons.email)}</a>`
-          : ''}
+        <if-else if=${this.phone}>
+          <a
+            @click=${(e) => this.phoneClick(e)}
+            href=${`tel:${this.phone?.match(/[0-9]+/g).join('')}`}
+          >
+            ${icon(icons.phone)}
+          </a>
+        </if-else>
+        <if-else if=${this.email}>
+          <a href=${`mailto:${this.email}`}>${icon(icons.email)}</a>
+        </if-else>
       </div>
     `
   },
