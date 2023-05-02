@@ -26,6 +26,7 @@ ardi({
   },
   css: /* css */ `
   :host {
+    --depth: 25px;
 		--height: 262px;
 		--width: 150px;
     background: var(--surface-heavy);
@@ -68,7 +69,7 @@ ardi({
   }
   .shadow {
     background: transparent;
-    box-shadow: -60px 60px 15px black;
+    box-shadow: -60px 60px var(--depth) black;
     height: 100%;
     left: 0;
     position: absolute;
@@ -84,24 +85,24 @@ ardi({
   }
   .three-d:before {
     background-color: #bbb;
-    bottom: -7.5px;
+    bottom: calc(-.5 * var(--depth));
     content: "";
     display: block;
-    height: 15px;
+    height: var(--depth);
     left: 0;
     position: absolute;
-    transform: rotateX(90deg) translateY(-7.5px);
+    transform: rotateX(90deg) translateY(calc(-.5 * var(--depth)));
     width: 100%;
   }
   .three-d:after {
     background-color: #ccc;
     content: "";
     height: 100%;
-    left: -7.5px;
+    left: calc(-.5 * var(--depth));
     position: absolute;
     top: 0;
-    transform: rotateY(90deg) translateX(7.5px);
-    width: 15px;
+    transform: rotateY(90deg) translateX(calc(var(--depth) / 2));
+    width: var(--depth);
   }
   .face {
     display: inline-block;
@@ -121,7 +122,7 @@ ardi({
     padding: 0 0.5rem;
     position: absolute;
     top: 0;
-    transform: translateZ(10px);
+    transform: translateZ(calc(var(--depth) / 2));
     width: 100%;
   }
   .face .nav span {
