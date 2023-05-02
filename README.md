@@ -23,21 +23,21 @@ Ardi makes it almost too easy to create reactive custom elements that work with 
 <home-grid>
 
 <home-card
-  src="/@/assets/fast.svg"
+  src="/@/assets/home/fast.svg"
   alt="rocket lifting off"
   heading="It's fast"
   text="Ardi is only 4kb and renders changes with scalpel-like precision."
 />
 
 <home-card
-  src="/@/assets/familiar.svg"
+  src="/@/assets/home/familiar.svg"
   alt="guy chillin in a convertible in orbit"
   heading="It's familiar"
   text="Ardi's modern DX works with templates in µhtml, JSX or Handlebars."
 />
 
 <home-card
-  src="/@/assets/portable.svg"
+  src="/@/assets/home/portable.svg"
   alt="guy getting abducted by a UFO"
   heading="It's universal"
   text="Ardi works the same with JS apps, static sites, or all-in-one platforms."

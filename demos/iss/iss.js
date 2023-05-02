@@ -12,7 +12,7 @@ ardi({
   shadow: false,
   props: {
     iconheight: [Number, 48],
-    iconurl: [String, '/@/assets/iss.png'],
+    iconurl: [String, '/@/assets/demos/iss.png'],
     iconwidth: [Number, 48],
     updateinterval: [Number, 3000],
     zoomlevel: [Number, 4],
