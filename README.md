@@ -73,7 +73,7 @@ ardi({ tag: 'my-component' })
 
 ## API
 
-Ardi uses a very simple object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
+Ardi uses a straightforward object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
 
 <podcast-embed feed="https://feeds.simplecast.com/54nAGcIl" pagesize="5" style="max-width: 450px"></podcast-embed>
 
@@ -109,9 +109,9 @@ ardi({
 
 ### Props
 
-Props allow you to configure your component using the element's corresponding attributes. To create a property, add a key under `props` whose value is an array containing a handler function and (optionally) a default value. The handler takes the string value from the prop's attribute and transforms it, i.e. from a string `'4'` to a number `4`. The handler can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is set internally or via its attribute, the change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.type`.
+Props allow you to configure a component using the element's attributes. To create a property, add a key under `props` whose value is an array containing a handler function and (optionally) a default value. The handler takes the string value from the prop's attribute and transforms it, i.e. from a string `'4'` to a number `4`. The handler can be a built-in function (like String, Number, or JSON.parse) or an arrow function. Every prop is reactive, which means that whether a prop's value is set internally or via its attribute, the change will trigger a render. Prop values are accessible directly from `this`, i.e. `this.pagesize`.
 
-For the podcast demo, we'll add several props:
+Here are the props configured in the podcast demo.
 
 ```js
 ardi({
@@ -151,13 +151,11 @@ ardi({
 
 ### Template
 
-[μhtml](https://www.npmjs.com/package/uhtml) is the default template library, and it's just like JSX except you create your templates using a tagged template literal. μhtml is extremely efficient. When the component's state changes, instead of re-rendering an entire element, μhtml makes tiny, surgical DOM updates as-needed.
+[μhtml](https://www.npmjs.com/package/uhtml) is the default template library, and it's just like JSX except you create your templates using tagged template literals. μhtml is extremely efficient. When the component's state changes, instead of re-rendering an entire element, μhtml makes tiny, surgical DOM updates as-needed.
 
 #### Event Handlers
 
-Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`).
-
-Here is a snippet showing the play/pause button for an episode in the podcast demo. You can view the complete code on the <app-link>[podcast demo page](https://ardi.netlify.app/demos/podcast)</app-link>.
+Event handlers can be applied to an element using React's `on` syntax (`onClick`) or Vue's `@` syntax (`@click`). Here is a snippet showing the play/pause button for an episode in the podcast demo.
 
 <div class="highlight-lines">
 
@@ -188,7 +186,7 @@ ardi({
 
 #### Lists
 
-Lists are handled using the `Array.map()` method. In the podcast demo, we will use a map to list the episodes that are returned by the xml feed.
+Lists are handled using the `Array.map()` method. In the podcast demo, we will use a map to list the episodes that are returned by the xml feed. Lists generally do not require a key, but in cases where the order of elements changes you can add a key using `html.for(key)`.
 
 <div class="highlight-lines">
 
@@ -198,7 +196,7 @@ ardi({
     return html`
       ...
       <div part="episodes">
-        ${this.episodes.map((episode, i) => {
+        ${this.episodes.map((episode) => {
           return html`<div part="episode">...</div>`
         })}
       </div>
@@ -214,7 +212,7 @@ ardi({
 
 #### Conditional Rendering
 
-Ternary operators are the recommended way to handle conditional rendering. There are several examples in the snippet from the podcast demo below.
+Ternary operators are the recommended way to handle conditional rendering. The snippet below shows how elements can be conditionally rendered based on the available data.
 
 <div class="highlight-lines">
 

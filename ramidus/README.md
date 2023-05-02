@@ -6,10 +6,12 @@ Ramidus is a Single Page Application (SPA) template built for custom elements, b
 
 ## Features
 
-1. Instant page loading using `<app-root>` and `<app-link>` elements.
-2. Templates can be shared between pages using a customizable `<app-layout>` component.
-3. Easily embed markdown and syntax-highlighted files using the `<mark-down>` element.
-4. Familiar conventions, similar to Next or Nuxt.
+1. Instant SPA page loading using the `<app-root>` and `<app-link>` elements.
+1. Pre-load high-profile pages after the first page loads.
+1. Share templates between pages using the `<app-layout>` element.
+1. Easily embed markdown and syntax-highlighted files using the `<mark-down>` element.
+1. Familiar conventions, similar to Next or Nuxt.
+1. No hidden code: customize anything exactly the way you like it.
 
 ## Getting Started
 
@@ -21,7 +23,7 @@ npx ramidus@latest && npm run dev
 
 ## Project Structure
 
-The "@" folder contains global content like components, assets, layouts and your site's head. This naming convention keeps the folder first alphabetically so it's always easy to find.
+Global content like components, assets, layouts and your site's head are contained in the "@" folder. This naming convention keeps the folder first alphabetically so it's always easy to find.
 
 <div class="tree">
 
@@ -84,9 +86,17 @@ A layout is a custom element containing the site's shared markup. Layouts should
 <app-footer></app-footer>
 ```
 
+The layout can be updated dynamically based on the page you are on. When each page loads, the path and current page nesting level are added as classes to the `<app-layout>` element, i.e. `class="about level-2"`. You can use these classes to style elements inside the layout element. In the template above, if you wanted to hide the footer on pages under the "about" path, you could use the following css in your layout.
+
+```css
+:host(.about) app-footer {
+  display: none;
+}
+```
+
 ## Components
 
-Global components live in `/@/components` and are registered in `/@/main.js`. Ramidus's core components are built with [Ardi](ardi.netlify.app), but you can use any custom element framework you like (or none).
+Global components go in the `/@/components` folder and are registered in `/@/main.js`. Ramidus's core components are built with [Ardi](ardi.netlify.app), but you can use any custom element framework you like (or none).
 
 ## Deployment
 

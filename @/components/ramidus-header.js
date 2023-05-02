@@ -18,6 +18,7 @@ ardi({
             <span></span>
             <span></span>
             <span></span>
+            <span></span>
           </div>
         </div>
       </div>
@@ -27,7 +28,7 @@ ardi({
   :host {
 		--height: 262px;
 		--width: 150px;
-    background: #111;
+    background: var(--surface-heavy);
 		display: grid;
 		height: 300px;
 		margin: 0 -1rem;
@@ -50,7 +51,7 @@ ardi({
 		display: block;
 		height: calc(var(--height) - 2rem);
 		object-fit: cover;
-		object-position: 50% 33%;
+		object-position: 50% 20%;
 		width: var(--width);
 	}
   .box {
@@ -78,10 +79,11 @@ ardi({
     z-index: -1;
   }
   .three-d {
+    background-color: #ddd;
     transform-style: preserve-3d;
   }
   .three-d:before {
-    background-color: #222;
+    background-color: #bbb;
     bottom: -7.5px;
     content: "";
     display: block;
@@ -92,7 +94,7 @@ ardi({
     width: 100%;
   }
   .three-d:after {
-    background-color: #333;
+    background-color: #ccc;
     content: "";
     height: 100%;
     left: -7.5px;
@@ -102,7 +104,6 @@ ardi({
     width: 15px;
   }
   .face {
-    background-color: #444;
     display: inline-block;
 		height: var(--height);
     margin: 0 auto;
@@ -113,7 +114,6 @@ ardi({
   }
   .face .nav {
     align-items: center;
-    background: #555;
     display: flex;
     gap: .5rem;
     height: 2rem;
@@ -125,7 +125,7 @@ ardi({
     width: 100%;
   }
   .face .nav span {
-    background: white;
+    background: #333;
     border-radius: 1rem;
     display: block;
     height: 0.5rem;
@@ -133,13 +133,14 @@ ardi({
     width: 1.5rem;
   }
   .face .nav span:first-child {
-    background: var(--theme-color);
+    background: dodgerblue;
     margin-right: auto;
   }
   .face-slider {
+		--gap: 3rem;
     animation: slidePages 15s infinite;
     display: flex;
-    gap: 2rem;
+    gap: var(--gap);
 		height: calc(var(--height) - 2rem);
     left: 0;
     position: absolute;
@@ -156,28 +157,28 @@ ardi({
       left: 0;
     }
     20% {
-      left: calc(-100% - 2rem);
+      left: calc(-100% - calc(1 * var(--gap)));
     }
     30% {
-      left: calc(-100% - 2rem);
+      left: calc(-100% - calc(1 * var(--gap)));
     }
     40% {
-      left: calc(-200% - 4rem);
+      left: calc(-200% - calc(2 * var(--gap)));
     }
     50% {
-      left: calc(-200% - 4rem);
+      left: calc(-200% - calc(2 * var(--gap)));
     }
     60% {
-      left: calc(-300% - 6rem);
+      left: calc(-300% - calc(3 * var(--gap)));
     }
     70% {
-      left: calc(-300% - 6rem);
+      left: calc(-300% - calc(3 * var(--gap)));
     }
     80% {
-      left: calc(-400% - 8rem);
+      left: calc(-400% - calc(4 * var(--gap)));
     }
     90% {
-      left: calc(-400% - 8rem);
+      left: calc(-400% - calc(4 * var(--gap)));
     }
 		100% {
 			left: 0;
