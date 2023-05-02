@@ -1,6 +1,6 @@
 # Ramidus
 
-Ramidus is a Single Page Application (SPA) template built for custom elements, bringing many of the benefits of frameworks like Next or Nuxt to the vanilla web. Unlike those frameworks, you're not locked into one way of doing things: all of the code is included in your project, and you are free to modify it however you wish.
+Ramidus is a Single Page Application (SPA) template built for custom elements, bringing many of the benefits of frameworks like Next or Nuxt to vanilla sites. Unlike those frameworks, you're not locked into one way of doing things: all of the code is included in your project, and you are free to modify it however you wish.
 
 <ramidus-header></ramidus-header>
 

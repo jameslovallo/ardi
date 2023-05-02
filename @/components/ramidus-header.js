@@ -116,7 +116,7 @@ ardi({
   .face .nav {
     align-items: center;
     display: flex;
-    gap: .5rem;
+    gap: .25rem;
     height: 2rem;
     left: 0;
     padding: 0 0.5rem;
