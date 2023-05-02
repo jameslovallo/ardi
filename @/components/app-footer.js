@@ -5,7 +5,10 @@ ardi({
   template() {
     return html`
       <footer>
-        <p>This SPA was made with Ardi components.</p>
+        <p>
+          This site was built with
+          <app-link><a href="/ramidus">Ramidus</a></app-link>
+        </p>
       </footer>
     `
   },
