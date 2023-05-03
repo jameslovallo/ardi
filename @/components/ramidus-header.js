@@ -32,9 +32,11 @@ ardi({
       background: var(--surface-heavy);
       display: grid;
       height: 300px;
-      margin: 0 -1rem;
+      margin: 2rem 0 2rem 50%;
       overflow: hidden;
       place-items: center;
+      transform: translateX(-50%);
+      width: 100vw;
     }
     @media (min-width: 600px) {
       :host {
@@ -43,9 +45,11 @@ ardi({
         height: 450px;
       }
     }
-    @media (min-width: 900px) {
+    @media (min-width: 1200px) {
       :host {
-        margin: 0;
+        margin: 2rem 0;
+        transform: unset;
+        width: 100%;
       }
     }
     img {
