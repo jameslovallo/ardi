@@ -18,7 +18,7 @@ export default {
     },
     {
       rel: 'stylesheet',
-      href: '/@/css/hljs.css',
+      href: '/@/css/prism.css',
     },
     {
       rel: 'icon',

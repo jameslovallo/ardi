@@ -77,8 +77,11 @@ ardi({
     return episode
   },
 
-  created() {
-    this.fetchFeed()
+  intersected() {
+    if (!this.fetched) {
+      this.fetchFeed()
+      this.fetched = true
+    }
   },
 
   togglePlayback(track) {

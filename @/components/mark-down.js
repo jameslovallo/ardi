@@ -1,5 +1,4 @@
-import hljs from 'https://cdn.skypack.dev/highlight.js@11.7.0'
-import { parse } from 'https://unpkg.com/marked@4.3.0/lib/marked.esm.js'
+import { parse } from 'https://cdn.jsdelivr.net/npm/marked/+esm'
 import ardi from '../assets/ardi-min.js'
 
 const codeToMd = (lang, code) => `
@@ -28,8 +27,8 @@ ardi({
           ${parse(md)}
         `
         if (hasCodeBlocks) {
-          this.querySelectorAll('pre code').forEach((el) => {
-            hljs.highlightElement(el)
+          import('https://unpkg.com/prismjs@1.29.0/prism.js').then((m) => {
+            m.default.highlightAllUnder(this)
           })
         }
         setTimeout(() => {

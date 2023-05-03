@@ -107,6 +107,20 @@ code:not([class^='language']) {
   padding: 2px 2px;
 }
 
+.highlight-lines {
+  position: relative;
+}
+
+.highlight-lines .highlight {
+  background: rgba(82, 173, 242, 0.1);
+  font-size: 14px;
+  height: calc(2em * var(--lines, 1));
+  left: 0;
+  position: absolute;
+  top: calc(2em * var(--line) - 1.5em);
+  width: 100%;
+}
+
 .demos h2 {
   margin-top: 3rem;
 }
