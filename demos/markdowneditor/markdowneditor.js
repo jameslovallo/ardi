@@ -26,9 +26,11 @@ Image
 
 ardi({
   tag: 'markdown-editor',
+
   ready() {
     this.refs.preview.innerHTML = parse(placeholder)
   },
+
   template() {
     return html`
       <textarea
@@ -42,6 +44,7 @@ ardi({
       <div ref="preview"></div>
     `
   },
+
   styles: css`
     :host {
       border: 1px solid var(--border);

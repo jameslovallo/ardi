@@ -2,8 +2,11 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-plyr',
+
   shadow: false,
+
   props: { type: [String], src: [String] },
+
   template() {
     if (['youtube', 'vimeo'].includes(this.type)) {
       return html`
@@ -18,11 +21,13 @@ ardi({
       return html`<audio src=${this.src}></audio>`
     }
   },
+
   ready() {
     import('https://unpkg.com/plyr@3/dist/plyr.min.mjs').then((m) => {
       m.default.setup(this.root.querySelectorAll('div, video, audio'))
     })
   },
+
   styles: css`
     @import 'https://unpkg.com/plyr@3/dist/plyr.css';
   `,

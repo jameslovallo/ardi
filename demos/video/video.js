@@ -2,17 +2,21 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-video',
+
   props: {
     pauselabel: [String, 'Pause'],
     playlabel: [String, 'Play'],
     poster: [String, null],
     src: [String],
   },
+
   state: () => ({ playing: false, progress: 0 }),
+
   playPause() {
     this.playing = !this.playing
     this.refs.video[this.playing ? 'play' : 'pause']()
   },
+
   template() {
     const pause = 'M14,19H18V5H14M6,19H10V5H6V19Z'
     const play = 'M8,5.14V19.14L19,12.14L8,5.14Z'
@@ -59,6 +63,7 @@ ardi({
       </button>
     `
   },
+
   styles: css`
     :host {
       aspect-ratio: var(--aspect-ratio, 16/9);

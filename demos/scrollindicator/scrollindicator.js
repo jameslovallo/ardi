@@ -2,13 +2,16 @@ import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-scroll-indicator',
+
   props: {
     background: [String, '#888'],
     foreground: [String, 'black'],
     height: [(v) => (v && isNaN(v) ? v : (v || 5) + 'px')],
     position: [String, 'fixed'],
   },
+
   state: () => ({ scrollPercent: 0 }),
+
   template() {
     return html`
       <div part="background">
@@ -16,6 +19,7 @@ ardi({
       </div>
     `
   },
+
   styles() {
     return /* css */ `
       :host {
@@ -36,12 +40,14 @@ ardi({
       }
     `
   },
+
   setScrollPercent() {
     const numerator = this.parentElement.scrollTop
     const denominator =
       this.parentElement.scrollHeight - this.parentElement.offsetHeight
     this.scrollPercent = (numerator / denominator) * 100 + '%'
   },
+
   created() {
     this.parentElement.addEventListener('resize', () => this.setScrollPercent())
     this.parentElement.addEventListener('scroll', () => this.setScrollPercent())

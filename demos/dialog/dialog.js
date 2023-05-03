@@ -2,7 +2,9 @@ import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-dialog',
+
   state: () => ({ open: false }),
+
   template() {
     return html`
       <slot
@@ -39,6 +41,7 @@ ardi({
       </dialog>
     `
   },
+
   styles: css`
     :host {
       --backdrop: rgba(0, 0, 0, 0.25);

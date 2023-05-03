@@ -2,13 +2,17 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'i18n-provider',
+
   state() {
     return { t: this.langs.en }
   },
+
   template: () => html`<slot></slot>`,
+
   setLang(lang) {
     this.t = this.langs[lang]
   },
+
   langs: {
     en: {
       label: 'English',
@@ -29,6 +33,7 @@ ardi({
 
 ardi({
   tag: 'i18n-consumer',
+
   template() {
     const { t } = this.context('i18n')
     return html`
@@ -40,6 +45,7 @@ ardi({
       </nav>
     `
   },
+
   styles: css`
     nav {
       background: var(--surface-heavy);
@@ -55,6 +61,7 @@ ardi({
 
 ardi({
   tag: 'i18n-changer',
+
   template() {
     const i18n = this.context('i18n')
     const { t, langs } = i18n

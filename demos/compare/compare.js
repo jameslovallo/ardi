@@ -2,7 +2,9 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-compare',
+
   props: { percent: [Number, 50] },
+
   template() {
     return html`
       <div style=${`--percent: ${this.percent}%`}>
@@ -25,6 +27,7 @@ ardi({
       </div>
     `
   },
+
   styles: css`
     :host {
       display: block;

@@ -2,11 +2,13 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-accordion',
+
   props: {
     indicator: [String],
     open: [Boolean, false],
     summary: [String],
   },
+
   template() {
     return html`
       <details part="details" ref="details">
@@ -37,6 +39,7 @@ ardi({
       </details>
     `
   },
+
   expand() {
     this.open = true
     this.refs.details.open = true
@@ -46,10 +49,12 @@ ardi({
       this.parentElement.closeOpen(this.index)
     }
   },
+
   collapse() {
     this.open = false
     this.refs.content.style.maxHeight = 0
   },
+
   ready() {
     if (this.open) {
       this.refs.details.open = true
@@ -62,6 +67,7 @@ ardi({
       getContentHeight()
     }
   },
+
   styles: css`
     :host {
       --padding: 0.5rem;
@@ -126,15 +132,18 @@ ardi({
 ardi({
   tag: 'ardi-accordion-group',
   props: { multiple: [Boolean, false] },
+
   template() {
     return html`<slot></slot>`
   },
+
   ready() {
     ;[...this.children].forEach((el, i) => {
       el.classList.add('border-collapse')
       el.index = i
     })
   },
+
   closeOpen(i) {
     if (!this.multiple) {
       ;[...this.children]

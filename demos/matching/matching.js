@@ -2,6 +2,7 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-matching',
+
   state: () => ({
     tiles: ['🐕', '🐒', '🐈', '🦝', '🐄', '🐖', '🐓', '🦖'],
     randomizedTiles: [],
@@ -14,11 +15,13 @@ ardi({
     best: 0,
     wins: 0,
   }),
+
   created() {
     this.randomizedTiles = [...this.tiles, ...this.tiles].sort(
       () => Math.random() - 0.5
     )
   },
+
   handleClick(tile, i) {
     if (i === this.lastClicked) return
     this.lastClicked = i
@@ -41,6 +44,7 @@ ardi({
       }
     }
   },
+
   handleWin() {
     if (this.best === 0 || this.moves < this.best) this.best = this.moves
     this.moves = 0
@@ -52,11 +56,13 @@ ardi({
     }, 1000)
     setTimeout(() => this.created(), 2000)
   },
+
   isFlipped(tile, i) {
     return this.flipped.includes(i) || this.matched.includes(tile)
       ? 'flipped'
       : ''
   },
+
   template() {
     return html`
       <div class="stats">
@@ -85,6 +91,7 @@ ardi({
       </div>
     `
   },
+
   styles: css`
     :host {
       border: 1px solid var(--border);

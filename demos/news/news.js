@@ -4,17 +4,20 @@ const parser = new XMLParser()
 
 ardi({
   tag: 'ardi-news',
+
   props: {
     feed: [String, 'https://rsshub.app/apnews/topics/apf-topnews'],
     storyheading: [String, 'Latest Headlines'],
     linklabel: [String, 'Visit Site'],
   },
+
   state: () => ({
     title: 'Loading Title',
     description: 'Loading Description',
     link: null,
     stories: [],
   }),
+
   fetchRSS() {
     fetch(`/.netlify/functions/proxy?url=${this.feed}&format=text`)
       .then((response) => response.text())
@@ -36,12 +39,15 @@ ardi({
       })
       .catch(console.error)
   },
+
   created() {
     this.fetchRSS()
   },
+
   changed(prop) {
     prop.old && prop.new && this.fetchRSS()
   },
+
   template() {
     return html`
       <h2>${this.title.split(' - ')[0]}</h2>
@@ -66,6 +72,7 @@ ardi({
       </div>
     `
   },
+
   styles: css`
     a {
       color: inherit;

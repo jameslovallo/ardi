@@ -2,12 +2,14 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-pixel',
+
   state: () => ({
     hour: 0,
     minute: 0,
     minuteRotation: 0,
     secondRotation: 0,
   }),
+
   init() {
     let date = new Date()
     this.hour = date.getHours() % 12 || 12
@@ -23,13 +25,16 @@ ardi({
       this.secondRotation += 6
     }, 1000)
   },
+
   created() {
     this.init()
     document.addEventListener('visibilitychange', () =>
       document.hidden ? clearInterval(this.keepTime) : this.init()
     )
   },
+
   formatNumber: (n) => (n < 10 ? `0${n}` : n),
+
   ticks() {
     return Array(30)
       .fill(null)
@@ -40,6 +45,7 @@ ardi({
         `
       })
   },
+
   numbers(number) {
     const numbers = []
     for (let i = 0; i <= 55; i += 5) {
@@ -56,6 +62,7 @@ ardi({
       `
     })
   },
+
   template() {
     return html`
       <div part="hour">${this.formatNumber(this.hour)}</div>
@@ -76,6 +83,7 @@ ardi({
       </div>
     `
   },
+
   styles: css`
     :host {
       --accent: #64b5f6;

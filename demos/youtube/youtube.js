@@ -2,7 +2,9 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-youtube',
+
   props: { vid: [String] },
+
   state: () => ({ loaded: false }),
 
   template() {

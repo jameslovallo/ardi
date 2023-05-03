@@ -9,7 +9,9 @@ import ardi, { css } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-iss',
+
   shadow: false,
+
   props: {
     iconheight: [Number, 48],
     iconurl: [String, '/@/assets/demos/iss.png'],
@@ -17,6 +19,7 @@ ardi({
     updateinterval: [Number, 3000],
     zoomlevel: [Number, 4],
   },
+
   createTileLayer() {
     tileLayer(
       'https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryTopo/MapServer/tile/{z}/{y}/{x}',
@@ -27,6 +30,7 @@ ardi({
       }
     ).addTo(this.map)
   },
+
   createIcon() {
     this.icon = icon({
       iconUrl: this.iconurl,
@@ -34,12 +38,14 @@ ardi({
       iconAnchor: [this.iconwidth / 2, this.iconheight / 2],
     })
   },
+
   createMap(lat, lng) {
     this.map = map(this.refs.map).setView([lat, lng], this.zoomlevel)
     this.createTileLayer()
     this.createIcon()
     this.marker = marker([lat, lng], { icon: this.icon }).addTo(this.map)
   },
+
   getIssPosition() {
     fetch(
       [
@@ -63,10 +69,13 @@ ardi({
         }
       })
   },
+
   ready() {
     setInterval(() => this.getIssPosition(), this.updateinterval)
   },
+
   template: () => "<div ref='map'></div>",
+
   styles: css`
     @import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
     [ref='map'] {

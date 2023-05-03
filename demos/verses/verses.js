@@ -2,8 +2,11 @@ import ardi from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-verses',
+
   props: { query: [String, 'John 1 1-34'] },
+
   state: () => ({ html: '' }),
+
   fetchVerses() {
     fetch(`https://api.esv.org/v3/passage/html/?q=${this.query}`, {
       headers: {
@@ -13,12 +16,15 @@ ardi({
       .then((res) => res.json())
       .then((json) => (this.html = json.passages[0]))
   },
+
   created() {
     this.fetchVerses()
   },
+
   changed(prop) {
     prop.old && prop.new && this.fetchVerses()
   },
+
   template() {
     return this.html
   },

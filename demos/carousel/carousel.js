@@ -2,12 +2,14 @@ import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-carousel',
+
   props: {
     activeindicator: [String],
     buttons: [Boolean, true],
     indicators: [Boolean, true],
     indicator: [String],
   },
+
   scroll(d) {
     // prettier-ignore
     const { refs: {track}, children } = this
@@ -22,6 +24,7 @@ ardi({
       track.scrollLeft += d * children[0].offsetWidth
     }
   },
+
   handleIntersected() {
     ;[...this.children]
       .filter((child) => !child.hasAttribute('slot'))
@@ -45,9 +48,11 @@ ardi({
         ).observe(slide)
       })
   },
+
   created() {
     this.handleIntersected()
   },
+
   template() {
     const buttons = html`
       <button part="prev" @click=${() => this.scroll(-1)}>
@@ -103,6 +108,7 @@ ardi({
       </div>
     `
   },
+
   styles: css`
     :host {
       display: block;
