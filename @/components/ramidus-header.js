@@ -74,14 +74,14 @@ ardi({
       left: 0;
       position: absolute;
       top: 0;
-      transform-css: preserve-3d;
+      transform-style: preserve-3d;
       transform: rotateX(30deg) rotateZ(-33deg);
       width: 100%;
       z-index: -1;
     }
     .three-d {
       background-color: #ddd;
-      transform-css: preserve-3d;
+      transform-style: preserve-3d;
     }
     .three-d:before {
       background-color: #bbb;

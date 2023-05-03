@@ -230,6 +230,13 @@ ardi({
       min-width: 0;
       max-width: 100%;
     }
+    [part='header-wrapper'] {
+      display: grid;
+      gap: 0.75rem;
+    }
+    [part='header-wrapper'] > * {
+      line-height: 1;
+    }
     [part='title'] {
       font-size: 1rem;
       font-weight: bold;

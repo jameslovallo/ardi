@@ -127,7 +127,7 @@ ardi({
       height: 100%;
       position: relative;
       text-align: center;
-      transform-css: preserve-3d;
+      transform-style: preserve-3d;
       transition: transform 0.5s;
       width: 100%;
     }

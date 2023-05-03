@@ -334,40 +334,11 @@ To share context from a parent component, add the `context` attribute with a des
 
 ### CSS
 
-Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Despite common misconceptions, elements in the Shadow DOM can be styled by an external stylesheet: it just means that your styles are scoped unless you expose them using a [part attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). This is a feature, not a bug! Besides part attributes, elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
-
-This all means that you can build a component and place it on any site without worrying that the site's stylesheets will interfere with your component's core functionality, and you get complete control over which elements inside your template are allowed to be influenced by external CSS.
-
-#### In the template
-
-You can include CSS styling directly in your component's template, like this.
-
-<div class="highlight-lines">
-
-```js
-ardi({
-  template() {
-    const { bg, color } = this.context('theme')
-    return html`
-      <nav>...</nav>
-      <style>
-        nav {
-          background: ${bg};
-          color: ${color};
-        }
-      </style>
-    `
-  },
-})
-```
-
-<div class="highlight" style="--line: 6; --lines: 6;"></div>
-
-</div>
+Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Elements in the Shadow DOM can be styled by an external stylesheet using [part attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). Elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
 #### Inline
 
-You can also use JS in a style attribute, or any html attribute, like this.
+You can use Javascript in an inline style attribute.
 
 <div class="highlight-lines">
 
@@ -386,7 +357,32 @@ ardi({
 
 #### CSS key
 
-If you have a lot of CSS, it may be cleaner to move it into it's own key. If present, the CSS key will automatically be added to your template. It can be a template literal or a function that returns a template literal. You can use Javascript values and expressions in your CSS as long as your method is not an arrow function.
+If you have a lot of CSS, it's cleaner to create a css key. Ardi provides a `css` helper function to facilitate working with VSCode and other IDEs that support tagged template literals.
+
+<div class="highlight-lines">
+
+```js
+import ardi, { css, html } from '//unpkg.com/ardi'
+
+ardi({
+  template() {
+    const { bg, color } = this.context('theme')
+    return html`<nav style=${`--bg: ${bg}; --color: ${color};`}>...</nav>`
+  },
+  css: css`
+    nav {
+      background: var(--bg);
+      color: var(--color);
+    }
+  `,
+})
+```
+
+<div class="highlight" style="--line: 8; --lines: 6;"></div>
+
+</div>
+
+If you prefer, you can also use Javascript variables and functions directly in your CSS by creating the `css` key as a function.
 
 <div class="highlight-lines">
 

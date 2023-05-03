@@ -93,7 +93,7 @@ ardi({
     [part='number'] i {
       align-items: center;
       display: flex;
-      font-css: normal;
+      font-style: normal;
       height: 3em;
       justify-content: center;
       transform: rotate(calc(-1 * var(--rotation)));
