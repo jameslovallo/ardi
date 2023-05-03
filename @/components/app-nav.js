@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 const nav = [
   { href: '/demos', label: 'Demos' },
@@ -29,7 +29,7 @@ ardi({
       </nav>
     `
   },
-  css: /* css */ `
+  css: css`
     nav {
       align-items: center;
       display: flex;

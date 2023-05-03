@@ -1,5 +1,5 @@
 import { parse } from 'https://cdn.skypack.dev/marked@4.1'
-import ardi, { html } from '//unpkg.com/ardi'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 const placeholder = `#   Heading 1
 ##  Heading 2
@@ -42,10 +42,10 @@ ardi({
       <div ref="preview"></div>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       border: 1px solid var(--border);
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       display: block;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -62,11 +62,12 @@ ardi({
     textarea:focus-visible {
       outline: none;
     }
-    textarea, [ref=preview] {
+    textarea,
+    [ref='preview'] {
       overflow: auto;
-      padding: .5rem;
+      padding: 0.5rem;
     }
-    [ref=preview] {
+    [ref='preview'] {
       padding: 0 1rem;
     }
   `,

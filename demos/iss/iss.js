@@ -5,7 +5,7 @@ import {
   marker,
   tileLayer,
 } from 'https://cdn.skypack.dev/leaflet@1.9.3'
-import ardi from '../../@/assets/ardi-min.js'
+import ardi, { css } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-iss',
@@ -67,9 +67,9 @@ ardi({
     setInterval(() => this.getIssPosition(), this.updateinterval)
   },
   template: () => "<div ref='map'></div>",
-  css: /* css */ `
+  css: css`
     @import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
-    [ref=map] {
+    [ref='map'] {
       height: 400px;
     }
     .leaflet-touch .leaflet-bar a {

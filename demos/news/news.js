@@ -1,5 +1,5 @@
 import { XMLParser } from 'https://cdn.skypack.dev/fast-xml-parser@4.1.3'
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 const parser = new XMLParser()
 
 ardi({
@@ -66,19 +66,16 @@ ardi({
       </div>
     `
   },
-  css: /* css */ `
+  css: css`
     a {
       color: inherit;
       text-decoration-color: var(--theme-color);
     }
-    [part=weblink]:hover {
-      text-decoration: 
-    }
-    [part=stories] {
+    [part='stories'] {
       display: grid;
       gap: 1rem;
     }
-    [part=story] {
+    [part='story'] {
       align-items: center;
       background: var(--surface);
       border: 1px solid var(--border);
@@ -89,10 +86,10 @@ ardi({
       padding-right: 1rem;
       text-decoration: none;
     }
-    [part=story]:hover {
+    [part='story']:hover {
       background: var(--surface-heavy);
     }
-    [part=story] img {
+    [part='story'] img {
       aspect-ratio: 1;
       display: block;
       height: 6rem;

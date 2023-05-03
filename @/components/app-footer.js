@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'app-footer',
@@ -12,7 +12,7 @@ ardi({
       </footer>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       background: var(--surface-heavy);
       display: block;

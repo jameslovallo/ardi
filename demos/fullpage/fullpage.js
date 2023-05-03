@@ -5,7 +5,7 @@ ardi({
 
   props: {
     activeindicator: [String],
-    activeindicatorstyle: [String, 'transform: scale(1.75)'],
+    activeindicatorcss: [String, 'transform: scale(1.75)'],
     alignment: [String, 'center'], // left center right
     indicator: [String, '●'],
     indicatorcolor: [String, 'currentcolor'],

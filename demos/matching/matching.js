@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-matching',
@@ -85,10 +85,10 @@ ardi({
       </div>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       border: 1px solid var(--border);
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       display: block;
       padding: 1rem;
     }
@@ -99,7 +99,7 @@ ardi({
     }
     .stats :last-child {
       margin-left: auto;
-    } 
+    }
     .cards {
       display: grid;
       gap: 1rem;
@@ -127,14 +127,15 @@ ardi({
       height: 100%;
       position: relative;
       text-align: center;
-      transform-style: preserve-3d;
-      transition: transform .5s;
+      transform-css: preserve-3d;
+      transition: transform 0.5s;
       width: 100%;
     }
     .flip-card.flipped .flip-card-inner {
       transform: rotateY(180deg);
     }
-    .flip-card-front, .flip-card-back {
+    .flip-card-front,
+    .flip-card-back {
       -webkit-backface-visibility: hidden;
       backface-visibility: hidden;
       height: 100%;

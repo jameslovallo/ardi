@@ -13,7 +13,7 @@ pre {
   z-index: 2;
 }
 .hljs-emphasis {
-  font-style: italic;
+  font-css: italic;
 }
 .hljs-strong {
   font-weight: bold;
@@ -94,5 +94,5 @@ pre {
 .hljs-comment,
 .hljs-quote {
   color: #b18eb1;
-  font-style: italic;
+  font-css: italic;
 }

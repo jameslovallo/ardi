@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '../../@/assets/ardi-min.js'
+import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-keyboard',
@@ -203,7 +203,7 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       background: var(--bg, #000);
       border: 1px solid var(--border);
@@ -267,11 +267,7 @@ ardi({
     }
     [part='octave']:before {
       content: '';
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.75),
-        transparent
-      );
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), transparent);
       height: 5%;
       position: absolute;
       top: 100%;
@@ -342,7 +338,7 @@ ardi({
       display: block;
       fill: currentcolor;
       width: 16px;
-    }  
+    }
   `,
 
   icons: {

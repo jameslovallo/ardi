@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-gauge',
@@ -48,7 +48,7 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       align-items: center;
       background: var(--background, #000);
@@ -93,7 +93,7 @@ ardi({
     [part='number'] i {
       align-items: center;
       display: flex;
-      font-style: normal;
+      font-css: normal;
       height: 3em;
       justify-content: center;
       transform: rotate(calc(-1 * var(--rotation)));

@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'home-card',
@@ -17,7 +17,7 @@ ardi({
       </div>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       display: flex;
       background: var(--surface-heavy);

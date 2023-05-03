@@ -56,7 +56,7 @@ ardi({
   },
 
   css() {
-    return `
+    return /* css */ `
       span {
         --color: currentcolor;
         animation: blink 1s linear infinite;

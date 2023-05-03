@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-carousel',
@@ -103,7 +103,7 @@ ardi({
       </div>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       display: block;
       position: relative;
@@ -115,22 +115,22 @@ ardi({
       scroll-snap-stop: always;
       width: var(--slide-width, 100%);
     }
-    [ref=track] {
+    [ref='track'] {
       display: flex;
       overflow-x: scroll;
       scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
       scrollbar-width: none;
     }
-    [ref=track]::-webkit-scrollbar {
+    [ref='track']::-webkit-scrollbar {
       display: none;
     }
-    [part=controls] {
+    [part='controls'] {
       align-items: center;
       display: flex;
     }
-    [part=prev],
-    [part=next] {
+    [part='prev'],
+    [part='next'] {
       align-items: center;
       background: var(--button-background, black);
       border-color: var(--button-border-color, transparent);
@@ -148,25 +148,25 @@ ardi({
       width: var(--button-size, 2em);
       top: calc(50% - 1rem);
     }
-    slot[name=prev] svg,
-    slot[name=next] svg,
-    slot[name=prev]::slotted(svg),
-    slot[name=next]::slotted(svg) {
+    slot[name='prev'] svg,
+    slot[name='next'] svg,
+    slot[name='prev']::slotted(svg),
+    slot[name='next']::slotted(svg) {
       display: block;
       fill: var(--button-color, white);
       height: var(--button-font-size, 24px);
       width: var(--button-font-size, 24px);
     }
-    [part=prev] {
+    [part='prev'] {
       left: 1rem;
       order: 0;
     }
-    [part=next] {
+    [part='next'] {
       order: 2;
       right: 1rem;
     }
-    [part=indicators] {
-      bottom: .5rem;
+    [part='indicators'] {
+      bottom: 0.5rem;
       display: flex;
       gap: var(--indicator-gap, 0);
       justify-content: center;
@@ -175,7 +175,7 @@ ardi({
       position: var(--indicator-position, absolute);
       width: 100%;
     }
-    [part=indicator] {
+    [part='indicator'] {
       background: var(--indicator-background, transparent);
       border-color: var(--indicator-border-color, transparent);
       border-radius: var(--indicator-border-radius, 0);
@@ -188,16 +188,16 @@ ardi({
       text-shadow: var(--indicator-text-shadow, 1px 1px 1px black);
       width: var(--indicator-size, 1.5em);
     }
-    [part=indicator] {
+    [part='indicator'] {
       color: var(--indicator-color, white);
     }
-    [part=indicator].active {
+    [part='indicator'].active {
       color: var(--active-indicator-color, white);
     }
-    [part=indicator]:not(.active) [ref=activeIndicator] {
+    [part='indicator']:not(.active) [ref='activeIndicator'] {
       display: none;
     }
-    [part=indicator].active [ref=indicator] {
+    [part='indicator'].active [ref='indicator'] {
       display: none;
     }
   `,

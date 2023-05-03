@@ -2,10 +2,6 @@ import ardi, { html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-dialog',
-  props: {
-    backdrop: [String, 'rgba(0,0,0,0.25)'],
-    transition: [Number, 0.33],
-  },
   state: () => ({ open: false }),
   template() {
     return html`
@@ -43,50 +39,52 @@ ardi({
       </dialog>
     `
   },
-  css() {
-    return /* css */ `
-      dialog {
-        transition: ${this.transition}s;
-      }
-      dialog::backdrop {
-        background: transparent;
-        cursor: pointer;
-        transition: ${this.transition}s;
-      }
-      dialog.open::backdrop {
-        background: ${this.backdrop};
-      }
-      slot[name=opener]::slotted(*),
-      slot[name=closer]::slotted(*) {
-        cursor: pointer;
-      }
-      /* drawer */
-      :host([drawer]) dialog {
-        border: 0;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-        box-sizing: border-box;
-        min-height: 100vh;
-        left: 0;
-        margin: 0;
-        position: fixed;
-        top: 0;
-        width: 200px;
-      }
-      :host([drawer]) .closed {
-        transform: translate3d(-100%, 0, 0);
-      }
-      /* modal */
-      :host([modal]) dialog {
-        border: 0;
-        border-radius: 0.5rem;
-        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
-        min-width: 300px;
-        max-width: 90vw;
-      }
-      :host([modal]) .closed {
-        opacity: 0;
-        transform: translate3d(0, 25%, 0);
-      }
-    `
-  },
+  css: css`
+    :host {
+      --backdrop: rgba(0, 0, 0, 0.25);
+      --transition: 0.33s;
+    }
+    dialog {
+      transition: var(--transition);
+    }
+    dialog::backdrop {
+      background: transparent;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    dialog.open::backdrop {
+      background: var(--backdrop);
+    }
+    slot[name='opener']::slotted(*),
+    slot[name='closer']::slotted(*) {
+      cursor: pointer;
+    }
+    /* drawer */
+    :host([drawer]) dialog {
+      border: 0;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      box-sizing: border-box;
+      min-height: 100vh;
+      left: 0;
+      margin: 0;
+      position: fixed;
+      top: 0;
+      width: 200px;
+    }
+    :host([drawer]) .closed {
+      transform: translate3d(-100%, 0, 0);
+    }
+    /* modal */
+    :host([modal]) dialog {
+      border: 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+      min-width: 300px;
+      max-width: 90vw;
+    }
+    :host([modal]) .closed {
+      opacity: 0;
+      transform: translate3d(0, 25%, 0);
+    }
+  `,
 })

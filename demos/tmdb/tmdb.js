@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-tmdb',
@@ -83,31 +83,31 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       aspect-ratio: 16/9;
       display: block;
       overflow: hidden;
       position: relative;
     }
-    [part=controls] {
+    [part='controls'] {
       backdrop-filter: blur(5px);
-      background: rgba(0,0,0,0.33);
+      background: rgba(0, 0, 0, 0.33);
       border-radius: 2rem;
       display: flex;
-      padding: 0 .5rem;
+      padding: 0 0.5rem;
       position: absolute;
       right: 1rem;
       top: 1rem;
       z-index: 1;
     }
-    [part=controls] * {
+    [part='controls'] * {
       appearance: none;
       background: transparent;
       border: 0;
-      padding: .5rem;
+      padding: 0.5rem;
     }
-    [part=controls] *:focus-visible {
+    [part='controls'] *:focus-visible {
       outline: none;
     }
     ul {
@@ -138,7 +138,7 @@ ardi({
       position: relative;
       text-decoration: none;
     }
-    [part=backdrop] {
+    [part='backdrop'] {
       height: 100%;
       left: 0;
       opacity: 0.5;
@@ -146,22 +146,22 @@ ardi({
       top: 0;
       width: 100%;
     }
-    [part=poster] {
+    [part='poster'] {
       display: block;
       position: relative;
       width: 25%;
     }
-    [part=details] {
+    [part='details'] {
       display: grid;
-      gap: .5rem;
+      gap: 0.5rem;
       max-width: 50ch;
       position: relative;
       text-shadow: 1px 1px 1px black;
     }
-    [part=title] {
+    [part='title'] {
       margin: 0;
     }
-    [part=description] {
+    [part='description'] {
       display: -webkit-box;
       font-size: 14px;
       line-clamp: 3;

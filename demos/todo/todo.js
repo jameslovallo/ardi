@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-todo',
@@ -102,7 +102,7 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       display: grid;
       gap: 1rem;

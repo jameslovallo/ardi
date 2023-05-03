@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-video',
@@ -59,7 +59,7 @@ ardi({
       </button>
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       aspect-ratio: var(--aspect-ratio, 16/9);
       position: relative;
@@ -71,7 +71,7 @@ ardi({
       object-fit: cover;
       width: 100%;
     }
-    [part=button] {
+    [part='button'] {
       align-items: center;
       background: var(--button);
       border: none;
@@ -87,13 +87,13 @@ ardi({
       position: absolute;
       width: 3rem;
     }
-    [part=icon] {
+    [part='icon'] {
       display: block;
       fill: var(--on-button);
       height: 1.5rem;
       width: 1.5rem;
     }
-    [part=progress] {
+    [part='progress'] {
       height: 100%;
       left: 0;
       position: absolute;

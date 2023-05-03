@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'app-layout',
@@ -15,8 +15,9 @@ ardi({
       <app-footer></app-footer>
     `
   },
-  css: /* css */ `
-    app-nav, main {
+  css: css`
+    app-nav,
+    main {
       margin: 0 auto;
       max-width: 85ch;
     }
@@ -24,14 +25,14 @@ ardi({
       padding: 0 1rem 4rem;
     }
     @media (min-width: 1200px) {
-      :host(.home) [part=wrapper],
-      :host(.ramidus) [part=wrapper] {
+      :host(.home) [part='wrapper'],
+      :host(.ramidus) [part='wrapper'] {
         padding-left: var(--sidebar-width);
       }
     }
     @media (min-width: 1600px) {
-      :host(.home) [part=wrapper],
-      :host(.ramidus) [part=wrapper] {
+      :host(.home) [part='wrapper'],
+      :host(.ramidus) [part='wrapper'] {
         padding-left: unset;
       }
     }

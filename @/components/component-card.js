@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'component-card',
@@ -21,7 +21,7 @@ ardi({
       </app-link>
     `
   },
-  css: /* css */ `
+  css: css`
     a {
       border-radius: 1rem;
       border: 1px solid var(--border);
@@ -33,13 +33,13 @@ ardi({
       padding: 1rem;
       text-align: center;
       text-decoration: none;
-      transition: background .5s;
+      transition: background 0.5s;
     }
     a:hover,
     a:focus {
       background: var(--theme-weak);
     }
-    [part=icon] {
+    [part='icon'] {
       border: 2px solid var(--theme-color);
       border-radius: 50%;
       color: white;

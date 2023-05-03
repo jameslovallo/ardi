@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'component-pills',
@@ -52,11 +52,11 @@ ardi({
       })}
     `
   },
-  css: /* css */ `
+  css: css`
     :host {
       display: flex;
       flex-wrap: wrap;
-      gap: .5rem;
+      gap: 0.5rem;
     }
     a {
       align-items: center;
@@ -64,10 +64,10 @@ ardi({
       border-radius: 5rem;
       color: inherit;
       display: inline-flex;
-      font-size: .8rem;
-      gap: .5rem;
+      font-size: 0.8rem;
+      gap: 0.5rem;
       letter-spacing: 1px;
-      padding: .25rem .75rem;
+      padding: 0.25rem 0.75rem;
       text-decoration: none;
       text-transform: uppercase;
     }

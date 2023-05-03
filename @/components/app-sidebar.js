@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'app-sidebar',
@@ -35,7 +35,7 @@ ardi({
       }
     }).observe(target, { attributes: true, childList: true, subtree: true })
   },
-  css: /* css */ `
+  css: css`
     :host {
       background: var(--surface-heavy);
       box-sizing: border-box;
@@ -59,7 +59,7 @@ ardi({
         padding-top: 7rem;
       }
     }
-    [part=list] {
+    [part='list'] {
       line-height: 2;
       list-style: none;
       padding: 0;
@@ -68,11 +68,11 @@ ardi({
       opacity: 0.8;
       padding-left: 1rem;
     }
-    [part=link] {
+    [part='link'] {
       color: inherit;
       text-decoration: none;
     }
-    [part=link]:hover {
+    [part='link']:hover {
       color: var(--theme-color);
       text-decoration: underline;
     }

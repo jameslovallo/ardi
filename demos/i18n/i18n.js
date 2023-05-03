@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'i18n-provider',
@@ -40,12 +40,12 @@ ardi({
       </nav>
     `
   },
-  css: /* css */ `
+  css: css`
     nav {
       background: var(--surface-heavy);
       display: flex;
       gap: 1rem;
-      padding: .5rem 1rem;
+      padding: 0.5rem 1rem;
     }
     span {
       flex-grow: 1;

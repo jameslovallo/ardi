@@ -127,7 +127,7 @@ pre[class*='language-'] {
 }
 
 .token.italic {
-  font-style: italic;
+  font-css: italic;
 }
 
 .token.entity {

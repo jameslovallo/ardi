@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '../../@/assets/ardi-min.js'
+import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
 const icons = {
   email:
@@ -61,20 +61,20 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       display: flex;
       align-items: center;
       border: 1px solid var(--border);
       border-radius: 0.75rem;
-      gap: .75rem;
+      gap: 0.75rem;
       overflow: hidden;
     }
     [part='photo'] {
       aspect-ratio: 1/1;
       display: block;
       height: 64px;
-      margin-left: .5rem;
+      margin-left: 0.5rem;
       object-fit: contain;
       object-position: center bottom;
       width: 64px;
@@ -98,6 +98,6 @@ ardi({
       fill: #00acc1;
       display: block;
       width: 20px;
-    }  
+    }
   `,
 })

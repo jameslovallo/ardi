@@ -1,4 +1,4 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'component-story',
@@ -111,7 +111,7 @@ ardi({
     setSize()
     new ResizeObserver(() => requestAnimationFrame(setSize)).observe(this)
   },
-  css: /* css */ `
+  css: css`
     :host {
       border: 1px solid var(--border);
       border-radius: 8px;
@@ -119,7 +119,7 @@ ardi({
       overflow: hidden;
       grid-template-columns: 1fr 200px;
     }
-    [part=wrapper] {
+    [part='wrapper'] {
       border-right: 1px solid var(--border);
       box-sizing: border-box;
       display: grid;
@@ -131,7 +131,7 @@ ardi({
     :host(.small) {
       grid-template-columns: unset;
     }
-    :host(.small) [part=wrapper] {
+    :host(.small) [part='wrapper'] {
       border-bottom: 1px solid var(--border);
       border-right: 0;
     }
@@ -141,9 +141,9 @@ ardi({
     aside .control {
       border-bottom: 1px solid var(--border);
       display: grid;
-      font-size: .75rem;
-      gap: .25rem;
-      padding: .5rem;
+      font-size: 0.75rem;
+      gap: 0.25rem;
+      padding: 0.5rem;
     }
     aside .control:last-of-type {
       border-bottom: 0;
@@ -151,7 +151,7 @@ ardi({
     aside .control label {
       opacity: 0.66;
     }
-    aside .control input:not([type=checkbox]),
+    aside .control input:not([type='checkbox']),
     aside .control .grow-wrap,
     aside .control textarea,
     aside .control select {
@@ -169,10 +169,10 @@ ardi({
     aside .control select:focus-visible {
       outline: none;
     }
-    aside .control input[type=color] {
+    aside .control input[type='color'] {
       width: 2rem;
     }
-    aside .control input[type=color]::-webkit-color-swatch {
+    aside .control input[type='color']::-webkit-color-swatch {
       border: 1px solid var(--border);
       border-radius: 1rem;
       margin: 0;
@@ -183,7 +183,7 @@ ardi({
       display: grid;
     }
     .grow-wrap::after {
-      content: attr(data-replicated-value) " ";
+      content: attr(data-replicated-value) ' ';
       visibility: hidden;
       white-space: pre-wrap;
     }
@@ -199,7 +199,7 @@ ardi({
       word-break: break-word;
     }
     /* checkbox junk */
-    input[type=checkbox] {
+    input[type='checkbox'] {
       align-items: center;
       appearance: none;
       background-color: var(--border);
@@ -213,7 +213,7 @@ ardi({
       position: relative;
       width: 2rem;
     }
-    input[type=checkbox]:after {
+    input[type='checkbox']:after {
       aspect-ratio: 1/1;
       background: white;
       border-radius: 2rem;
@@ -223,9 +223,9 @@ ardi({
       height: 100%;
       left: 0;
       position: relative;
-      transition: .5s;
+      transition: 0.5s;
     }
-    input[type=checkbox]:checked:after {
+    input[type='checkbox']:checked:after {
       left: 50%;
     }
   `,

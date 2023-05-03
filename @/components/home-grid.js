@@ -1,11 +1,11 @@
-import ardi, { html } from '../assets/ardi-min.js'
+import ardi, { css, html } from '../assets/ardi-min.js'
 
 ardi({
   tag: 'home-grid',
   template() {
     return html`<slot></slot>`
   },
-  css: /* css */ `
+  css: css`
     :host {
       display: grid;
       gap: 1rem;

@@ -1,5 +1,6 @@
 import { html, svg, render as uhtml } from 'uhtml'
 export { html, svg }
+export const css = (v) => v
 
 export default function ardi(options) {
   const element = options?.extends ? options.extends[0] : HTMLElement

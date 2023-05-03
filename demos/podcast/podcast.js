@@ -1,4 +1,4 @@
-import ardi, { html, svg } from '../../@/assets/ardi-min.js'
+import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'podcast-embed',
@@ -183,10 +183,10 @@ ardi({
     `
   },
 
-  css: /* css */ `
+  css: css`
     :host {
       background: var(--surface-heavy);
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       display: grid;
       gap: 1.5rem;
       overflow: hidden;
@@ -205,56 +205,56 @@ ardi({
       height: 1rem;
       width: 1rem;
     }
-    [part=header] {
+    [part='header'] {
       align-items: flex-end;
       display: grid;
       gap: 1rem;
       grid-template-columns: 8rem 1fr;
     }
-    [part=image] {
+    [part='image'] {
       display: block;
       width: 100%;
     }
-    [part=title],
-    [part=author],
-    [part=link],
-    [part=description],
-    [part=episode-title],
-    [part=episode-duration] {
-      font-size: .8rem;
+    [part='title'],
+    [part='author'],
+    [part='link'],
+    [part='description'],
+    [part='episode-title'],
+    [part='episode-duration'] {
+      font-size: 0.8rem;
       line-height: 1.5;
       margin: 0;
     }
-    [part=header-wrapper],
-    [part=episode-wrapper] {
+    [part='header-wrapper'],
+    [part='episode-wrapper'] {
       min-width: 0;
       max-width: 100%;
     }
-    [part=title] {
+    [part='title'] {
       font-size: 1rem;
-      font-weight:bold;
+      font-weight: bold;
     }
-    [part=link] {
+    [part='link'] {
       display: block;
       max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    [part=description] {
+    [part='description'] {
       margin: 0;
     }
-    [part=episodes] {
+    [part='episodes'] {
       display: grid;
-      gap: .75rem;
+      gap: 0.75rem;
     }
-    [part=episode] {
+    [part='episode'] {
       align-items: center;
       display: flex;
       gap: 1rem;
       min-width: 0;
     }
-    [part=play-button] {
+    [part='play-button'] {
       border-radius: 50%;
       display: grid;
       flex-shrink: 0;
@@ -263,18 +263,18 @@ ardi({
       place-items: center;
       width: 2rem;
     }
-    [part=episode-title] {
+    [part='episode-title'] {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    [part=episode-duration] {
+    [part='episode-duration'] {
       opacity: 0.8;
     }
-    [part=pagination] {
+    [part='pagination'] {
       align-items: center;
       display: flex;
-      font-size: .8rem;
+      font-size: 0.8rem;
       justify-content: space-between;
     }
   `,

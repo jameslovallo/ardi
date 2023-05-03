@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-plyr',
@@ -23,5 +23,7 @@ ardi({
       m.default.setup(this.root.querySelectorAll('div, video, audio'))
     })
   },
-  css: `@import "https://unpkg.com/plyr@3/dist/plyr.css"`,
+  css: css`
+    @import 'https://unpkg.com/plyr@3/dist/plyr.css';
+  `,
 })
