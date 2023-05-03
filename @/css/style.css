@@ -95,6 +95,10 @@ home-grid p {
   margin: 0;
 }
 
+pre code[class*='language-'] {
+  padding: 0.5em;
+}
+
 code[class*='language-'],
 pre[class*='language-'] {
   font-size: 14px;
