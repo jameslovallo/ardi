@@ -96,3 +96,15 @@ pre {
   color: #b18eb1;
   font-style: italic;
 }
+
+.language-css .hljs-attribute {
+  color: #bbbbbb;
+}
+
+.language-css .hljs-attr {
+  color: #bbbbbb;
+}
+
+.language-css .hljs-built_in {
+  color: #52adf2;
+}
