@@ -111,7 +111,7 @@ ardi({
     setSize()
     new ResizeObserver(() => requestAnimationFrame(setSize)).observe(this)
   },
-  css: css`
+  styles: css`
     :host {
       border: 1px solid var(--border);
       border-radius: 8px;

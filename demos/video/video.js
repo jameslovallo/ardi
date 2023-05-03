@@ -59,7 +59,7 @@ ardi({
       </button>
     `
   },
-  css: css`
+  styles: css`
     :host {
       aspect-ratio: var(--aspect-ratio, 16/9);
       position: relative;

@@ -21,7 +21,7 @@ ardi({
       </app-link>
     `
   },
-  css: css`
+  styles: css`
     a {
       border-radius: 1rem;
       border: 1px solid var(--border);

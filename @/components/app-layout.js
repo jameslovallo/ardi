@@ -15,7 +15,7 @@ ardi({
       <app-footer></app-footer>
     `
   },
-  css: css`
+  styles: css`
     app-nav,
     main {
       margin: 0 auto;

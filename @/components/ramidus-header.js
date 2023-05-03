@@ -24,7 +24,7 @@ ardi({
       </div>
     `
   },
-  css: css`
+  styles: css`
     :host {
       --depth: 25px;
       --height: 262px;

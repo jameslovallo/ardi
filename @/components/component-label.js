@@ -11,7 +11,7 @@ ardi({
       <slot></slot>
     `
   },
-  css: css`
+  styles: css`
     :host {
       display: grid;
       margin-top: 1rem;

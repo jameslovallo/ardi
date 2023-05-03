@@ -39,7 +39,7 @@ ardi({
       </dialog>
     `
   },
-  css: css`
+  styles: css`
     :host {
       --backdrop: rgba(0, 0, 0, 0.25);
       --transition: 0.33s;

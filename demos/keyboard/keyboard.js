@@ -203,7 +203,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       background: var(--bg, #000);
       border: 1px solid var(--border);

@@ -23,7 +23,7 @@ ardi({
       m.default.setup(this.root.querySelectorAll('div, video, audio'))
     })
   },
-  css: css`
+  styles: css`
     @import 'https://unpkg.com/plyr@3/dist/plyr.css';
   `,
 })

@@ -76,7 +76,7 @@ ardi({
       </div>
     `
   },
-  css: css`
+  styles: css`
     :host {
       --accent: #64b5f6;
       aspect-ratio: 1;

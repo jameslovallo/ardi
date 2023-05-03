@@ -12,7 +12,7 @@ ardi({
       </footer>
     `
   },
-  css: css`
+  styles: css`
     :host {
       background: var(--surface-heavy);
       display: block;

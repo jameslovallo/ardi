@@ -102,7 +102,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       display: grid;
       gap: 1rem;

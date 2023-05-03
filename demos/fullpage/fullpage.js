@@ -94,7 +94,7 @@ ardi({
     }
   },
 
-  css() {
+  styles() {
     return /* css */ `
       :host {
         height: 100%;

@@ -55,7 +55,7 @@ ardi({
     this.setWord()
   },
 
-  css() {
+  styles() {
     return /* css */ `
       span {
         --color: currentcolor;

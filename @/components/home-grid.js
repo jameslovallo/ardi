@@ -5,7 +5,7 @@ ardi({
   template() {
     return html`<slot></slot>`
   },
-  css: css`
+  styles: css`
     :host {
       display: grid;
       gap: 1rem;

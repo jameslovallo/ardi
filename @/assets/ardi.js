@@ -134,8 +134,8 @@ export default function ardi(options) {
       if (typeof this.template === 'function') {
         // handle css
         let css
-        if (this.css)
-          css = typeof this.css === 'function' ? this.css() : this.css
+        if (this.styles)
+          css = typeof this.styles === 'function' ? this.styles() : this.styles
         // handle template
         const t = this.template()
         if (typeof t === 'object') {

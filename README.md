@@ -322,6 +322,10 @@ ardi({
 
 </div>
 
+### Methods
+
+You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the <app-link>[podcast demo](https://ardi.netlify.app/demos/demo)</app-link>. There are many more examples in components listed on the <app-link>[demos page](https://ardi.netlify.app/demos)</app-link>.
+
 ### Context
 
 Ardi has a powerful and easy to use context api, allowing one component to share and synchronize its props or state with multiple child components. You can see this API in action in the <app-link>[i18n demo](https://ardi.netlify.app/demos/i18n)</app-link>, this [CodePen example](https://codepen.io/jameslovallo/pen/poZaXqq?editors=0010), and in the CSS section below.
@@ -332,11 +336,11 @@ To share context from a parent component, add the `context` attribute with a des
 <ardi-component context="theme"></ardi-component>
 ```
 
-### CSS
+### Styles
 
 Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Elements in the Shadow DOM can be styled by an external stylesheet using [part attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). Elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
 
-#### Inline
+#### Inline CSS
 
 You can use Javascript in an inline style attribute.
 
@@ -355,9 +359,9 @@ ardi({
 
 </div>
 
-#### CSS key
+#### Styles Key
 
-If you have a lot of CSS, it's cleaner to create a css key. Ardi provides a `css` helper function to facilitate working with VSCode and other IDEs that support tagged template literals.
+If you have a lot of CSS, it's cleaner to create a `styles` key. Ardi provides a `css` helper function to facilitate working with VSCode and other IDEs that support tagged template literals.
 
 <div class="highlight-lines">
 
@@ -369,7 +373,7 @@ ardi({
     const { bg, color } = this.context('theme')
     return html`<nav style=${`--bg: ${bg}; --color: ${color};`}>...</nav>`
   },
-  css: css`
+  styles: css`
     nav {
       background: var(--bg);
       color: var(--color);
@@ -382,7 +386,9 @@ ardi({
 
 </div>
 
-If you prefer, you can also use Javascript variables and functions directly in your CSS by creating the `css` key as a function.
+#### Styles Key Function
+
+If you prefer, you can also use Javascript variables and functions directly in your CSS by creating the `styles` key as a function.
 
 <div class="highlight-lines">
 
@@ -391,7 +397,7 @@ ardi({
   template() {
     return html`<nav>...</nav>`
   },
-  css() {
+  styles() {
     const { bg, color } = this.context('theme')
     return `
       nav {
@@ -406,10 +412,6 @@ ardi({
 <div class="highlight" style="--line: 5; --lines: 9;"></div>
 
 </div>
-
-### Methods
-
-You can add any number of methods in your component and access them via `this`. Custom methods can be used in your template, in lifecycle callbacks, or inside of other methods. For examples, you can view the complete code for the <app-link>[podcast demo](https://ardi.netlify.app/demos/demo)</app-link>. There are many more examples in components listed on the <app-link>[demos page](https://ardi.netlify.app/demos)</app-link>.
 
 ## Lifecycle
 

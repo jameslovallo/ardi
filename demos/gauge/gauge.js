@@ -48,7 +48,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       align-items: center;
       background: var(--background, #000);

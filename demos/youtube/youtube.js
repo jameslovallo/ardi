@@ -34,7 +34,7 @@ ardi({
         `
   },
 
-  css: css`
+  styles: css`
     :host,
     button,
     iframe {

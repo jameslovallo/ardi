@@ -62,7 +62,7 @@ ardi({
       getContentHeight()
     }
   },
-  css: css`
+  styles: css`
     :host {
       --padding: 0.5rem;
     }

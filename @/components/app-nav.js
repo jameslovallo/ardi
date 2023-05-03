@@ -29,7 +29,7 @@ ardi({
       </nav>
     `
   },
-  css: css`
+  styles: css`
     nav {
       align-items: center;
       display: flex;

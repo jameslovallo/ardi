@@ -61,7 +61,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       display: flex;
       align-items: center;

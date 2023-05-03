@@ -35,7 +35,7 @@ ardi({
       }
     }).observe(target, { attributes: true, childList: true, subtree: true })
   },
-  css: css`
+  styles: css`
     :host {
       background: var(--surface-heavy);
       box-sizing: border-box;

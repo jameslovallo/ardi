@@ -17,7 +17,7 @@ ardi({
       </div>
     `
   },
-  css: css`
+  styles: css`
     :host {
       display: flex;
       background: var(--surface-heavy);

@@ -40,7 +40,7 @@ ardi({
       </nav>
     `
   },
-  css: css`
+  styles: css`
     nav {
       background: var(--surface-heavy);
       display: flex;

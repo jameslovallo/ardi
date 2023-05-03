@@ -25,7 +25,7 @@ ardi({
       </div>
     `
   },
-  css: css`
+  styles: css`
     :host {
       display: block;
       position: relative;

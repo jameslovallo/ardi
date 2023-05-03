@@ -66,7 +66,7 @@ ardi({
       </div>
     `
   },
-  css: css`
+  styles: css`
     a {
       color: inherit;
       text-decoration-color: var(--theme-color);

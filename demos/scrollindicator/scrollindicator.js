@@ -16,7 +16,7 @@ ardi({
       </div>
     `
   },
-  css() {
+  styles() {
     return /* css */ `
       :host {
         display: block;

@@ -83,7 +83,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       aspect-ratio: 16/9;
       display: block;

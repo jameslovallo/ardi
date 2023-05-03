@@ -101,7 +101,7 @@ ardi({
       })
   },
 
-  css: css`
+  styles: css`
     :host,
     [part='current'],
     [part='forecast'] {

@@ -77,11 +77,8 @@ ardi({
     return episode
   },
 
-  intersected() {
-    if (!this.fetched) {
-      this.fetchFeed()
-      this.fetched = true
-    }
+  created() {
+    this.fetchFeed()
   },
 
   togglePlayback(track) {
@@ -183,7 +180,7 @@ ardi({
     `
   },
 
-  css: css`
+  styles: css`
     :host {
       background: var(--surface-heavy);
       border-radius: 0.5rem;

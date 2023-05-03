@@ -67,7 +67,7 @@ ardi({
     setInterval(() => this.getIssPosition(), this.updateinterval)
   },
   template: () => "<div ref='map'></div>",
-  css: css`
+  styles: css`
     @import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
     [ref='map'] {
       height: 400px;
