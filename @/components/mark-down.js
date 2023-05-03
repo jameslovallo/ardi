@@ -28,7 +28,7 @@ ardi({
         `
         if (hasCodeBlocks) {
           import('https://unpkg.com/prismjs@1.29.0/prism.js').then((m) => {
-            m.default.highlightAllUnder(this)
+            m.default?.highlightAllUnder(this)
           })
         }
         setTimeout(() => {
