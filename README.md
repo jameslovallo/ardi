@@ -256,7 +256,7 @@ ardi({
     return html`
       <if-else if=${this.photo}>
         <img part="photo" src=${this.photo} />
-        <svg slot="else" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg slot="else" viewBox="0 0 24 24">
           <path d="..." />
         </svg>
       </if-else>

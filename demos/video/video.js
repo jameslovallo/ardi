@@ -46,7 +46,7 @@ ardi({
         title=${buttonLabel}
         @click=${() => this.playPause()}
       >
-        <svg part="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <svg part="icon" viewBox="0 0 24 24">
           <path d=${this.playing ? pause : play} />
         </svg>
         <svg part="progress" viewbox="0 0 42 42" fill="transparent">

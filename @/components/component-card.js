@@ -12,7 +12,7 @@ ardi({
       <app-link>
         <a href=${this.href}>
           <span part="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg viewBox="0 0 24 24">
               <path d=${this.icon} />
             </svg>
           </span>
