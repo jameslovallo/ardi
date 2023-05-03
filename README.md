@@ -338,7 +338,7 @@ To share context from a parent component, add the `context` attribute with a des
 
 ### Styles
 
-Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Elements in the Shadow DOM can be styled by an external stylesheet using [part attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part). Elements in the Shadow DOM can also inherit styling from [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties).
+Ardi components use the [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_shadow_DOM) by default. Elements in the Shadow DOM can access [CSS variables](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties) declared on the page. Elements can also be styled using [part attributes](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/part).
 
 #### Inline CSS
 
