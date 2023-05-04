@@ -35,7 +35,6 @@ ardi({
       },
     }).then((json) => {
       this.feedJSON = json
-      console.log(JSON.stringify(json.entries[0]))
     })
   },
 
@@ -93,6 +92,7 @@ ardi({
 
   template() {
     const { title, author, link, description, entries, image } = this.feedJSON
+    const linkLabel = new URL(link).hostname
     const lastPage = Math.floor(entries?.length / this.pagesize) + 1
     return html`
       <audio ref="player" src=${this.nowPlaying} />
@@ -101,7 +101,7 @@ ardi({
         <div part="header-wrapper">
           ${title ? html`<p part="title">${title}</p>` : ''}
           ${author ? html`<p part="author">${author}</p>` : ''}
-          ${link ? html`<a part="link" href=${link}>${link}</a>` : ''}
+          ${link ? html`<a part="link" href=${link}>${linkLabel}</a>` : ''}
         </div>
       </div>
       ${description ? html`<p part="description">${description}</p>` : ''}
