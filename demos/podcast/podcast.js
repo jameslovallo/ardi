@@ -33,12 +33,15 @@ ardi({
           track: entry.enclosure['@_url'],
         }
       },
-    }).then((json) => (this.feedJSON = json))
+    }).then((json) => {
+      this.feedJSON = json
+      console.log(JSON.stringify(json.entries[0]))
+    })
   },
 
   formatDuration(duration) {
     let hours, minutes
-    if (duration.includes(':')) {
+    if (typeof duration === 'string' && duration.includes(':')) {
       duration = duration.split(':')
       hours = Number(duration[0])
       minutes = Number(duration[1])
@@ -52,6 +55,10 @@ ardi({
 
   created() {
     this.fetchFeed()
+  },
+
+  changed(prop) {
+    prop.old && prop.old && prop.name === 'feed' && this.fetchFeed()
   },
 
   togglePlayback(track) {
@@ -123,11 +130,11 @@ ardi({
                 <div part="episode-wrapper">
                   <div part="episode-title">${title}</div>
                   <div part="episode-meta">
-                    <div part="episode-duration">
-                      ${this.formatDuration(duration)}
-                    </div>
                     <div part="episode-date">
                       ${new Date(date).toLocaleString().split(',')[0]}
+                    </div>
+                    <div part="episode-duration">
+                      ${this.formatDuration(duration)}
                     </div>
                   </div>
                 </div>

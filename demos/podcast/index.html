@@ -9,7 +9,13 @@
     <component-story tag="podcast-embed">
       <script type="application/json">
         {
-          "feed": { "type": "text" },
+          "feed": {
+            "type": "list",
+            "options": [
+              "https://feeds.simplecast.com/54nAGcIl",
+              "https://www.omnycontent.com/d/playlist/e73c998e-6e60-432f-8610-ae210140c5b1/a91018a4-ea4f-4130-bf55-ae270180c327/44710ecc-10bb-48d1-93c7-ae270180c33e/podcast.rss"
+            ]
+          },
           "pagesize": { "type": "number" },
           "playlabel": { "type": "text" },
           "pauselabel": { "type": "text" },
