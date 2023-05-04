@@ -136,15 +136,10 @@ Here is how state is defined in the podcast demo.
 ```js
 ardi({
   state: () => ({
-    image: '',
-    title: '',
-    author: '',
-    description: '',
-    link: '',
-    episodes: [],
+    feedJSON: {},
     nowPlaying: null,
-    paused: true,
     page: 0,
+    paused: true,
   }),
 })
 ```
@@ -224,18 +219,14 @@ ardi({
       ...
       <audio ref="player" src=${this.nowPlaying} />
       <div part="header">
-        ${this.image ? html`<img part="image" src=${this.image} />` : ''}
+        ${image ? html`<img part="image" src=${image} />` : ''}
         <div part="header-wrapper">
-          ${this.title ? html`<p part="title">${this.title}</p>` : ''}
-          ${this.author ? html`<p part="author">${this.author}</p>` : ''}
-          ${this.link
-            ? html`<a part="link" href=${this.link}>${this.link}</a>`
-            : ''}
+          ${title ? html`<p part="title">${title}</p>` : ''}
+          ${author ? html`<p part="author">${author}</p>` : ''}
+          ${link ? html`<a part="link" href=${link}>${link}</a>` : ''}
         </div>
       </div>
-      ${this.description
-        ? html`<p part="description">${this.description}</p>`
-        : ''}
+      ${description ? html`<p part="description">${description}</p>` : ''}
       ...
     `
   },
@@ -243,8 +234,8 @@ ardi({
 ```
 
 <div class="highlight" style="--line: 7"></div>
-<div class="highlight" style="--line: 9; --lines: 5;"></div>
-<div class="highlight" style="--line: 16; --lines: 3;"></div>
+<div class="highlight" style="--line: 9; --lines: 3;"></div>
+<div class="highlight" style="--line: 14"></div>
 
 </div>
 
@@ -254,8 +245,8 @@ If you prefer a more HTML-like syntax, Ardi provides a `<if-else>` element that 
 ardi({
   template() {
     return html`
-      <if-else if=${this.photo}>
-        <img part="photo" src=${this.photo} />
+      <if-else if=${image}>
+        <img part="image" src=${image} />
         <svg slot="else" viewBox="0 0 24 24">
           <path d="..." />
         </svg>

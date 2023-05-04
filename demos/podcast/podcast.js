@@ -1,3 +1,4 @@
+import { extract } from 'https://unpkg.com/@extractus/feed-extractor@latest/dist/feed-extractor.esm.js'
 import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
@@ -14,67 +15,39 @@ ardi({
   },
 
   state: () => ({
-    author: '',
-    description: '',
-    episodes: [],
-    image: '',
-    link: '',
+    feedJSON: {},
     nowPlaying: null,
     page: 0,
     paused: true,
-    title: '',
   }),
 
   fetchFeed() {
-    fetch(this.feed)
-      .then((res) => res.text())
-      .then((text) => {
-        if (DOMParser) {
-          const parser = new DOMParser()
-          const xmlDoc = parser.parseFromString(text, 'text/xml')
-          const channel = xmlDoc.querySelector('channel')
-          this.title = channel.querySelector('title').textContent
-          this.author = channel.querySelector('author').textContent
-          this.description = channel.querySelector('description').textContent
-          const imageContainer = channel.querySelector('image')
-          this.image = imageContainer.querySelector('url').textContent
-          this.link = imageContainer.querySelector('link').textContent
-          const items = xmlDoc.querySelectorAll('item')
-          this.episodes = [...items].map((item) => this.formatEpisode(item))
+    extract(this.feed, {
+      getExtraFeedFields: (feed) => {
+        return { image: feed?.image?.url, author: feed['itunes:author'] }
+      },
+      getExtraEntryFields: (entry) => {
+        return {
+          duration: entry['itunes:duration'],
+          date: entry.pubDate,
+          track: entry.enclosure['@_url'],
         }
-      })
+      },
+    }).then((json) => (this.feedJSON = json))
   },
 
-  formatEpisode(item) {
-    const tags = ['title', 'enclosure', 'itunes:duration']
-    const episode = {}
-    ;[...item.childNodes]
-      .filter((el) => tags.includes(el.tagName))
-      .map((el) => {
-        switch (el.tagName) {
-          case 'title':
-            episode.title = el.textContent
-            break
-          case 'enclosure':
-            episode.track = el.getAttribute('url')
-            break
-          case 'itunes:duration':
-            let duration = el.textContent
-            let hours, minutes
-            if (duration.includes(':')) {
-              duration = duration.split(':')
-              hours = Number(duration[0])
-              minutes = Number(duration[1])
-            } else {
-              hours = Math.floor(duration / 60 / 60)
-              minutes = Math.floor(duration / 60)
-            }
-            hours = hours > 0 ? `${hours}h ` : ''
-            episode.duration = `${hours}${minutes}m`
-            break
-        }
-      })
-    return episode
+  formatDuration(duration) {
+    let hours, minutes
+    if (duration.includes(':')) {
+      duration = duration.split(':')
+      hours = Number(duration[0])
+      minutes = Number(duration[1])
+    } else {
+      hours = Math.floor(duration / 60 / 60)
+      minutes = Math.floor(duration / 60)
+    }
+    hours = hours > 0 ? `${hours}h ` : ''
+    return `${hours}${minutes}m`
   },
 
   created() {
@@ -112,31 +85,28 @@ ardi({
   },
 
   template() {
-    const lastPage = Math.floor(this.episodes.length / this.pagesize) + 1
+    const { title, author, link, description, entries, image } = this.feedJSON
+    const lastPage = Math.floor(entries?.length / this.pagesize) + 1
     return html`
       <audio ref="player" src=${this.nowPlaying} />
       <div part="header">
-        ${this.image ? html`<img part="image" src=${this.image} />` : ''}
+        ${image ? html`<img part="image" src=${image} />` : ''}
         <div part="header-wrapper">
-          ${this.title ? html`<p part="title">${this.title}</p>` : ''}
-          ${this.author ? html`<p part="author">${this.author}</p>` : ''}
-          ${this.link
-            ? html`<a part="link" href=${this.link}>${this.link}</a>`
-            : ''}
+          ${title ? html`<p part="title">${title}</p>` : ''}
+          ${author ? html`<p part="author">${author}</p>` : ''}
+          ${link ? html`<a part="link" href=${link}>${link}</a>` : ''}
         </div>
       </div>
-      ${this.description
-        ? html`<p part="description">${this.description}</p>`
-        : ''}
+      ${description ? html`<p part="description">${description}</p>` : ''}
       <div part="episodes">
-        ${this.episodes
+        ${entries
           .filter(
             (episode, i) =>
               i >= this.page * this.pagesize &&
               i < this.page * this.pagesize + this.pagesize
           )
           .map((episode, i) => {
-            const { title, track, duration } = episode
+            const { title, track, duration, date } = episode
             return html`
               <div part="episode">
                 <button
@@ -152,7 +122,14 @@ ardi({
                 </button>
                 <div part="episode-wrapper">
                   <div part="episode-title">${title}</div>
-                  <div part="episode-duration">${duration}</div>
+                  <div part="episode-meta">
+                    <div part="episode-duration">
+                      ${this.formatDuration(duration)}
+                    </div>
+                    <div part="episode-date">
+                      ${new Date(date).toLocaleString().split(',')[0]}
+                    </div>
+                  </div>
                 </div>
               </div>
             `
@@ -217,7 +194,7 @@ ardi({
     [part='link'],
     [part='description'],
     [part='episode-title'],
-    [part='episode-duration'] {
+    [part='episode-meta'] {
       font-size: 0.8rem;
       line-height: 1.5;
       margin: 0;
@@ -272,7 +249,9 @@ ardi({
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    [part='episode-duration'] {
+    [part='episode-meta'] {
+      display: flex;
+      gap: 1em;
       opacity: 0.8;
     }
     [part='pagination'] {
