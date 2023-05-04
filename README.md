@@ -79,7 +79,7 @@ Ardi uses a straightforward object-oriented API. To demonstrate the API, we'll b
 
 ### Tag
 
-Define the component's tag. The tag must follow the [custom element naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'podcast-embed'.
+Define the component's tag. The tag must follow the custom element [naming convention](https://html.spec.whatwg.org/#valid-custom-element-name). We'll call this component 'podcast-embed'.
 
 ```js
 ardi({
@@ -386,7 +386,7 @@ ardi({
 
 </div>
 
-#### Styles Key Function
+#### Styles Function
 
 If you prefer, you can also use Javascript variables and functions directly in your CSS by creating the `styles` key as a function.
 
