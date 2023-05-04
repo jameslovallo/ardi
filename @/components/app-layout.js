@@ -24,16 +24,19 @@ ardi({
     main {
       padding: 0 1rem 4rem;
     }
+    [part='wrapper'] {
+      overflow-x: hidden;
+    }
     @media (min-width: 1200px) {
       :host(.home) [part='wrapper'],
       :host(.ramidus) [part='wrapper'] {
-        padding-left: var(--sidebar-width);
+        margin-left: var(--sidebar-width);
       }
     }
     @media (min-width: 1600px) {
       :host(.home) [part='wrapper'],
       :host(.ramidus) [part='wrapper'] {
-        padding-left: unset;
+        margin-left: unset;
       }
     }
     @media (min-width: 1200px) and (max-width: 1600px) {

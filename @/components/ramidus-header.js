@@ -5,14 +5,22 @@ ardi({
   template() {
     return html`
       <div class="box">
-        <div class="shadow"></div>
         <div class="face three-d">
           <div class="face-slider">
-            <img src="/@/assets/ramidus/1.png" />
-            <img src="/@/assets/ramidus/2.png" />
-            <img src="/@/assets/ramidus/3.png" />
-            <img src="/@/assets/ramidus/4.png" />
-            <img src="/@/assets/ramidus/5.png" />
+            ${Array(5)
+              .fill(null)
+              .map(
+                (img, i) => html`
+                  <img
+                    class="mobile"
+                    src=${`/@/assets/ramidus/${i + 1}.webp`}
+                  />
+                  <img
+                    class="desktop"
+                    src=${`/@/assets/ramidus/${i + 1}-desktop.webp`}
+                  />
+                `
+              )}
           </div>
           <div class="nav three-d">
             <span></span>
@@ -28,8 +36,8 @@ ardi({
     :host {
       --depth: 25px;
       --height: 262px;
+      --transform: rotateX(20deg) rotateY(8deg) rotateZ(350deg);
       --width: 150px;
-      background: var(--surface-heavy);
       display: grid;
       height: 300px;
       margin: 2rem 0 2rem 50%;
@@ -38,50 +46,37 @@ ardi({
       transform: translateX(-50%);
       width: 100vw;
     }
-    @media (min-width: 600px) {
-      :host {
-        --height: 350px;
-        --width: 200px;
-        height: 450px;
-      }
-    }
-    @media (min-width: 1200px) {
-      :host {
-        margin: 2rem 0;
-        transform: unset;
-        width: 100%;
-      }
-    }
     img {
       display: block;
       height: calc(var(--height) - 2rem);
       object-fit: cover;
-      object-position: 50% 20%;
+      object-position: top center;
       width: var(--width);
+    }
+    img.desktop {
+      display: none;
+    }
+    @media (min-width: 600px) {
+      :host {
+        --height: 300px;
+        --transform: rotateX(20deg) rotateY(8deg) rotateZ(350deg);
+        --width: 400px;
+        height: 450px;
+      }
+      img.mobile {
+        display: none;
+      }
+      img.desktop {
+        display: block;
+      }
     }
     .box {
       display: inline-block;
       font-size: 0;
       position: relative;
     }
-    .face,
-    .shadow {
-      transition: all 0.6s ease-in-out;
-    }
     * {
       box-sizing: border-box;
-    }
-    .shadow {
-      background: transparent;
-      box-shadow: -60px 60px var(--depth) black;
-      height: 100%;
-      left: 0;
-      position: absolute;
-      top: 0;
-      transform-style: preserve-3d;
-      transform: rotateX(30deg) rotateZ(-33deg);
-      width: 100%;
-      z-index: -1;
     }
     .three-d {
       background-color: #ddd;
@@ -114,7 +109,8 @@ ardi({
       margin: 0 auto;
       margin: 0 auto;
       position: relative;
-      transform: rotateX(30deg) rotateZ(-33deg);
+      transform: var(--transform);
+      transition: all 0.6s ease-in-out;
       width: var(--width);
     }
     .face .nav {

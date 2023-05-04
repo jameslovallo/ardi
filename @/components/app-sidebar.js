@@ -47,6 +47,7 @@ ardi({
       position: fixed;
       top: 0;
       width: var(--sidebar-width);
+      z-index: 5;
     }
     @media (min-width: 1200px) {
       :host {
