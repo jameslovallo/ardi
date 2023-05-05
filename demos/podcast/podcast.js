@@ -131,7 +131,7 @@ ardi({
                   <div part="episode-title">${title}</div>
                   <div part="episode-meta">
                     <div part="episode-date">
-                      ${new Date(date).toLocaleString().split(',')[0]}
+                      ${new Date(date).toLocaleDateString()}
                     </div>
                     <div part="episode-duration">
                       ${this.formatDuration(duration)}
