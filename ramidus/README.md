@@ -7,7 +7,7 @@ Ramidus is a Single Page Application (SPA) template built for custom elements, b
 ## Features
 
 1. Instant SPA page loading using the `<app-root>` and `<app-link>` elements.
-1. Pre-load high-profile pages after the first page loads.
+1. Preload high-traffic pages after the first page loads.
 1. Share templates between pages using the `<app-layout>` element.
 1. Easily embed markdown and syntax-highlighted files using the `<mark-down>` element.
 1. Familiar conventions, similar to Next or Nuxt.
