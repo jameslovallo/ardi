@@ -21,6 +21,21 @@ Setup is easy and no tooling is required. You can scaffold your project using np
 npx ramidus@latest && npm run dev
 ```
 
+## Starters
+
+You can quickly set up a new starter project from the command line.
+
+### Blog Starter
+
+The blog starter is configured to use [Tina CMS](https://tina.io).
+
+- [Live Demo](ramidus.netlify.app)
+- [Repo & ReadMe](https://github.com/jameslovallo/ramidus-starter--blog)
+
+```sh
+npx ramidus@latest --starter blog && npm i && npm run dev
+```
+
 ## Project Structure
 
 Global content like components, assets, layouts and your site's head are contained in the "@" folder. This naming convention keeps the folder first alphabetically so it's always easy to find.
