@@ -178,7 +178,11 @@ export default function ardi(options) {
 
 ardi({
   tag: 'if-else',
-  props: { if: [(v) => (v ? true : false)] },
+  props: {
+    if: [
+      (v) => (v && !['false', 'null', 'undefined'].includes(v) ? true : false),
+    ],
+  },
   template() {
     return html`
       <slot name=${this.if || this['else-if'] ? null : 'else'}></slot>
