@@ -29,7 +29,7 @@ You can quickly set up a new starter project from the command line.
 
 The blog starter is configured to use [Tina CMS](https://tina.io).
 
-- [Live Demo](ramidus.netlify.app)
+- [Live Demo](https://ramidus.netlify.app)
 - [Repo & ReadMe](https://github.com/jameslovallo/ramidus-starter--blog)
 
 ```sh
