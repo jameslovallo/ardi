@@ -44,7 +44,7 @@ Global content like components, assets, layouts and your site's head are contain
   - <tree-icon icon="js">build.js</tree-icon>
   - <tree-icon icon="js">main.js</tree-icon>
   - <tree-icon icon="json">head.json</tree-icon>
-- <tree-icon icon="folder">docs</tree-icon>
+- <tree-icon icon="folder">about</tree-icon>
   - <tree-icon icon="html">index.html</tree-icon>
 - <tree-icon icon="html">index.html</tree-icon>
 
