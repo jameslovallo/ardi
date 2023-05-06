@@ -25,16 +25,11 @@ npx ramidus@latest && npm run dev
 
 You can quickly set up a new starter project from the command line.
 
-### Blog Starter
-
-The blog starter is configured to use [Tina CMS](https://tina.io).
-
-- [Live Demo](https://ramidus.netlify.app)
-- [Repo & ReadMe](https://github.com/jameslovallo/ramidus-starter--blog)
-
-```sh
-npx ramidus@latest --starter blog && npm i && npm run dev
-```
+<starter-card icon="tina">
+  <h3 slot="label">Tina CMS Blog Starter</h3>
+  <a slot="links" href="https://ramidus.netlify.app">Live Demo</a>
+  <a slot="links" href="https://github.com/jameslovallo/ramidus-starter--blog">Repo & ReadMe</a>
+</starter-card>
 
 ## Project Structure
 
