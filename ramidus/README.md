@@ -27,7 +27,7 @@ You can quickly set up a new starter project from the command line.
 
 <starter-card icon="tina">
   <h3 slot="label">Tina CMS Blog Starter</h3>
-  <a slot="links" href="https://ramidus.netlify.app">Live Demo</a>
+  <a slot="links" href="https://ramidus-blog-starter.netlify.app">Live Demo</a>
   <a slot="links" href="https://github.com/jameslovallo/ramidus-starter--blog">Repo & ReadMe</a>
 </starter-card>
 
