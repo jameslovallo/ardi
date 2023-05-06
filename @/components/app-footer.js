@@ -23,5 +23,9 @@ ardi({
       top: 100vh;
       z-index: 999;
     }
+    a {
+      color: unset;
+      text-decoration-color: var(--theme-color);
+    }
   `,
 })
