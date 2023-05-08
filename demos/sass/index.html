@@ -1,0 +1,94 @@
+<body>
+  <app-layout>
+    <h1>Sass Demo</h1>
+    <sass-card></sass-card>
+    <h2>Page Source</h2>
+    <mark-down src="/demos/sass/index.html"></mark-down>
+
+    <!-- load sass.js -->
+    <script src="sass.js"></script>
+
+    <script type="module">
+      import ardi, { html } from '/@/assets/ardi-min.js'
+      ardi({
+        tag: 'sass-card',
+        state: () => ({ styles: '' }), // define styes in state
+        template() {
+          return html`
+            <div class="card">
+              <img src="//picsum.photos/seed/1/400/300" />
+              <div class="card-content">
+                <h3>Card Title</h3>
+              </div>
+              <div class="card-actions">
+                <button>Click Me</button>
+              </div>
+            </div>
+          `
+        },
+        scss: `
+          .card {
+            border: 1px solid var(--border);
+            border-radius: .5rem;
+            overflow: hidden;
+            width: 300px;
+
+            img {
+              display: block;
+              width: 100%;
+            }
+
+            &-content {
+              padding: 1rem;
+
+              h3, h4, h5, h6 {
+                margin: 0;
+              }
+            }
+
+            &-actions:not(:empty) {
+              margin-top: -.5rem;
+              padding: 0 .5rem .5rem;
+
+              button {
+                background: transparent;
+                border: none;
+                color: var(--theme-color);
+                cursor: pointer;
+                font-size: 14px;
+                letter-spacing: 1px;
+                padding: .5rem;
+                position: relative;
+                text-transform: uppercase;
+
+                &:hover {
+                  &:before {
+                    background: var(--theme-weak);
+                    content: '';
+                    height: 100%;
+                    left: 0;
+                    position: absolute;
+                    top: 0;
+                    width: 100%;
+                    z-index: -1;
+                  }
+                }
+              }
+            }
+          }
+        `,
+        compileSCSS() {
+          const sass = new Sass()
+          sass.compile(
+            this.scss.trim(),
+            (result) => (this.styles = result.text)
+          )
+        },
+        created() {
+          this.compileSCSS()
+        },
+      })
+    </script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
