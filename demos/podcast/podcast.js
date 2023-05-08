@@ -167,7 +167,8 @@ ardi({
   styles: css`
     :host {
       background: var(--surface-heavy);
-      border-radius: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
       display: grid;
       gap: 1.5rem;
       overflow: hidden;

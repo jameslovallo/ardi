@@ -28,9 +28,13 @@ ardi({
   styles: css`
     :host {
       align-items: center;
+      border-radius: 1rem;
+      border: 1px solid var(--border);
       display: grid;
       gap: 1.25rem;
       grid-template-columns: 64px 1fr;
+      max-width: var(--demo-max-width);
+      padding: 1rem;
     }
     [part='icon-container'] {
       border: 2px solid var(--theme-color);
