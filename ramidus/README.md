@@ -27,8 +27,8 @@ You can quickly set up a new starter project from the command line.
 
 <starter-card icon="tina">
   <h3 slot="label">Tina CMS Blog Starter</h3>
-  <a slot="links" href="https://ramidus.netlify.app">Live Demo</a>
-  <a slot="links" href="https://github.com/jameslovallo/ramidus-starter--blog">Repo & ReadMe</a>
+  <a slot="links" href="https://ramidus-blog-starter.netlify.app">Live Demo</a>
+  <a slot="links" href="https://github.com/jameslovallo/ramidus-starter--blog">Repository</a>
 </starter-card>
 
 ## Project Structure
@@ -44,7 +44,7 @@ Global content like components, assets, layouts and your site's head are contain
   - <tree-icon icon="js">build.js</tree-icon>
   - <tree-icon icon="js">main.js</tree-icon>
   - <tree-icon icon="json">head.json</tree-icon>
-- <tree-icon icon="folder">docs</tree-icon>
+- <tree-icon icon="folder">about</tree-icon>
   - <tree-icon icon="html">index.html</tree-icon>
 - <tree-icon icon="html">index.html</tree-icon>
 
