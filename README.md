@@ -408,7 +408,7 @@ ardi({
 
 Ardi is a runtime framework, designed to work with any app, site, or platform. Since Sass and Less are build-time languages, no official support is provided. If you want to write styles in sass and use them in your components, you can always compile to native CSS and `@import` the file using Ardi's `styles` key.
 
-Many Sass features are redundant when using the Shadow DOM. Complex BEM selectors requiring `&` nesting are unnecessary because styles are scoped to the component, and CSS has native support for variables. Native support for nesting is even coming soon. That being said, if cannot live without SASS (or another pre-processor) for prototyping, here is <app-link>[a demo](https://ardi.netlify.app/demos/sass)</app-link> showing how you can.
+Many Sass features are redundant when using the Shadow DOM. Complex BEM selectors requiring `&` nesting are unnecessary because styles are scoped to the component, and CSS has native support for variables. Nesting is even coming soon. That being said, if cannot live without using SASS (or another pre-processor) for prototyping, here is <app-link>[a demo](https://ardi.netlify.app/demos/sass)</app-link> showing how you can.
 
 ## Lifecycle
 
