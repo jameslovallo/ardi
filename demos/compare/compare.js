@@ -7,7 +7,7 @@ ardi({
 
   template() {
     return html`
-      <div style=${`--percent: ${this.percent}%`}>
+      <div style=${`--percent: ${this.percent}%; --raw: ${this.percent}`}>
         <slot></slot>
         <input
           type="range"
@@ -100,7 +100,7 @@ ardi({
       display: flex;
       height: 2rem;
       justify-content: center;
-      left: calc((100% - var(--percent) - 4px) - 12px);
+      left: calc((100% - 8px) * (var(--raw) / 100) - 12px);
       padding: 0;
       pointer-events: none;
       position: absolute;
