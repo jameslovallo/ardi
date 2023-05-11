@@ -75,7 +75,11 @@ ardi({ tag: 'my-component' })
 
 Ardi uses a straightforward object-oriented API. To demonstrate the API, we'll be looking at simplified code from the <app-link>[podcast demo](https://ardi.netlify.app/demos/podcast)</app-link>.
 
-<podcast-embed feed="https://feeds.simplecast.com/54nAGcIl" pagesize="5" style="max-width: 450px"></podcast-embed>
+<podcast-embed feed="https://feeds.simplecast.com/54nAGcIl" pagesize="5" style="max-width: 450px">
+
+![Podcast Component with 5 episodes of The Daily by The New York Times loaded.](https://ardi.netlify.com/@/assets/home/podcast-demo.png)
+
+</podcast-embed>
 
 ### Tag
 
