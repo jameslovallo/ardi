@@ -67,8 +67,7 @@ ardi({
     input[type='range']:focus {
       outline: none;
     }
-    input[type='range']::-webkit-slider-runnable-track,
-    input[type='range']::-moz-range-track {
+    input[type='range']::-webkit-slider-runnable-track {
       background-color: transparent;
       height: 100%;
     }
@@ -79,6 +78,10 @@ ardi({
       cursor: ew-resize;
       height: 100%;
       width: 0.5rem;
+    }
+    input[type='range']::-moz-range-track {
+      background-color: transparent;
+      height: 100%;
     }
     input[type='range']::-moz-range-thumb {
       background-color: var(--divider, white);
