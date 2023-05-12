@@ -37,6 +37,10 @@ h6 {
   scroll-margin-top: 3rem;
 }
 
+h1 {
+  font-weight: bold;
+}
+
 .home h2,
 .ramidus h2 {
   border-bottom: 1px solid var(--border);
