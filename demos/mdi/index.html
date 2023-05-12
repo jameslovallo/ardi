@@ -1,0 +1,25 @@
+<body>
+  <app-layout>
+    <h1>MDI Icon</h1>
+    <component-pills
+      features="tag, props, state, template, styles, lifecycle"
+    ></component-pills>
+
+    <h2>Playground</h2>
+    <component-story tag="mdi-icon">
+      <script type="application/json">
+        {
+          "icon": { "type": "text" },
+          "color": { "type": "color" },
+          "size": { "type": "text" }
+        }
+      </script>
+      <mdi-icon icon="account" color="#ffab00" size="2rem"></mdi-icon>
+    </component-story>
+
+    <h2>Javscript</h2>
+    <mark-down src="/demos/mdi/mdi.js"></mark-down>
+    <script src="/demos/mdi/mdi.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
