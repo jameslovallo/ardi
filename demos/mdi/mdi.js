@@ -8,10 +8,16 @@ ardi({
     color: [String],
   },
   state: () => ({ svg: '' }),
-  created() {
+  getIcon() {
     fetch(`https://unpkg.com/@mdi/svg@7.2.96/svg/${this.icon}.svg`)
       .then((res) => res.text())
       .then((icon) => (this.svg = icon))
+  },
+  created() {
+    this.getIcon()
+  },
+  changed() {
+    this.getIcon()
   },
   template() {
     if (this.color) this.style.color = this.color
