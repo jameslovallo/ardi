@@ -61,7 +61,8 @@ ardi({
       background: 0;
       border: none;
       font-size: 1rem;
-      padding: 1rem;
+      margin: 0.5rem;
+      padding: 0.5rem;
     }
     [part='controls']::slotted(input[type='color']) {
       margin: 1rem;
