@@ -16,8 +16,8 @@ ardi({
   created() {
     this.getIcon()
   },
-  changed(prop) {
-    prop.old && prop.new && this.getIcon()
+  changed() {
+    this.getIcon()
   },
   template() {
     if (this.color) this.style.color = this.color
