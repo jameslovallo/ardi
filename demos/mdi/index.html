@@ -6,16 +6,11 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="mdi-icon">
-      <script type="application/json">
-        {
-          "icon": { "type": "text" },
-          "color": { "type": "color" },
-          "size": { "type": "text" }
-        }
-      </script>
-      <mdi-icon icon="account" color="#ffab00" size="2rem"></mdi-icon>
-    </component-story>
+    <element-story element="mdi-icon">
+      <input name="icon" type="text" value="cat" />
+      <input name="style:color" type="color" value="#ffab00" />
+      <input name="style:width" type="text" value="5rem" />
+    </element-story>
 
     <h2>Javscript</h2>
     <mark-down src="/demos/mdi/mdi.js"></mark-down>

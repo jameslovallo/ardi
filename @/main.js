@@ -10,6 +10,7 @@ const components = [
   'component-card',
   'component-story',
   'component-pills',
+  'element-story',
   'home-card',
   'home-grid',
   'mark-down',
