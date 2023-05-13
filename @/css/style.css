@@ -157,3 +157,31 @@ element-story input[type='color']::-webkit-color-swatch {
   margin: 0;
   padding: 0;
 }
+element-story input[type='checkbox'] {
+  align-items: center;
+  appearance: none;
+  background-color: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 2rem;
+  box-sizing: content-box;
+  cursor: pointer;
+  height: 1rem;
+  overflow: hidden;
+  position: relative;
+  width: 2rem;
+}
+element-story input[type='checkbox']:after {
+  aspect-ratio: 1/1;
+  background: white;
+  border-radius: 2rem;
+  box-sizing: border-box;
+  content: '';
+  display: block;
+  height: 100%;
+  left: 0;
+  position: relative;
+  transition: 0.5s;
+}
+element-story input[type='checkbox']:checked:after {
+  left: 50%;
+}
