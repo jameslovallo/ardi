@@ -6,29 +6,18 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-forecast">
-      <script type="application/json">
-        {
-          "place": { "type": "text" },
-          "label": { "type": "text" },
-          "lat": { "type": "text" },
-          "lon": { "type": "text" },
-          "unit": { "type": "list", "options": ["fahrenheit", "celsius"] },
-          "locale": { "type": "text" },
-          "breakpoint": { "type": "number" }
-        }
-      </script>
-      <ardi-forecast
-        lat="42.375"
-        lon="-83"
-        place="Detroit"
-        unit="fahrenheit"
-        label="forecast"
-        locale="en-us"
-        breakpoint="500"
-        style="width: 100%"
-      ></ardi-forecast>
-    </component-story>
+    <element-story element="ardi-forecast">
+      <input type="text" id="place" value="Detroit" />
+      <input type="text" id="label" value="forecast" />
+      <input type="number" id="lat" value="42.375" />
+      <input type="number" id="lon" value="-83" />
+      <select id="unit">
+        <option selected>fahrenheit</option>
+        <option>celsius</option>
+      </select>
+      <input type="text" id="locale" value="en-us" />
+      <input type="number" id="breakpoint" value="500" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/forecast/forecast.js"></mark-down>

@@ -115,6 +115,7 @@ ardi({
       --divider-color: var(--border);
       --icon-shadow: 0 0 0 rgba(0, 0, 0, 0.5);
       --placeholder-color: var(--border);
+      width: 100%;
     }
     img {
       display: block;
