@@ -4,8 +4,6 @@ ardi({
   tag: 'ardi-decoration',
 
   props: {
-    background: [String, '#5E35B1'],
-    color: [String, 'white'],
     href: [String, null],
     label: [String, null],
     target: [String, null],
@@ -15,20 +13,12 @@ ardi({
   template() {
     const el = this.href
       ? html`
-          <a
-            part=${this.type}
-            href=${this.href}
-            style=${`--background: ${this.background}; --color: ${this.color};`}
-            target=${this.target}
-          >
+          <a part=${this.type} href=${this.href} target=${this.target}>
             <span part="label">${this.label}</span>
           </a>
         `
       : html`
-          <div
-            part="${this.type}"
-            style=${`--background: ${this.background}; --color: ${this.color};`}
-          >
+          <div part="${this.type}">
             <span part="label">${this.label}</span>
           </div>
         `

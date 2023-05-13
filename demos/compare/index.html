@@ -10,10 +10,16 @@
     <component-pills features="tag, props, template, styles"></component-pills>
 
     <h2>Demo</h2>
-    <ardi-compare>
-      <img src="/@/assets/demos/before.jpeg" alt="an abandoned building" />
-      <img src="/@/assets/demos/after.jpeg" alt="a renovated building" />
-    </ardi-compare>
+    <element-story element="ardi-compare">
+      <input type="text" id="style:--border-radius" value=".5rem" />
+      <input type="color" id="style:--divider" value="#ffffff" />
+      <input type="color" id="style:--button-color" value="#ffffff" />
+      <input type="color" id="style:--icon-color" value="#555555" />
+      <ardi-compare slot="playground">
+        <img src="/@/assets/demos/before.jpeg" alt="an abandoned building" />
+        <img src="/@/assets/demos/after.jpeg" alt="a renovated building" />
+      </ardi-compare>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/compare/compare.js"></mark-down>

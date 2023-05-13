@@ -16,11 +16,9 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-accordion-group">
-      <script type="application/json">
-        { "multiple": { "type": "boolean" } }
-      </script>
-      <ardi-accordion-group multiple="false">
+    <element-story element="ardi-accordion-group">
+      <input type="checkbox" id="multiple" />
+      <ardi-accordion-group slot="playground">
         <ardi-accordion summary="Text content" open="true">
           <div>
             <p>
@@ -44,7 +42,7 @@
           ></video>
         </ardi-accordion>
       </ardi-accordion-group>
-    </component-story>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/accordion/accordion.js"></mark-down>

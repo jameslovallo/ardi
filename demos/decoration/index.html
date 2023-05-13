@@ -16,27 +16,23 @@
     <component-pills features="tag, props, template, styles"></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-decoration">
-      <script type="application/json">
-        {
-          "type": { "type": "list", "options": ["badge", "ribbon"] },
-          "label": { "type": "text" },
-          "background": { "type": "color" },
-          "color": { "type": "color" },
-          "href": { "type": "text" },
-          "target": { "type": "list", "options": ["_blank", "_self"] }
-        }
-      </script>
-      <ardi-decoration
-        background="#5E35B1"
-        color="#ffffff"
-        href="https://google.com"
-        label="Ribbon"
-        type="ribbon"
-      >
+    <element-story element="ardi-decoration">
+      <select id="type">
+        <option selected>ribbon</option>
+        <option>badge</option>
+      </select>
+      <input type="text" id="label" value="Ribbon" />
+      <input type="text" id="href" value="https://google.com" />
+      <select id="target">
+        <option selected>_blank</option>
+        <option>_self</option>
+      </select>
+      <input type="color" id="style:--background" value="#5e35b1" />
+      <input type="color" id="style:--color" value="#ffffff" />
+      <ardi-decoration slot="playground">
         <div class="demo-box"></div>
       </ardi-decoration>
-    </component-story>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/decoration/decoration.js"></mark-down>

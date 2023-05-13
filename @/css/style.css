@@ -145,3 +145,15 @@ td {
   border-collapse: collapse;
   padding: 0.5rem;
 }
+
+element-story input[type='color'] {
+  background: none;
+  border: none;
+}
+
+element-story input[type='color']::-webkit-color-swatch {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  margin: 0;
+  padding: 0;
+}

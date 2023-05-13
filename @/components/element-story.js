@@ -6,14 +6,18 @@ ardi({
     element: [String],
   },
   ready() {
-    this.el = document.createElement(this.element)
-    ;[...this.children].forEach((input) => {
-      const { name, value } = input
-      const isStyle = name.startsWith('style:')
-      const prop = isStyle ? name.replace('style:', '') : name
+    this.el = this.refs.playground.assignedElements()[0]
+    if (!this.el) {
+      this.el = document.createElement(this.element)
+      this.refs.playground.appendChild(this.el)
+    }
+    this.refs.controls.assignedElements().forEach((input) => {
+      const { id, value } = input
+      const isStyle = id.startsWith('style:')
+      const prop = isStyle ? id.replace('style:', '') : id
       const label = document.createElement('label')
-      label.innerHTML = name.replace(':', ': ')
-      label.for = name
+      label.innerHTML = id.replace(':', ': ')
+      label.setAttribute('for', id)
       this.insertBefore(label, input)
       if (isStyle) {
         this.el.style.setProperty(prop, value)
@@ -21,17 +25,20 @@ ardi({
           this.el.style.setProperty(prop, e.target.value)
         })
       } else {
-        this.el.setAttribute(name, value)
-        input.addEventListener('input', (e) => {
-          this.el.setAttribute(name, e.target.value)
+        const { type } = input
+        this.el.setAttribute(id, type === 'checkbox' ? input.checked : value)
+        input.addEventListener('input', () => {
+          this.el.setAttribute(
+            id,
+            type === 'checkbox' ? input.checked : input.value
+          )
         })
       }
     })
-    this.refs.playground.appendChild(this.el)
   },
   template() {
     return html`
-      <div ref="playground" part="playground"></div>
+      <slot name="playground" ref="playground" part="playground"></slot>
       <slot ref="controls" part="controls"></slot>
     `
   },
@@ -49,27 +56,43 @@ ardi({
     }
     [part='controls'] {
       border-top: 1px solid var(--border);
-      display: grid;
+      display: block;
     }
     [part='controls']::slotted(label) {
-      padding: 0.5rem 1rem 0;
+      display: block;
+      font-size: 12px;
+      opacity: 0.75;
+      padding: 0.5rem 0.5rem 0;
     }
-    [part='controls']::slotted(label:not(:first-of-type)) {
+    [part='controls']::slotted(label:not(:first-child)) {
       border-top: 1px solid var(--border);
     }
-    [part='controls']::slotted(input:not([type='color'])) {
-      background: 0;
+    [part='controls']::slotted(
+        input:not([type='color']):not([type='checkbox'])
+      ),
+    [part='controls']::slotted(select) {
+      appearance: none;
+      background: transparent;
       border: none;
-      font-size: 1rem;
-      margin: 0.5rem;
       padding: 0.5rem;
+      width: 100%;
+    }
+    [part='controls']::slotted(*:focus) {
+      outline: none;
+    }
+    [part='controls']::slotted(input[type='checkbox']) {
+      width: min-content;
+    }
+    [part='controls']::slotted(input[type='checkbox']),
+    [part='controls']::slotted(input[type='color']) {
+      margin: 0.5rem;
     }
     [part='controls']::slotted(input[type='color']) {
-      margin: 1rem;
+      padding: 0;
     }
-    @media (min-width: 768px) {
+    @media (min-width: 600px) {
       :host {
-        grid-template-columns: 1fr 300px;
+        grid-template-columns: 1fr 200px;
       }
       [part='controls'] {
         border-left: 1px solid var(--border);

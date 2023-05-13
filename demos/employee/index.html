@@ -1,36 +1,19 @@
 <body>
   <app-layout>
-    <style>
-      ardi-employee {
-        max-width: var(--demo-max-width);
-        width: 100%;
-      }
-    </style>
-
     <h1>Employee Card</h1>
     <component-pills
       features="tag, props, template, styles, methods"
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-employee">
-      <script type="application/json">
-        {
-          "name": { "type": "text" },
-          "position": { "type": "text" },
-          "phone": { "type": "text" },
-          "email": { "type": "text" },
-          "photo": { "type": "text" }
-        }
-      </script>
-      <ardi-employee
-        name="Ashley Fox"
-        position="Chief Technical Officer"
-        phone="1234567890"
-        email="ashely@fake.com"
-        photo="/@/assets/demos/ashley.webp"
-      ></ardi-employee>
-    </component-story>
+    <element-story element="ardi-employee">
+      <input type="text" id="name" value="Ashley Fox" />
+      <input type="text" id="position" value="Chief Technical Officer" />
+      <input type="text" id="phone" value="1234567890" />
+      <input type="text" id="email" value="#" />
+      <input type="text" id="photo" value="/@/assets/demos/ashley.webp" />
+      <input type="color" id="--icon-color" value="#00acc1" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/employee/employee.js"></mark-down>

@@ -69,6 +69,7 @@ ardi({
       border-radius: 0.75rem;
       gap: 0.75rem;
       overflow: hidden;
+      width: 100%;
     }
     [part='photo'] {
       aspect-ratio: 1/1;
@@ -95,7 +96,7 @@ ardi({
       text-decoration: none;
     }
     [part='contact'] svg {
-      fill: #00acc1;
+      fill: var(--icon-color, #00acc1);
       display: block;
       width: 20px;
     }

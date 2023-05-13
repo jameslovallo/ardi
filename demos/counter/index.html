@@ -4,12 +4,9 @@
     <component-pills features="tag, props, state, template"></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-counter">
-      <script type="application/json">
-        { "step": { "type": "number" } }
-      </script>
-      <ardi-counter step="3"></ardi-counter>
-    </component-story>
+    <element-story element="ardi-counter">
+      <input type="number" id="step" value="3" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/counter/counter.js"></mark-down>
