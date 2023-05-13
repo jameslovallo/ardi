@@ -1,7 +1,7 @@
 <body>
   <app-layout>
     <style>
-      component-story::part(wrapper) {
+      element-story::part(playground) {
         display: block;
         height: 400px;
         overflow: auto;
@@ -14,23 +14,17 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="mark-down">
-      <script type="application/json">
-        {
-          "src": {
-            "type": "list",
-            "options": [
-              "https://unpkg.com/@11ty/eleventy@2.0.1/README.md",
-              "/@/components/mark-down.js",
-              "/demos/markdown/index.html"
-            ]
-          }
-        }
-      </script>
-      <mark-down
-        src="https://unpkg.com/@11ty/eleventy@2.0.1/README.md"
-      ></mark-down>
-    </component-story>
+    <element-story element="mark-down">
+      <select id="src">
+        <option
+          selected
+          value="https://unpkg.com/@11ty/eleventy@2.0.1/README.md"
+        >
+          11ty
+        </option>
+        <option value="https://unpkg.com/uhtml@3.1.0/README.md">uhtml</option>
+      </select>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/@/components/mark-down.js"></mark-down>

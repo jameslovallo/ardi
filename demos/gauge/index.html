@@ -6,24 +6,13 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-gauge">
-      <script type="application/json">
-        {
-          "label": { "type": "text" },
-          "max": { "type": "number" },
-          "min": { "type": "number" },
-          "step": { "type": "number" },
-          "value": { "type": "number" }
-        }
-      </script>
-      <ardi-gauge
-        label="MPH"
-        max="120"
-        min="0"
-        step="10"
-        value="90"
-      ></ardi-gauge>
-    </component-story>
+    <element-story element="ardi-gauge">
+      <input id="label" type="text" value="MPH" />
+      <input id="max" type="number" value="120" />
+      <input id="min" type="number" value="0" />
+      <input id="step" type="number" value="10" />
+      <input id="value" type="number" value="90" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/gauge/gauge.js"></mark-down>

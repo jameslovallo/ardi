@@ -46,7 +46,7 @@ ardi({
         }, 500)
       })
   },
-  created() {
+  ready() {
     this.getMarkdown()
   },
   changed(prop) {

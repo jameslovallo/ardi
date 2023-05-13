@@ -9,7 +9,8 @@ ardi({
     this.el = this.refs.playground.assignedElements()[0]
     if (!this.el) {
       this.el = document.createElement(this.element)
-      this.refs.playground.appendChild(this.el)
+      this.el.slot = 'playground'
+      this.appendChild(this.el)
     }
     this.refs.controls.assignedElements().forEach((input) => {
       const { id, value } = input
