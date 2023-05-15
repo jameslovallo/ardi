@@ -55,6 +55,9 @@ ardi({
       padding: 1rem;
       place-items: center;
     }
+    [part='playground']::slotted(*) {
+      width: 100%;
+    }
     [part='controls'] {
       border-top: 1px solid var(--border);
       display: block;
