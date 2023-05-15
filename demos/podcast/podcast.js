@@ -52,6 +52,45 @@ ardi({
     return `${hours}${minutes}m`
   },
 
+  setColor() {
+    const RGBToHSL = (r, g, b) => {
+      r /= 255
+      g /= 255
+      b /= 255
+      const l = Math.max(r, g, b)
+      const s = l - Math.min(r, g, b)
+      const h = s
+        ? l === r
+          ? (g - b) / s
+          : l === g
+          ? 2 + (b - r) / s
+          : 4 + (r - g) / s
+        : 0
+      return [
+        60 * h < 0 ? 60 * h + 360 : 60 * h,
+        100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
+        (100 * (2 * l - s)) / 2,
+      ]
+    }
+    const image = new Image()
+    image.crossOrigin = 'Anonymous'
+    image.onload = () => {
+      import('https://cdn.skypack.dev/fast-average-color@9.3.0').then((m) => {
+        const fac = new m.FastAverageColor()
+        fac.getColorAsync(image).then((color) => {
+          const {
+            value: [r, b, g],
+          } = color
+          const [h, s, l] = RGBToHSL(r, b, g)
+          this.style.background = `hsl(${h} ${s}% 20%)`
+          this.style.setProperty('--dark', `hsl(${h} ${s}% 20%)`)
+          this.style.setProperty('--light', `hsl(${h} ${s}% 90%)`)
+        })
+      })
+    }
+    image.src = this.feedJSON.image.split('?')[0]
+  },
+
   created() {
     this.fetchFeed()
   },
@@ -97,7 +136,16 @@ ardi({
     return html`
       <audio ref="player" src=${this.nowPlaying} />
       <div part="header">
-        ${image ? html`<img part="image" src=${image} />` : ''}
+        ${image
+          ? html`
+              <img
+                part="image"
+                src=${image}
+                ref="image"
+                @load=${() => this.setColor()}
+              />
+            `
+          : ''}
         <div part="header-wrapper">
           ${title ? html`<p part="title">${title}</p>` : ''}
           ${author ? html`<p part="author">${author}</p>` : ''}
@@ -166,9 +214,10 @@ ardi({
 
   styles: css`
     :host {
-      background: var(--surface-heavy);
       border: 1px solid var(--border);
       border-radius: 1rem;
+      color: white;
+      color-scheme: light;
       display: grid;
       gap: 1.5rem;
       overflow: hidden;
@@ -224,6 +273,7 @@ ardi({
       font-weight: bold;
     }
     [part='link'] {
+      color: var(--light);
       display: block;
       max-width: 100%;
       overflow: hidden;
@@ -244,7 +294,9 @@ ardi({
       min-width: 0;
     }
     [part='play-button'] {
+      background: var(--light);
       border-radius: 50%;
+      color: var(--dark);
       display: grid;
       flex-shrink: 0;
       height: 2rem;
@@ -253,11 +305,13 @@ ardi({
       width: 2rem;
     }
     [part='episode-title'] {
+      font-weight: bold;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     [part='episode-meta'] {
+      color: var(--light);
       display: flex;
       gap: 1em;
       opacity: 0.8;
@@ -267,6 +321,13 @@ ardi({
       display: flex;
       font-size: 0.8rem;
       justify-content: space-between;
+    }
+    [part='pagination'] button {
+      background: var(--light);
+      color: var(--dark);
+    }
+    [part='pagination'] button[disabled] {
+      opacity: 0.8;
     }
   `,
 })
