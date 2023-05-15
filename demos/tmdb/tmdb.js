@@ -27,6 +27,10 @@ ardi({
     this.fetchTrending()
   },
 
+  changed(prop) {
+    prop.old && prop.new && this.fetchTrending()
+  },
+
   prev() {
     this.refs.list.scrollLeft -= this.offsetWidth
   },

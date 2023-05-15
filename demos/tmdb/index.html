@@ -6,7 +6,17 @@
     ></component-pills>
 
     <h2>Demo</h2>
-    <ardi-tmdb style="width: 100%"></ardi-tmdb>
+    <element-story element="ardi-tmdb" style="--element-width: 100%">
+      <select id="type">
+        <option selected>tv</option>
+        <option>movie</option>
+        <option>all</option>
+      </select>
+      <select id="time">
+        <option selected>day</option>
+        <option>week</option>
+      </select>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/tmdb/tmdb.js"></mark-down>

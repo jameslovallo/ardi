@@ -13,18 +13,15 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-plyr">
-      <script type="application/json">
-        {
-          "src": { "type": "text" },
-          "type": {
-            "type": "list",
-            "options": ["youtube", "vimeo", "video", "audio"]
-          }
-        }
-      </script>
-      <ardi-plyr type="youtube" src="bTqVqk7FSmY"></ardi-plyr>
-    </component-story>
+    <element-story element="ardi-plyr">
+      <input type="text" id="src" value="bTqVqk7FSmY" />
+      <select id="type">
+        <option selected>youtube</option>
+        <option>vimeo</option>
+        <option>video</option>
+        <option>audio</option>
+      </select>
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/plyr/plyr.js"></mark-down>

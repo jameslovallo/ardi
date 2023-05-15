@@ -13,27 +13,19 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-news">
-      <script type="application/json">
-        {
-          "feed": {
-            "type": "list",
-            "options": [
-              "https://rsshub.app/apnews/topics/apf-topnews",
-              "https://rsshub.app/reuters/world/us",
-              "https://rsshub.app/bbc/world-asia"
-            ]
-          },
-          "linklabel": { "type": "text" },
-          "storyheading": { "type": "text" }
-        }
-      </script>
-      <ardi-news
-        feed="https://rsshub.app/apnews/topics/apf-topnews"
-        linklabel="Visit Site"
-        storyheading="Latest Headlines"
-      ></ardi-news>
-    </component-story>
+    <element-story element="ardi-news">
+      <select id="feed">
+        <option value="https://rsshub.app/apnews/topics/apf-topnews">
+          Associated Press: Top News
+        </option>
+        <option value="https://rsshub.app/reuters/world/us">
+          Reuters US News
+        </option>
+        <option value="https://rsshub.app/bbc/world-asia">BBC Asia News</option>
+      </select>
+      <input type="text" id="linklabel" value="Visit Site" />
+      <input type="text" id="storyheading" value="Latest Headlines" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/news/news.js"></mark-down>

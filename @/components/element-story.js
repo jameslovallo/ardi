@@ -6,7 +6,7 @@ ardi({
     element: [String],
   },
   ready() {
-    this.el = this.refs.playground.assignedElements()[0]
+    this.el = this.querySelector(this.element)
     if (!this.el) {
       this.el = document.createElement(this.element)
       this.el.slot = 'playground'
@@ -56,7 +56,7 @@ ardi({
       place-items: center;
     }
     [part='playground']::slotted(*) {
-      width: 100%;
+      width: var(--element-width);
     }
     [part='controls'] {
       border-top: 1px solid var(--border);
