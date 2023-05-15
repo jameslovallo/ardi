@@ -53,7 +53,7 @@ ardi({
           <b>${this.place}</b>
           <small>${this.label}</small>
         </div>
-        <div part="current_icon">${icon ? html`<img src=${icon} />` : ''}</div>
+        <div part="current_icon"><img src=${icon} /></div>
         <div part="current_temp">${temp}</div>
       </div>
       <!-- 7-day forecast -->

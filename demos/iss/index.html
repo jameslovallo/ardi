@@ -1,12 +1,31 @@
 <body>
   <app-layout>
+    <style>
+      ardi-iss {
+        height: 100%;
+        width: 100%;
+      }
+    </style>
     <h1>ISS Tracker</h1>
     <component-pills
       features="tag, shadow, props, template, styles, methods, lifecycle"
     ></component-pills>
 
     <h2>Demo</h2>
-    <ardi-iss></ardi-iss>
+    <element-story element="ardi-iss">
+      <input type="text" id="iconurl" value="/@/assets/demos/iss.png" />
+      <input type="text" id="iconheight" value="48" />
+      <input type="text" id="iconwidth" value="48" />
+      <input
+        type="number"
+        id="updateinterval"
+        value="3000"
+        min="1000"
+        max="5000"
+        step="1000"
+      />
+      <input type="number" id="zoomlevel" value="4" min="2" max="12" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/iss/iss.js"></mark-down>

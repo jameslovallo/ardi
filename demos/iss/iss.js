@@ -78,6 +78,9 @@ ardi({
 
   styles: css`
     @import 'https://unpkg.com/leaflet@1.9.3/dist/leaflet.css';
+    :host {
+      display: block;
+    }
     [ref='map'] {
       height: 400px;
     }
