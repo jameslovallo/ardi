@@ -14,23 +14,16 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-video">
-      <script type="application/json">
-        {
-          "src": { "type": "text" },
-          "poster": { "type": "text" },
-          "pauselabel": { "type": "text" },
-          "playlabel": { "type": "text" }
-        }
-      </script>
-      <ardi-video
-        src="https://joy1.videvo.net/videvo_files/video/free/2013-08/large_watermarked/hd0992_preview.mp4"
-        poster=""
-        pauselabel="Pause"
-        playlabel="Play"
-      >
-      </ardi-video>
-    </component-story>
+    <element-story element="ardi-video">
+      <input
+        type="text"
+        id="src"
+        value="https://joy1.videvo.net/videvo_files/video/free/2013-08/large_watermarked/hd0992_preview.mp4"
+      />
+      <input type="text" id="poster" />
+      <input type="text" id="pauselabel" value="Pause" />
+      <input type="text" id="playlabel" value="Play" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/video/video.js"></mark-down>

@@ -7,24 +7,31 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-typer">
-      <script type="application/json">
-        {
-          "base": { "type": "text" },
-          "words": { "type": "text" },
-          "speed": { "type": "number" },
-          "pause": { "type": "number" },
-          "cursor": { "type": "boolean" }
-        }
-      </script>
-      <ardi-typer
-        base="Ardi was built to:"
-        pause="5000"
-        speed="150"
-        words="provide great DX without tooling, work with every framework, break free from frameworks, create portable components that work anywhere"
-        cursor="true"
-      ></ardi-typer>
-    </component-story>
+    <element-story element="ardi-typer">
+      <input type="text" id="base" value="Ardi is" />
+      <input
+        type="words"
+        id="words"
+        value="fast, flexible, familiar, universal"
+      />
+      <input
+        type="number"
+        id="speed"
+        value="150"
+        step="50"
+        min="50"
+        max="300"
+      />
+      <input
+        type="number"
+        id="pause"
+        value="2000"
+        step="500"
+        min="500"
+        max="5000"
+      />
+      <input type="checkbox" id="cursor" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/typer/typer.js"></mark-down>

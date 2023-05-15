@@ -6,23 +6,12 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-todo">
-      <script type="application/json">
-        {
-          "listlabel": { "type": "text" },
-          "addtasklabel": { "type": "text" },
-          "todolabel": { "type": "text" },
-          "donelabel": { "type": "text" }
-        }
-      </script>
-      <ardi-todo
-        addtasklabel="Add a chore"
-        donelabel="Complete"
-        listlabel="Chores"
-        todolabel="To Do"
-        style="width: 100%"
-      ></ardi-todo>
-    </component-story>
+    <element-story element="ardi-todo" style="--element-width: 100%">
+      <input type="text" id="listlabel" value="Chores" />
+      <input type="text" id="addtasklabel" value="Add a chore" />
+      <input type="text" id="todolabel" value="To Do" />
+      <input type="text" id="donelabel" value="Completed" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/todo/todo.js"></mark-down>

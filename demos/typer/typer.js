@@ -51,7 +51,7 @@ ardi({
     }, pause)
   },
 
-  created() {
+  ready() {
     this.setWord()
   },
 

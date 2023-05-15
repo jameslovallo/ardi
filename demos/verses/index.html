@@ -1,7 +1,7 @@
 <body>
   <app-layout>
     <style>
-      component-story::part(wrapper) {
+      element-story::part(playground) {
         height: 300px;
         overflow: auto;
       }
@@ -13,12 +13,9 @@
     ></component-pills>
 
     <h2>Playground</h2>
-    <component-story tag="ardi-verses">
-      <script type="application/json">
-        { "query": { "type": "text" } }
-      </script>
-      <ardi-verses query="John 1 1-18"></ardi-verses>
-    </component-story>
+    <element-story element="ardi-verses">
+      <input type="text" id="query" value="John 1 1-18" />
+    </element-story>
 
     <h2>Javascript</h2>
     <mark-down src="/demos/verses/verses.js"></mark-down>
