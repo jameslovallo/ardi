@@ -5,7 +5,7 @@ ardi({
   tag: 'podcast-embed',
 
   props: {
-    feed: [String, 'https://feeds.simplecast.com/54nAGcIl'],
+    feed: [String, 'https://feeds.megaphone.fm/RECU9765916949'],
     nextpagelabel: [String, 'Next Page'],
     pagelabel: [String, 'Page'],
     pagesize: [Number, 10],
@@ -281,7 +281,10 @@ ardi({
       white-space: nowrap;
     }
     [part='description'] {
-      margin: 0;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 4;
+      display: -webkit-box;
+      overflow: hidden;
     }
     [part='episodes'] {
       display: grid;
