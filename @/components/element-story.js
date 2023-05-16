@@ -62,6 +62,9 @@ ardi({
       border-top: 1px solid var(--border);
       display: block;
     }
+    [part='controls']::slotted(*) {
+      box-sizing: border-box;
+    }
     [part='controls']::slotted(label) {
       display: block;
       font-size: 12px;
