@@ -147,6 +147,9 @@ ardi({
                 <button
                   part="play-button"
                   @click=${() => this.togglePlayback(track)}
+                  class=${this.nowPlaying === track && !this.paused
+                    ? 'playing'
+                    : null}
                   aria-label=${this.nowPlaying === track && !this.paused
                     ? this.pauselabel
                     : this.playlabel}
@@ -195,7 +198,6 @@ ardi({
   styles: css`
     :host {
       background: var(--md-sys-color-surface-variant);
-      border: 1px solid var(--border);
       border-radius: 1rem;
       color: var(--md-sys-color-on-surface);
       color-scheme: light;
@@ -205,7 +207,6 @@ ardi({
       padding: 1rem;
     }
     button {
-      border: 1px solid var(--border);
       border-radius: 4px;
     }
     button:not([disabled]) {
@@ -289,7 +290,11 @@ ardi({
       height: 2rem;
       padding: 0;
       place-items: center;
+      transition: border-radius 0.5s;
       width: 2rem;
+    }
+    [part='play-button'].playing {
+      border-radius: 0.5rem;
     }
     [part='episode-title'] {
       font-weight: bold;
