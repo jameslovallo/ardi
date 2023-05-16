@@ -63,12 +63,13 @@ ardi({
 
   setColor() {
     const img = new Image()
-    img.src = this.feedJSON.image
     img.crossOrigin = 'Anonymous'
-
-    themeFromImage(img).then((theme) => {
-      applyTheme(theme, { target: this, dark: true })
+    img.addEventListener('load', () => {
+      themeFromImage(img).then((theme) => {
+        applyTheme(theme, { target: this, dark: true })
+      })
     })
+    img.src = this.feedJSON.image
   },
 
   created() {
