@@ -89,7 +89,7 @@ ardi({
           const [h, s, l] = RGBToHSL(r, b, g)
           this.style.setProperty('--medium', `hsl(${h} ${s}% 50%)`)
           this.style.setProperty('--dark', `hsl(${h} ${s}% 20%)`)
-          this.style.setProperty('--light', `hsl(${h} ${s}% 90%)`)
+          this.style.setProperty('--light', `hsl(${h} ${s}% 85%)`)
         })
       })
     }
