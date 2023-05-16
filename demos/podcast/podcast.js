@@ -1,4 +1,4 @@
-import { extract } from 'https://unpkg.com/@extractus/feed-extractor@latest/dist/feed-extractor.esm.js'
+import { XMLParser } from 'https://cdn.skypack.dev/fast-xml-parser@4.1.3'
 import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
 ardi({
@@ -22,20 +22,25 @@ ardi({
   }),
 
   fetchFeed() {
-    extract(this.feed, {
-      getExtraFeedFields: (feed) => {
-        return { image: feed?.image?.url, author: feed['itunes:author'] }
-      },
-      getExtraEntryFields: (entry) => {
-        return {
-          duration: entry['itunes:duration'],
-          date: entry.pubDate,
-          track: entry.enclosure['@_url'],
-        }
-      },
-    }).then((json) => {
-      this.feedJSON = json
+    const parser = new XMLParser({
+      ignoreAttributes: false,
     })
+    fetch(this.feed)
+      .then((res) => res.text())
+      .then((data) => {
+        const {
+          rss: { channel },
+        } = parser.parse(data)
+        const { title, link, description, item } = channel
+        this.feedJSON = {
+          title,
+          author: channel['itunes:author'],
+          link,
+          image: channel['itunes:image']['@_href'],
+          description,
+          entries: item,
+        }
+      })
   },
 
   formatDuration(duration) {
@@ -82,7 +87,7 @@ ardi({
             value: [r, b, g],
           } = color
           const [h, s, l] = RGBToHSL(r, b, g)
-          this.style.background = `hsl(${h} ${s}% 20%)`
+          this.style.setProperty('--medium', `hsl(${h} ${s}% 50%)`)
           this.style.setProperty('--dark', `hsl(${h} ${s}% 20%)`)
           this.style.setProperty('--light', `hsl(${h} ${s}% 90%)`)
         })
@@ -131,7 +136,6 @@ ardi({
 
   template() {
     const { title, author, link, description, entries, image } = this.feedJSON
-    const linkLabel = new URL(link).hostname
     const lastPage = Math.floor(entries?.length / this.pagesize) + 1
     return html`
       <audio ref="player" src=${this.nowPlaying} />
@@ -149,7 +153,7 @@ ardi({
         <div part="header-wrapper">
           ${title ? html`<p part="title">${title}</p>` : ''}
           ${author ? html`<p part="author">${author}</p>` : ''}
-          ${link ? html`<a part="link" href=${link}>${linkLabel}</a>` : ''}
+          ${link ? html`<a part="link" href=${link}>${link}</a>` : ''}
         </div>
       </div>
       ${description ? html`<p part="description">${description}</p>` : ''}
@@ -161,7 +165,8 @@ ardi({
               i < this.page * this.pagesize + this.pagesize
           )
           .map((episode, i) => {
-            const { title, track, duration, date } = episode
+            const { title, pubDate } = episode
+            const track = episode.enclosure['@_url']
             return html`
               <div part="episode">
                 <button
@@ -179,10 +184,10 @@ ardi({
                   <div part="episode-title">${title}</div>
                   <div part="episode-meta">
                     <div part="episode-date">
-                      ${new Date(date).toLocaleDateString()}
+                      ${new Date(pubDate).toLocaleDateString()}
                     </div>
                     <div part="episode-duration">
-                      ${this.formatDuration(duration)}
+                      ${this.formatDuration(episode['itunes:duration'])}
                     </div>
                   </div>
                 </div>
@@ -214,6 +219,7 @@ ardi({
 
   styles: css`
     :host {
+      background: var(--dark);
       border: 1px solid var(--border);
       border-radius: 1rem;
       color: white;
@@ -243,6 +249,7 @@ ardi({
       grid-template-columns: 8rem 1fr;
     }
     [part='image'] {
+      border-radius: 0.25rem;
       display: block;
       width: 100%;
     }
@@ -263,20 +270,19 @@ ardi({
     }
     [part='header-wrapper'] {
       display: grid;
-      gap: 0.75rem;
-    }
-    [part='header-wrapper'] > * {
-      line-height: 1;
+      gap: 0.5rem;
     }
     [part='title'] {
       font-size: 1rem;
       font-weight: bold;
     }
     [part='link'] {
-      color: var(--light);
+      color: white;
       display: block;
+      line-height: 1.2;
       max-width: 100%;
       overflow: hidden;
+      text-decoration-color: var(--medium);
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -298,6 +304,7 @@ ardi({
     }
     [part='play-button'] {
       background: var(--light);
+      border: none;
       border-radius: 50%;
       color: var(--dark);
       display: grid;
@@ -327,6 +334,7 @@ ardi({
     }
     [part='pagination'] button {
       background: var(--light);
+      border: none;
       color: var(--dark);
     }
     [part='pagination'] button[disabled] {
