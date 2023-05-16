@@ -1,3 +1,7 @@
+import {
+  applyTheme,
+  themeFromImage,
+} from 'https://cdn.skypack.dev/@material/material-color-utilities@0.2.4'
 import { XMLParser } from 'https://cdn.skypack.dev/fast-xml-parser@4.1.3'
 import ardi, { css, html, svg } from '../../@/assets/ardi-min.js'
 
@@ -58,42 +62,13 @@ ardi({
   },
 
   setColor() {
-    const RGBToHSL = (r, g, b) => {
-      r /= 255
-      g /= 255
-      b /= 255
-      const l = Math.max(r, g, b)
-      const s = l - Math.min(r, g, b)
-      const h = s
-        ? l === r
-          ? (g - b) / s
-          : l === g
-          ? 2 + (b - r) / s
-          : 4 + (r - g) / s
-        : 0
-      return [
-        60 * h < 0 ? 60 * h + 360 : 60 * h,
-        100 * (s ? (l <= 0.5 ? s / (2 * l - s) : s / (2 - (2 * l - s))) : 0),
-        (100 * (2 * l - s)) / 2,
-      ]
-    }
-    const image = new Image()
-    image.crossOrigin = 'Anonymous'
-    image.onload = () => {
-      import('https://cdn.skypack.dev/fast-average-color@9.3.0').then((m) => {
-        const fac = new m.FastAverageColor()
-        fac.getColorAsync(image).then((color) => {
-          const {
-            value: [r, b, g],
-          } = color
-          const [h, s, l] = RGBToHSL(r, b, g)
-          this.style.setProperty('--medium', `hsl(${h} ${s}% 50%)`)
-          this.style.setProperty('--dark', `hsl(${h} ${s}% 20%)`)
-          this.style.setProperty('--light', `hsl(${h} ${s}% 85%)`)
-        })
-      })
-    }
-    image.src = this.feedJSON.image.split('?')[0]
+    const img = new Image()
+    img.src = this.feedJSON.image
+    img.crossOrigin = 'Anonymous'
+
+    themeFromImage(img).then((theme) => {
+      applyTheme(theme, { target: this, dark: true })
+    })
   },
 
   created() {
@@ -219,10 +194,10 @@ ardi({
 
   styles: css`
     :host {
-      background: var(--dark);
+      background: var(--md-sys-color-surface-variant);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      color: white;
+      color: var(--md-sys-color-on-surface-variant);
       color-scheme: light;
       display: grid;
       gap: 1.5rem;
@@ -277,12 +252,11 @@ ardi({
       font-weight: bold;
     }
     [part='link'] {
-      color: white;
+      color: var(--md-sys-color-tertiary);
       display: block;
       line-height: 1.2;
       max-width: 100%;
       overflow: hidden;
-      text-decoration-color: var(--medium);
       text-overflow: ellipsis;
       white-space: nowrap;
     }
@@ -303,10 +277,10 @@ ardi({
       min-width: 0;
     }
     [part='play-button'] {
-      background: var(--light);
+      background: var(--md-sys-color-secondary);
       border: none;
       border-radius: 50%;
-      color: var(--dark);
+      color: var(--md-sys-color-on-secondary);
       display: grid;
       flex-shrink: 0;
       height: 2rem;
@@ -321,7 +295,6 @@ ardi({
       white-space: nowrap;
     }
     [part='episode-meta'] {
-      color: var(--light);
       display: flex;
       gap: 1em;
       opacity: 0.8;
@@ -333,9 +306,13 @@ ardi({
       justify-content: space-between;
     }
     [part='pagination'] button {
-      background: var(--light);
+      background: none;
       border: none;
-      color: var(--dark);
+      color: var(--md-sys-color-tertiary);
+    }
+    [part='pagination'] button svg {
+      height: 1.5rem;
+      width: 1.5rem;
     }
     [part='pagination'] button[disabled] {
       opacity: 0.8;
