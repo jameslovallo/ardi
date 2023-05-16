@@ -69,7 +69,7 @@ ardi({
         applyTheme(theme, { target: this, dark: true })
       })
     })
-    img.src = this.feedJSON.image
+    img.src = this.feedJSON.image.split('?')[0]
   },
 
   created() {
@@ -99,9 +99,13 @@ ardi({
   icon(name) {
     const icons = {
       leftArrow: 'M20,9V15H12V19.84L4.16,12L12,4.16V9H20Z',
+      leftArrowOutline:
+        'M13,22L3,12L13,2V8H21V16H13V22M6,12L11,17V14H19V10H11V7L6,12Z',
       play: 'M8,5.14V19.14L19,12.14L8,5.14Z',
       pause: 'M14,19H18V5H14M6,19H10V5H6V19Z',
       rightArrow: 'M4,15V9H12V4.16L19.84,12L12,19.84V15H4Z',
+      rightArrowOutline:
+        'M11,16H3V8H11V2L21,12L11,22V16M13,7V10H5V14H13V17L18,12L13,7Z',
     }
     return svg`
       <svg viewBox="0 0 24 24">
@@ -181,7 +185,9 @@ ardi({
           disabled=${this.page > 0 ? null : true}
           aria-label=${this.prevpagelabel}
         >
-          <slot name="prev-icon"> ${this.icon('leftArrow')} </slot>
+          <slot name="prev-icon">
+            ${this.icon(this.page > 0 ? 'leftArrow' : 'leftArrowOutline')}
+          </slot>
         </button>
         ${this.pagelabel} ${this.page + 1} / ${lastPage}
         <button
@@ -190,7 +196,11 @@ ardi({
           disabled=${this.page + 1 < lastPage ? null : true}
           aria-label=${this.nextpagelabel}
         >
-          <slot name="next-icon"> ${this.icon('rightArrow')} </slot>
+          <slot name="next-icon">
+            ${this.icon(
+              this.page + 1 < lastPage ? 'rightArrow' : 'rightArrowOutline'
+            )}
+          </slot>
         </button>
       </div>
     `
@@ -323,9 +333,6 @@ ardi({
     [part='pagination'] button svg {
       height: 1.5rem;
       width: 1.5rem;
-    }
-    [part='pagination'] button[disabled] {
-      opacity: 0.8;
     }
   `,
 })
