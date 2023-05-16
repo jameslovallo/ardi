@@ -197,7 +197,7 @@ ardi({
       background: var(--md-sys-color-surface-variant);
       border: 1px solid var(--border);
       border-radius: 1rem;
-      color: var(--md-sys-color-on-surface-variant);
+      color: var(--md-sys-color-on-surface);
       color-scheme: light;
       display: grid;
       gap: 1.5rem;
@@ -250,6 +250,9 @@ ardi({
     [part='title'] {
       font-size: 1rem;
       font-weight: bold;
+    }
+    [part='author'] {
+      color: var(--md-sys-color-on-surface-variant);
     }
     [part='link'] {
       color: var(--md-sys-color-tertiary);
@@ -309,6 +312,7 @@ ardi({
       background: none;
       border: none;
       color: var(--md-sys-color-tertiary);
+      padding: 0.25rem;
     }
     [part='pagination'] button svg {
       height: 1.5rem;
