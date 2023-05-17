@@ -44,6 +44,7 @@ ardi({
           description,
           entries: item,
         }
+        this.setColor()
       })
   },
 
@@ -120,16 +121,7 @@ ardi({
     return html`
       <audio ref="player" src=${this.nowPlaying} />
       <div part="header">
-        ${image
-          ? html`
-              <img
-                part="image"
-                src=${image}
-                ref="image"
-                @load=${() => this.setColor()}
-              />
-            `
-          : ''}
+        ${image ? html` <img part="image" src=${image} ref="image" /> ` : ''}
         <div part="header-wrapper">
           ${title ? html`<p part="title">${title}</p>` : ''}
           ${author ? html`<p part="author">${author}</p>` : ''}
@@ -208,7 +200,7 @@ ardi({
 
   styles: css`
     :host {
-      background: var(--md-sys-color-surface-variant);
+      background: var(--md-sys-color-surface-variant, #555);
       border-radius: 1rem;
       color: var(--md-sys-color-on-surface);
       color-scheme: light;
@@ -292,10 +284,10 @@ ardi({
       min-width: 0;
     }
     [part='play-button'] {
-      background: var(--md-sys-color-secondary);
+      background: var(--md-sys-color-secondary, white);
       border: none;
       border-radius: 50%;
-      color: var(--md-sys-color-on-secondary);
+      color: var(--md-sys-color-on-secondary, black);
       display: grid;
       flex-shrink: 0;
       height: 2rem;
@@ -327,7 +319,7 @@ ardi({
     [part='pagination'] button {
       background: none;
       border: none;
-      color: var(--md-sys-color-tertiary);
+      color: var(--md-sys-color-tertiary, white);
       padding: 0.25rem;
     }
     [part='pagination'] button svg {

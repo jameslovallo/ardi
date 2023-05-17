@@ -39,7 +39,7 @@ ardi({
   },
   template() {
     return html`
-      <slot name="playground" ref="playground" part="playground"></slot>
+      <slot name="playground" part="playground"></slot>
       <slot ref="controls" part="controls"></slot>
     `
   },
