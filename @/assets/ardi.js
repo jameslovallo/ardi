@@ -188,4 +188,9 @@ ardi({
       <slot name=${this.if || this['else-if'] ? null : 'else'}></slot>
     `
   },
+  styles: css`
+    :host {
+      display: contents;
+    }
+  `,
 })
