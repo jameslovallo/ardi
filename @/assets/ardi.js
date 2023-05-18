@@ -22,7 +22,7 @@ export default function ardi(options) {
 
       if (typeof this.props === 'object') this.defineProps()
       if (typeof this.state === 'function') this.defineState()
-      if (typeof this.intersected === 'function') this.handleintersected()
+      if (typeof this.intersected === 'function') this.handleIntersect()
 
       this.refs = {}
     }
@@ -155,7 +155,7 @@ export default function ardi(options) {
       if (this.rendered) this.rendered()
     }
 
-    handleintersected() {
+    handleIntersect() {
       new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
