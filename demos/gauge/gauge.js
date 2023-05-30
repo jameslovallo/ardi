@@ -51,16 +51,16 @@ ardi({
   styles: css`
     :host {
       align-items: center;
+      aspect-ratio: 1;
       background: var(--background, #000);
       border: 2px solid var(--border);
       border-radius: 50%;
       color: var(--color, #fff);
       display: flex;
-      height: 300px;
       justify-content: center;
+      min-width: 300px;
       overflow: hidden;
       position: relative;
-      width: 300px;
     }
     [part='dial'] {
       background: var(--dial, #222);
