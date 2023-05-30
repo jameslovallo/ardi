@@ -1,0 +1,51 @@
+<body>
+  <app-layout>
+    <h1>Easy Form</h1>
+    <component-pills
+      features="tag, props, methods, lifecycle, template, styles"
+    ></component-pills>
+
+    <h2>Features</h2>
+    <ul>
+      <li>Easy to configure recipient, subject, and next page</li>
+      <li>Customizable field masking and validation</li>
+      <li>Automatic validation for required fields</li>
+      <li>Built-in Google Recaptcha support</li>
+    </ul>
+
+    <h2>Playground</h2>
+    <element-story element="easy-form">
+      <input id="recipient" value="your_email@gmail.com" />
+      <input id="subject" value="This is a test" />
+      <input id="next" value="https://google.com" />
+      <input id="recaptcha-key" value="your_key" />
+      <easy-form slot="playground">
+        <label>
+          First Name
+          <input name="first" required />
+        </label>
+        <label>
+          Last Name
+          <input name="last" required />
+        </label>
+        <label>
+          Email
+          <input name="email" type="email" required />
+        </label>
+        <label>
+          Phone
+          <input name="phone" type="tel" required data-mask="(###) ###-####" />
+        </label>
+        <label class="wide">
+          Message
+          <textarea name="message" required></textarea>
+        </label>
+      </easy-form>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/easyform/easyform.js"></mark-down>
+    <script src="/demos/easyform/easyform.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
