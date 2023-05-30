@@ -1,0 +1,70 @@
+<body>
+  <app-layout>
+    <style>
+      ardi-wizard {
+        --border-color: var(--border);
+        height: 300px;
+      }
+      ardi-wizard section {
+        display: grid;
+        place-items: center;
+        text-align: center;
+      }
+      ardi-wizard section button {
+        cursor: pointer;
+      }
+    </style>
+
+    <h1>Wizard</h1>
+    <component-pills
+      features="tag, state, methods, lifecycle, template, styles"
+    ></component-pills>
+
+    <h2>Demo</h2>
+    <ardi-wizard context="wizard">
+      <section id="one" data-next="two" data-prompt="Step 1 prompt">
+        <div>
+          <h2>Section 1</h2>
+          <ardi-wizard-link to="two" direction="1">
+            <button>Go to 2</button>
+          </ardi-wizard-link>
+          <ardi-wizard-link to="three" direction="1">
+            <button>Go to 3</button>
+          </ardi-wizard-link>
+        </div>
+      </section>
+      <section
+        id="two"
+        data-prev="one"
+        data-next="three"
+        data-prompt="Step 2 prompt"
+      >
+        <div>
+          <h2>Section 2</h2>
+          <ardi-wizard-link to="one" direction="-1">
+            <button>Go to 1</button>
+          </ardi-wizard-link>
+          <ardi-wizard-link to="three" direction="1">
+            <button>Go to 3</button>
+          </ardi-wizard-link>
+        </div>
+      </section>
+      <section id="three" data-prev="two" data-prompt="Step 3 prompt">
+        <div>
+          <h2>Section 3</h2>
+          <ardi-wizard-link to="one" direction="-1">
+            <button>Go to 1</button>
+          </ardi-wizard-link>
+          <ardi-wizard-link to="two" direction="-1">
+            <button>Go to 2</button>
+          </ardi-wizard-link>
+        </div>
+      </section>
+    </ardi-wizard>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/wizard/wizard.js"></mark-down>
+    <script src="/demos/wizard/wizard.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>

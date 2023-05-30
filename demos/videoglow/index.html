@@ -1,0 +1,23 @@
+<body>
+  <app-layout>
+    <h1>Video Glow</h1>
+    <component-pills features="tag, props, template, styles"></component-pills>
+
+    <h2>Playground</h2>
+    <element-story element="video-glow">
+      <input
+        type="text"
+        id="src"
+        value="https://static.vecteezy.com/system/resources/previews/023/131/506/mp4/the-rock-nearly-weligama-bay-in-sri-lanka-by-fpv-drone-secret-beach-free-video.mp4"
+      />
+      <input type="text" id="style:--border-radius" value=".5rem" />
+      <input type="text" id="style:--blur" value="1.5rem" />
+      <input type="number" id="style:--saturation" value="1.5" />
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/demos/videoglow/videoglow.js"></mark-down>
+    <script src="/demos/videoglow/videoglow.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>
