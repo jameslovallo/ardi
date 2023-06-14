@@ -1,4 +1,4 @@
-import ardi, { css } from '../../@/assets/ardi-min.js'
+import ardi, { css } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'mdi-icon',

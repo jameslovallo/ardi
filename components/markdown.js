@@ -1,9 +1,9 @@
 import { parse } from 'https://cdn.jsdelivr.net/npm/marked/+esm'
-import ardi from '../assets/ardi-min.js'
-import hljs from '/@/lib/hljs/core.min.js'
-import css from '/@/lib/hljs/css.min.js'
-import js from '/@/lib/hljs/javascript.min.js'
-import xml from '/@/lib/hljs/xml.min.js'
+import ardi from '../@/assets/ardi-min.js'
+import hljs from '../@/lib/hljs/core.min.js'
+import css from '../@/lib/hljs/css.min.js'
+import js from '../@/lib/hljs/javascript.min.js'
+import xml from '../@/lib/hljs/xml.min.js'
 hljs.registerLanguage('css', css)
 hljs.registerLanguage('javascript', js)
 hljs.registerLanguage('xml', xml)
@@ -16,10 +16,11 @@ ${code}
 
 ardi({
   tag: 'mark-down',
+
   shadow: false,
-  props: {
-    src: [String, '/README.md'],
-  },
+
+  props: { src: [String, '/README.md'] },
+
   async getMarkdown() {
     fetch(this.src)
       .then((res) => res.text())
@@ -46,9 +47,11 @@ ardi({
         }, 500)
       })
   },
+
   ready() {
     this.getMarkdown()
   },
+
   changed(prop) {
     if (prop.name === 'src' && prop.old && prop.old !== prop.new) {
       this.getMarkdown()

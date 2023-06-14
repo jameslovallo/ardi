@@ -36,6 +36,9 @@ export default function ardi(options) {
     defineProps() {
       props.forEach((prop) => {
         const [handleValue, defaultValue] = this.props[prop]
+        if (handleValue === Boolean && defaultValue === true) {
+          this.setAttribute(prop, '')
+        }
         Object.defineProperty(this, prop, {
           get: () => {
             const value = this.getAttribute(prop) || defaultValue
@@ -43,13 +46,21 @@ export default function ardi(options) {
               case String:
                 return value
               case Boolean:
-                return [true, 'true'].includes(value)
+                return this.hasAttribute(prop)
               default:
                 return handleValue(value)
             }
           },
           set: (v) => {
-            this.setAttribute(prop, v)
+            if (handleValue === Boolean) {
+              if (v === true) {
+                this.setAttribute(prop, '')
+              } else {
+                this.removeAttribute(prop)
+              }
+            } else {
+              this.setAttribute(prop, v)
+            }
             if (typeof this.changed === 'function') {
               this.changed({ name: prop, old: this[prop], new: v })
             }

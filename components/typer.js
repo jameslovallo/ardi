@@ -1,4 +1,4 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-typer',
@@ -20,10 +20,7 @@ ardi({
 
   template() {
     return html`
-      <div>
-        ${this.base}
-        <span>${this.word}</span>
-      </div>
+      ${this.base} ${this.word}${this.cursor ? html`<span></span>` : ''}
     `
   },
 
@@ -57,20 +54,26 @@ ardi({
 
   styles() {
     return /* css */ `
-      span {
-        --color: currentcolor;
-        animation: blink 1s linear infinite;
-        border-right: ${this.cursor ? '1px' : '0'} solid var(--color);
-        display: inline;
+      :host {
         word-break: break-word;
+      }
+      span:before {
+        animation: blink 1s infinite;
+        color: var(--cursor-color, dodgerblue);
+        content: '│';
+        display: inline-flex;
+        font-family: arial;
+        position: relative;
+        top: -.1em;
+        width: 1px;
       }
       @keyframes blink {
         0% {
-          --color: transparent;
+          opacity: 0;
         } 50% {
-          --color: currentcolor;
+          opacity: 1;
         } 100% {
-          --color: transparent;
+          opacity: 0;
         }
       }
     `

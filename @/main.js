@@ -12,9 +12,9 @@ const components = [
   'element-story',
   'home-card',
   'home-grid',
-  'mark-down',
 ]
 components.forEach((c) => import(`/@/components/${c}.js`))
+import '/components/markdown.js'
 
 // fade in gracefully when components are loaded
 const isDefined = components.map((c) => customElements.whenDefined(c))

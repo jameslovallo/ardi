@@ -2,9 +2,8 @@
   <app-layout>
     <style>
       ardi-video {
-        --button: darkslateblue;
-        --on-button: white;
         aspect-ratio: 16/9;
+        width: 100%;
       }
     </style>
 
@@ -23,12 +22,14 @@
       <input type="text" id="poster" />
       <input type="text" id="pauselabel" value="Pause" />
       <input type="text" id="playlabel" value="Play" />
+      <input type="color" id="style:--button-background" value="#1e90ff" />
+      <input type="color" id="style:--button-foreground" value="#ffffff" />
     </element-story>
 
     <h2>Javascript</h2>
-    <mark-down src="/demos/video/video.js"></mark-down>
+    <mark-down src="/components/video.js"></mark-down>
 
-    <script src="/demos/video/video.js" type="module"></script>
+    <script src="/components/video.js" type="module"></script>
   </app-layout>
   <script src="/@/main.js" type="module"></script>
 </body>

@@ -1,4 +1,4 @@
-import ardi, { css, html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-gauge',

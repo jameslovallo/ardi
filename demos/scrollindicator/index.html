@@ -27,10 +27,10 @@
 
     <h2>Playground</h2>
     <element-story element="ardi-scroll-indicator">
-      <input type="color" id="background" value="#888888" />
-      <input type="color" id="foreground" value="#ffab00" />
-      <input type="text" id="height" value="5px" />
-      <select id="position">
+      <input type="color" id="style:--background" value="#888888" />
+      <input type="color" id="style:--foreground" value="#ffab00" />
+      <input type="text" id="style:--height" value="5px" />
+      <select id="style:position">
         <option selected>sticky</option>
         <option>fixed</option>
       </select>
@@ -76,12 +76,9 @@
     </element-story>
 
     <h2>Javascript</h2>
-    <mark-down src="/demos/scrollindicator/scrollindicator.js"></mark-down>
+    <mark-down src="/components/scrollindicator.js"></mark-down>
 
-    <script
-      src="/demos/scrollindicator/scrollindicator.js"
-      type="module"
-    ></script>
+    <script src="/components/scrollindicator.js" type="module"></script>
   </app-layout>
   <script src="/@/main.js" type="module"></script>
 </body>

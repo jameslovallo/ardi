@@ -1,14 +1,7 @@
-import ardi, { html } from '../../@/assets/ardi-min.js'
+import ardi, { html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-scroll-indicator',
-
-  props: {
-    background: [String, '#888'],
-    foreground: [String, 'black'],
-    height: [(v) => (v && isNaN(v) ? v : (v || 5) + 'px')],
-    position: [String, 'fixed'],
-  },
 
   state: () => ({ scrollPercent: 0 }),
 
@@ -25,18 +18,17 @@ ardi({
       :host {
         display: block;
         left: 0;
-        position: ${this.position};
         top: 0;
         width: 100%;
         z-index: 99999;
       }
       [part=background] {
-        background: ${this.background};
-        height: ${this.height};
+        background: var(--background, transparent);
+        height: var(--height, .25rem);
       }
       [part=foreground] {
-        background: ${this.foreground};
-        height: ${this.height};
+        background: var(--foreground, dodgerblue);
+        height: 100%;
       }
     `
   },

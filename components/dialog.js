@@ -1,4 +1,4 @@
-import ardi, { css, html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-dialog',
@@ -44,7 +44,6 @@ ardi({
 
   styles: css`
     :host {
-      --backdrop: rgba(0, 0, 0, 0.25);
       --transition: 0.33s;
     }
     dialog {
@@ -56,7 +55,7 @@ ardi({
       transition: var(--transition);
     }
     dialog.open::backdrop {
-      background: var(--backdrop);
+      background: rgba(0, 0, 0, 0.25);
     }
     slot[name='opener']::slotted(*),
     slot[name='closer']::slotted(*) {

@@ -1,7 +1,7 @@
 import ardi, { css, html } from '//unpkg.com/ardi@latest'
 
 ardi({
-  tag: 'easy-form',
+  tag: 'ardi-form',
 
   props: {
     recipient: [String],

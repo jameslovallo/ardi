@@ -1,0 +1,34 @@
+<body>
+  <app-layout>
+    <h1>Button</h1>
+    <component-pills features="tag, props, template, styles"></component-pills>
+
+    <h2>Playground</h2>
+    <element-story element="ardi-button">
+      <input id="label" type="text" value="Click me" />
+      <input id="href" value="https://google.com" />
+      <select id="target">
+        <option selected>_self</option>
+        <option>_blank</option>
+      </select>
+      <select id="shape">
+        <option selected>squared</option>
+        <option>rounded</option>
+        <option>pill</option>
+      </select>
+      <select id="variant">
+        <option selected>solid</option>
+        <option>outlined</option>
+        <option>subtle</option>
+      </select>
+      <input id="style:--button-color" type="color" value="#1e90ff" />
+      <input id="style:--button-on-color" type="color" value="#ffffff" />
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/components/button.js"></mark-down>
+
+    <script src="/components/button.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>

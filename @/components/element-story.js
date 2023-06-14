@@ -27,12 +27,19 @@ ardi({
         })
       } else {
         const { type } = input
-        this.el.setAttribute(id, type === 'checkbox' ? input.checked : value)
+        if (type === 'checkbox') {
+          if (input.checked) this.el.setAttribute(id, '')
+        } else this.el.setAttribute(id, value)
         input.addEventListener('input', () => {
-          this.el.setAttribute(
-            id,
-            type === 'checkbox' ? input.checked : input.value
-          )
+          if (type === 'checkbox') {
+            if (input.checked) {
+              this.el.setAttribute(id, '')
+            } else {
+              this.el.removeAttribute(id)
+            }
+          } else {
+            this.el.setAttribute(id, input.value)
+          }
         })
       }
     })

@@ -1,4 +1,4 @@
-import ardi, { css, html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-switch',
@@ -19,10 +19,10 @@ ardi({
   },
   styles: css`
     :host {
-      --bg: rgba(125, 125, 125, 0.5);
-      --bg-checked: dodgerblue;
-      --fg: white;
-      --fg-checked: white;
+      --background: rgba(125, 125, 125, 0.5);
+      --background-checked: dodgerblue;
+      --foreground: white;
+      --foreground-checked: white;
       --padding: 6.25%;
       --width: 100%;
       display: inline-block;
@@ -30,7 +30,7 @@ ardi({
     }
     input {
       appearance: none;
-      background: var(--bg);
+      background: var(--background);
       border-radius: 100vw;
       box-sizing: border-box;
       cursor: pointer;
@@ -40,7 +40,7 @@ ardi({
     }
     input:before {
       aspect-ratio: 1;
-      background: var(--fg);
+      background: var(--foreground);
       border-radius: 50%;
       content: '';
       display: block;
@@ -49,35 +49,35 @@ ardi({
       width: 37.5%;
     }
     input:hover {
-      background: var(--bg-hover, var(--bg));
+      background: var(--background-hover, var(--background));
     }
     input:hover:before {
-      background: var(--fg-hover, var(--fg));
+      background: var(--foreground-hover, var(--foreground));
     }
     input:active {
-      background: var(--bg-active, var(--bg));
+      background: var(--background-active, var(--background));
     }
     input:active:before {
-      background: var(--fg-active, var(--fg));
+      background: var(--foreground-active, var(--foreground));
     }
     input:checked {
-      background: var(--bg-checked, var(--bg));
+      background: var(--background-checked, var(--background));
     }
     input:checked:before {
-      background: var(--fg-checked, var(--fg));
+      background: var(--foreground-checked, var(--foreground));
       margin-left: calc(var(--width) / 2 + var(--padding));
     }
     input:checked:hover {
-      background: var(--bg-checked-hover, var(--bg-checked));
+      background: var(--background-checked-hover, var(--background-checked));
     }
     input:checked:hover:before {
-      background: var(--fg-checked-hover, var(--fg-checked));
+      background: var(--foreground-checked-hover, var(--foreground-checked));
     }
     input:checked:active {
-      background: var(--bg-checked-active, var(--bg-checked));
+      background: var(--background-checked-active, var(--background-checked));
     }
     input:checked:active:before {
-      background: var(--fg-checked-active, var(--fg-checked));
+      background: var(--foreground-checked-active, var(--foreground-checked));
     }
   `,
 })

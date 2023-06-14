@@ -1,4 +1,4 @@
-import ardi, { css, html } from '../../@/assets/ardi-min.js'
+import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-video',
@@ -78,7 +78,7 @@ ardi({
     }
     [part='button'] {
       align-items: center;
-      background: var(--button);
+      background: var(--button-background, dodgerblue);
       border: none;
       border-radius: 50%;
       bottom: 1rem;
@@ -94,7 +94,7 @@ ardi({
     }
     [part='icon'] {
       display: block;
-      fill: var(--on-button);
+      fill: var(--button-foreground, white);
       height: 1.5rem;
       width: 1.5rem;
     }
