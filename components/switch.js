@@ -24,6 +24,7 @@ ardi({
       --foreground: white;
       --foreground-checked: white;
       --padding: 6.25%;
+      --transition-speed: 0.25s;
       --width: 100%;
       display: inline-block;
       width: 4rem;
@@ -35,7 +36,7 @@ ardi({
       box-sizing: border-box;
       cursor: pointer;
       margin: 0;
-      transition: background 0.25s;
+      transition: background var(--transition-speed);
       width: 100%;
     }
     input:before {
@@ -45,7 +46,7 @@ ardi({
       content: '';
       display: block;
       margin: var(--padding);
-      transition: margin-left 0.25s;
+      transition: margin-left var(--transition-speed);
       width: 37.5%;
     }
     input:hover {
