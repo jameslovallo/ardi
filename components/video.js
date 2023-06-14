@@ -54,7 +54,7 @@ ardi({
             cx="21"
             cy="21"
             r="15.91549430918954"
-            stroke="var(--on-button)"
+            stroke="var(--button-foreground)"
             stroke-dashoffset="25"
             stroke-dasharray=${`${this.progress} ${100 - this.progress}`}
             stroke-width="2px"
