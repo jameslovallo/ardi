@@ -8,6 +8,7 @@ ardi({
       <input
         type="checkbox"
         part="switch"
+        value=${this.checked ? 'on' : 'off'}
         checked=${this.checked ? '' : null}
         @change=${(e) => {
           this.checked = e.target.checked
