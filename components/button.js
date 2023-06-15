@@ -65,6 +65,9 @@ ardi({
     :host([variant='subtle']) [part='button'] {
       box-shadow: none;
     }
+    :host([variant='text']) [part='button'] {
+      padding: 0.5rem;
+    }
     :host([variant='outlined']) [part='button']:after {
       border-radius: inherit;
       border: 2px solid var(--button-color);
@@ -78,7 +81,8 @@ ardi({
     :host([variant='subtle']) [part='button']:before {
       opacity: 0.1;
     }
-    :host([variant='outlined']) [part='button']:before {
+    :host([variant='outlined']) [part='button']:before,
+    :host([variant='text']) [part='button']:before {
       opacity: 0;
     }
     [part='button']:hover:before,
@@ -88,12 +92,15 @@ ardi({
     [part='button']:active:before {
       opacity: 0.7;
     }
+    :host([variant='text']) [part='button']:hover:before,
+    :host([variant='text']) [part='button']:focus:before,
     :host([variant='subtle']) [part='button']:hover:before,
     :host([variant='subtle']) [part='button']:focus:before,
     :host([variant='outlined']) [part='button']:hover:before,
     :host([variant='outlined']) [part='button']:focus:before {
       opacity: 0.2;
     }
+    :host([variant='text']) [part='button']:active:before,
     :host([variant='subtle']) [part='button']:active:before,
     :host([variant='outlined']) [part='button']:active:before {
       opacity: 0.3;
