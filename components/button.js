@@ -2,23 +2,26 @@ import ardi, { css } from '//unpkg.com/ardi'
 
 ardi({
   tag: 'ardi-button',
+
   props: {
     href: [String],
     label: [String, 'Click me'],
     target: [String],
   },
+
   template() {
     const tag = this.href ? 'a' : 'button'
     return `
-			<${tag}
-				part="button"
-				${this.href ? `href=${this.href}` : ''}
-				${this.target ? `target=${this.target}` : ''}
-			>
-				<slot>${this.label}</slot>
-			</${tag}>
-		`
+      <${tag}
+        part="button"
+        ${this.href ? `href=${this.href}` : ''}
+        ${this.target ? `target=${this.target}` : ''}
+      >
+        <slot>${this.label}</slot>
+      </${tag}>
+    `
   },
+
   styles: css`
     :host {
       --button-border-radius: 0;
