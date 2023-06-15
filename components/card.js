@@ -2,10 +2,12 @@ import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-card',
+
   props: {
     title: [String],
     subtitle: [String],
   },
+
   template() {
     return html`
       <slot name="media" ref="media"></slot>
@@ -19,6 +21,7 @@ ardi({
       <slot name="actions"></slot>
     `
   },
+
   styles: css`
     :host {
       border: 1px solid var(--border, rgba(125, 125, 125, 0.5));
