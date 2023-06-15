@@ -58,6 +58,7 @@ ardi({
       width: 100%;
       z-index: -1;
     }
+    :host([variant='text']) [part='button'],
     :host([variant='subtle']) [part='button'],
     :host([variant='outlined']) [part='button'] {
       color: var(--button-color);
