@@ -1,0 +1,39 @@
+<body>
+  <app-layout>
+    <h1>Card</h1>
+    <component-pills features="tag, props, template, styles"></component-pills>
+
+    <h2>Playground</h2>
+    <element-story
+      element="ardi-card"
+      style="--element-width: var(--demo-max-width)"
+    >
+      <input id="title" value="Card Title" />
+      <input id="subtitle" value="Card subtitle" />
+      <small style="margin: 0 0.5rem; display: inline-block">
+        The image and actions are slotted and cannot be configured in this demo.
+      </small>
+      <ardi-card slot="playground">
+        <img src="//picsum.photos/400/200" slot="media" alt="" />
+        <ardi-button
+          slot="actions"
+          variant="text"
+          shape="rounded"
+        ></ardi-button>
+        <ardi-button
+          slot="actions"
+          variant="text"
+          shape="rounded"
+        ></ardi-button>
+      </ardi-card>
+    </element-story>
+
+    <h2>Javascript</h2>
+    <mark-down src="/components/card.js"></mark-down>
+
+    <script src="/components/card.js" type="module"></script>
+    <script src="/components/button.js" type="module"></script>
+    <script src="/components/mdi.js" type="module"></script>
+  </app-layout>
+  <script src="/@/main.js" type="module"></script>
+</body>

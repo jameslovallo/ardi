@@ -5,7 +5,7 @@ ardi({
 
   props: {
     href: [String],
-    label: [String, 'Click me'],
+    label: [String, 'Click here'],
     target: [String],
   },
 
