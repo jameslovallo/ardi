@@ -62,8 +62,15 @@ ardi({
     :host([variant='subtle']) [part='button'] {
       box-shadow: none;
     }
-    :host([variant='outlined']) [part='button'] {
-      box-shadow: inset 0 0 0 2px var(--button-color);
+    :host([variant='outlined']) [part='button']:after {
+      border-radius: inherit;
+      border: 2px solid var(--button-color);
+      bottom: 0;
+      content: '';
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
     }
     :host([variant='subtle']) [part='button']:before {
       opacity: 0.1;
