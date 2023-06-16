@@ -1,4 +1,4 @@
-import ardi, { css, html } from '//unpkg.com/ardi@latest'
+import ardi, { css, html } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-form',

@@ -1,4 +1,4 @@
-import ardi, { css } from '//unpkg.com/ardi'
+import ardi, { css } from '../@/assets/ardi-min.js'
 
 ardi({
   tag: 'ardi-button',
