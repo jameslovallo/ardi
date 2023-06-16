@@ -94,7 +94,7 @@ ardi({
     }
     button {
       align-items: center;
-      background: var(--button-color, white);
+      background: var(--button-background, white);
       border-radius: 2rem;
       border: 0;
       box-shadow: 0 0 5px black;
@@ -109,7 +109,7 @@ ardi({
       width: 2rem;
     }
     button svg {
-      fill: var(--icon-color, #555);
+      fill: var(--button-foreground, #555);
       width: 24px;
     }
   `,

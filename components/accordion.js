@@ -76,7 +76,7 @@ ardi({
       border-top: 0;
     }
     details {
-      border: 1px solid var(--border);
+      border: 1px solid var(--border, rgba(125, 125, 125, 0.5));
       box-sizing: border-box;
     }
     summary {

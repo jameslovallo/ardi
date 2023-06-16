@@ -66,13 +66,16 @@ ardi({
       width: 68px;
     }
     [part='icon-bg'] {
-      fill: var(--button-bg, rgba(33, 33, 33, 0.8));
+      fill: var(--button-background, rgba(33, 33, 33, 0.8));
     }
     [part='icon-fg'] {
-      fill: var(--button-fg, #fff);
+      fill: var(--button-foreground, #fff);
     }
     [part='button']:hover [part='icon-bg'] {
-      fill: var(--button-bg-hover, red);
+      fill: var(--button-background-hover, red);
+    }
+    [part='button']:hover [part='icon-fg'] {
+      fill: var(--button-foreground-hover, #fff);
     }
   `,
 })
