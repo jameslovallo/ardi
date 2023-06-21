@@ -24,8 +24,9 @@ ardi({
 
   styles: css`
     :host {
-      border: 1px solid var(--border, rgba(125, 125, 125, 0.5));
+      border: var(--border, 1px solid rgba(125, 125, 125, 0.5));
       display: block;
+      overflow: hidden;
     }
     [name='media']::slotted(img),
     [name='media']::slotted(video) {
