@@ -61,8 +61,8 @@ ardi({
     [name='actions'] {
       align-items: center;
       display: flex;
-      margin-top: 0.75rem;
-      padding: 0.75rem;
+      margin-top: 1rem;
+      padding: 1rem;
       padding-top: 0;
     }
   `,
