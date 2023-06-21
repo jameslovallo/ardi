@@ -66,6 +66,7 @@ ardi({
     :host([variant='subtle']) [part='button'] {
       box-shadow: none;
     }
+    :host([shape='circle']) [part='button'],
     :host([variant='text']) [part='button'] {
       padding: 0.5rem;
     }
@@ -109,13 +110,14 @@ ardi({
     :host([shape='rounded']) [part='button'] {
       --button-border-radius: 0.5rem;
     }
+    :host([shape='circle']) [part='button'],
     :host([shape='pill']) [part='button'] {
       --button-border-radius: 2rem;
     }
     ::slotted(svg) {
       display: block;
       fill: currentcolor;
-      width: 1.25rem;
+      width: 1.5rem;
     }
   `,
 })

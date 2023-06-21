@@ -1,7 +1,7 @@
 import ardi, { css } from '../@/assets/ardi-min.js'
 
 ardi({
-  tag: 'mdi-icon',
+  tag: 'ardi-icon',
   props: { icon: [String, 'material-design'] },
   state: () => ({ svg: '' }),
   getIcon() {
@@ -19,6 +19,9 @@ ardi({
     return this.svg
   },
   styles: css`
+    :host {
+      width: 24px;
+    }
     :host,
     svg {
       display: block;
