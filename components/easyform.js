@@ -7,7 +7,6 @@ ardi({
     recipient: [String],
     subject: [String],
     next: [String],
-    'recaptcha-key': [String],
   },
 
   required() {
@@ -51,30 +50,11 @@ ardi({
     })
   },
 
-  created() {
-    if (this['recaptcha-key']) {
-      const rc = document.createElement('script')
-      rc.src =
-        'https://www.google.com/recaptcha/api.js?render=' +
-        this['recaptcha-key']
-      this.root.appendChild(rc)
-    }
-  },
-
   ready() {
     this.refs.fields.innerHTML += this.innerHTML
     this.required()
     this.textareas()
     this.mask()
-  },
-
-  submitForm(e) {
-    e.preventDefault()
-    grecaptcha.ready(() => {
-      grecaptcha.execute(this['recaptcha-key']).then((token) => {
-        token && this.refs.submit.click()
-      })
-    })
   },
 
   template() {
@@ -91,12 +71,9 @@ ardi({
           <if-else if=${this.next}>
             <input type="hidden" name="_next" value=${this.next} />
           </if-else>
-          <if-else if=${this['recaptcha-key']}>
-            <input type="hidden" name="_captcha" value="false" />
-          </if-else>
         </div>
         <input ref="submit" type="submit" />
-        <button part="submit" @click=${(e) => this.submitForm(e)}>
+        <button part="submit">
           <slot name="submit">Submit</slot>
         </button>
       </form>
