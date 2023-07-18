@@ -66,7 +66,7 @@ ardi({
       border: 0;
       box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
       box-sizing: border-box;
-      min-height: 100vh;
+      height: 100%;
       left: 0;
       margin: 0;
       position: fixed;
