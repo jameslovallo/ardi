@@ -3,13 +3,16 @@ import parse from 'https://unpkg.com/snarkdown@2.0.0/dist/snarkdown.modern.js'
 import ardi, { css, html } from '../@/assets/ardi-min.js'
 import './dialog.js'
 
-const head = import('/head.js') || {}
-
 ardi({
 	tag: 'spa-app',
 	props: { breakpoint: [Number, 768] },
-	state: () => ({ mobile: null, touch: navigator.maxTouchPoints > 0 }),
+	state: () => ({
+		mobile: null,
+		touch: navigator.maxTouchPoints > 0,
+		head: null,
+	}),
 	created() {
+		this.head = import('/head.js') || {}
 		const mq = matchMedia(`(min-width: ${this.breakpoint}px)`)
 		this.mobile = !mq.matches
 		mq.addEventListener('change', () => (this.mobile = !mq.matches))
