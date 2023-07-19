@@ -1,8 +1,9 @@
 import grayMatter from 'https://cdn.skypack.dev/gray-matter@4.0.3'
 import parse from 'https://unpkg.com/snarkdown@2.0.0/dist/snarkdown.modern.js'
 import ardi, { css, html } from '../@/assets/ardi-min.js'
-import '../components/dialog.js'
-import head from '/head.js'
+import './dialog.js'
+
+const head = import('/head.js') || {}
 
 ardi({
 	tag: 'spa-app',
