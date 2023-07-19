@@ -4,15 +4,11 @@ import ardi, { css, html } from '../@/assets/ardi-min.js'
 import './dialog.js'
 
 ardi({
-	tag: 'spa-app',
-	props: { breakpoint: [Number, 768] },
-	state: () => ({
-		mobile: null,
-		touch: navigator.maxTouchPoints > 0,
-		head: null,
-	}),
+	tag: 'spa-root',
+	props: { breakpoint: [Number, 768], 'head-json': [String, '/head.json'] },
+	state: () => ({ mobile: null, touch: navigator.maxTouchPoints > 0 }),
 	async created() {
-		this.head = (await import('/head.js')) || {}
+		this.head = await fetch(this['head-json']).then((res) => res.json())
 		const mq = matchMedia(`(min-width: ${this.breakpoint}px)`)
 		this.mobile = !mq.matches
 		mq.addEventListener('change', () => (this.mobile = !mq.matches))
@@ -21,7 +17,7 @@ ardi({
 		this.appendChild(this.contentRoot)
 	},
 	setHead(data) {
-		const { title, description, image } = { ...head, ...data }
+		const { title, description, image } = { ...this.head, ...data }
 		const createMeta = (name, content, attribute = 'property') => {
 			const metaTag = document.querySelector(`meta[${attribute}='${name}']`)
 			if (metaTag) {
