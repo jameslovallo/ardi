@@ -11,8 +11,8 @@ ardi({
 		touch: navigator.maxTouchPoints > 0,
 		head: null,
 	}),
-	created() {
-		this.head = import(location.host + '/head.js') || {}
+	async created() {
+		this.head = (await import('/head.js')) || {}
 		const mq = matchMedia(`(min-width: ${this.breakpoint}px)`)
 		this.mobile = !mq.matches
 		mq.addEventListener('change', () => (this.mobile = !mq.matches))
