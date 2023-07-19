@@ -12,7 +12,7 @@ ardi({
 		head: null,
 	}),
 	created() {
-		this.head = import('/head.js') || {}
+		this.head = import(location.host + '/head.js') || {}
 		const mq = matchMedia(`(min-width: ${this.breakpoint}px)`)
 		this.mobile = !mq.matches
 		mq.addEventListener('change', () => (this.mobile = !mq.matches))
